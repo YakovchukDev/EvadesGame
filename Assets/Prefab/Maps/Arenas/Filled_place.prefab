@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5649222324910132513}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,7 +140,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomPrefab: {fileID: 8647111174072001358}
-  LeftExit: 0
-  RightExit: 0
-  UpExit: 0
-  DownExit: 0
+  SaveLeft: 0
+  SaveRight: 0
+  ExitLeft: 0
+  ExitRight: 0
+  ExitUp: 0
+  ExitDown: 0

@@ -5,25 +5,34 @@ namespace Maps
 {
     public class MapsGenerator : MonoBehaviour
     {
+        [SerializeField] private List<GameObject> _smallEnemy;
+
         public int Complexity = 1;
         public int Length;
         public int Branchs = 1;
         public int StepX = 52;
         public int StepZ = 13;
-        public List<Room> Arens;
-        public List<Room> Corridors;
-        public Room FiledPlace;
+        [SerializeField]
+        private List<Room> Arens;
+        [SerializeField]
+        private List<Room> Corridors;
+        [SerializeField]
+        private GameObject SaveZone;
+        [SerializeField]
+        private GameObject NotSaveZone;
+        public int SizeSaveZoneХ = 13;
 
         private Room[,] Maps;
 
         public void Start()
         {
             Maps = new Room [Length, Branchs*2 + 1];
-            Maps[0, Branchs] = Arens[0];
 
             System.Random r = new System.Random();
             int quantityBranchs = 0;
-            for(int i = 1; i < Length; i++)
+            //generate arens
+            Maps[0, Branchs] = Arens[0];
+            for(int i = 1; i < Length - 1; i++)
             {
                 List<Room> SelectRooms = new List<Room>();
                 for(int ii = 0; ii < Arens.Count; ii++)
@@ -32,7 +41,7 @@ namespace Maps
                     {
                         if((Arens[ii].ExitUp || Arens[ii].ExitDown))
                         {
-                            if(CheckVertical(i, quantityBranchs)) 
+                            if(checkVertical(i, quantityBranchs)) 
                             {
                                 SelectRooms.Add(Arens[ii]);
                             }
@@ -46,7 +55,7 @@ namespace Maps
                     {
                         if((Arens[ii].ExitUp || Arens[ii].ExitDown))
                         {
-                            if(CheckVertical(i, quantityBranchs)) 
+                            if(checkVertical(i, quantityBranchs)) 
                             {
                                 SelectRooms.Add(Arens[ii]);
                             }
@@ -92,7 +101,8 @@ namespace Maps
 
                 Maps[i, Branchs] = SelectRooms[nextNumber];
             }
-            
+            Maps[Length - 1, Branchs] = Arens[0];
+            //generate lower corridors
             for(int i = 1; i < Length; i++)
             {
                 if(Maps[i, Branchs].ExitDown)
@@ -179,6 +189,7 @@ namespace Maps
                     }
                 }
             }
+            //generate upper corridors
             for(int i = 1; i < Length; i++)
             {
                 if(Maps[i, Branchs].ExitUp)
@@ -268,7 +279,8 @@ namespace Maps
             }
 
 
-            //Show
+            //Show map
+            Instantiate(SaveZone, new Vector3(-StepX/2 + -SizeSaveZoneХ/2, 0, 13), Quaternion.identity);
             for(int i = 0; i < Length; i++)
             {
                 for(int j = 0; j < Branchs * 2 + 1; j++)
@@ -276,15 +288,38 @@ namespace Maps
                     if( Maps[i, j] != null)
                     {
                         Maps[i, j].name = $"{i} Arena";
-                        Instantiate(Maps[i, j], new Vector3(StepX * i, 0, StepZ * j), Quaternion.identity);
+                        Instantiate(Maps[i, j], new Vector3(StepX * i + SizeSaveZoneХ * i, 0, StepZ * j), Quaternion.identity);
+                        if(i < Length - 1)
+                        {
+                            if(j == Branchs)
+                            {
+                                Instantiate(SaveZone, new Vector3(StepX / 2f + SizeSaveZoneХ/2f + StepX * i + SizeSaveZoneХ * i, 0, StepZ * j), Quaternion.identity);
+                            }
+                            else if(Maps[i, j].ExitRight)
+                            {
+                                Instantiate(NotSaveZone, new Vector3(StepX / 2f + SizeSaveZoneХ/2f + StepX * i + SizeSaveZoneХ * i, 0, StepZ * j), Quaternion.identity);
+                            }
+                        }
                     }
+                }
+            }
+            Instantiate(SaveZone, new Vector3((StepX * Length + SizeSaveZoneХ * Length - 1) + (-StepX/2 + -SizeSaveZoneХ/2), 0, 13), Quaternion.identity);
+            //Show Enemy
+            for(int i = 0; i < Length; i++)
+            {
+                //10000% нужно переделать
+                foreach (var enemy in _smallEnemy)
+                {
+                    Instantiate(enemy, new Vector3(Random.Range((StepX * i + SizeSaveZoneХ * i) - (StepX / 2) + 2, (StepX * (i + 1) + SizeSaveZoneХ * i) - (StepX / 2) - 2), 1f, Random.Range(8.0f, 18.0f)), Quaternion.identity);
+                    enemy.transform.localScale = new Vector3(1F, 1F, 1F);
                 }
             }
         }
 
-        private bool CheckVertical(int indexLength, int quantityBranchs)
+        private bool checkVertical(int indexLength, int quantityBranchs)
         {
             int quantityBranchsInChunk = Complexity / 2 + 1;
+            
             for(int i = 10, n = 2; i < 50; i += 10, n++)
             {
                 if(indexLength < i && quantityBranchsInChunk > n)

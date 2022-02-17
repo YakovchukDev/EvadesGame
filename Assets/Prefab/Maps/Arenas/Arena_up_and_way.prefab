@@ -255,7 +255,7 @@ MonoBehaviour:
   RoomPrefab: {fileID: 2894209374863654678}
   SaveLeft: 1
   SaveRight: 1
-  ExitLeft: 0
+  ExitLeft: 1
   ExitRight: 1
   ExitUp: 0
   ExitDown: 1
@@ -339,7 +339,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!65 &8343367184716621199
@@ -435,7 +435,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!65 &6709078948719522552
