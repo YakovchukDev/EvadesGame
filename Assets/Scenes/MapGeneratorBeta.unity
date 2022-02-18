@@ -342,25 +342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c1e00dba42d8d40bee538d638b6f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Arenas:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Corridors:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1330114273
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1330114274}
+  - component: {fileID: 1330114275}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -391,6 +373,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1330114275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330114273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc793f9ecd01f54b86fe143868879de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JustEnemies: []
 --- !u!1 &1657150709
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,3 +429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ce583f06c00ef4483a6db67e452bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rooms: {fileID: 254282639}
+  _enemies: {fileID: 1330114275}
+  Complexity: 1
