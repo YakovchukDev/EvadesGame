@@ -5,7 +5,7 @@ namespace MapGeneration
 {
     public class _Rooms : MonoBehaviour
     {
-        public List<_RoomParameters> Room;
-        public List<_RoomParameters> SaveZone;
+        public List<_RoomParameters> Rooms;
+        public List<_SaveZoneParameters> SaveZones;
     }
 }
