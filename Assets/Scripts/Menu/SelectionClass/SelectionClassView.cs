@@ -12,12 +12,6 @@ namespace Menu.SelectionClass
         {
             _characterType = characterType;
         }
-
-        public void Teststart()
-        {
-            SceneManager.LoadScene("InfinityGame");
-        }
-
         public void SetWhatPlaying(string whatPlaying)
         {
             _whatPlaying = whatPlaying;

@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using Menu.SelectionClass;
-using TMPro.Examples;
 using UnityEngine;
 
 namespace GamePlay.Character

@@ -10,7 +10,6 @@ namespace Menu.level
         [SerializeField] private GameObject _levelView;
         [SerializeField] private int _countLevel;
         public static int _completeLevel = 10;
-        public GameObject SelectionClass => _selectionClassView;
 
 
         private void Start()
