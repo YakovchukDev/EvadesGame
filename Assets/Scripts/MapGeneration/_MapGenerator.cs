@@ -7,8 +7,6 @@ namespace MapGeneration
         [SerializeField] private _RoomParameters _arena;
         [SerializeField] private _SaveZoneParameters _saveZone;
 
-        [SerializeField] private _Entities _entities;
-
         [SerializeField] private int _difficulty;
         [SerializeField] private int[] _difficultyFromTo = new int[2];
         [SerializeField] private int _length;
@@ -17,12 +15,6 @@ namespace MapGeneration
 
         private _RoomParameters[,] _map;
         private _SaveZoneParameters[,] _saveZoneMap;
-
-        //это временный метод, что бы посмотреть, как сгенерировалась карта не нужно 1000 фпс
-        void Awake()
-        {
-            Application.targetFrameRate = 10;
-        }
 
         void Start()
         {
@@ -209,13 +201,13 @@ namespace MapGeneration
                         {
                             _saveZoneMap[row, column].name = "SaveZoneLeft";
                             _saveZoneMap[row, column]
-                                .SetOneWay("left", column < _branchs ? true : Random.Range(0, 2) == 1);
+                                .SetOneWay("left", column == _branchs ? true : Random.Range(0, 2) == 1);
                         }
                         else if (row == 0)
                         {
                             _saveZoneMap[row, column].name = "SaveZoneRight";
                             _saveZoneMap[row, column]
-                                .SetOneWay("right", column < _branchs ? true : Random.Range(0, 2) == 1);
+                                .SetOneWay("right", column == _branchs ? true : Random.Range(0, 2) == 1);
                         }
                     }
                 }

@@ -825,7 +825,7 @@ GameObject:
   - component: {fileID: 1330114274}
   - component: {fileID: 1330114275}
   m_Layer: 0
-  m_Name: Entities
+  m_Name: EntitiesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1050,7 +1050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2963534093953126575, guid: 896c1960df869cd45a8eb459e866abf2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2963534093953126580, guid: 896c1960df869cd45a8eb459e866abf2, type: 3}
       propertyPath: m_RootOrder
@@ -1638,5 +1638,6 @@ PrefabInstance:
       propertyPath: _entities
       value: 
       objectReference: {fileID: 1330114275}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8294900314071779598, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
