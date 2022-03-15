@@ -15,7 +15,7 @@ namespace GamePlay.Enemy.Skill
             _timeForMove += Time.deltaTime;
             if (_timeForMove >= 5 && _timeForMove < 10)
             {
-                Color color = new Color(0.7f, 0.7f, 0.7f, 0.5f);
+                Color color = new Color(0.3f, 0.3f, 0.3f, 0.3f);
                 for (int i = 0; i < gameObject.transform.GetChild(0).GetComponent<Renderer>().materials.Length; i++)
                 {
                     gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[i].color = color; 
@@ -26,7 +26,7 @@ namespace GamePlay.Enemy.Skill
             }
             else if (_timeForMove >= 10)
             {
-                Color color = new Color(0.7f, 0.7f, 0.7f, 1f);
+                Color color = new Color(0.3f, 0.3f, 0.3f, 1f);
                 for (int i = 0; i < gameObject.transform.GetChild(0).GetComponent<Renderer>().materials.Length; i++)
                 {
                     gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[i].color = color; 

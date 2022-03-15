@@ -38,6 +38,7 @@ namespace GamePlay.Enemy.Spawner
         {
             while (SpawnNumber < 40)
             {
+                print(SpawnNumber);
                 if (SpawnNumber < 5)
                 {
                     _animation[Index].Play("SlidingDoors");

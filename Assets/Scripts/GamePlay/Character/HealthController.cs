@@ -8,7 +8,7 @@ namespace GamePlay.Character
     {
         [SerializeField] private int _hpNumber = 1;
         [SerializeField] private GameObject _panelAfterDie;
-        [SerializeField] private List<Button> _spell;
+        [SerializeField] private List<Button> _spellButtons;
         public int HpNumber
         {
             get => _hpNumber;
@@ -20,9 +20,9 @@ namespace GamePlay.Character
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
                 other.gameObject.layer == LayerMask.NameToLayer("IndestructibleEnemy"))
             {
-                if (_spell != null)
+                if (_spellButtons != null)
                 {
-                    foreach (var spell in _spell)
+                    foreach (var spell in _spellButtons)
                     {
                         spell.interactable = true;
                     }
@@ -31,7 +31,7 @@ namespace GamePlay.Character
                 transform.localScale = Vector3.one;
                 _hpNumber--;
                 HpChecker();
-                Destroy(other.gameObject);
+               other.gameObject.SetActive(false);
             }
         }
 

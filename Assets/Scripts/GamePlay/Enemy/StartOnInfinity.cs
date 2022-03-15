@@ -1,41 +1,49 @@
 using GamePlay.Enemy.Move;
 using GamePlay.Enemy.Spawner;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GamePlay.Enemy
 {
     public class StartOnInfinity : MonoBehaviour
     {
-        private bool _worked;
+        [SerializeField] private int _index;
         Vector3 _targetPoint;
         private float _speed;
-        [SerializeField] private int _index;
+        private bool _worked;
 
         private void Start()
         {
-            _worked = true;
-            _speed = 0.05f;
-            var moveScript = gameObject.GetComponent<MoveEnemy>();
-            moveScript.enabled = false;
-
-            if (InfinityEnemySpawner.Index == 0)
+            if (SceneManager.GetActiveScene().name == "InfinityGame")
             {
-                _index = 1;
+                _worked = true;
+                _speed = 0.05f;
+                var moveScript = gameObject.GetComponent<MoveEnemy>();
+                moveScript.enabled = false;
+
+                if (InfinityEnemySpawner.Index == 0)
+                {
+                    _index = 1;
+                }
+
+                if (InfinityEnemySpawner.Index == 1)
+                {
+                    _index = 2;
+                }
+
+                if (InfinityEnemySpawner.Index == 2)
+                {
+                    _index = 3;
+                }
+
+                if (InfinityEnemySpawner.Index == 3)
+                {
+                    _index = 4;
+                }
             }
-
-            if (InfinityEnemySpawner.Index == 1)
+            else
             {
-                _index = 2;
-            }
-
-            if (InfinityEnemySpawner.Index == 2)
-            {
-                _index = 3;
-            }
-
-            if (InfinityEnemySpawner.Index == 3)
-            {
-                _index = 4;
+                Destroy(GetComponent<StartOnInfinity>());
             }
         }
 
@@ -72,7 +80,7 @@ namespace GamePlay.Enemy
                 var moveScript = gameObject.GetComponent<MoveEnemy>();
                 if (_index == 1)
                 {
-                    if (transform.position != _targetPoint)
+                    if (transform.position != _targetPoint && _worked)
                     {
                         MoveObj();
                     }
@@ -86,7 +94,7 @@ namespace GamePlay.Enemy
 
                 else if (_index == 2)
                 {
-                    if (transform.position != _targetPoint)
+                    if (transform.position != _targetPoint && _worked)
                     {
                         MoveObj();
                     }
@@ -100,7 +108,7 @@ namespace GamePlay.Enemy
 
                 else if (_index == 3)
                 {
-                    if (transform.position != _targetPoint)
+                    if (transform.position != _targetPoint && _worked)
                     {
                         MoveObj();
                     }
@@ -114,7 +122,7 @@ namespace GamePlay.Enemy
 
                 else if (_index == 4)
                 {
-                    if (transform.position != _targetPoint)
+                    if (transform.position != _targetPoint && _worked)
                     {
                         MoveObj();
                     }

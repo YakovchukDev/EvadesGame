@@ -32,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4137590491549008183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.415703, y: 1.3999996, z: -0.35164547}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be25342c51950d4786317299aad4445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _freezField: {fileID: 0}
+  _freezeField: {fileID: 0}
   _speed: 0.01
   _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
   _z: 0
