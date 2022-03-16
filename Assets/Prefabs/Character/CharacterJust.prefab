@@ -132,8 +132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 20
-  _patronMinimize: []
-  _patronDeactivating: []
   _moveParticle: {fileID: 9083849540370172844}
   _frictionParticle: {fileID: 1297937073129364678, guid: 69418da21aaf4054dab4d022a61e1bd3, type: 3}
 --- !u!114 &6667459704196665146
@@ -150,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hpNumber: 1
   _panelAfterDie: {fileID: 6478494111684431022}
-  _spell: []
+  _spellButtons: []
 --- !u!1 &6528155679121943413
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +386,10 @@ PrefabInstance:
     - target: {fileID: 7936284298889858689, guid: 902d553ded9932b438497c300dd95ff4, type: 3}
       propertyPath: m_Name
       value: GravityRadius
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936284298889858689, guid: 902d553ded9932b438497c300dd95ff4, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9059099883217466745, guid: 902d553ded9932b438497c300dd95ff4, type: 3}
       propertyPath: m_RootOrder

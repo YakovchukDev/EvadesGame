@@ -44,8 +44,7 @@ namespace GamePlay.Enemy.Spawner
                     _animation[Index].Play("SlidingDoors");
                     SpawnNumber++;
                     _enemyClass1[0].transform.localScale = new Vector3(40f, 40f, 40f);
-                    _allEnemy.Add(Instantiate(_enemyClass1[0], _spawnPos[Index],
-                        Quaternion.Euler(0, Random.Range(0,360), 0)));
+                    _allEnemy.Add(Instantiate(_enemyClass1[0], _spawnPos[Index], Quaternion.Euler(0, Random.Range(0,360), 0)));
                     yield return new WaitForSeconds(1);
                     Index = Random.Range(0, 4);
                 }

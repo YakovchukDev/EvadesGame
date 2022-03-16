@@ -8,10 +8,26 @@ namespace GamePlay.Enemy.Move
         private float _timeForMove;
         private float _speed = 5;
         private float _time;
-        [SerializeField] private ParticleSystem _enemyBounceParticle;
+        private float _rotationSpeed = 15;
+        private Quaternion _rotation;
+        private bool _rotate = true;
+
+        private void Start()
+        {
+            _rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+        }
 
         private void FixedUpdate()
         {
+            if (_rotate)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, _rotation, _rotationSpeed * Time.deltaTime);
+                if (transform.rotation == _rotation)
+                {
+                    _rotate = false;
+                }
+            }
+
             _freezeField = GameObject.FindGameObjectWithTag("Freeze");
 
             if (CanFreeze == false)
@@ -42,18 +58,15 @@ namespace GamePlay.Enemy.Move
         {
             if (other.gameObject.CompareTag("Wall"))
             {
-                if (other.gameObject.CompareTag("Wall"))
+                Vector3 reflectDir = Vector3.Reflect(transform.forward, other.GetContact(0).normal);
+                _rotation = Quaternion.LookRotation(reflectDir);
+                _rotate = true;
+                foreach (ContactPoint missileHit in other.contacts)
                 {
-                    Vector3 reflectDir = Vector3.Reflect(transform.forward, other.GetContact(0).normal);
-                    Quaternion rotation = Quaternion.LookRotation(reflectDir);
-                    transform.eulerAngles = new Vector3(0, rotation.eulerAngles.y, 0);
-                    foreach (ContactPoint missileHit in other.contacts)
-                    {
-                        Vector3 hitPoint = missileHit.point;
-                        _enemyBounceParticle.transform.localScale = transform.localScale /30;
-                        Instantiate(_enemyBounceParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z),
-                            Quaternion.identity);
-                    }
+                    Vector3 hitPoint = missileHit.point;
+                    _enemyBounceParticle.transform.localScale = transform.localScale / 30;
+                    Instantiate(_enemyBounceParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z),
+                        Quaternion.identity);
                 }
             }
         }

@@ -90,7 +90,6 @@ namespace GamePlay.Enemy
                     else if (transform.position.x == 15)
                     {
                         _worked = false;
-                        transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
                         moveScript.enabled = true;
                         _particle.SetActive(true);
                         _startOff.SetActive(true);
@@ -106,7 +105,6 @@ namespace GamePlay.Enemy
                     else if (transform.position.x == -15)
                     {
                         _worked = false;
-                        transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
                         moveScript.enabled = true;
                         _particle.SetActive(true);
                         _startOff.SetActive(true);
@@ -122,7 +120,6 @@ namespace GamePlay.Enemy
                     else if (transform.position.z == 15)
                     {
                         _worked = false;
-                        transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
                         moveScript.enabled = true;
                         _particle.SetActive(true);
                         _startOff.SetActive(true);
@@ -138,7 +135,6 @@ namespace GamePlay.Enemy
                     else if (transform.position.z == -15)
                     {
                         _worked = false;
-                        transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
                         moveScript.enabled = true;
                         _particle.SetActive(true);
                         _startOff.SetActive(true);

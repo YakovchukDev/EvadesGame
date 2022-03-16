@@ -12,6 +12,7 @@ namespace GamePlay.Enemy
         private float _speed;
         private bool _worked;
 
+
         private void Start()
         {
             if (SceneManager.GetActiveScene().name == "InfinityGame")
@@ -19,7 +20,17 @@ namespace GamePlay.Enemy
                 _worked = true;
                 _speed = 0.05f;
                 var moveScript = gameObject.GetComponent<MoveEnemy>();
-                moveScript.enabled = false;
+                var moveStoperScript = gameObject.GetComponent<MoveStoperEnemy>();
+
+                if (moveScript != null)
+                {
+                    moveScript.enabled = false;
+                }
+
+                if (moveStoperScript != null)
+                {
+                    moveStoperScript.enabled = false;
+                }
 
                 if (InfinityEnemySpawner.Index == 0)
                 {
@@ -77,7 +88,12 @@ namespace GamePlay.Enemy
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
 
+
                 var moveScript = gameObject.GetComponent<MoveEnemy>();
+
+
+                var moveStoperScript = gameObject.GetComponent<MoveStoperEnemy>();
+
                 if (_index == 1)
                 {
                     if (transform.position != _targetPoint && _worked)
@@ -86,9 +102,17 @@ namespace GamePlay.Enemy
                     }
                     else if (transform.position.x == 15)
                     {
+                        if (moveScript != null)
+                        {
+                            moveScript.enabled = true;
+                        }
+
+                        if (moveStoperScript != null)
+                        {
+                            moveStoperScript.enabled = true;
+                        }
+
                         _worked = false;
-                        transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
-                        moveScript.enabled = true;
                     }
                 }
 
@@ -100,9 +124,17 @@ namespace GamePlay.Enemy
                     }
                     else if (transform.position.x == -15)
                     {
+                        if (moveScript != null)
+                        {
+                            moveScript.enabled = true;
+                        }
+
+                        if (moveStoperScript != null)
+                        {
+                            moveStoperScript.enabled = true;
+                        }
+
                         _worked = false;
-                        transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
-                        moveScript.enabled = true;
                     }
                 }
 
@@ -114,9 +146,17 @@ namespace GamePlay.Enemy
                     }
                     else if (transform.position.z == 15)
                     {
+                        if (moveScript != null)
+                        {
+                            moveScript.enabled = true;
+                        }
+
+                        if (moveStoperScript != null)
+                        {
+                            moveStoperScript.enabled = true;
+                        }
+
                         _worked = false;
-                        transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
-                        moveScript.enabled = true;
                     }
                 }
 
@@ -128,9 +168,17 @@ namespace GamePlay.Enemy
                     }
                     else if (transform.position.z == -15)
                     {
+                        if (moveScript != null)
+                        {
+                            moveScript.enabled = true;
+                        }
+
+                        if (moveStoperScript != null)
+                        {
+                            moveStoperScript.enabled = true;
+                        }
+
                         _worked = false;
-                        transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
-                        moveScript.enabled = true;
                     }
                 }
             }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Joystick_Pack.Examples
@@ -12,13 +10,8 @@ namespace Joystick_Pack.Examples
         [SerializeField] private float _maxSpeed;
         private VariableJoystick _variableJoystick;
         private Rigidbody _rigidbody;
-        private Vector3 _direction;
-        private float _frictionTime;
-        [SerializeField] private List<GameObject> _patronMinimize;
-        [SerializeField] private List<GameObject> _patronDeactivating;
         [SerializeField] private ParticleSystem _moveParticle;
         [SerializeField] private ParticleSystem _frictionParticle;
-        public Vector3 Direction => _direction;
 
         public float MaxSpeed => _maxSpeed;
 
@@ -45,7 +38,8 @@ namespace Joystick_Pack.Examples
                     foreach (ContactPoint missileHit in other.contacts)
                     {
                         Vector3 hitPoint = missileHit.point;
-                        Instantiate(_frictionParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z), transform.rotation);
+                        Instantiate(_frictionParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z),
+                            transform.rotation);
                     }
                 }
             }
@@ -60,7 +54,8 @@ namespace Joystick_Pack.Examples
                     foreach (ContactPoint missileHit in other.contacts)
                     {
                         Vector3 hitPoint = missileHit.point;
-                        Instantiate(_frictionParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z), transform.rotation);
+                        Instantiate(_frictionParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z),
+                            transform.rotation);
                     }
                 }
             }

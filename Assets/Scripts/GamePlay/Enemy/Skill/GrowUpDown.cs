@@ -13,10 +13,10 @@ namespace GamePlay.Enemy.Skill
 
         void Start()
         {
-            var localScale = transform.localScale;
+            var localScale = transform.GetChild(0).localScale;
             localScale = new Vector3
                 (localScale.x / 1.5f, localScale.y / 1.5f, localScale.z / 1.5f);
-            transform.localScale = localScale;
+            transform.GetChild(0).localScale = localScale;
             _minScale = localScale.x;
             _changeScale = localScale.x;
             _maxScale = _minScale * 2;
@@ -34,7 +34,7 @@ namespace GamePlay.Enemy.Skill
                     _maxScale *= 2;
                     _minScale *= 2;
                     _changeScale *= 2;
-                    transform.localScale = new Vector3(_changeScale, _changeScale, _changeScale);
+                    transform.GetChild(0).localScale = new Vector3(_changeScale, _changeScale, _changeScale);
                     _timerGo = false;
                 }
             }
@@ -46,8 +46,9 @@ namespace GamePlay.Enemy.Skill
             {
                 if (_changeScale <= _maxScale)
                 {
-                    _changeScale += 2 * Time.deltaTime;
-                    transform.localScale = new Vector3(_changeScale, _changeScale, _changeScale);
+                    _changeScale += 0.3f * Time.deltaTime;
+                    transform.GetChild(0).localScale = new Vector3(_changeScale, _changeScale, _changeScale);
+                    
                 }
                 else
                     _upDown = false;
@@ -56,8 +57,8 @@ namespace GamePlay.Enemy.Skill
             {
                 if (_changeScale >= _minScale)
                 {
-                    _changeScale -= 2 * Time.deltaTime;
-                    transform.localScale = new Vector3(_changeScale, _changeScale, _changeScale);
+                    _changeScale -= 0.3f * Time.deltaTime;
+                    transform.GetChild(0).localScale = new Vector3(_changeScale, _changeScale, _changeScale);
                 }
                 else
                     _upDown = true;

@@ -8,10 +8,10 @@ namespace GamePlay.Character
     public class AttractionSystem : MonoBehaviour
     {
         private HashSet<GameObject> _enemyObject = new HashSet<GameObject>();
-
+        private float time = 1;
         [SerializeField] private GameObject _horns;
-        private float _rotationSpeed = 7;
-        private bool _setRotation;
+        private float _rotationSpeed = 15;
+
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Gravitation"))
@@ -29,10 +29,11 @@ namespace GamePlay.Character
             if (other.CompareTag("Gravitation"))
             {
                 _enemyObject.Remove(other.gameObject);
-                other.transform.rotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
+
+                other.transform.rotation =
+                    Quaternion.Lerp(other.transform.rotation,
+                        Quaternion.Euler(new Vector3(0, Random.Range(-90, 90), 0)), _rotationSpeed * Time.deltaTime);
                 other.transform.GetChild(1).gameObject.SetActive(false);
-
-
             }
         }
 
@@ -41,7 +42,6 @@ namespace GamePlay.Character
             Attraction();
         }
 
-
         private void Attraction()
         {
             foreach (GameObject enemy in _enemyObject)
@@ -49,10 +49,9 @@ namespace GamePlay.Character
                 Vector3 direction = transform.position - enemy.transform.position;
                 direction.y = 0;
                 Quaternion rotation = Quaternion.LookRotation(direction);
-                enemy.transform.rotation = Quaternion.Lerp(enemy.transform.rotation, rotation,
-                    _rotationSpeed * Time.deltaTime);
+                enemy.transform.rotation =
+                    Quaternion.Lerp(enemy.transform.rotation, rotation, _rotationSpeed * Time.deltaTime);
                 enemy.transform.GetChild(1).gameObject.SetActive(true);
-                _setRotation = true;
 
                 /*else if (_setRotation)
                 {

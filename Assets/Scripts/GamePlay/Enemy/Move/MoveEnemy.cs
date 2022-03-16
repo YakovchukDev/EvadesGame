@@ -1,5 +1,7 @@
+using System;
 using GamePlay.Enemy.Spawner;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GamePlay.Enemy.Move
 {
@@ -10,12 +12,26 @@ namespace GamePlay.Enemy.Move
         protected bool CanFreeze;
         [SerializeField] private float _speed = 5;
         private float _time;
-        [SerializeField] private ParticleSystem _enemyBounceParticle;
-        private float _rotationSpeed=20;
+        [SerializeField] protected ParticleSystem _enemyBounceParticle;
+        private float _rotationSpeed=15;
+        private Quaternion _rotation;
+        private bool _rotate=true;
+
+        private void Start()
+        {
+            _rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+        }
 
         private void FixedUpdate()
         {
-
+            if (_rotate)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, _rotation,_rotationSpeed * Time.deltaTime);
+                if (transform.rotation == _rotation)
+                {
+                    _rotate = false;
+                }
+            }
             _freezeField = GameObject.FindGameObjectWithTag("Freeze");
 
             if (CanFreeze == false)
@@ -47,9 +63,9 @@ namespace GamePlay.Enemy.Move
             if (other.gameObject.CompareTag("Wall"))
             {
                 Vector3 reflectDir = Vector3.Reflect(transform.forward, other.GetContact(0).normal);
-                Quaternion rotation = Quaternion.LookRotation(reflectDir);
-                transform.eulerAngles = new Vector3(0, rotation.eulerAngles.y, 0);
-                
+                _rotation = Quaternion.LookRotation(reflectDir);
+                _rotate = true;
+                //transform.eulerAngles = new Vector3(0, _rotation.eulerAngles.y, 0);
                 foreach (ContactPoint missileHit in other.contacts)
                 {
                     Vector3 hitPoint = missileHit.point;
@@ -59,6 +75,8 @@ namespace GamePlay.Enemy.Move
                 }
             }
         }
+
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Freeze"))

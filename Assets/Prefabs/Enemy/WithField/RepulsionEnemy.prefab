@@ -126,7 +126,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4464688701804638509}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 344f86410b82eb54291f43d1f2c265fa, type: 3}
   m_Name: 
@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startOff: {fileID: 4464688702218637367}
-  _index: 0
   _particle: {fileID: 7412989614292644714}
+  _index: 0
 --- !u!114 &-4661406907723662465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +452,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1283619162502285534, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: useUnscaledTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: LightsModule.light
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: LightsModule.ratio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: ShapeModule.arc.mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: LightsModule.maxLights
+      value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: VelocityModule.z.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: useRigidbodyForVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: VelocityModule.inWorldSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: VelocityModule.radial.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: ShapeModule.randomPositionAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: ShapeModule.randomDirectionAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
@@ -462,6 +526,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: VelocityModule.speedModifier.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: ShapeModule.sphericalDirectionAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: VelocityModule.orbitalOffsetY.scalar
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
