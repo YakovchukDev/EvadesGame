@@ -27,11 +27,6 @@ namespace MapGeneration
         private _RoomParameters[,] _map;
         private _SaveZoneParameters[,] _saveZoneMap;
         
-        //это временный метод, что бы посмотреть, как сгенерировалась карта не нужно 1000 фпс
-        void Awake()
-        {
-            Application.targetFrameRate = 10;
-        }
         void Start()
         {
             //defence from idiot
@@ -204,12 +199,12 @@ namespace MapGeneration
                         else if(row == _saveZoneMap.GetLength(0) - 1)
                         {
                             _saveZoneMap[row, column].name = "SaveZoneLeft";
-                            _saveZoneMap[row, column].SetOneWay("left", column < _branchs ? true : Random.Range(0, 2) == 1);
+                            _saveZoneMap[row, column].SetOneWay("left", column == _branchs ? true : Random.Range(0, 2) == 1);
                         }
                         else if (row == 0)
                         {
                             _saveZoneMap[row, column].name = "SaveZoneRight";
-                            _saveZoneMap[row, column].SetOneWay("right", column < _branchs ? true : Random.Range(0, 2) == 1);
+                            _saveZoneMap[row, column].SetOneWay("right", column == _branchs ? true : Random.Range(0, 2) == 1);
                         }
                     }
                 }
