@@ -8,16 +8,9 @@ namespace GamePlay.Character.Spell
     {
         [SerializeField] private JoystickPlayerExample _joystickPlayerExample;
         [SerializeField] private HealthController _healthController;
+        [SerializeField] private GameObject _respawnParticle;
         [SerializeField] private Button _spell1;
-        private int _spellNumber = 1;
-
-        private void Update()
-        {
-            if (_spellNumber <= 0)
-            {
-                _spell1.interactable = false;
-            }
-        }
+        [SerializeField] private int _spellNumber = 1;
 
         private void OnCollisionEnter(Collision other)
         {
@@ -39,8 +32,10 @@ namespace GamePlay.Character.Spell
                 _healthController.HpNumber++;
                 Time.timeScale = 1;
                 _spellNumber--;
+                _respawnParticle.SetActive(true);
                 HealthController.ImmortalityTime = 0;
                 HealthController.Immortality = true;
+                _spell1.interactable = false;
             }
         }
     }

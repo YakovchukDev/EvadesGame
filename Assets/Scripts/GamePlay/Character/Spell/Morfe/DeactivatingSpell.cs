@@ -5,16 +5,12 @@ namespace GamePlay.Character.Spell.Morfe
     public class DeactivatingSpell : MonoBehaviour
     {
         private Vector3 _direction;
-        private VariableJoystick _variableJoystick;
         private float _timer = 2;
         private bool _applyDirection;
 
         private void Start()
         {
             transform.parent = null;
-
-            _variableJoystick = FindObjectOfType<VariableJoystick>();
-
             _applyDirection = true;
             if (_applyDirection)
             {
@@ -26,8 +22,6 @@ namespace GamePlay.Character.Spell.Morfe
         private void Update()
         {
             transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-
-
             if (gameObject.activeSelf)
             {
                 if (_direction != new Vector3(0, 0, 0))
@@ -40,8 +34,6 @@ namespace GamePlay.Character.Spell.Morfe
             if (_timer <= 0)
             {
                 ReturnToPool();
-               // Destroy(gameObject);
-
             }
         }
 
@@ -49,18 +41,17 @@ namespace GamePlay.Character.Spell.Morfe
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                Color startColor = other.gameObject.GetComponent<Renderer>().material.color;
-                other.gameObject.GetComponent<Renderer>().material.color =
-                    new Color(startColor.r, startColor.g, startColor.b, 0.5f);
+                var materials = other.gameObject.transform.GetChild(0).GetComponent<Renderer>().materials;
+                for (int i = 0; i < materials.Length; i++)
+                {
+                    Color startColor = materials[i].color;
+                    materials[i].color = new Color(startColor.r, startColor.g, startColor.b, 0.3f);
+                }
+
                 other.gameObject.layer = 12;
             }
 
-            if (other.gameObject.CompareTag("WallX"))
-            {
-                ReturnToPool();
-            }
-
-            if (other.gameObject.CompareTag("WallZ"))
+            if (other.gameObject.CompareTag("Wall"))
             {
                 ReturnToPool();
             }

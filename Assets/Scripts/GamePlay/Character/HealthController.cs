@@ -42,13 +42,13 @@ namespace GamePlay.Character
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
                 other.gameObject.layer == LayerMask.NameToLayer("IndestructibleEnemy"))
             {
-                if (_spellButtons != null)
+                /*if (_spellButtons != null)
                 {
                     foreach (var spell in _spellButtons)
                     {
                         spell.interactable = true;
                     }
-                }
+                }*/
 
                 gameObject.transform.GetComponent<Renderer>().materials[0].color = _color1;
                 transform.localScale = Vector3.one;
@@ -66,7 +66,7 @@ namespace GamePlay.Character
                 gameObject.layer = 11;
                 gameObject.transform.GetComponent<Renderer>().materials[0].color =
                     Color.Lerp(_color1, _color2, ImmortalityTime);
-                if (ImmortalityTime >= 2.5f)
+                if (ImmortalityTime >= 1.6f)
                 {
                     gameObject.layer = 6;
                     Immortality = false;

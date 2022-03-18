@@ -10,6 +10,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
         [SerializeField] private ManaController _manaController;
         [SerializeField] private float _speedAccelerate;
         [SerializeField] private GameObject _spellImage;
+        [SerializeField] private GameObject _accelerationParticle;
 
         private float _time;
         private float _starterTime;
@@ -47,12 +48,13 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
             {
                 JoystickPlayerExample.Speed *= _speedAccelerate;
                 _spellImage.SetActive(false);
+                _accelerationParticle.SetActive(true);
             }
             else
             {
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;
                 _spellImage.SetActive(true);
-
+                _accelerationParticle.SetActive(false);
             }
         }
     }

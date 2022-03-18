@@ -4,12 +4,15 @@ namespace GamePlay.Enemy.Skill
 {
     public class GrowUpDown : MonoBehaviour
     {
-        private bool _upDown = true;
+        [SerializeField] private GameObject ParticleExhale;
+        [SerializeField] private GameObject ParticleInhale;
         private float _maxScale;
         private float _minScale;
         private float _changeScale;
         private float _timer = 3;
+        private float _timeMaxScale;
         private bool _timerGo;
+        private bool _upDown = true;
 
         void Start()
         {
@@ -46,19 +49,35 @@ namespace GamePlay.Enemy.Skill
             {
                 if (_changeScale <= _maxScale)
                 {
-                    _changeScale += 0.3f * Time.deltaTime;
+                    _changeScale += 0.09f * Time.deltaTime;
                     transform.GetChild(0).localScale = new Vector3(_changeScale, _changeScale, _changeScale);
-                    
+                    gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[2].color =
+                        Color.Lerp(Color.yellow, Color.red, Mathf.Abs(Mathf.Sin(Time.time)));
+                        ParticleExhale.SetActive(false);
+                        ParticleInhale.SetActive(true);
                 }
                 else
-                    _upDown = false;
+                {
+
+                    _timeMaxScale += Time.deltaTime;
+
+                    if (_timeMaxScale >= 1f)
+                    {
+                        _timeMaxScale = 0;
+                        _upDown = false;
+                    }
+                }
             }
             else
             {
                 if (_changeScale >= _minScale)
                 {
-                    _changeScale -= 0.3f * Time.deltaTime;
+                    ParticleExhale.SetActive(true);
+                    ParticleInhale.SetActive(false);
+                    _changeScale -= 0.09f * Time.deltaTime;
                     transform.GetChild(0).localScale = new Vector3(_changeScale, _changeScale, _changeScale);
+                    gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[2].color =
+                        Color.Lerp(Color.yellow, Color.red, Mathf.Abs(Mathf.Sin(Time.time)));
                 }
                 else
                     _upDown = true;

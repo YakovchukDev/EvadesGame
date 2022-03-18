@@ -1,4 +1,4 @@
- using Joystick_Pack.Examples;
+using Joystick_Pack.Examples;
 using UnityEngine;
 
 namespace GamePlay.Character.Spell.SpeederInvulnerable
@@ -8,6 +8,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
         [SerializeField] private JoystickPlayerExample _joystickPlayerExample;
         [SerializeField] private ManaController _manaController;
         [SerializeField] private float _maxManaCost;
+        [SerializeField] private GameObject _InvulnerableParticle;
         private float _time;
         private float _starterTime;
         [SerializeField] private GameObject _spellImage;
@@ -30,9 +31,9 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 {
                     if (!_manaController.ManaReduction(_maxManaCost))
                     {
-                        _checkMover = false;
+                        _checkMover = true;
+                        Invulnerable();
                     }
-
                     _time = _starterTime;
                 }
             }
@@ -47,14 +48,14 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 JoystickPlayerExample.Speed = 0;
                 gameObject.layer = 11;
                 _spellImage.SetActive(false);
-
+                _InvulnerableParticle.SetActive(true);
             }
             else
             {
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;
                 gameObject.layer = 6;
                 _spellImage.SetActive(true);
-
+                _InvulnerableParticle.SetActive(false);
             }
         }
     }

@@ -35,7 +35,8 @@ namespace GamePlay
 
         public void ExitButton()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene("Menu");
+
             Time.timeScale = 1;
             _time = 0;
             InfinityEnemySpawner.SpawnNumber = 0;
