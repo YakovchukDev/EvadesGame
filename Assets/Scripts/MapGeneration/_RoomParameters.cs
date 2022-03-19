@@ -1,11 +1,13 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace MapGeneration
 {
     public class _RoomParameters : MonoBehaviour
-    {
+    {        
+        public delegate void UpdateOfRoomsAround(int indexX, int indexY);
+        public static event UpdateOfRoomsAround EnterNewRoom;
+
         [SerializeField]
         private GameObject _doorUpper;
         [SerializeField]
@@ -31,21 +33,8 @@ namespace MapGeneration
         [SerializeField]
         private GameObject _floor;
 
-        /*public _RoomParameters(_RoomParameters other)
-        {
-            this._doorUpper = other._doorUpper;
-            this._doorRight = other._doorRight;
-            this._doorLower = other._doorLower;
-            this._doorLeft = other._doorLeft;
-            this._doorCentralLeft = other._doorCentralLeft;
-            this._doorCentralRight = other._doorCentralRight;
-
-            this._wallUpperLeft = other._wallUpperLeft;
-            this._wallUpperRight = other._wallUpperRight;
-            this._wallLowerLeft = other._wallLowerLeft;
-            this._wallLowerRight = other._wallLowerRight;
-            this._floor = other._floor;
-        }*/
+        private int cordinatX;
+        private int cordinatY;
 
         public float GetLengthX()
         {
@@ -81,6 +70,18 @@ namespace MapGeneration
         public void SetSkins(Mesh door, Mesh wallTurnLeft, Mesh wallTurnRight, Mesh floor)
         {
             
+        }
+        public void SetCordinatRoom(int x, int y)
+        {
+            cordinatX = x;
+            cordinatY = y;
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.gameObject.tag == "Player")
+            {
+                EnterNewRoom(cordinatX, cordinatY);
+            }
         }
     }
 }

@@ -1,3 +1,4 @@
+// КОМЕНТАРІ ЯКІ ПОЗНАЧЕНІ "***", ЦЕ ДЛЯ СЕБЕ, ЩОБ НЕ ЗАБУТИ, ЩО САМЕ Я ХОТІВ ДОДАТИ, ЧИ ЗМІНИТИ
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,9 +10,6 @@ namespace MapGeneration
         private _RoomParameters _arena;
         [SerializeField]
         private _SaveZoneParameters _saveZone;
-
-        [SerializeField]
-        private _Entities _entities;
         
         [SerializeField]
         private int _difficulty;
@@ -27,7 +25,7 @@ namespace MapGeneration
         private _RoomParameters[,] _map;
         private _SaveZoneParameters[,] _saveZoneMap;
         
-        void Start()
+        private void Start()
         {
             //defence from idiot
             if(_difficulty < _difficultyFromTo[0])
@@ -53,13 +51,25 @@ namespace MapGeneration
 
             generateOfPrimaryView();
             generateOfSaveZone();
+
             showAllMap();
+            SpawnMapAroundPayer(_branchs, 0);
+            
             setExitSaveZone();
             setUpExitInRoom();
         }
-
+        private void OnEnable()
+        {
+            _RoomParameters.EnterNewRoom += SpawnMapAroundPayer;
+        }
+        private void OnDisable()
+        {
+            _RoomParameters.EnterNewRoom -= SpawnMapAroundPayer;
+        }
+        //Створюю геометрію рівня(кількість і позицію кімнат)
         private void generateOfPrimaryView()
         {
+            // *** Транспоновати матрицю, щоб перебір даних виглядів більш коерктно 
             _map = new _RoomParameters[_length, _branchs * 2 + 1];
             int [] quantityBranchsInChank = new int[_branchs];
             int [] quantityBranchs = new int[_branchs];
@@ -83,34 +93,58 @@ namespace MapGeneration
                     else
                     {
                         int indexBranch = column > _branchs ? column - _branchs - 1 : _branchs - column - 1;
-
+                        // *** Налаштувати quantityBranchs зараз розподіл працює не коректно
                         if((row > 0 && _map[row - 1, column] != null) || column - 1 == _branchs || column + 1 == _branchs)
                         {
-                            if(quantityBranchs[indexBranch] < quantityBranchsInChank[indexBranch] && 
-                                Random.Range(0, 2) == 1)
+                            if(quantityBranchs[indexBranch] < quantityBranchsInChank[indexBranch])
                             {
-                                _map[row, column] = _arena;
-                                quantityBranchs[indexBranch]++;
+                                if(Random.Range(0, 2) == 1)
+                                {
+                                    _map[row, column] = _arena;
+                                    quantityBranchs[indexBranch]++;
+                                }
+                                else if(Random.Range(0, 2) == 1)
+                                {
+                                    if(column > _branchs)
+                                    {
+                                        _map[row, column] = _arena;
+                                        _map[row, column - 1] = _arena;
+                                        quantityBranchs[indexBranch]++;
+                                    }
+                                    else if(column < _branchs)
+                                    {
+                                        _map[row, column] = _arena;
+                                        _map[row, column + 1] = _arena;
+                                        quantityBranchs[indexBranch]++;
+                                    }
+                                }
                             }
                         }
-                        else if(row > 0 && column > 0 && _map[row - 1, column - 1] != null)
+                        else 
                         {
-                            if(quantityBranchs[indexBranch] < quantityBranchsInChank[indexBranch] &&
-                                Random.Range(0, 2) == 1)
+                            if(row > 0 && column > 0 && _map[row - 1, column - 1] != null)
                             {
-                                _map[row, column] = _arena;
-                                _map[row, column - 1] = _arena;
-                                quantityBranchs[indexBranch]++;
+                                if(quantityBranchs[indexBranch] < quantityBranchsInChank[indexBranch])
+                                {
+                                    if(Random.Range(0, 3) == 1)
+                                    {
+                                        _map[row, column] = _arena;
+                                        _map[row, column - 1] = _arena;
+                                        quantityBranchs[indexBranch]++;
+                                    }
+                                }
                             }
-                        }
-                        else if(row > 0 && column < _map.GetLength(1) - 1 && _map[row - 1, column + 1] != null)
-                        {
-                            if(quantityBranchs[indexBranch] < quantityBranchsInChank[indexBranch] &&
-                                Random.Range(0, 2) == 1)
+                            else if(row > 0 && column < _map.GetLength(1) - 1 && _map[row - 1, column + 1] != null)
                             {
-                                _map[row, column] = _arena;
-                                _map[row, column + 1] = _arena;
-                                quantityBranchs[indexBranch]++;
+                                if(quantityBranchs[indexBranch] < quantityBranchsInChank[indexBranch])
+                                {
+                                    if(Random.Range(0, 3) == 1)
+                                    {
+                                        _map[row, column] = _arena;
+                                        _map[row, column + 1] = _arena;
+                                        quantityBranchs[indexBranch]++;
+                                    }
+                                }
                             }
                         }
                     }
@@ -157,6 +191,7 @@ namespace MapGeneration
                 {
                     if(_map[row, column] != null)
                     {
+                        _map[row, column].name = $"Arena {column} | {row}";
                         _map[row, column].SetDoorParameters
                         (
                             (column + 1 < _map.GetLength(1) && _map[row, column + 1] == null) || column + 1 == _map.GetLength(1),
@@ -182,28 +217,28 @@ namespace MapGeneration
                         {
                             if(_map[row, column] != null && _map[row - 1, column] != null)
                             {
-                                _saveZoneMap[row, column].name = "SaveZoneHorizontal";
+                                _saveZoneMap[row, column].name = $"SaveZoneHorizontal {column} | {row}";
                                _saveZoneMap[row, column].SetHorizontalParameters(Random.Range(0, 2) == 1); 
                             }
                             else if(_map[row, column] == null && _map[row - 1, column] != null)
                             {
-                                _saveZoneMap[row, column].name = "SaveZoneLeft";
+                                _saveZoneMap[row, column].name = $"SaveZoneLeft {column} | {row}";
                                 _saveZoneMap[row, column].SetOneWay("left", Random.Range(0, 2) == 1);
                             }
                             else if(_map[row, column] != null && _map[row - 1, column] == null)
                             {
-                                _saveZoneMap[row, column].name = "SaveZoneRight";
+                                _saveZoneMap[row, column].name = $"SaveZoneRight {column} | {row}";
                                 _saveZoneMap[row, column].SetOneWay("right", Random.Range(0, 2) == 1);
                             }
                         }
                         else if(row == _saveZoneMap.GetLength(0) - 1)
                         {
-                            _saveZoneMap[row, column].name = "SaveZoneLeft";
+                            _saveZoneMap[row, column].name = $"SaveZoneLeft {column} | {row}";
                             _saveZoneMap[row, column].SetOneWay("left", column == _branchs ? true : Random.Range(0, 2) == 1);
                         }
                         else if (row == 0)
                         {
-                            _saveZoneMap[row, column].name = "SaveZoneRight";
+                            _saveZoneMap[row, column].name = $"SaveZoneRight {column} | {row}";
                             _saveZoneMap[row, column].SetOneWay("right", column == _branchs ? true : Random.Range(0, 2) == 1);
                         }
                     }
@@ -217,17 +252,57 @@ namespace MapGeneration
                 for(int row = 0; row < _map.GetLength(0); row++)
                 {
                     if(_map[row, column] != null)
-                    {      
-                        _map[row, column].name = $"Arena {column} | {row}";
+                    {
                         _map[row, column] = Instantiate(_map[row, column], new Vector3(_arena.GetLengthX() / 2f + _saveZone.GetLengthX() / 2f + _arena.GetLengthX() * row + _saveZone.GetLengthX() * row, 0f, _arena.GetLengthZ() * column), Quaternion.identity);
+                        _map[row, column].SetCordinatRoom(column, row);
+                        _map[row, column].gameObject.SetActive(false);
                     }
                 }
                 for(int row = 0; row < _saveZoneMap.GetLength(0); row++)
                 {
                     if(_saveZoneMap[row, column] != null)
-                    {      
-                        _saveZoneMap[row, column].name = $"Save Zone {column} | {row}";
+                    {
                         _saveZoneMap[row, column] = Instantiate(_saveZoneMap[row, column], new Vector3(_arena.GetLengthX() * row + _saveZone.GetLengthX() * row, 0, _saveZone.GetLengthZ() * column), Quaternion.identity);
+                        _saveZoneMap[row, column].gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+        private void SpawnMapAroundPayer(int x, int y)
+        {
+            // *** алгоритм скриття поганний тому щр багато лишніх операцій, але поки він буде такий
+            for(int column = 0; column < _map.GetLength(1); column++)
+            {
+                for(int row = 0; row < _map.GetLength(0); row++)
+                {
+                    if(_map[row, column] != null)
+                    {
+                        _map[row, column].gameObject.SetActive(false);
+                    }
+                }
+                for(int row = 0; row < _saveZoneMap.GetLength(0); row++)
+                {
+                    if(_saveZoneMap[row, column] != null)
+                    {
+                        _saveZoneMap[row, column].gameObject.SetActive(false);
+                    }
+                }
+            }
+            // *** алгоримт не ідеальний, бажанно добавити поле, яке буде відповідати за розмір зони навколо персонажа, яка буде відображатись
+            for(int column = x - 1 > 0 ? x - 1 : 0; column <= (x + 1 < _map.GetLength(1) ? x + 1 : _map.GetLength(1) - 1); column++)
+            {
+                for(int row = y - 1 > 0 ? y - 1 : 0; row <= (y + 1 < _map.GetLength(0) ? y + 1 : _map.GetLength(0) - 1); row++)
+                {
+                    if(_map[row, column] != null)
+                    {
+                        _map[row, column].gameObject.SetActive(true);
+                    }
+                }
+                for(int row = y - 1 > 0 ? y - 1 : 0; row <= (y + 2 < _saveZoneMap.GetLength(0) ? y + 2 : _saveZoneMap.GetLength(0) - 1); row++)
+                {
+                    if(_saveZoneMap[row, column] != null)
+                    {
+                        _saveZoneMap[row, column].gameObject.SetActive(true);
                     }
                 }
             }
