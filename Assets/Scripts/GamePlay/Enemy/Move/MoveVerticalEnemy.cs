@@ -8,7 +8,7 @@ namespace GamePlay.Enemy.Move
         private float helpY = 180, y = 0;
         private void Start()
         {
-           DirectioAndSpeedMovement(10.0f);
+           DirectionAndSpeedMovement();
         }
         private void FixedUpdate()
         {
@@ -27,7 +27,7 @@ namespace GamePlay.Enemy.Move
         {
             if (other.gameObject.CompareTag("WallX"))
             {
-                Invoke("Direction", 1);
+                Invoke(nameof(Direction), 1);
             }
         }
         private void Direction()
@@ -38,7 +38,7 @@ namespace GamePlay.Enemy.Move
         {
             transform.Translate(new Vector3(0, 0, _z * speed));
         }
-        public new void DirectioAndSpeedMovement(float speedAndDirection)
+        private void DirectionAndSpeedMovement()
         {
             _z = Random.Range(1, 3);
             if (_z == 1)

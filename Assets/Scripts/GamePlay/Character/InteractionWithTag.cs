@@ -8,8 +8,8 @@ namespace GamePlay.Character
     public class InteractionWithTag : MonoBehaviour
     {
         [SerializeField] private ManaController _manaController;
-        [SerializeField] private GameObject _father;
         [SerializeField] private List<GameObject> _noGrowUp;
+        [SerializeField] private GameObject _father;
         private int _numberSlower;
         private int _numberFaster;
 

@@ -10,14 +10,14 @@ namespace GamePlay.Character
       {
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
          Time.timeScale = 1;
-         GamePlay.InterfaceController._time = 0;
+         InterfaceController.Time = 0;
          InfinityEnemySpawner.SpawnNumber = 0;
       }
       public void ExitButton()
       {
          SceneManager.LoadScene("Menu");
          Time.timeScale = 1;
-         InterfaceController._time = 0;
+         InterfaceController.Time = 0;
          InfinityEnemySpawner.SpawnNumber = 0;
          InterfaceController.TimeSave();
       }

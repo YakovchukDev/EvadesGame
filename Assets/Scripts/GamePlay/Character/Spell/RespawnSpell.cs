@@ -11,7 +11,8 @@ namespace GamePlay.Character.Spell
         [SerializeField] private GameObject _respawnParticle;
         [SerializeField] private Button _spell1;
         [SerializeField] private int _spellNumber = 1;
-
+        private GameObject _killer;
+        private Vector3 _diePosition;
         private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
@@ -20,6 +21,8 @@ namespace GamePlay.Character.Spell
                 if (_spellNumber >= 1)
                 {
                     _spell1.interactable = true;
+                    _killer = other.gameObject;
+                    _diePosition = transform.position;
                 }
             }
         }
@@ -28,6 +31,8 @@ namespace GamePlay.Character.Spell
         {
             if (_spellNumber >= 1)
             {
+                _killer.SetActive(false);
+                transform.position = _diePosition;
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;
                 _healthController.HpNumber++;
                 Time.timeScale = 1;

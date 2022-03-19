@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace GamePlay.Character.Spell.TeleportFreeze
 {
@@ -11,12 +9,6 @@ namespace GamePlay.Character.Spell.TeleportFreeze
         [SerializeField] private GameObject _splashParticle;
         [SerializeField] private float _teleportationLength;
         [SerializeField] private float _manaCost;
-        
-        private void Update()
-        {
-            Debug.DrawRay(transform.position, transform.forward * _teleportationLength, Color.green);
-        }
-
         public void TeleportSkill()
         {
             if (_reloadSpell._canUseSpellSecond)
@@ -26,8 +18,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
                 {
                    Instantiate(_splashParticle,transform.position,Quaternion.identity);
                     Ray ray = new Ray(transform.position, transform.forward);
-                    RaycastHit hit;
-                    if (Physics.Raycast(ray, out hit))
+                    if (Physics.Raycast(ray, out var hit))
                         if (Physics.Raycast(ray, out hit, _teleportationLength))
                         {
                             if (hit.transform.gameObject.CompareTag("Wall"))

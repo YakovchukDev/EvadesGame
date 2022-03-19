@@ -6,13 +6,11 @@ namespace GamePlay.Character.Spell.TeleportFreeze
     {
         [SerializeField] private ManaController _manaController;
         [SerializeField] private ReloadSpell _reloadSpell;
-
         [SerializeField] private GameObject _freezeField;
         [SerializeField] private GameObject _gravityRadius;
-
-        private float _timeExistenceAfterMaxSize;
         [SerializeField] private float _maxSize;
         [SerializeField] private float _manaCost;
+        private float _timeExistenceAfterMaxSize;
         private float _size;
         private bool _goFreeze;
 

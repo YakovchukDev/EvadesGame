@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Joystick_Pack.Examples;
 using UnityEngine;
 
 namespace GamePlay.Character.Spell.Nexus
@@ -8,8 +6,8 @@ namespace GamePlay.Character.Spell.Nexus
     {
         [SerializeField] private ManaController _manaController;
         [SerializeField] private ReloadSpell _reloadSpell;
-        [SerializeField] private float _manaCost;
         [SerializeField] private GameObject _invulnerableField;
+        [SerializeField] private float _manaCost;
 
         public void InvulnerableField()
         {
@@ -22,10 +20,6 @@ namespace GamePlay.Character.Spell.Nexus
                     _invulnerableField.SetActive(true);
                 }
             }
-        }
-
-        private void Respawn()
-        {
         }
     }
 }

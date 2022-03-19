@@ -4,8 +4,8 @@ namespace GamePlay.Enemy.Skill
 {
     public class GrowUpDown : MonoBehaviour
     {
-        [SerializeField] private GameObject ParticleExhale;
-        [SerializeField] private GameObject ParticleInhale;
+        [SerializeField] private GameObject _particleExhale;
+        [SerializeField] private GameObject _particleInhale;
         private float _maxScale;
         private float _minScale;
         private float _changeScale;
@@ -53,12 +53,11 @@ namespace GamePlay.Enemy.Skill
                     transform.GetChild(0).localScale = new Vector3(_changeScale, _changeScale, _changeScale);
                     gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[2].color =
                         Color.Lerp(Color.yellow, Color.red, Mathf.Abs(Mathf.Sin(Time.time)));
-                        ParticleExhale.SetActive(false);
-                        ParticleInhale.SetActive(true);
+                    _particleExhale.SetActive(false);
+                    _particleInhale.SetActive(true);
                 }
                 else
                 {
-
                     _timeMaxScale += Time.deltaTime;
 
                     if (_timeMaxScale >= 1f)
@@ -72,8 +71,8 @@ namespace GamePlay.Enemy.Skill
             {
                 if (_changeScale >= _minScale)
                 {
-                    ParticleExhale.SetActive(true);
-                    ParticleInhale.SetActive(false);
+                    _particleExhale.SetActive(true);
+                    _particleInhale.SetActive(false);
                     _changeScale -= 0.09f * Time.deltaTime;
                     transform.GetChild(0).localScale = new Vector3(_changeScale, _changeScale, _changeScale);
                     gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[2].color =

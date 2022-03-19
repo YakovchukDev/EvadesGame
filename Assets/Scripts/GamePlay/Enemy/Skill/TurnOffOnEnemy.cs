@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +5,8 @@ namespace GamePlay.Enemy.Skill
 {
     public class TurnOffOnEnemy : MonoBehaviour
     {
-        private float _timeForMove;
         [SerializeField] private List<GameObject> _particles;
+        private float _timeForMove;
 
         private void Start()
         {
@@ -33,9 +32,9 @@ namespace GamePlay.Enemy.Skill
                     particle.SetActive(true);
                 }
 
-                for (int i = 0; i < gameObject.transform.GetChild(0).GetComponent<Renderer>().materials.Length; i++)
+                foreach (var material in gameObject.transform.GetChild(0).GetComponent<Renderer>().materials)
                 {
-                    gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[i].color = color;
+                    material.color = color;
                 }
 
 
@@ -49,9 +48,9 @@ namespace GamePlay.Enemy.Skill
                     particle.SetActive(false);
                 }
 
-                for (int i = 0; i < gameObject.transform.GetChild(0).GetComponent<Renderer>().materials.Length; i++)
+                foreach (var material in gameObject.transform.GetChild(0).GetComponent<Renderer>().materials)
                 {
-                    gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[i].color = color;
+                    material.color = color;
                 }
 
                 _timeForMove = 0;

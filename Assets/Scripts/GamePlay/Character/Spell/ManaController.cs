@@ -6,13 +6,10 @@ namespace GamePlay.Character.Spell
     public class ManaController : MonoBehaviour
     {
         [SerializeField] private Image _manaComponent;
-
         [SerializeField] private float _allMana = 100;
         [SerializeField] private float _startRegenTime;
-
-        private float _regenTime;
         [SerializeField] private float _numberRegen;
-
+        private float _regenTime;
 
         private void Update()
         {
@@ -27,7 +24,9 @@ namespace GamePlay.Character.Spell
                 return true;
             }
             else
+            {
                 return false;
+            }
         }
         private void ManaRegen(float speedRegen)
         {

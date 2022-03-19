@@ -5,7 +5,7 @@ namespace GamePlay.Enemy.Skill
 {
     public class RepulsionEnemy : MonoBehaviour
     {
-        private HashSet<Rigidbody> affectedBodies = new HashSet<Rigidbody>();
+        private readonly HashSet<Rigidbody> _affectedBodies = new HashSet<Rigidbody>();
         private Rigidbody _componentRigidbody;
         void Start()
         {
@@ -15,26 +15,29 @@ namespace GamePlay.Enemy.Skill
         {
             if (other.CompareTag("Player") && other.attachedRigidbody != null)
             {
-                affectedBodies.Add(other.attachedRigidbody);
+                _affectedBodies.Add(other.attachedRigidbody);
             }
         }
         private void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("Player") && other.attachedRigidbody != null)
             {
-                affectedBodies.Remove(other.attachedRigidbody);
+                _affectedBodies.Remove(other.attachedRigidbody);
             }
         }
         private void Update()
         {
-            Attraction();
+            if (Time.timeScale > 0)
+            {
+                Attraction();
+            }
         }
         private void Attraction()
         {
-            foreach (Rigidbody body in affectedBodies)
+            foreach (var body in _affectedBodies)
             {
-                Vector3 directionToSphere = (transform.position - body.position).normalized;
-                float strength = body.mass * _componentRigidbody.mass;
+                var directionToSphere = (transform.position - body.position).normalized;
+                var strength = body.mass * _componentRigidbody.mass;
 
                 body.AddForce(-directionToSphere * strength);
             }

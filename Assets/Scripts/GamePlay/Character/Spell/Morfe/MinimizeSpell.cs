@@ -1,4 +1,3 @@
-using GamePlay.Enemy;
 using UnityEngine;
 
 namespace GamePlay.Character.Spell.Morfe
@@ -15,7 +14,7 @@ namespace GamePlay.Character.Spell.Morfe
             _applyDirection = true;
             if (_applyDirection)
             {
-                _direction =new Vector3(0,0,0.18f); 
+                _direction =new Vector3(0,0,0.4f); 
                 _applyDirection = false;
             }
         }

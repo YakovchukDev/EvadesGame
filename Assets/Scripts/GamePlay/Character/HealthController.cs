@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace GamePlay.Character
 {
@@ -8,12 +6,12 @@ namespace GamePlay.Character
     {
         [SerializeField] private int _hpNumber = 1;
         [SerializeField] private GameObject _panelAfterDie;
-        [SerializeField] private List<Button> _spellButtons;
+        public static float ImmortalityTime;
+        public static bool Immortality;
         private Color _materialColor;
         private Color _color1;
         private Color _color2;
-        public static float ImmortalityTime;
-        public static bool Immortality;
+        
 
         public int HpNumber
         {
@@ -42,19 +40,11 @@ namespace GamePlay.Character
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
                 other.gameObject.layer == LayerMask.NameToLayer("IndestructibleEnemy"))
             {
-                /*if (_spellButtons != null)
-                {
-                    foreach (var spell in _spellButtons)
-                    {
-                        spell.interactable = true;
-                    }
-                }*/
-
                 gameObject.transform.GetComponent<Renderer>().materials[0].color = _color1;
                 transform.localScale = Vector3.one;
                 _hpNumber--;
                 HpChecker();
-                other.gameObject.SetActive(false);
+              //  other.gameObject.SetActive(false);
             }
         }
 

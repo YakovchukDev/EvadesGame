@@ -1,5 +1,7 @@
 using Joystick_Pack.Examples;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace GamePlay.Character.Spell.SpeederInvulnerable
 {
@@ -7,13 +9,14 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
     {
         [SerializeField] private JoystickPlayerExample _joystickPlayerExample;
         [SerializeField] private ManaController _manaController;
+        [SerializeField] private AccelerateSpell _accelerateSpell;
+        [SerializeField] private GameObject _invulnerableParticle;
+        [SerializeField] private GameObject _spellImage;
+        [SerializeField] private GameObject _otherSpellImage;
+        [SerializeField] private Button _otherSpellButton;
         [SerializeField] private float _maxManaCost;
-        [SerializeField] private GameObject _InvulnerableParticle;
         private float _time;
         private float _starterTime;
-        [SerializeField] private GameObject _spellImage;
-
-
         private bool _checkMover;
 
         private void Start()
@@ -45,17 +48,27 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
 
             if (_checkMover)
             {
+                _accelerateSpell.CheckAccelerate = true;
+                _accelerateSpell.Accelerate();
                 JoystickPlayerExample.Speed = 0;
                 gameObject.layer = 11;
                 _spellImage.SetActive(false);
-                _InvulnerableParticle.SetActive(true);
+                _otherSpellImage.SetActive(false);
+                _otherSpellButton.interactable = false;
+                _invulnerableParticle.SetActive(true);
             }
             else
             {
+                _accelerateSpell.CheckAccelerate = false;
+                _accelerateSpell.Accelerate();
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;
                 gameObject.layer = 6;
                 _spellImage.SetActive(true);
-                _InvulnerableParticle.SetActive(false);
+                _otherSpellImage.SetActive(true);
+                _otherSpellButton.interactable = true;
+                _invulnerableParticle.SetActive(false);
+                _accelerateSpell.Accelerate();
+
             }
         }
     }

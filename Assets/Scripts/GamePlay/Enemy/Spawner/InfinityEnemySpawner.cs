@@ -14,14 +14,11 @@ namespace GamePlay.Enemy.Spawner
         [SerializeField] private List<GameObject> _allEnemy;
         [SerializeField] private List<Animation> _animation;
         [SerializeField] private ParticleSystem _enemyDieParticle;
-
-        private float _spawnTime = 2;
-        public static int SpawnNumber;
+        private readonly Vector3[] _spawnPos = new Vector3[4];
         private readonly float[] _possibleSizes = {20f, 40f, 100f};
+        public static int SpawnNumber;
         public static int Index;
-        private int[] _enemyRotation = {90, -90, 0, 180};
-
-        readonly Vector3[] _spawnPos = new Vector3[4];
+        private float _spawnTime = 2;
 
         private void Start()
         {
@@ -43,7 +40,8 @@ namespace GamePlay.Enemy.Spawner
                     _animation[Index].Play("SlidingDoors");
                     SpawnNumber++;
                     _enemyClass1[0].transform.localScale = new Vector3(40f, 40f, 40f);
-                    _allEnemy.Add(Instantiate(_enemyClass1[0], _spawnPos[Index], Quaternion.Euler(0, Random.Range(0,360), 0)));
+                    _allEnemy.Add(Instantiate(_enemyClass1[0], _spawnPos[Index],
+                        Quaternion.Euler(0, Random.Range(0, 360), 0)));
                     yield return new WaitForSeconds(1);
                     Index = Random.Range(0, 4);
                 }
@@ -54,7 +52,7 @@ namespace GamePlay.Enemy.Spawner
                     GameObject enemy = _enemyClass1[Random.Range(0, _enemyClass1.Count)];
                     float enemySize = _possibleSizes[Random.Range(0, _possibleSizes.Length)];
                     enemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
-                    _allEnemy.Add(Instantiate(enemy, _spawnPos[Index],Quaternion.Euler(-90, Random.Range(0, 360), 0)));
+                    _allEnemy.Add(Instantiate(enemy, _spawnPos[Index], Quaternion.Euler(-90, Random.Range(0, 360), 0)));
                     yield return new WaitForSeconds(_spawnTime += 0.2f);
 
                     Index = Random.Range(0, 4);
@@ -85,7 +83,7 @@ namespace GamePlay.Enemy.Spawner
                     GameObject enemy = _enemyClass3[Random.Range(0, _enemyClass3.Count)];
                     float enemySize = _possibleSizes[Random.Range(0, _possibleSizes.Length)];
                     enemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
-                    _allEnemy.Add(Instantiate(enemy, _spawnPos[Index],Quaternion.Euler(0, Random.Range(0, 360), 0)));
+                    _allEnemy.Add(Instantiate(enemy, _spawnPos[Index], Quaternion.Euler(0, Random.Range(0, 360), 0)));
                     yield return new WaitForSeconds(_spawnTime);
                     Index = Random.Range(0, 4);
                 }

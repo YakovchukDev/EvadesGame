@@ -16,15 +16,7 @@ namespace Menu.level
         {
             for (int i = 1; i <= _countLevel; i++)
             {
-                if (i - 1 <= _completeLevel)
-                {
-                    _levelMenuView.LevelElementView.LevelButton.interactable = true;
-                }
-                else
-                {
-                    _levelMenuView.LevelElementView.LevelButton.interactable = false;
-                }
-
+                _levelMenuView.LevelElementView.LevelButton.interactable = i - 1 <= _completeLevel;
                 _levelMenuView.LevelElementView.LevelNumber.text = i.ToString();
                 Instantiate(_levelMenuView.LevelElementView, _levelMenuView.ElementGrid);
             }
@@ -32,12 +24,12 @@ namespace Menu.level
 
         public void Update()
         {
-            if (LevelElementController._onView)
+            if (LevelElementController.OnView)
             {
                 _classAvailability.CheckClassForLevel();
                 _selectionClassView.SetActive(true);
                 _levelView.SetActive(false);
-                LevelElementController._onView = false;
+                LevelElementController.OnView = false;
             }
         }
     }

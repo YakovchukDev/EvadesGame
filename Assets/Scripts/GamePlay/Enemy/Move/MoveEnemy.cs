@@ -1,4 +1,3 @@
-using System;
 using GamePlay.Enemy.Spawner;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,31 +7,35 @@ namespace GamePlay.Enemy.Move
     public class MoveEnemy : MonoBehaviour
     {
         [SerializeField] protected GameObject _freezeField;
-        private float _freezeTimer;
-        protected bool CanFreeze;
-        [SerializeField] private float _speed = 5;
-        private float _time;
         [SerializeField] protected ParticleSystem _enemyBounceParticle;
+        [SerializeField] private float _speed = 5;
+        private Quaternion Rotation { get; set; }
+        private float _freezeTimer;
+        private float _time;
         private float _rotationSpeed=15;
-        private Quaternion _rotation;
-        private bool _rotate=true;
+        private bool Rotate { get; set; }
+        protected bool CanFreeze;
+        private GameObject _gameObject;
+
 
         private void Start()
         {
-            _rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+            _gameObject = GameObject.FindGameObjectWithTag("Freeze");
+            Rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
         }
 
         private void FixedUpdate()
         {
-            if (_rotate)
+            
+            if (Rotate)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, _rotation,_rotationSpeed * Time.deltaTime);
-                if (transform.rotation == _rotation)
+                transform.rotation = Quaternion.Lerp(transform.rotation, Rotation,_rotationSpeed * Time.deltaTime);
+                if (transform.rotation == Rotation)
                 {
-                    _rotate = false;
+                    Rotate = false;
                 }
             }
-            _freezeField = GameObject.FindGameObjectWithTag("Freeze");
+            _freezeField = _gameObject;
 
             if (CanFreeze == false)
             {
@@ -63,9 +66,8 @@ namespace GamePlay.Enemy.Move
             if (other.gameObject.CompareTag("Wall"))
             {
                 Vector3 reflectDir = Vector3.Reflect(transform.forward, other.GetContact(0).normal);
-                _rotation = Quaternion.LookRotation(reflectDir);
-                _rotate = true;
-                //transform.eulerAngles = new Vector3(0, _rotation.eulerAngles.y, 0);
+                Rotation = Quaternion.LookRotation(reflectDir);
+                Rotate = true;
                 foreach (ContactPoint missileHit in other.contacts)
                 {
                     Vector3 hitPoint = missileHit.point;
@@ -88,7 +90,7 @@ namespace GamePlay.Enemy.Move
 
         private void MoveSystem(float speed)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            transform.Translate(Vector3.forward * (Time.deltaTime * speed));
         }
 
         protected void FreezeMe(float allFreezeTime)

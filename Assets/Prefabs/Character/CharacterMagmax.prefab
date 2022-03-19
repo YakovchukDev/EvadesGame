@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 648059660116086396}
   - component: {fileID: 648059660116086397}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 648059660631021472}
   - component: {fileID: 648059660631021473}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,9 +782,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _manaController: {fileID: 1598006098151319634}
-  _father: {fileID: 8882896568688617212}
   _noGrowUp:
   - {fileID: 3270627519641522571}
+  _father: {fileID: 8882896568688617212}
 --- !u!135 &6903063182975478721
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5829,9 +5829,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _joystickPlayerExample: {fileID: 8882896568688617190}
   _manaController: {fileID: 1598006098151319634}
-  _maxManaCost: 1
-  _InvulnerableParticle: {fileID: 5341399650820588747}
+  _accelerateSpell: {fileID: 8882896568688617214}
+  _invulnerableParticle: {fileID: 5341399650820588747}
   _spellImage: {fileID: 648059660116086147}
+  _otherSpellImage: {fileID: 648059660631021479}
+  _otherSpellButton: {fileID: 648059660121772700}
+  _maxManaCost: 1
 --- !u!114 &8882896568688617214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5846,9 +5849,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _joystickPlayerExample: {fileID: 8882896568688617190}
   _manaController: {fileID: 1598006098151319634}
-  _speedAccelerate: 2
   _spellImage: {fileID: 648059660631021479}
   _accelerationParticle: {fileID: 8601290025729416098}
+  _speedAccelerate: 2
 --- !u!114 &344030257560994123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5863,9 +5866,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hpNumber: 1
   _panelAfterDie: {fileID: 3374124828576703548}
-  _spellButtons:
-  - {fileID: 648059660121772700}
-  - {fileID: 648059659227151212}
 --- !u!1001 &3626496895732595267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5876,6 +5876,10 @@ PrefabInstance:
     - target: {fileID: 4975927843176636897, guid: 6c2e493bc70c6cb459976633f5ead8da, type: 3}
       propertyPath: m_Name
       value: ParticleAcceleration
+      objectReference: {fileID: 0}
+    - target: {fileID: 4975927843176636897, guid: 6c2e493bc70c6cb459976633f5ead8da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5335645990638513137, guid: 6c2e493bc70c6cb459976633f5ead8da, type: 3}
       propertyPath: m_RootOrder

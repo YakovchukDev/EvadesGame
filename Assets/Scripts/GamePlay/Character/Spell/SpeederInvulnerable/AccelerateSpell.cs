@@ -1,6 +1,5 @@
 using Joystick_Pack.Examples;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace GamePlay.Character.Spell.SpeederInvulnerable
 {
@@ -8,14 +7,13 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
     {
         [SerializeField] private JoystickPlayerExample _joystickPlayerExample;
         [SerializeField] private ManaController _manaController;
-        [SerializeField] private float _speedAccelerate;
         [SerializeField] private GameObject _spellImage;
         [SerializeField] private GameObject _accelerationParticle;
-
+        [SerializeField] private float _speedAccelerate;
         private float _time;
         private float _starterTime;
+        public bool CheckAccelerate { get; set; }
 
-        private bool _checkAccelerate;
 
         private void Start()
         {
@@ -25,14 +23,14 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
 
         private void Update()
         {
-            if (_checkAccelerate)
+            if (CheckAccelerate)
             {
                 _time -= Time.deltaTime;
                 if (_time <= 0)
                 {
                     if (!_manaController.ManaReduction(1f))
                     {
-                        _checkAccelerate = false;
+                        CheckAccelerate = false;
                     }
 
                     _time = _starterTime;
@@ -42,9 +40,9 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
 
         public void Accelerate()
         {
-            _checkAccelerate = !_checkAccelerate;
+            CheckAccelerate = !CheckAccelerate;
 
-            if (_checkAccelerate)
+            if (CheckAccelerate)
             {
                 JoystickPlayerExample.Speed *= _speedAccelerate;
                 _spellImage.SetActive(false);

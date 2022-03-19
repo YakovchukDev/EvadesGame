@@ -5,11 +5,11 @@ namespace GamePlay.Enemy.Move
 {
     public class MoveStoperEnemy : MoveEnemy
     {
+        private Quaternion _rotation;
         private float _timeForMove;
         private float _speed = 5;
         private float _time;
         private float _rotationSpeed = 15;
-        private Quaternion _rotation;
         private bool _rotate = true;
 
         private void Start()

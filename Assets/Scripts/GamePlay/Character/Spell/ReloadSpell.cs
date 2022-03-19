@@ -5,14 +5,12 @@ namespace GamePlay.Character.Spell
 {
     public class ReloadSpell : MonoBehaviour
     {
-        private float _timeReloadFirst;
-        public bool _canUseSpellFirst = true;
-        private float _timeReloadSecond;
-        public bool _canUseSpellSecond = true;
-
         [SerializeField] private Image _firstImage;
         [SerializeField] private Image _secondImage;
-
+        private float _timeReloadFirst;
+        private float _timeReloadSecond;
+        public bool _canUseSpellFirst = true;
+        public bool _canUseSpellSecond = true;
         private void Update()
         {
             if (_canUseSpellFirst == false)

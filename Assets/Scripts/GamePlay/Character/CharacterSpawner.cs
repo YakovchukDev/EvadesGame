@@ -22,7 +22,7 @@ namespace GamePlay.Character
 
         
 
-        public void SpawnCharacter(Vector3 startPosition)
+        private void SpawnCharacter(Vector3 startPosition)
         {
             if (SelectionClassView._characterType == "Just")
             {

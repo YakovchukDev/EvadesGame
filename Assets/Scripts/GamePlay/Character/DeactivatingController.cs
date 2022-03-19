@@ -1,12 +1,11 @@
-using System;
 using UnityEngine;
 
 namespace GamePlay.Character
 {
     public class DeactivatingController : MonoBehaviour
     {
-        private float _timer;
         private Material[] _materials;
+        private float _timer;
 
         private void Start()
         {
@@ -22,10 +21,10 @@ namespace GamePlay.Character
                 {
                     _timer = 0;
                     gameObject.layer = 8;
-                    for (int i = 0; i < _materials.Length; i++)
+                    foreach (var material in _materials)
                     {
-                        Color startColor = _materials[i].color;
-                        _materials[i].color = new Color(startColor.r, startColor.g, startColor.b, 1f);
+                        Color startColor = material.color;
+                        material.color = new Color(startColor.r, startColor.g, startColor.b, 1f);
                     }
                 }
             }

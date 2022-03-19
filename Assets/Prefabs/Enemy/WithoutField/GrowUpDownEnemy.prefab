@@ -4918,7 +4918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3634275176059204131
 Transform:
   m_ObjectHideFlags: 0
@@ -9774,8 +9774,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _freezeField: {fileID: 0}
-  _speed: 5
   _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
+  _speed: 5
 --- !u!114 &4035490351376890431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9788,8 +9788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02148c857ab80bd439bda4c1c9dd12e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParticleExhale: {fileID: 2916611423117519884}
-  ParticleInhale: {fileID: 4180972946523312931}
+  _particleExhale: {fileID: 2916611423117519884}
+  _particleInhale: {fileID: 4180972946523312931}
 --- !u!114 &-1886542686811552867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9831,9 +9831,9 @@ MonoBehaviour:
   - {fileID: 678239642880103064}
   - {fileID: 7058020232070161495}
   - {fileID: 8238655722615632816}
-  _LifeTime: 1
-  _Speed: 2
-  _Size: 2
+  _lifeTime: 2
+  _speed: 2
+  _size: 2
 --- !u!1 &7763381634113192627
 GameObject:
   m_ObjectHideFlags: 0
