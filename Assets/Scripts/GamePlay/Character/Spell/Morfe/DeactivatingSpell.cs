@@ -42,10 +42,10 @@ namespace GamePlay.Character.Spell.Morfe
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 var materials = other.gameObject.transform.GetChild(0).GetComponent<Renderer>().materials;
-                for (int i = 0; i < materials.Length; i++)
+                foreach (var material in materials)
                 {
-                    Color startColor = materials[i].color;
-                    materials[i].color = new Color(startColor.r, startColor.g, startColor.b, 0.3f);
+                    Color startColor = material.color;
+                    material.color = new Color(startColor.r, startColor.g, startColor.b, 0.3f);
                 }
 
                 other.gameObject.layer = 12;

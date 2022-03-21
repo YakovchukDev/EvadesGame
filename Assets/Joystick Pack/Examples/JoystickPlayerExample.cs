@@ -1,24 +1,22 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Joystick_Pack.Examples
 {
     [RequireComponent(typeof(Rigidbody), typeof(SphereCollider))]
     public class JoystickPlayerExample : MonoBehaviour
     {
-        public static float Speed;
+        [SerializeField] private ParticleSystem _moveParticle;
+        [SerializeField] private ParticleSystem _frictionParticle;
         [SerializeField] private float _maxSpeed;
         private VariableJoystick _variableJoystick;
         private Rigidbody _rigidbody;
-        [SerializeField] private ParticleSystem _moveParticle;
-        [SerializeField] private ParticleSystem _frictionParticle;
+        public static float Speed;
 
         public float MaxSpeed => _maxSpeed;
 
         private void Start()
         {
             _moveParticle.Stop();
-
             Speed = _maxSpeed;
             _rigidbody = GetComponent<Rigidbody>();
             _variableJoystick = FindObjectOfType<VariableJoystick>();
@@ -44,7 +42,6 @@ namespace Joystick_Pack.Examples
                 }
             }
         }
-
         private void OnCollisionStay(Collision other)
         {
             if (other.gameObject.CompareTag("Wall"))
@@ -60,7 +57,6 @@ namespace Joystick_Pack.Examples
                 }
             }
         }
-
 
         private void MoveCharacter()
         {

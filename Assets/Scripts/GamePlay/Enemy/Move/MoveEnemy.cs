@@ -9,34 +9,25 @@ namespace GamePlay.Enemy.Move
         [SerializeField] protected GameObject _freezeField;
         [SerializeField] protected ParticleSystem _enemyBounceParticle;
         [SerializeField] private float _speed = 5;
-        private Quaternion Rotation { get; set; }
+        private Quaternion _rotation;
+        private GameObject _gameObject;
         private float _freezeTimer;
         private float _time;
-        private float _rotationSpeed=15;
-        private bool Rotate { get; set; }
+        private const float RotationSpeed = 15;
+        private bool _rotate;
         protected bool CanFreeze;
-        private GameObject _gameObject;
 
 
         private void Start()
         {
             _gameObject = GameObject.FindGameObjectWithTag("Freeze");
-            Rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+            _rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
         }
 
         private void FixedUpdate()
         {
-            
-            if (Rotate)
-            {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Rotation,_rotationSpeed * Time.deltaTime);
-                if (transform.rotation == Rotation)
-                {
-                    Rotate = false;
-                }
-            }
             _freezeField = _gameObject;
-
+            RotateController();
             if (CanFreeze == false)
             {
                 if (InfinityEnemySpawner.SpawnNumber >= 40)
@@ -52,7 +43,7 @@ namespace GamePlay.Enemy.Move
                 }
                 else
                 {
-                    MoveSystem(5);
+                    MoveSystem(_speed);
                 }
             }
             else
@@ -65,20 +56,20 @@ namespace GamePlay.Enemy.Move
         {
             if (other.gameObject.CompareTag("Wall"))
             {
-                Vector3 reflectDir = Vector3.Reflect(transform.forward, other.GetContact(0).normal);
-                Rotation = Quaternion.LookRotation(reflectDir);
-                Rotate = true;
-                foreach (ContactPoint missileHit in other.contacts)
+                var reflectDir = Vector3.Reflect(transform.forward, other.GetContact(0).normal);
+                _rotation = Quaternion.LookRotation(reflectDir);
+                _rotate = true;
+                foreach (var missileHit in other.contacts)
                 {
-                    Vector3 hitPoint = missileHit.point;
-                    _enemyBounceParticle.transform.localScale = transform.localScale/30;
+                    var hitPoint = missileHit.point;
+                    _enemyBounceParticle.transform.localScale = transform.localScale / 30;
                     Instantiate(_enemyBounceParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z),
                         Quaternion.identity);
                 }
             }
         }
 
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Freeze"))
@@ -88,9 +79,22 @@ namespace GamePlay.Enemy.Move
             }
         }
 
+
         private void MoveSystem(float speed)
         {
             transform.Translate(Vector3.forward * (Time.deltaTime * speed));
+        }
+
+        private void RotateController()
+        {
+            if (_rotate)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, _rotation, RotationSpeed * Time.deltaTime);
+                if (transform.rotation == _rotation)
+                {
+                    _rotate = false;
+                }
+            }
         }
 
         protected void FreezeMe(float allFreezeTime)

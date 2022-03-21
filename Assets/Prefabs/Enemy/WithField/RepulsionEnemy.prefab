@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4464688701804638509}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -25.861683, y: 2, z: -2.4460182}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4464688702218637360}
   - {fileID: 3389532560970305537}
@@ -151,13 +151,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4464688702218637367}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.0075, z: 0.1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4464688701804638507}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &4464688702218637363
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4464688702218637367}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2128599272216676504, guid: 32463248546342b40b8588e598a842f9, type: 3}
 --- !u!23 &4464688702218637362
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -464,6 +464,10 @@ PrefabInstance:
     - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b

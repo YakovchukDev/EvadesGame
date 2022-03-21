@@ -7,15 +7,25 @@ namespace GamePlay.Enemy.Move
     {
         [SerializeField] private float _z;
         [SerializeField] private float _x;
-        private float helpY = 90;
-        private float y = 0;
+        private const float HelpY = 90;
+        private const float Y = 0;
         private float _speed=0.01f;
         private float _time;
 
-
         private void FixedUpdate()
         {
-            transform.localScale= new Vector3(2,2,2);
+            transform.localScale= new Vector3(30,30,30);
+            MoveSystem();
+        }
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Wall"))
+            {
+                DirectioAndSpeedMovement();
+            }
+        }
+        private void MoveSystem()
+        {
             if (InfinityEnemySpawner.SpawnNumber >= 40)
             {
                 _time += Time.deltaTime;
@@ -25,27 +35,16 @@ namespace GamePlay.Enemy.Move
                     _speed += 0.0005f;
                 }
                     
-                MoveSystem(_speed);
+                transform.Translate(new Vector3(_x * _speed, 0, _z * _speed));
             }
             else
             {
-                MoveSystem(0.01f);
+                transform.Translate(new Vector3(_x * _speed, 0, _z * _speed));
             }
-        }
-        private void OnCollisionEnter(Collision other)
-        {
-            if (other.gameObject.CompareTag("Wall"))
-            {
-                DirectioAndSpeedMovement();
-            }
-        }
-        private void MoveSystem(float speed)
-        {
-            transform.Translate(new Vector3(_x * speed, 0, _z * speed));
         }
         private void DirectioAndSpeedMovement()
         {
-            transform.Rotate(0, y + helpY, 0);
+            transform.Rotate(0, Y + HelpY, 0);
         }
     }
 }

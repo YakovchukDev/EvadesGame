@@ -8,15 +8,15 @@ namespace GamePlay.Enemy
         {
             if (transform.parent.localScale == new Vector3(20f, 20f, 20))
             {
-                transform.localScale = new Vector3(0.4f, 0.0075f, 0.4f);
+                transform.localScale = new Vector3(1.34f, 1.34f, 1.34f);
             }
             if (transform.parent.localScale == new Vector3(40, 40, 40))
             {
-                transform.localScale = new Vector3(0.2f, 0.0075f, 0.2f);
+                transform.localScale = new Vector3(0.67f, 0.67f, 0.67f);
             }
             if (transform.parent.localScale == new Vector3(100f, 100, 100))
             {
-                transform.localScale = new Vector3(0.08f, 0.0075f, 0.08f);
+                transform.localScale = new Vector3(0.268f, 0.268f, 0.268f);
             }
         }
     }

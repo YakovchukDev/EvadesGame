@@ -16,18 +16,18 @@ namespace GamePlay
             {
                 foreach (var particle in _particles)
                 {
-                    particle.startLifetime = particle.startLifetime / _lifeTime;
-                    particle.startSpeed = particle.startSpeed / _speed;
-                    particle.startSize = particle.startSize / _size;
+                    particle.startLifetime /= _lifeTime;
+                    particle.startSpeed /= _speed;
+                    particle.startSize /= _size;
                 }
             }
             else if (transform.localScale.x > 60)
             {
                 foreach (var particle in _particles)
                 {
-                    particle.startLifetime = particle.startLifetime * _lifeTime;
-                    particle.startSpeed = particle.startSpeed * _speed;
-                    particle.startSize = particle.startSize * _size;
+                    particle.startLifetime *= _lifeTime;
+                    particle.startSpeed *= _speed;
+                    particle.startSize *= _size;
                 }
             }
 

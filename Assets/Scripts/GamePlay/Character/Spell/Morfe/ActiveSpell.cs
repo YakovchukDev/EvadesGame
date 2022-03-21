@@ -18,13 +18,13 @@ namespace GamePlay.Character.Spell.Morfe
 
         private void Start()
         {
-            for (int i = 0; i < 5; i++)
+            for (var i = 0; i < 5; i++)
             {
                 _minimizePatrons.Add(Instantiate(_minimizePatron, transform.position, transform.rotation));
                 _minimizePatrons[i].SetActive(false);
             }
 
-            for (int i = 0; i < 5; i++)
+            for (var i = 0; i < 5; i++)
             {
                 _deactivatingPatrons.Add(Instantiate(_deactivatingPatron, transform.position, transform.rotation));
                 _deactivatingPatrons[i].SetActive(false);

@@ -90,7 +90,6 @@ namespace GamePlay.Enemy.Spawner
                 else if (SpawnNumber < 40)
                 {
                     _enemyDieParticle.transform.localScale = _allEnemy[0].transform.localScale / 480;
-
                     Instantiate(_enemyDieParticle, _allEnemy[0].transform.position, Quaternion.identity);
                     Destroy(_allEnemy[0]);
                     _allEnemy.Remove(_allEnemy[0]);
