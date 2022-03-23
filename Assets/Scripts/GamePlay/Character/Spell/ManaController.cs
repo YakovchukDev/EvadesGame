@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Menu.SelectionClass;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace GamePlay.Character.Spell
@@ -6,21 +7,52 @@ namespace GamePlay.Character.Spell
     public class ManaController : MonoBehaviour
     {
         [SerializeField] private Image _manaComponent;
-        [SerializeField] private float _allMana = 100;
-        [SerializeField] private float _startRegenTime;
-        [SerializeField] private float _numberRegen;
+        private float _allMana;
+        private float _startRegenTime;
+        private float _numberRegen;
         private float _regenTime;
+        public static float Mana;
+        public static float Regen;
+
+        private void Start()
+        {
+            if (SelectionClassView.WhatPlaying == "Level")
+            {
+                _allMana = 100;
+                _numberRegen = 1;
+                _startRegenTime = 1;
+            }
+            else if (SelectionClassView.WhatPlaying == "Infinity")
+            {
+                _allMana = 200;
+                _numberRegen = 2;
+                _startRegenTime = 1;
+            }
+
+            Mana = _allMana;
+            Regen = _numberRegen;
+        }
 
         private void Update()
         {
-            ManaRegen(_numberRegen);
+            if (_allMana < Mana)
+            {
+                _allMana = Mana;
+            }
+
+            if (_numberRegen < Regen)
+            {
+                _numberRegen = Regen;
+            }
+            ManaRegen(Regen);
         }
+
         public bool ManaReduction(float minusMana)
         {
-            if (_allMana >= minusMana)
+            if (Mana >= minusMana)
             {
-                _allMana -= minusMana;
-                _manaComponent.fillAmount = _allMana / 100;
+                Mana -= minusMana;
+                _manaComponent.fillAmount = Mana / _allMana;
                 return true;
             }
             else
@@ -28,15 +60,16 @@ namespace GamePlay.Character.Spell
                 return false;
             }
         }
+
         private void ManaRegen(float speedRegen)
         {
             _regenTime -= Time.deltaTime;
 
-            if (_allMana < 100 && _regenTime <= 0)
+            if (Mana < 100 && _regenTime <= 0)
             {
                 _regenTime = _startRegenTime;
-                _allMana += speedRegen;
-                _manaComponent.fillAmount = _allMana / 100;
+                Mana += speedRegen;
+                _manaComponent.fillAmount = Mana / _allMana;
             }
         }
     }

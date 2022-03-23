@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using Menu.level;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-namespace Menu
+namespace Menu.SelectionClass
 {
     public class ClassAvailability : MonoBehaviour
     {

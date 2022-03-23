@@ -1,29 +1,30 @@
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Menu.SelectionClass
 {
     public class SelectionClassView : MonoBehaviour
     {
-        public static string _characterType;
-        public static string _whatPlaying;
+        protected static int CharacterType { get; private set; }
+        public static string WhatPlaying { get; private set; }
 
-        public void ChoiceTypeOfCharacter(string characterType)
+        public void ChoiceTypeOfCharacter(int characterType)
         {
-            _characterType = characterType;
+            CharacterType = characterType;
         }
+
         public void SetWhatPlaying(string whatPlaying)
         {
-            _whatPlaying = whatPlaying;
+            WhatPlaying = whatPlaying;
         }
 
         public void CheckWhatPlaying()
         {
-            if (_whatPlaying == "Level")
+            if (WhatPlaying == "Level")
             {
                 SceneManager.LoadScene("MapGeneratorBeta");
             }
-            else if (_whatPlaying == "Infinity")
+            else if (WhatPlaying == "Infinity")
             {
                 SceneManager.LoadScene("InfinityGame");
             }

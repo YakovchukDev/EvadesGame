@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 
 namespace GamePlay
 {
-    public class InterfaceController : MonoBehaviour
-    {
+    public class InterfaceController : SelectionClassView
+    { private static string[] _characterObject =
+        {
+            "JustTime", "NecroTime", "MorfeTime", "NeoTime",
+            "InvulnerableTime", "NexusTime"
+        };
         [SerializeField] private TMP_Text _timer;
         public static float Time;
 
@@ -44,47 +48,9 @@ namespace GamePlay
 
         public static void TimeSave()
         {
-            if (SelectionClassView._characterType == "Just")
+            if (Time > PlayerPrefs.GetFloat(_characterObject[CharacterType]))
             {
-                if (Time > PlayerPrefs.GetFloat("JustTime"))
-                {
-                    PlayerPrefs.SetFloat("JustTime", Time);
-                }
-            }
-            else if (SelectionClassView._characterType == "Necro")
-            {
-                if (Time > PlayerPrefs.GetFloat("NecroTime"))
-                {
-                    PlayerPrefs.SetFloat("NecroTime", Time);
-                }
-            }
-            else if (SelectionClassView._characterType == "Morfe")
-            {
-                if (Time > PlayerPrefs.GetFloat("MorfeTime"))
-                {
-                    PlayerPrefs.SetFloat("MorfeTime", Time);
-                }
-            }
-            else if (SelectionClassView._characterType == "Neo")
-            {
-                if (Time > PlayerPrefs.GetFloat("NeoTime"))
-                {
-                    PlayerPrefs.SetFloat("NeoTime", Time);
-                }
-            }
-            else if (SelectionClassView._characterType == "Invulnerable")
-            {
-                if (Time > PlayerPrefs.GetFloat("InvulnerableTime"))
-                {
-                    PlayerPrefs.SetFloat("InvulnerableTime", Time);
-                }
-            }
-            else if (SelectionClassView._characterType == "Nexus")
-            {
-                if (Time > PlayerPrefs.GetFloat("NexusTime"))
-                {
-                    PlayerPrefs.SetFloat("NexusTime", Time);
-                }
+                PlayerPrefs.SetFloat(_characterObject[CharacterType], Time);
             }
         }
     }

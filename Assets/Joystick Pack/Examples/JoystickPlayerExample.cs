@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Menu.SelectionClass;
+using UnityEngine;
 
 namespace Joystick_Pack.Examples
 {
@@ -7,17 +8,24 @@ namespace Joystick_Pack.Examples
     {
         [SerializeField] private ParticleSystem _moveParticle;
         [SerializeField] private ParticleSystem _frictionParticle;
-        [SerializeField] private float _maxSpeed;
         private VariableJoystick _variableJoystick;
         private Rigidbody _rigidbody;
         public static float Speed;
-
-        public float MaxSpeed => _maxSpeed;
+        public float MaxSpeed { get; private set; } = 20;
 
         private void Start()
         {
+            if (SelectionClassView.WhatPlaying == "Level")
+            {
+                MaxSpeed = 10;
+            }
+            else if (SelectionClassView.WhatPlaying == "Infinity")
+            {
+                MaxSpeed = 20;
+            }
+
             _moveParticle.Stop();
-            Speed = _maxSpeed;
+            Speed = MaxSpeed;
             _rigidbody = GetComponent<Rigidbody>();
             _variableJoystick = FindObjectOfType<VariableJoystick>();
         }
@@ -42,6 +50,7 @@ namespace Joystick_Pack.Examples
                 }
             }
         }
+
         private void OnCollisionStay(Collision other)
         {
             if (other.gameObject.CompareTag("Wall"))

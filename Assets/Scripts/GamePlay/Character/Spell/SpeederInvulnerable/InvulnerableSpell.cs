@@ -1,6 +1,6 @@
 using Joystick_Pack.Examples;
+using Menu.SelectionClass;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace GamePlay.Character.Spell.SpeederInvulnerable
@@ -14,14 +14,25 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
         [SerializeField] private GameObject _spellImage;
         [SerializeField] private GameObject _otherSpellImage;
         [SerializeField] private Button _otherSpellButton;
-        [SerializeField] private float _maxManaCost;
+        [SerializeField] private AudioSource _invulnerableSound;
+        private float _maxManaCost;
         private float _time;
         private float _starterTime;
         private bool _checkMover;
 
         private void Start()
         {
-            _time = 0.1f;
+            if (SelectionClassView.WhatPlaying == "Level")
+            {
+                _maxManaCost = 2;
+                _time = 0.1f;
+            }
+            else if (SelectionClassView.WhatPlaying == "Infinity")
+            {
+                _maxManaCost = 1;
+                _time = 0.1f;
+            }
+
             _starterTime = _time;
         }
 
@@ -37,7 +48,26 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                         _checkMover = true;
                         Invulnerable();
                     }
+
                     _time = _starterTime;
+                }
+            }
+
+            CheckSpellUpdate();
+        }
+
+        private void CheckSpellUpdate()
+        {
+            if (SelectionClassView.WhatPlaying == "Level")
+            {
+                if (CharacterUpdate.CanSpell2Update)
+                {
+                    for (int i = 0; i < CharacterUpdate.NumberSpell2Update; i++)
+                    {
+                        _maxManaCost -= 0.2f;
+                    }
+
+                    CharacterUpdate.CanSpell2Update = false;
                 }
             }
         }
@@ -56,6 +86,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 _otherSpellImage.SetActive(false);
                 _otherSpellButton.interactable = false;
                 _invulnerableParticle.SetActive(true);
+                _invulnerableSound.Play();
             }
             else
             {
@@ -68,7 +99,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 _otherSpellButton.interactable = true;
                 _invulnerableParticle.SetActive(false);
                 _accelerateSpell.Accelerate();
-
+                _invulnerableSound.Stop();
             }
         }
     }

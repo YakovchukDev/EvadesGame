@@ -4950,7 +4950,6 @@ GameObject:
   - component: {fileID: -6751872341226140653}
   - component: {fileID: 6384230457773146667}
   - component: {fileID: 4145164002759652995}
-  - component: {fileID: 3682484650263826576}
   m_Layer: 8
   m_Name: EnemyPatrol
   m_TagString: Untagged
@@ -5074,19 +5073,6 @@ MonoBehaviour:
   _lifeTime: 2
   _speed: 2
   _size: 2
---- !u!114 &3682484650263826576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912685854336025599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65c9fdae385b86c46b7d0cc4c7d1fa69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveEnemy: {fileID: 9120984248710984356}
 --- !u!1 &8768045150044161018
 GameObject:
   m_ObjectHideFlags: 0

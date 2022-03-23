@@ -1,4 +1,5 @@
 using Joystick_Pack.Examples;
+using Menu.SelectionClass;
 using UnityEngine;
 
 namespace GamePlay.Character.Spell.SpeederInvulnerable
@@ -9,7 +10,10 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
         [SerializeField] private ManaController _manaController;
         [SerializeField] private GameObject _spellImage;
         [SerializeField] private GameObject _accelerationParticle;
-        [SerializeField] private float _speedAccelerate;
+        [SerializeField] private AudioSource _accelerateSound;
+        [SerializeField] private AudioSource _windSound;
+        private float _speedAccelerate;
+        private float _maxManaCost;
         private float _time;
         private float _starterTime;
         public bool CheckAccelerate { get; set; }
@@ -17,7 +21,19 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
 
         private void Start()
         {
-            _time = 0.5f;
+            if (SelectionClassView.WhatPlaying == "Level")
+            {
+                _maxManaCost = 0.4f;
+                _time = 0.1f;
+                _speedAccelerate = 2;
+            }
+            else if (SelectionClassView.WhatPlaying == "Infinity")
+            {
+                _maxManaCost = 0.1f;
+                _time = 0.1f;
+                _speedAccelerate = 2;
+            }
+
             _starterTime = _time;
         }
 
@@ -28,7 +44,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 _time -= Time.deltaTime;
                 if (_time <= 0)
                 {
-                    if (!_manaController.ManaReduction(1f))
+                    if (!_manaController.ManaReduction(_maxManaCost))
                     {
                         CheckAccelerate = false;
                     }
@@ -36,7 +52,26 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                     _time = _starterTime;
                 }
             }
+
+            CheckSpellUpdate();
         }
+
+        private void CheckSpellUpdate()
+        {
+            if (SelectionClassView.WhatPlaying == "Level")
+            {
+                if (CharacterUpdate.CanSpell1Update)
+                {
+                    for (int i = 0; i < CharacterUpdate.NumberSpell1Update; i++)
+                    {
+                        _maxManaCost -= 0.06f;
+                    }
+
+                    CharacterUpdate.CanSpell1Update = false;
+                }
+            }
+        }
+
 
         public void Accelerate()
         {
@@ -47,12 +82,16 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 JoystickPlayerExample.Speed *= _speedAccelerate;
                 _spellImage.SetActive(false);
                 _accelerationParticle.SetActive(true);
+                _accelerateSound.Play();
+                _windSound.Play();
             }
             else
             {
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;
                 _spellImage.SetActive(true);
                 _accelerationParticle.SetActive(false);
+                _accelerateSound.Stop();
+                _windSound.Stop();
             }
         }
     }

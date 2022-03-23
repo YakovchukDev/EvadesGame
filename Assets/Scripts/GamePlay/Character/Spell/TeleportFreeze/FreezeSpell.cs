@@ -1,3 +1,4 @@
+using Menu.SelectionClass;
 using UnityEngine;
 
 namespace GamePlay.Character.Spell.TeleportFreeze
@@ -8,14 +9,27 @@ namespace GamePlay.Character.Spell.TeleportFreeze
         [SerializeField] private ReloadSpell _reloadSpell;
         [SerializeField] private GameObject _freezeField;
         [SerializeField] private GameObject _gravityRadius;
-        [SerializeField] private float _maxSize;
-        [SerializeField] private float _manaCost;
+        [SerializeField] private AudioSource _freezeSound;
+        private float _maxSize;
+        private float _manaCost;
         private float _timeExistenceAfterMaxSize;
+        private float _allTimeExistence = 2.4f;
         private float _size;
         private bool _goFreeze;
 
         private void Start()
         {
+            if (SelectionClassView.WhatPlaying == "Level")
+            {
+                _manaCost = 20;
+                _maxSize = 4;
+            }
+            else if (SelectionClassView.WhatPlaying == "Infinity")
+            {
+                _manaCost = 10;
+                _maxSize = 8;
+            }
+
             _freezeField.SetActive(false);
         }
 
@@ -24,6 +38,25 @@ namespace GamePlay.Character.Spell.TeleportFreeze
             if (_goFreeze)
             {
                 OnFreezeField(_maxSize);
+            }
+
+            CheckSpellUpdate();
+        }
+
+        private void CheckSpellUpdate()
+        {
+            if (SelectionClassView.WhatPlaying == "Level")
+            {
+                if (CharacterUpdate.CanSpell1Update)
+                {
+                    for (int i = 0; i < CharacterUpdate.NumberSpell1Update; i++)
+                    {
+                        _manaCost -= 2f;
+                        _maxSize += 0.8f;
+                    }
+
+                    CharacterUpdate.CanSpell1Update = false;
+                }
             }
         }
 
@@ -35,7 +68,10 @@ namespace GamePlay.Character.Spell.TeleportFreeze
                 {
                     _reloadSpell.ReloadFirstSpell(4);
                     if (_manaController.ManaReduction(_manaCost))
+                    {
                         _goFreeze = true;
+                        _freezeSound.Play();
+                    }
                 }
             }
         }
@@ -50,7 +86,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
             {
                 _size = maxSize;
                 _timeExistenceAfterMaxSize += Time.deltaTime;
-                if (_timeExistenceAfterMaxSize >= 1)
+                if (_timeExistenceAfterMaxSize >= 1 + _allTimeExistence)
                 {
                     _freezeField.SetActive(false);
                     _gravityRadius.SetActive(true);
@@ -59,7 +95,12 @@ namespace GamePlay.Character.Spell.TeleportFreeze
                     _freezeField.transform.localScale = new Vector3(_size, transform.localScale.y, _size);
                     _goFreeze = false;
                     _timeExistenceAfterMaxSize = 0;
+                    _allTimeExistence = 2.4f;
                 }
+            }
+            else
+            {
+                _allTimeExistence -= Time.deltaTime;
             }
         }
     }

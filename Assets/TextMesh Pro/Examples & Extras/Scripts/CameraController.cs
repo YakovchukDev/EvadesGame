@@ -3,37 +3,23 @@ using UnityEngine;
 
 namespace TextMesh_Pro.Scripts
 {
-    public class CameraController : MonoBehaviour
+    public class CameraController : SelectionClassView
     {
+        private readonly string[] _characterObject =
+        {
+            "CharacterJust(Clone)", "CharacterNecro(Clone)", "CharacterMorfe(Clone)", "CharacterNeo(Clone)",
+            "CharacterMagmax(Clone)", "CharacterNexusComponent"
+        };
+
         [SerializeField] private GameObject _player;
-        private float _offSetY = 15;
+        private const float OffSetY = 15;
         private Vector3 _cameraPosition;
 
-        private void Update()
+        private void Start()
         {
-            if (SelectionClassView._characterType == "Just")
+            if (_player == null)
             {
-                _player = GameObject.Find("CharacterJust(Clone)");
-            }
-            else if (SelectionClassView._characterType == "Necro")
-            {
-                _player = GameObject.Find("CharacterNecro(Clone)");
-            }
-            else if (SelectionClassView._characterType == "Morfe")
-            {
-                _player = GameObject.Find("CharacterMorfe(Clone)");
-            }
-            else if (SelectionClassView._characterType == "Neo")
-            {
-                _player = GameObject.Find("CharacterNeo(Clone)");
-            }
-            else if (SelectionClassView._characterType == "Invulnerable")
-            {
-                _player = GameObject.Find("CharacterMagmax(Clone)");
-            }
-            else if (SelectionClassView._characterType == "Nexus")
-            {
-                _player = GameObject.Find("CharacterNexusComponent");
+                _player = GameObject.Find(_characterObject[CharacterType]);
             }
         }
 
@@ -41,7 +27,7 @@ namespace TextMesh_Pro.Scripts
         {
             var position = _player.transform.position;
             _cameraPosition.x = position.x;
-            _cameraPosition.y = position.y + _offSetY;
+            _cameraPosition.y = position.y + OffSetY;
             _cameraPosition.z = position.z;
 
             transform.position = _cameraPosition;

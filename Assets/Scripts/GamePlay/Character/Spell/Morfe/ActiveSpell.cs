@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Menu.SelectionClass;
 using UnityEngine;
 
 namespace GamePlay.Character.Spell.Morfe
@@ -18,6 +19,17 @@ namespace GamePlay.Character.Spell.Morfe
 
         private void Start()
         {
+            if (SelectionClassView.WhatPlaying == "Level")
+            {
+                _manaCostMinimize = 20;
+                _manaCostDeactivating = 20;
+            }
+            else if (SelectionClassView.WhatPlaying == "Infinity")
+            {
+                _manaCostMinimize = 10;
+                _manaCostDeactivating = 10;
+            }
+
             for (var i = 0; i < 5; i++)
             {
                 _minimizePatrons.Add(Instantiate(_minimizePatron, transform.position, transform.rotation));
@@ -28,6 +40,37 @@ namespace GamePlay.Character.Spell.Morfe
             {
                 _deactivatingPatrons.Add(Instantiate(_deactivatingPatron, transform.position, transform.rotation));
                 _deactivatingPatrons[i].SetActive(false);
+            }
+        }
+
+        private void Update()
+        {
+            CheckSpellUpdate();
+        }
+
+        private void CheckSpellUpdate()
+        {
+            if (SelectionClassView.WhatPlaying == "Level")
+            {
+                if (CharacterUpdate.CanSpell2Update)
+                {
+                    for (int i = 0; i < CharacterUpdate.NumberSpell2Update; i++)
+                    {
+                        _manaCostMinimize -= 2f;
+                    }
+
+                    CharacterUpdate.CanSpell2Update = false;
+                }
+
+                if (CharacterUpdate.CanSpell1Update)
+                {
+                    for (int i = 0; i < CharacterUpdate.NumberSpell1Update; i++)
+                    {
+                        _manaCostDeactivating -= 2f;
+                    }
+
+                    CharacterUpdate.CanSpell1Update = false;
+                }
             }
         }
 
