@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 74272784}
   - component: {fileID: 74272786}
   - component: {fileID: 74272785}
+  - component: {fileID: 74272787}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -336,6 +337,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 74272783}
   m_CullTransparentMesh: 1
+--- !u!114 &74272787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74272783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u0417\u043C\u0456\u043D\u044E\u044E\u0447\u0438\u0439\u0441\u044F
+    \u0432\u043E\u0440\u043E\u0433. \u041F\u043E \u0442\u0440\u043E\u0448\u043A\u0438
+    \u0437\u043C\u0435\u043D\u0448\u0443\u0454 \u043A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C
+    \u0432\u0430\u0448\u043E\u0457 \u043C\u0430\u043D\u0438."
 --- !u!1 &79116325 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5696843061989220333, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
@@ -368,6 +387,7 @@ GameObject:
   - component: {fileID: 106835332}
   - component: {fileID: 106835334}
   - component: {fileID: 106835333}
+  - component: {fileID: 106835335}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -495,6 +515,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106835331}
   m_CullTransparentMesh: 1
+--- !u!114 &106835335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106835331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u041F\u0440\u0438\u0442\u044F\u0433\u0443\u044E\u0447\u0438\u0439
+    \u0432\u043E\u0440\u043E\u0433. \u041F\u043E\u0442\u0440\u0430\u043F\u0438\u0432\u0448\u0438
+    \u0443 \u0432\u043E\u0440\u043E\u0436\u0435 \u043F\u043E\u043B\u0435 \u0432\u0430\u0448\u043E\u0433\u043E
+    \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430 \u0431\u0443\u0434\u0435
+    \u0442\u044F\u0433\u043D\u0443\u0442\u0438 \u0432 \u0446\u0435\u043D\u0442\u0435\u0440
+    \u0432\u043E\u0440\u043E\u0433\u0430."
 --- !u!1 &125559393
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +546,7 @@ GameObject:
   - component: {fileID: 125559394}
   - component: {fileID: 125559396}
   - component: {fileID: 125559395}
+  - component: {fileID: 125559397}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -638,6 +679,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125559393}
   m_CullTransparentMesh: 1
+--- !u!114 &125559397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125559393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u0406\u043D\u043A\u043E\u043B\u0438 \u0432\u043E\u0440\u043E\u0433.
+    \u041F\u0435\u0440\u0456\u043E\u0434\u0438\u0447\u043D\u043E \u0437\u043C\u0456\u043D\u044E\u0454
+    \u043F\u0440\u043E\u0437\u043E\u0440\u0456\u0441\u0442\u044C. \u041A\u043E\u043B\u0438
+    \u0432\u043E\u0440\u043E\u0433 \u043D\u0430\u043F\u0456\u0432 \u043F\u0440\u043E\u0437\u043E\u0440\u0438\u0439
+    \u0432\u0456\u043D \u043D\u0435 \u043C\u043E\u0436\u0435 \u0437\u0430\u0432\u0434\u0430\u0442\u0438
+    \u0448\u043A\u043E\u0434\u0438, \u0441\u043C\u0456\u043B\u043E \u043F\u0440\u043E\u0445\u043E\u0434\u044C\u0442\u0435
+    \u0441\u043A\u0440\u0456\u0437\u044C \u043D\u044C\u043E\u0433\u043E, \u0430\u043B\u0435
+    \u043F\u0430\u043C'\u044F\u0442\u0430\u0439\u0442\u0435 \u0449\u043E \u0432 \u043B\u044E\u0431\u0438\u0439
+    \u043C\u043E\u043C\u0435\u043D\u0442 \u0432\u0456\u043D \u043C\u043E\u0436\u0435
+    \u0441\u0442\u0430\u0442\u0438 \u043D\u0435\u0431\u0435\u0437\u043F\u0435\u0447\u043D\u0438\u043C()"
 --- !u!1 &132596500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,6 +1681,7 @@ GameObject:
   - component: {fileID: 432199721}
   - component: {fileID: 432199723}
   - component: {fileID: 432199722}
+  - component: {fileID: 432199724}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1746,6 +1812,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432199720}
   m_CullTransparentMesh: 1
+--- !u!114 &432199724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432199720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u041F\u0430\u0442\u0440\u0443\u043B\u044E\u044E\u0447\u0438\u0439
+    \u0432\u043E\u0440\u043E\u0433. \u041F\u0435\u0440\u0435\u0441\u043B\u0456\u0434\u0443\u0454
+    \u0432\u0430\u0441, \u043A\u043E\u043B\u0438 \u0432\u0445\u043E\u0434\u0438\u0448
+    \u0432 \u0440\u0430\u0434\u0456\u0443\u0441 \u0431\u0430\u0447\u0435\u043D\u043D\u044F
+    \u0432\u043E\u0440\u043E\u0433\u0430 \u0432\u0456\u043D \u043F\u0435\u0440\u0435\u0441\u043B\u0456\u0434\u0443\u0454
+    \u0432\u0430\u0441, \u044F\u043A\u0449\u043E \u0432\u0438\u0439\u0442\u0438 \u0437
+    \u0440\u0430\u0434\u0456\u0443\u0441\u0430 \u0432\u0456\u043D \u043F\u0435\u0440\u0435\u0441\u0442\u0430\u043D\u0435
+    \u0432\u0430\u0441 \u043F\u0435\u0440\u0435\u0441\u043B\u0456\u0434\u0443\u0432\u0430\u0442\u0438."
 --- !u!114 &434590127 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5696843062179034727, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
@@ -3508,6 +3596,7 @@ GameObject:
   - component: {fileID: 713666655}
   - component: {fileID: 713666657}
   - component: {fileID: 713666656}
+  - component: {fileID: 713666658}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3636,6 +3725,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713666654}
   m_CullTransparentMesh: 1
+--- !u!114 &713666658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713666654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u041C\u0430\u0433\u043C\u0430\u043A\u0441 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436.
+    \u041C\u043E\u0436\u0435 \u043F\u0440\u0438\u0448\u0432\u0438\u0434\u0448\u0443\u0432\u0430\u0442\u0438\u0441\u044C,
+    \u0430\u0431\u043E \u0437\u0430\u0432\u043C\u0438\u0440\u0430\u0442\u0438 \u043D\u0430
+    \u043C\u044B\u0441\u0442\u0456 \u0442\u0430 \u0431\u0443\u0442\u0438 \u043D\u0435\u0432\u0440\u0430\u0437\u043B\u0438\u0432\u0438\u043C
+    \u043F\u043E\u043A\u0438 \u043D\u0435 \u0437\u0430\u043A\u0456\u043D\u0447\u0435\u0442\u044C\u0441\u044F
+    \u043C\u0430\u043D\u0430."
 --- !u!1 &755592434
 GameObject:
   m_ObjectHideFlags: 0
@@ -4295,6 +4404,7 @@ GameObject:
   - component: {fileID: 940089208}
   - component: {fileID: 940089210}
   - component: {fileID: 940089209}
+  - component: {fileID: 940089211}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4420,6 +4530,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940089207}
   m_CullTransparentMesh: 1
+--- !u!114 &940089211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940089207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u041F\u0440\u0438\u0448\u0432\u0438\u0434\u0448\u0443\u044E\u0447\u0438\u0439
+    \u0432\u043E\u0440\u043E\u0433. \u0412\u043E\u0440\u043E\u0436\u0435 \u043F\u043E\u043B\u0435
+    \u043F\u0440\u0438\u0448\u0432\u0438\u0434\u0448\u0443\u0454 \u0432\u0430\u0441."
 --- !u!1 &943421472
 GameObject:
   m_ObjectHideFlags: 0
@@ -4538,6 +4665,7 @@ GameObject:
   - component: {fileID: 999713311}
   - component: {fileID: 999713313}
   - component: {fileID: 999713312}
+  - component: {fileID: 999713314}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4668,6 +4796,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999713310}
   m_CullTransparentMesh: 1
+--- !u!114 &999713314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999713310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u041D\u0435\u043A\u0441\u0443\u0441 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436.
+    \u041C\u0430\u0454 \u0437\u0434\u0456\u0431\u043D\u0456\u0441\u0442\u044C, \u044F\u043A\u0430
+    \u0434\u0430\u0454 \u043C\u043E\u0436\u043B\u0438\u0432\u0456\u0441\u0442\u044C
+    \u0432\u043E\u0441\u043A\u0440\u0435\u0441\u043D\u0443\u0442\u0438 1 \u0440\u0430\u0437.
+    \u0406 \u0449\u0435 \u043E\u0434\u043D\u0443 \u0437\u0434\u0456\u0431\u043D\u0456\u0441\u0442\u044C
+    ,\u044F\u043A\u0430 \u0441\u0442\u0432\u043E\u0440\u044E\u0454 \u043F\u043E\u043B\u0435
+    \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043D\u0456 \u044F\u043A\u043E\u0433\u043E
+    \u0432\u0438 \u043D\u0435\u0432\u0440\u0430\u0437\u043B\u0438\u0432\u0438\u0439."
 --- !u!1 &1024925108
 GameObject:
   m_ObjectHideFlags: 0
@@ -5005,6 +5155,7 @@ GameObject:
   - component: {fileID: 1065394020}
   - component: {fileID: 1065394022}
   - component: {fileID: 1065394021}
+  - component: {fileID: 1065394023}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5131,6 +5282,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065394019}
   m_CullTransparentMesh: 1
+--- !u!114 &1065394023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065394019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u0412\u043E\u0441\u043A\u0440\u0435\u0441\u0430\u044E\u0447\u0438\u0439\u0441\u044F
+    \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436. \u041C\u0430\u0454 \u0437\u0434\u0456\u0431\u043D\u0456\u0441\u0442\u044C,
+    \u044F\u043A\u0430 \u0434\u0430\u0454 \u043C\u043E\u0436\u043B\u0438\u0432\u0456\u0441\u0442\u044C
+    \u0432\u043E\u0441\u043A\u0440\u0435\u0441\u043D\u0443\u0442\u0438 1 \u0440\u0430\u0437."
 --- !u!1 &1105704811
 GameObject:
   m_ObjectHideFlags: 0
@@ -5608,6 +5777,7 @@ GameObject:
   - component: {fileID: 1229246939}
   - component: {fileID: 1229246941}
   - component: {fileID: 1229246940}
+  - component: {fileID: 1229246942}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5737,6 +5907,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229246938}
   m_CullTransparentMesh: 1
+--- !u!114 &1229246942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229246938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u0417\u043C\u0456\u043D\u044E\u044E\u0447\u0438\u0439\u0441\u044F
+    \u0432\u043E\u0440\u043E\u0433. \u0417\u0430\u0432\u0436\u0434\u0438 \u0437\u043C\u0456\u043D\u044E\u0454
+    \u0441\u0432\u0456\u0439 \u0440\u043E\u0437\u043C\u0456\u0440, \u043A\u043E\u043B\u0438
+    \u0434\u043E\u0441\u044F\u0433\u0430\u0454 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E
+    \u0440\u043E\u0437\u043C\u0456\u0440\u0430 \u043F\u043E\u0447\u0438\u043D\u0430\u0454
+    \u0437\u043C\u0435\u043D\u044C\u0448\u0443\u0432\u0430\u0442\u0438\u0441\u044C
+    \u0456 \u043D\u0430\u0432\u043F\u0430\u043A\u0438."
 --- !u!1 &1243676333
 GameObject:
   m_ObjectHideFlags: 0
@@ -5748,6 +5939,7 @@ GameObject:
   - component: {fileID: 1243676334}
   - component: {fileID: 1243676336}
   - component: {fileID: 1243676335}
+  - component: {fileID: 1243676337}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5874,6 +6066,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243676333}
   m_CullTransparentMesh: 1
+--- !u!114 &1243676337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243676333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u041D\u0435\u0432\u0440\u0430\u0437\u043B\u0438\u0432\u0438\u0439
+    \u0432\u043E\u0440\u043E\u0433. \u041D\u0456\u044F\u043A\u0430 \u0437\u0434\u0456\u0431\u043D\u0456\u0441\u0442\u044C
+    \u043D\u0435 \u043C\u043E\u0436\u0435 \u0432\u043F\u043B\u0438\u043D\u0443\u0442\u0438
+    \u043D\u0430 \u043D\u044C\u043E\u0433\u043E ."
 --- !u!1 &1246914939
 GameObject:
   m_ObjectHideFlags: 0
@@ -6701,6 +6911,7 @@ GameObject:
   - component: {fileID: 1401234023}
   - component: {fileID: 1401234025}
   - component: {fileID: 1401234024}
+  - component: {fileID: 1401234026}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6827,6 +7038,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401234022}
   m_CullTransparentMesh: 1
+--- !u!114 &1401234026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401234022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u0417\u0432\u0438\u0447\u0430\u0439\u043D\u0438\u0439 \u0432\u043E\u0440\u043E\u0433.
+    \u041D\u0435\u043C\u0430\u0454 \u043D\u0456\u044F\u043A\u0438\u0445 \u0437\u0434\u0456\u0431\u043D\u043E\u0441\u0442\u0435\u0439,
+    \u0432\u0435\u0441\u044C \u0447\u0430\u0441 \u0440\u0443\u0445\u0430\u0454\u0442\u044C\u0441\u044F
+    \u043F\u043E \u0437\u0432\u0438\u0447\u0430\u0439\u043D\u0456\u0439 \u0442\u0440\u0430\u0435\u043A\u0442\u043E\u0440\u0456\u0457."
 --- !u!1 &1417680104
 GameObject:
   m_ObjectHideFlags: 0
@@ -6838,6 +7067,7 @@ GameObject:
   - component: {fileID: 1417680105}
   - component: {fileID: 1417680107}
   - component: {fileID: 1417680106}
+  - component: {fileID: 1417680108}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6966,6 +7196,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417680104}
   m_CullTransparentMesh: 1
+--- !u!114 &1417680108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417680104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u0412\u0456\u0434\u0448\u0442\u043E\u0432\u0445\u0443\u044E\u0447\u0438\u0439
+    \u0432\u043E\u0440\u043E\u0433. \u041F\u043E\u0442\u0440\u0430\u043F\u0438\u0432\u0448\u0438
+    \u0443 \u0432\u043E\u0440\u043E\u0436\u0435 \u043F\u043E\u043B\u0435 \u0432\u0430\u0448\u043E\u0433\u043E
+    \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430 \u0431\u0443\u0434\u0435
+    \u0412\u0456\u0434\u0448\u0442\u043E\u0432\u0445\u0443\u0432\u0430\u0442\u0438
+    \u0432\u0456\u0434 \u0432\u043E\u0440\u043E\u0433\u0430."
 --- !u!1 &1419741085
 GameObject:
   m_ObjectHideFlags: 0
@@ -7984,6 +8234,7 @@ GameObject:
   - component: {fileID: 1589224639}
   - component: {fileID: 1589224641}
   - component: {fileID: 1589224640}
+  - component: {fileID: 1589224642}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -8111,6 +8362,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589224638}
   m_CullTransparentMesh: 1
+--- !u!114 &1589224642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589224638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u0417\u0443\u043F\u0438\u043D\u044F\u044E\u0447\u0438\u0439\u0441\u044F
+    \u0432\u043E\u0440\u043E\u0433. \u041F\u0435\u0440\u0456\u043E\u0434\u0438\u0447\u043D\u043E
+    \u0440\u0443\u0445\u0430\u0454\u0442\u044C\u0441\u044F,\u0432 \u043A\u043E\u043D\u043A\u0440\u0435\u0442\u043D\u0438\u0439
+    \u043C\u043E\u043C\u0435\u043D\u0442 \u043C\u043E\u0436\u0435 \u0437\u0443\u043F\u0438\u043D\u0438\u0442\u0438\u0441\u044C
+    \u0430\u0431\u043E \u0437\u0430\u0440\u0443\u0445\u0430\u0442\u0438\u0441\u044C."
 --- !u!1 &1610092127
 GameObject:
   m_ObjectHideFlags: 0
@@ -8122,6 +8392,7 @@ GameObject:
   - component: {fileID: 1610092128}
   - component: {fileID: 1610092130}
   - component: {fileID: 1610092129}
+  - component: {fileID: 1610092131}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -8247,6 +8518,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610092127}
   m_CullTransparentMesh: 1
+--- !u!114 &1610092131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610092127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u0417\u0431\u0456\u043B\u044C\u0448\u0443\u044E\u0447\u0438\u0439
+    \u0432\u043E\u0440\u043E\u0433. \u0432\u043E\u0440\u043E\u0436\u0435 \u043F\u043E\u043B\u0435
+    \u0437\u0431\u0456\u043B\u044C\u0448\u0443\u0454 \u0432\u0430\u0448\u043E\u0433\u043E
+    \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430."
 --- !u!1 &1615792727
 GameObject:
   m_ObjectHideFlags: 0
@@ -8501,6 +8790,7 @@ GameObject:
   - component: {fileID: 1628988893}
   - component: {fileID: 1628988895}
   - component: {fileID: 1628988894}
+  - component: {fileID: 1628988896}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -8628,6 +8918,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628988892}
   m_CullTransparentMesh: 1
+--- !u!114 &1628988896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628988892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u0417\u0432\u0438\u0447\u0430\u0439\u043D\u0438\u0439 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436.
+    \u041D\u0435\u043C\u0430\u0454 \u043D\u0456\u044F\u043A\u0438\u0445 \u0437\u0434\u0456\u0431\u043D\u043E\u0441\u0442\u0435\u0439,
+    \u043C\u043E\u0436\u043D\u0430 \u043F\u0440\u043E\u043A\u0430\u0447\u0443\u0432\u0430\u0442\u0438
+    \u043B\u0438\u0448\u0435 \u0448\u0432\u0438\u0434\u043A\u0456\u0441\u0442\u044C
+    \u043F\u0435\u0440\u0435\u043C\u0456\u0449\u0435\u043D\u043D\u044F."
 --- !u!114 &1654353260 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5696843060414532260, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
@@ -9983,6 +10292,7 @@ GameObject:
   - component: {fileID: 1873004661}
   - component: {fileID: 1873004663}
   - component: {fileID: 1873004662}
+  - component: {fileID: 1873004664}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -10111,6 +10421,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873004660}
   m_CullTransparentMesh: 1
+--- !u!114 &1873004664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873004660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u0421\u0442\u0440\u0435\u043B\u044F\u044E\u0447\u0438\u0439 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436.
+    \u041C\u043E\u0436\u0435 \u0441\u0442\u0440\u0456\u043B\u044F\u0442\u0438 \u0434\u0432\u043E\u043C\u0430
+    \u0432\u0438\u0434\u0430\u043C\u0438 \u0441\u043D\u0430\u0440\u044F\u0434\u0456\u0432.
+    1) \u0421\u043D\u0430\u0440\u044F\u0434\u0438 \u0437\u043C\u0435\u043D\u0448\u0443\u044E\u0447\u0456
+    \u0432\u043E\u0440\u043E\u0433\u0430, 2) \u0421\u043D\u0430\u0440\u044F\u0434\u0438
+    \u0434\u0435\u0430\u043A\u0442\u0438\u0432\u0443\u044E\u0447\u0456 \u0432\u043E\u0440\u043E\u0433\u0456\u0432."
 --- !u!114 &1883317654 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5696843060729741918, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
@@ -10220,6 +10550,7 @@ GameObject:
   - component: {fileID: 2128851061}
   - component: {fileID: 2128851063}
   - component: {fileID: 2128851062}
+  - component: {fileID: 2128851064}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -10347,6 +10678,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128851060}
   m_CullTransparentMesh: 1
+--- !u!114 &2128851064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128851060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u041D\u0435\u043E \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436.
+    \u041C\u043E\u0436\u0435 \u0442\u0435\u043B\u0435\u043F\u043E\u0440\u0442\u0443\u0432\u0430\u0442\u0438\u0441\u044C
+    \u0432\u043F\u0435\u0440\u0435\u0434, \u0430\u0431\u043E \u0441\u0442\u0432\u043E\u0440\u044E\u0432\u0430\u0442\u0438
+    \u043F\u043E\u043B\u0435, \u0449\u043E \u0437\u0430\u043C\u043E\u0440\u043E\u0436\u0443\u0454
+    \u0432\u043E\u0440\u043E\u0433\u0456\u0432."
 --- !u!1 &2129966345
 GameObject:
   m_ObjectHideFlags: 0
@@ -10601,6 +10951,7 @@ GameObject:
   - component: {fileID: 2137490197}
   - component: {fileID: 2137490199}
   - component: {fileID: 2137490198}
+  - component: {fileID: 2137490200}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -10726,6 +11077,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137490196}
   m_CullTransparentMesh: 1
+--- !u!114 &2137490200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137490196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 
+  _russianText: 
+  _ukrainianText: "\u0417\u0430\u043F\u043E\u0432\u0456\u043B\u044C\u043D\u044E\u044E\u0447\u0438\u0439
+    \u0432\u043E\u0440\u043E\u0433. \u0412\u043E\u0440\u043E\u0436\u0435 \u043F\u043E\u043B\u0435
+    \u0437\u0430\u043F\u043E\u0432\u0456\u043B\u044C\u043D\u044F\u0454 \u0432\u0430\u0441."
 --- !u!1001 &5696843062067800008
 PrefabInstance:
   m_ObjectHideFlags: 0

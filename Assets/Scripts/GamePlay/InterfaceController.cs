@@ -2,16 +2,22 @@ using GamePlay.Enemy.Spawner;
 using Menu.SelectionClass;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace GamePlay
 {
     public class InterfaceController : SelectionClassView
-    { private static string[] _characterObject =
+    {
+        [SerializeField] private AudioMixerGroup _audioMixer;
+
+        private static readonly string[] CharacterObject =
         {
             "JustTime", "NecroTime", "MorfeTime", "NeoTime",
             "InvulnerableTime", "NexusTime"
         };
+
         [SerializeField] private TMP_Text _timer;
         public static float Time;
 
@@ -29,11 +35,13 @@ namespace GamePlay
         public void OnPause()
         {
             UnityEngine.Time.timeScale = 0;
+            _audioMixer.audioMixer.SetFloat("SoundVolume", -80);
         }
 
         public void OffPause()
         {
             UnityEngine.Time.timeScale = 1;
+            _audioMixer.audioMixer.SetFloat("SoundVolume", 0);
         }
 
         public void ExitButton()
@@ -44,13 +52,14 @@ namespace GamePlay
             Time = 0;
             InfinityEnemySpawner.SpawnNumber = 0;
             TimeSave();
+            _audioMixer.audioMixer.SetFloat("SoundVolume", 0);
         }
 
         public static void TimeSave()
         {
-            if (Time > PlayerPrefs.GetFloat(_characterObject[CharacterType]))
+            if (Time > PlayerPrefs.GetFloat(CharacterObject[CharacterType]))
             {
-                PlayerPrefs.SetFloat(_characterObject[CharacterType], Time);
+                PlayerPrefs.SetFloat(CharacterObject[CharacterType], Time);
             }
         }
     }

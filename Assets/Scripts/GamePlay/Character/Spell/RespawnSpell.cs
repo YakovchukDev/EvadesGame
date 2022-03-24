@@ -1,5 +1,6 @@
 using Joystick_Pack.Examples;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace GamePlay.Character.Spell
@@ -8,6 +9,7 @@ namespace GamePlay.Character.Spell
     {
         [SerializeField] private JoystickPlayerExample _joystickPlayerExample;
         [SerializeField] private HealthController _healthController;
+        [SerializeField] private AudioMixerGroup _audioMixer;
         [SerializeField] private GameObject _respawnParticle;
         [SerializeField] private Button _spell1;
         [SerializeField] private int _spellNumber = 1;
@@ -31,6 +33,7 @@ namespace GamePlay.Character.Spell
         {
             if (_spellNumber >= 1)
             {
+                _audioMixer.audioMixer.SetFloat("SoundVolume", 0);
                 _killer.SetActive(false);
                 transform.position = _diePosition;
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;

@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyClass1:
-  - {fileID: 1912685854336025599, guid: 00277a838af39804fbac00637e20988c, type: 3}
-  - {fileID: 1912685854336025599, guid: 00277a838af39804fbac00637e20988c, type: 3}
-  - {fileID: 1912685854336025599, guid: 00277a838af39804fbac00637e20988c, type: 3}
+  - {fileID: 8510527150873304264, guid: 4aa4d5399ea804e489c37ddec473dfaa, type: 3}
+  - {fileID: 9168754128252031128, guid: c4ad8752ca88d5e47a6dc3ed5d84362e, type: 3}
+  - {fileID: 2676826178133515840, guid: 23dd0e12632ce034c8192604a65c4627, type: 3}
   _enemyClass2:
-  - {fileID: 5628239827406890741, guid: e7fd980360b9e6d4c8c22b40394cc555, type: 3}
   - {fileID: 4464688701804638509, guid: 7de2ebf3f24a21e4ca639dde83e725ec, type: 3}
   - {fileID: 5246570446611896554, guid: 53134d3897a96c54d93235071b38a63b, type: 3}
+  - {fileID: 5628239827406890741, guid: e7fd980360b9e6d4c8c22b40394cc555, type: 3}
   _enemyClass3:
   - {fileID: 8836489298002113124, guid: 5c1efe6793b95df48938c26d9feb0daf, type: 3}
   - {fileID: 1912685854336025599, guid: 00277a838af39804fbac00637e20988c, type: 3}
@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4778084118cb0a4a8326101ce429893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioMixer: {fileID: 24300002, guid: 761f1e5b3abc4984b8494cb4169a56d8, type: 2}
   _timer: {fileID: 0}
 --- !u!114 &2058591591030872340
 MonoBehaviour:

@@ -1,15 +1,22 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GamePlay.Character.Spell.Morfe
 {
     public class DeactivatingSpell : MonoBehaviour
     {
+        [SerializeField] private List<GameObject> _particles;
         private Vector3 _direction;
         private float _timer = 2;
         private bool _applyDirection;
 
         private void Start()
         {
+            foreach (var particle in _particles)
+            {
+                particle.transform.rotation = transform.rotation;
+            }
+
             transform.parent = null;
             _applyDirection = true;
             if (_applyDirection)

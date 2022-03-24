@@ -7,6 +7,7 @@ namespace Joystick_Pack.Examples
     public class JoystickPlayerExample : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _moveParticle;
+        [SerializeField] private AudioSource _moveSound;
         [SerializeField] private ParticleSystem _frictionParticle;
         private VariableJoystick _variableJoystick;
         private Rigidbody _rigidbody;
@@ -46,6 +47,7 @@ namespace Joystick_Pack.Examples
                         Vector3 hitPoint = missileHit.point;
                         Instantiate(_frictionParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z),
                             transform.rotation);
+                        _moveSound.Play();
                     }
                 }
             }
@@ -64,6 +66,14 @@ namespace Joystick_Pack.Examples
                             transform.rotation);
                     }
                 }
+            }
+        }
+
+        private void OnCollisionExit(Collision other)
+        {
+            if (other.gameObject.CompareTag("Wall"))
+            {
+                _moveSound.Pause();
             }
         }
 

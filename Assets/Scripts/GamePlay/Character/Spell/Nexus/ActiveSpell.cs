@@ -9,16 +9,19 @@ namespace GamePlay.Character.Spell.Nexus
         [SerializeField] private ReloadSpell _reloadSpell;
         [SerializeField] private GameObject _invulnerableField;
         private float _manaCost;
+        private float _timeReloadSecondSpell;
 
         private void Start()
         {
             if (SelectionClassView.WhatPlaying == "Level")
             {
                 _manaCost = 25;
+                _timeReloadSecondSpell = 6;
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
                 _manaCost = 15;
+                _timeReloadSecondSpell = 3;
             }
         }
 
@@ -36,6 +39,7 @@ namespace GamePlay.Character.Spell.Nexus
                     for (int i = 0; i < CharacterUpdate.NumberSpell2Update; i++)
                     {
                         _manaCost -= 2f;
+                        _timeReloadSecondSpell -= 0.6f;
                     }
 
 
@@ -48,7 +52,7 @@ namespace GamePlay.Character.Spell.Nexus
         {
             if (_reloadSpell._canUseSpellSecond)
             {
-                _reloadSpell.ReloadSecondSpell(3);
+                _reloadSpell.ReloadSecondSpell(_timeReloadSecondSpell);
                 if (_manaController.ManaReduction(_manaCost))
                 {
                     _invulnerableField.transform.position = transform.position;

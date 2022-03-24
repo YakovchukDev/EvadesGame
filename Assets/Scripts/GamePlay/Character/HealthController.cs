@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace GamePlay.Character
 {
@@ -6,6 +7,8 @@ namespace GamePlay.Character
     {
         [SerializeField] private int _hpNumber = 1;
         [SerializeField] private GameObject _panelAfterDie;
+        [SerializeField] private AudioSource _dieSound;
+        [SerializeField] private AudioMixerGroup _audioMixer;
         public static float ImmortalityTime;
         public static bool Immortality;
         private Color _materialColor;
@@ -72,6 +75,8 @@ namespace GamePlay.Character
                 Time.timeScale = 0;
                 _panelAfterDie.SetActive(true);
                 InterfaceController.TimeSave();
+                _dieSound.Play();
+                _audioMixer.audioMixer.SetFloat("SoundVolume", -80);
             }
         }
     }

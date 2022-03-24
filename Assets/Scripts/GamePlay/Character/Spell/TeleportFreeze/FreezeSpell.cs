@@ -16,6 +16,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
         private float _allTimeExistence = 2.4f;
         private float _size;
         private bool _goFreeze;
+        private float _timeReloadFirstSpell;
 
         private void Start()
         {
@@ -23,11 +24,13 @@ namespace GamePlay.Character.Spell.TeleportFreeze
             {
                 _manaCost = 20;
                 _maxSize = 4;
+                _timeReloadFirstSpell = 8;
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
                 _manaCost = 10;
                 _maxSize = 8;
+                _timeReloadFirstSpell = 4;
             }
 
             _freezeField.SetActive(false);
@@ -53,6 +56,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
                     {
                         _manaCost -= 2f;
                         _maxSize += 0.8f;
+                        _timeReloadFirstSpell -= 0.8f;
                     }
 
                     CharacterUpdate.CanSpell1Update = false;
@@ -66,7 +70,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
             {
                 if (_reloadSpell._canUseSpellFirst)
                 {
-                    _reloadSpell.ReloadFirstSpell(4);
+                    _reloadSpell.ReloadFirstSpell(_timeReloadFirstSpell);
                     if (_manaController.ManaReduction(_manaCost))
                     {
                         _goFreeze = true;

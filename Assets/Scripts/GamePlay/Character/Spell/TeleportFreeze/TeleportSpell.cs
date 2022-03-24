@@ -11,6 +11,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
         [SerializeField] private AudioSource _teleportSound;
         private float _manaCost;
         private float _teleportationLength;
+        private float _timeReloadSecondSpell;
 
         private void Start()
         {
@@ -18,11 +19,13 @@ namespace GamePlay.Character.Spell.TeleportFreeze
             {
                 _manaCost = 20;
                 _teleportationLength = 8;
+                _timeReloadSecondSpell = 4;
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
                 _manaCost = 10;
                 _teleportationLength = 8;
+                _timeReloadSecondSpell = 1;
             }
         }
 
@@ -40,6 +43,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
                     for (int i = 0; i < CharacterUpdate.NumberSpell2Update; i++)
                     {
                         _manaCost -= 2f;
+                        _timeReloadSecondSpell -= 0.6f;
                     }
 
                     CharacterUpdate.CanSpell2Update = false;
@@ -51,7 +55,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
         {
             if (_reloadSpell._canUseSpellSecond)
             {
-                _reloadSpell.ReloadSecondSpell(1);
+                _reloadSpell.ReloadSecondSpell(_timeReloadSecondSpell);
                 if (_manaController.ManaReduction(_manaCost))
                 {
                     _teleportSound.Play();

@@ -16,6 +16,8 @@ namespace GamePlay.Character.Spell.Morfe
         [SerializeField] private float _manaCostDeactivating;
         private float _minimizeRotation = -12.5f;
         private float _deactivatingRotation = -12.5f;
+        private float _timeReloadFirstSpell;
+        private float _timeReloadSecondSpell;
 
         private void Start()
         {
@@ -23,11 +25,15 @@ namespace GamePlay.Character.Spell.Morfe
             {
                 _manaCostMinimize = 20;
                 _manaCostDeactivating = 20;
+                _timeReloadFirstSpell=6;
+                _timeReloadSecondSpell=6;
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
                 _manaCostMinimize = 10;
                 _manaCostDeactivating = 10;
+                _timeReloadFirstSpell=3;
+                _timeReloadSecondSpell=3;
             }
 
             for (var i = 0; i < 5; i++)
@@ -57,6 +63,7 @@ namespace GamePlay.Character.Spell.Morfe
                     for (int i = 0; i < CharacterUpdate.NumberSpell2Update; i++)
                     {
                         _manaCostMinimize -= 2f;
+                        _timeReloadFirstSpell-=0.6f;
                     }
 
                     CharacterUpdate.CanSpell2Update = false;
@@ -67,6 +74,7 @@ namespace GamePlay.Character.Spell.Morfe
                     for (int i = 0; i < CharacterUpdate.NumberSpell1Update; i++)
                     {
                         _manaCostDeactivating -= 2f;
+                        _timeReloadSecondSpell-=0.6f;
                     }
 
                     CharacterUpdate.CanSpell1Update = false;
@@ -78,7 +86,7 @@ namespace GamePlay.Character.Spell.Morfe
         {
             if (_reloadSpell._canUseSpellFirst)
             {
-                _reloadSpell.ReloadFirstSpell(3);
+                _reloadSpell.ReloadFirstSpell(_timeReloadFirstSpell);
                 if (_manaController.ManaReduction(_manaCostMinimize))
                 {
                     _minimizeRotation = -12.5f;
@@ -102,7 +110,7 @@ namespace GamePlay.Character.Spell.Morfe
         {
             if (_reloadSpell._canUseSpellSecond)
             {
-                _reloadSpell.ReloadSecondSpell(3);
+                _reloadSpell.ReloadSecondSpell(_timeReloadSecondSpell);
                 if (_manaController.ManaReduction(_manaCostDeactivating))
                 {
                     _deactivatingRotation = -12.5f;
