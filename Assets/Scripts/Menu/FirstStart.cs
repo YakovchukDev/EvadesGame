@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class FirstStart : MonoBehaviour
+namespace Menu
 {
-    private void Awake()
+    public class FirstStart : MonoBehaviour
     {
-        if (!PlayerPrefs.HasKey("Language"))
+        private void Awake()
         {
-            PlayerPrefs.SetString("Language", "English");
+            if (!PlayerPrefs.HasKey("Language"))
+            {
+                PlayerPrefs.SetString("Language", "English");
+            }
         }
     }
 }

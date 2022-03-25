@@ -497,6 +497,7 @@ MonoBehaviour:
   _manaController: {fileID: 8641709683795546105}
   _reloadSpell: {fileID: 1911395832924520788}
   _freezeField: {fileID: 580749870603365119}
+  _freezeParticle: {fileID: 0}
   _gravityRadius: {fileID: 217955185238416341}
   _freezeSound: {fileID: 5073757224277434054}
 --- !u!114 &-2436696577426043784
@@ -1018,7 +1019,7 @@ MonoBehaviour:
   _manaController: {fileID: 8641709683795546105}
   _noGrowUp:
   - {fileID: 580749870603365119}
-  - {fileID: 0}
+  - {fileID: 217955185238416341}
   _father: {fileID: 1911395832924520791}
 --- !u!135 &4471050078211853418
 SphereCollider:
@@ -1792,11 +1793,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5416232796036632428, guid: da3f7b47427d07946918eac87358f837, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000061035156
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5416232796036632428, guid: da3f7b47427d07946918eac87358f837, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5416232796036632428, guid: da3f7b47427d07946918eac87358f837, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2153,7 +2154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6443508132798338364, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00024414062
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6443508132798338364, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
       propertyPath: m_AnchoredPosition.y

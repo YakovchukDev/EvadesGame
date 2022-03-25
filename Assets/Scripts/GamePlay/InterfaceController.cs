@@ -35,13 +35,13 @@ namespace GamePlay
         public void OnPause()
         {
             UnityEngine.Time.timeScale = 0;
-            _audioMixer.audioMixer.SetFloat("SoundVolume", -80);
+            _audioMixer.audioMixer.SetFloat("EffectVolume", -80);
         }
 
         public void OffPause()
         {
             UnityEngine.Time.timeScale = 1;
-            _audioMixer.audioMixer.SetFloat("SoundVolume", 0);
+            _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
         }
 
         public void ExitButton()
@@ -52,7 +52,7 @@ namespace GamePlay
             Time = 0;
             InfinityEnemySpawner.SpawnNumber = 0;
             TimeSave();
-            _audioMixer.audioMixer.SetFloat("SoundVolume", 0);
+            _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
         }
 
         public static void TimeSave()

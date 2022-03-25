@@ -13,6 +13,7 @@ namespace Joystick_Pack.Examples
         private Rigidbody _rigidbody;
         public static float Speed;
         public float MaxSpeed { get; private set; } = 20;
+        private bool _playMoveSound;
 
         private void Start()
         {
@@ -65,6 +66,12 @@ namespace Joystick_Pack.Examples
                         Instantiate(_frictionParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z),
                             transform.rotation);
                     }
+
+                    if (_playMoveSound)
+                    {
+                        _moveSound.Play();
+                        _playMoveSound = false;
+                    }
                 }
             }
         }
@@ -74,9 +81,9 @@ namespace Joystick_Pack.Examples
             if (other.gameObject.CompareTag("Wall"))
             {
                 _moveSound.Pause();
+                _playMoveSound = true;
             }
         }
-
         private void MoveCharacter()
         {
             _rigidbody.velocity = new Vector3(_variableJoystick.Horizontal * Speed, _rigidbody.velocity.y,

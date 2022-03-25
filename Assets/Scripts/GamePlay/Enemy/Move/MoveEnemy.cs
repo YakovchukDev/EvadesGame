@@ -9,19 +9,19 @@ namespace GamePlay.Enemy.Move
         [SerializeField] protected GameObject _freezeField;
         [SerializeField] protected ParticleSystem _enemyBounceParticle;
         [SerializeField] private float _speed = 5;
-        private Quaternion _rotation;
+        public Quaternion Rotation { get; set; }
         private GameObject _gameObject;
         private float _freezeTimer;
         private float _time;
-        private const float RotationSpeed = 15;
-        private bool _rotate;
+        private const float RotationSpeed = 7;
+        public bool Rotate { get; set; }
         protected bool CanFreeze;
 
 
         private void Start()
         {
             _gameObject = GameObject.FindGameObjectWithTag("Freeze");
-            _rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+            Rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
         }
 
         private void FixedUpdate()
@@ -57,8 +57,8 @@ namespace GamePlay.Enemy.Move
             if (other.gameObject.CompareTag("Wall"))
             {
                 var reflectDir = Vector3.Reflect(transform.forward, other.GetContact(0).normal);
-                _rotation = Quaternion.LookRotation(reflectDir);
-                _rotate = true;
+                Rotation = Quaternion.LookRotation(reflectDir);
+                Rotate = true;
                 foreach (var missileHit in other.contacts)
                 {
                     var hitPoint = missileHit.point;
@@ -87,12 +87,12 @@ namespace GamePlay.Enemy.Move
 
         private void RotateController()
         {
-            if (_rotate)
+            if (Rotate)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, _rotation, RotationSpeed * Time.deltaTime);
-                if (transform.rotation == _rotation)
+                transform.rotation = Quaternion.Lerp(transform.rotation, Rotation, RotationSpeed * Time.deltaTime);
+                if (transform.rotation == Rotation)
                 {
-                    _rotate = false;
+                    Rotate = false;
                 }
             }
         }

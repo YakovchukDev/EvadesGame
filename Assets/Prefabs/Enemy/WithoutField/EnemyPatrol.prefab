@@ -4950,9 +4950,10 @@ GameObject:
   - component: {fileID: -6751872341226140653}
   - component: {fileID: 6384230457773146667}
   - component: {fileID: 4145164002759652995}
+  - component: {fileID: 3320145564439101732}
   m_Layer: 8
   m_Name: EnemyPatrol
-  m_TagString: Untagged
+  m_TagString: Gravitation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4966,7 +4967,7 @@ Transform:
   m_GameObject: {fileID: 1912685854336025599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children:
   - {fileID: 7005162426526230823}
   - {fileID: 8771687417457142911}
@@ -5073,6 +5074,20 @@ MonoBehaviour:
   _lifeTime: 2
   _speed: 2
   _size: 2
+--- !u!114 &3320145564439101732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912685854336025599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e349f291b018db94dbc012f41056b830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveEnemy: {fileID: 9120984248710984356}
+  _horns: {fileID: 1872819276733194253}
 --- !u!1 &8768045150044161018
 GameObject:
   m_ObjectHideFlags: 0

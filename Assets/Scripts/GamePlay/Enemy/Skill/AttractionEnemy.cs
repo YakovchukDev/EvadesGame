@@ -3,11 +3,12 @@ using UnityEngine;
 
 namespace GamePlay.Enemy.Skill
 {
-    public class AbstractionEnemy : MonoBehaviour
+    public class AttractionEnemy : MonoBehaviour
     {
         private readonly HashSet<Rigidbody> _affectedBodies = new HashSet<Rigidbody>();
         private Rigidbody _componentRigidbody;
-        void Start()
+
+        private void Start()
         {
             _componentRigidbody = GetComponent<Rigidbody>();
         }

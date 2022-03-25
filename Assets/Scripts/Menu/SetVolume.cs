@@ -1,0 +1,54 @@
+using System;
+using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
+
+namespace Menu
+{
+    public class SetVolume : MonoBehaviour
+    {
+        [SerializeField] private AudioMixerGroup _audioMixer;
+        [SerializeField] private Toggle _soundsToggle;
+        [SerializeField] private Slider _musicSlider;
+        [SerializeField] private Slider _effectSlider;
+
+        private void Start()
+        {
+            _audioMixer.audioMixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume"));
+            _soundsToggle.isOn = PlayerPrefs.GetFloat("MasterVolume") == 0;
+
+            ChangeMusicsVolume(PlayerPrefs.GetFloat("MusicVolume"));
+            _musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+
+            ChangeEffectsVolume(PlayerPrefs.GetFloat("AllEffectVolume"));
+            _effectSlider.value = PlayerPrefs.GetFloat("AllEffectVolume");
+        }
+
+        public void ToggleSounds(bool enable)
+        {
+            if (enable)
+            {
+                _audioMixer.audioMixer.SetFloat("MasterVolume", 0);
+                PlayerPrefs.SetFloat("MasterVolume", 0);
+            }
+            else
+            {
+                _audioMixer.audioMixer.SetFloat("MasterVolume", -80);
+                PlayerPrefs.SetFloat("MasterVolume", -80);
+            }
+        }
+
+        public void ChangeMusicsVolume(float volume)
+        {
+            _audioMixer.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 0, volume));
+            PlayerPrefs.SetFloat("MusicVolume", volume);
+        }
+
+        public void ChangeEffectsVolume(float volume)
+        {
+            _audioMixer.audioMixer.SetFloat("ImportantVolume", Mathf.Lerp(-80, 0, volume));
+            _audioMixer.audioMixer.SetFloat("EffectVolume", Mathf.Lerp(-80, 0, volume));
+            PlayerPrefs.SetFloat("AllEffectVolume", volume);
+        }
+    }
+}

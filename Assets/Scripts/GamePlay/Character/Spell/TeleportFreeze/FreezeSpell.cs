@@ -8,6 +8,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
         [SerializeField] private ManaController _manaController;
         [SerializeField] private ReloadSpell _reloadSpell;
         [SerializeField] private GameObject _freezeField;
+        [SerializeField] private ParticleSystem _freezeParticle;
         [SerializeField] private GameObject _gravityRadius;
         [SerializeField] private AudioSource _freezeSound;
         private float _maxSize;

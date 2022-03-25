@@ -76,7 +76,7 @@ namespace GamePlay.Character
                 _panelAfterDie.SetActive(true);
                 InterfaceController.TimeSave();
                 _dieSound.Play();
-                _audioMixer.audioMixer.SetFloat("SoundVolume", -80);
+                _audioMixer.audioMixer.SetFloat("EffectVolume", -80);
             }
         }
     }

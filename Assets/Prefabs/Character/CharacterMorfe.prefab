@@ -46,8 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _manaController: {fileID: 2783912067833965830}
   _noGrowUp:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7930088427591539679}
   _father: {fileID: 5460984050080916392}
 --- !u!135 &8017436715143245461
 SphereCollider:
@@ -1469,6 +1468,11 @@ PrefabInstance:
 --- !u!4 &9049542228810473511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9059099883217466745, guid: 902d553ded9932b438497c300dd95ff4, type: 3}
+  m_PrefabInstance: {fileID: 12963161893279070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7930088427591539679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7936284298889858689, guid: 902d553ded9932b438497c300dd95ff4, type: 3}
   m_PrefabInstance: {fileID: 12963161893279070}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3599177996979391348
