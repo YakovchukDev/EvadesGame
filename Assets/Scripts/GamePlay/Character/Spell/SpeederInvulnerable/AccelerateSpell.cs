@@ -18,6 +18,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
         private float _time;
         private float _starterTime;
         private static readonly int Magmax = Animator.StringToHash("Magmax");
+        private static readonly int Accelerate1 = Animator.StringToHash("Accelerate");
         public bool CheckAccelerate { get; set; }
 
 
@@ -95,7 +96,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 _accelerationParticle.SetActive(false);
                 _accelerateSound.Stop();
                 _windSound.Stop();
-                _animator.SetInteger(Magmax,0);
+                _animator.SetInteger(Magmax,2);
             }
         }
     }

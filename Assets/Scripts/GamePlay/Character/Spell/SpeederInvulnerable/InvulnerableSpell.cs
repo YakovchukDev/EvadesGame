@@ -10,6 +10,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
         [SerializeField] private JoystickPlayerExample _joystickPlayerExample;
         [SerializeField] private ManaController _manaController;
         [SerializeField] private AccelerateSpell _accelerateSpell;
+        [SerializeField] private GameObject _gravityRadius;
         [SerializeField] private GameObject _invulnerableParticle;
         [SerializeField] private GameObject _spellImage;
         [SerializeField] private GameObject _otherSpellImage;
@@ -27,15 +28,13 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
             if (SelectionClassView.WhatPlaying == "Level")
             {
                 _maxManaCost = 2;
-                _time = 0.1f;
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
                 _maxManaCost = 1;
-                _time = 0.1f;
             }
 
-            _starterTime = _time;
+            _starterTime = 0.1f;
         }
 
         private void Update()
@@ -53,6 +52,12 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
 
                     _time = _starterTime;
                 }
+
+                gameObject.layer = 11;
+            }
+            else
+            {
+                gameObject.layer = 6;
             }
 
             CheckSpellUpdate();
@@ -84,12 +89,13 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 _accelerateSpell.Accelerate();
                 JoystickPlayerExample.Speed = 0;
                 gameObject.layer = 11;
+                _gravityRadius.layer = 11;
                 _spellImage.SetActive(false);
                 _otherSpellImage.SetActive(false);
                 _otherSpellButton.interactable = false;
                 _invulnerableParticle.SetActive(true);
                 _invulnerableSound.Play();
-                _animator.SetInteger(Magmax,2);
+                _animator.SetInteger(Magmax,3);
             }
             else
             {
@@ -97,6 +103,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 _accelerateSpell.Accelerate();
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;
                 gameObject.layer = 6;
+                _gravityRadius.layer = 6;
                 _spellImage.SetActive(true);
                 _otherSpellImage.SetActive(true);
                 _otherSpellButton.interactable = true;
@@ -104,7 +111,6 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 _accelerateSpell.Accelerate();
                 _invulnerableSound.Stop();
                 _animator.SetInteger(Magmax,0);
-
             }
         }
     }

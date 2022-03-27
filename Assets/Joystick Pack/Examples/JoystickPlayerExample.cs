@@ -7,7 +7,7 @@ namespace Joystick_Pack.Examples
     public class JoystickPlayerExample : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _moveParticle;
-        [SerializeField] private AudioSource _moveSound;
+        [SerializeField] private AudioSource _frictionSound;
         [SerializeField] private ParticleSystem _frictionParticle;
         private VariableJoystick _variableJoystick;
         private Rigidbody _rigidbody;
@@ -28,8 +28,8 @@ namespace Joystick_Pack.Examples
             }
 
             _moveParticle.Stop();
-            _moveSound.Play();
-            _moveSound.mute = true;
+            _frictionSound.mute = true;
+            _frictionSound.Play();
             Speed = MaxSpeed;
             _rigidbody = GetComponent<Rigidbody>();
             _variableJoystick = FindObjectOfType<VariableJoystick>();
@@ -52,7 +52,7 @@ namespace Joystick_Pack.Examples
                         Instantiate(_frictionParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z),
                             transform.rotation);
 
-                        _moveSound.mute = false;
+                        _frictionSound.mute = false;
                     }
                 }
             }
@@ -71,11 +71,11 @@ namespace Joystick_Pack.Examples
                             transform.rotation);
                     }
 
-                    _moveSound.mute = false;
+                    _frictionSound.mute = false;
                 }
                 else
                 {
-                    _moveSound.mute = true;
+                    _frictionSound.mute = true;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace Joystick_Pack.Examples
         {
             if (other.gameObject.CompareTag("Wall"))
             {
-                _moveSound.mute = true;
+                _frictionSound.mute = true;
             }
         }
 

@@ -10,7 +10,7 @@ namespace GamePlay.Enemy
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag("GravityRadius"))
+            if (other.CompareTag("GravityRadius")&& other.gameObject.layer!=11)
             {
                 _moveEnemy.Rotate = true;
                 Vector3 direction = other.transform.position - transform.position;
@@ -20,6 +20,7 @@ namespace GamePlay.Enemy
                 _horns.SetActive(true);
             }
         }
+
         private void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("GravityRadius"))

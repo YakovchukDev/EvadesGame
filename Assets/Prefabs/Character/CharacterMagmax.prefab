@@ -1770,13 +1770,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5341399650820588747}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.05, y: 0, z: 0.035}
+  m_LocalRotation: {x: -1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: -1.26, y: 0, z: 0.035}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8882896568688617191}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
 --- !u!198 &7598630620110629747
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -2345,7 +2345,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 2
+    maxNumParticles: 4
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -2770,8 +2770,8 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 2
-      repeatInterval: 1.3
+      cycleCount: 4
+      repeatInterval: 0.65
       probability: 1
   SizeModule:
     enabled: 0
@@ -7067,7 +7067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveParticle: {fileID: 8953430300437632907}
-  _moveSound: {fileID: 2304437294297611936}
+  _frictionSound: {fileID: 2304437294297611936}
   _frictionParticle: {fileID: 1297937073129364678, guid: 05f491b4ea3468447904ce6d4712a53b, type: 3}
 --- !u!114 &8882896568688617213
 MonoBehaviour:
@@ -7084,6 +7084,7 @@ MonoBehaviour:
   _joystickPlayerExample: {fileID: 8882896568688617190}
   _manaController: {fileID: 1598006098151319634}
   _accelerateSpell: {fileID: 8882896568688617214}
+  _gravityRadius: {fileID: 3270627519641522571}
   _invulnerableParticle: {fileID: 5341399650820588747}
   _spellImage: {fileID: 648059660116086147}
   _otherSpellImage: {fileID: 648059660631021479}
