@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1717912554360977971}
   - component: {fileID: 1717912554360977960}
   - component: {fileID: -5478599302676076079}
+  - component: {fileID: -5882319613720656738}
   m_Layer: 6
   m_Name: CharacterNecro
   m_TagString: Untagged
@@ -173,6 +174,14 @@ MonoBehaviour:
   _panelAfterDie: {fileID: 3158075505411978244}
   _dieSound: {fileID: 8290937964167373438}
   _audioMixer: {fileID: 24300002, guid: 761f1e5b3abc4984b8494cb4169a56d8, type: 2}
+--- !u!81 &-5882319613720656738
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717912554360977961}
+  m_Enabled: 1
 --- !u!1 &4080071320589606369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,14 +1188,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
---- !u!1 &3158075505411978244 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2132687621507603389, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
-  m_PrefabInstance: {fileID: 3912336042667290553}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8007567705411238533 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6443508132798338364, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
+  m_PrefabInstance: {fileID: 3912336042667290553}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3158075505411978244 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2132687621507603389, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
   m_PrefabInstance: {fileID: 3912336042667290553}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4136883868564561015

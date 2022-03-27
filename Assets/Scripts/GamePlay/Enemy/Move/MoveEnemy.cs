@@ -1,6 +1,7 @@
 using GamePlay.Enemy.Spawner;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.Audio;
 
 namespace GamePlay.Enemy.Move
 {
@@ -9,6 +10,7 @@ namespace GamePlay.Enemy.Move
         [SerializeField] protected GameObject _freezeField;
         [SerializeField] protected ParticleSystem _enemyBounceParticle;
         [SerializeField] private float _speed = 5;
+        [SerializeField] private AudioSource _bounceSound;
         public Quaternion Rotation { get; set; }
         private GameObject _gameObject;
         private float _freezeTimer;
@@ -56,6 +58,7 @@ namespace GamePlay.Enemy.Move
         {
             if (other.gameObject.CompareTag("Wall"))
             {
+                _bounceSound.Play();
                 var reflectDir = Vector3.Reflect(transform.forward, other.GetContact(0).normal);
                 Rotation = Quaternion.LookRotation(reflectDir);
                 Rotate = true;

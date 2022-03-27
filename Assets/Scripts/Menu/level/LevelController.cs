@@ -10,14 +10,14 @@ namespace Menu.level
         [SerializeField] private GameObject _selectionClassView;
         [SerializeField] private GameObject _levelView;
         [SerializeField] private int _countLevel;
-        public static int _completeLevel = 50;
+        public static int CompleteLevel = 50;
 
 
         private void Start()
         {
             for (int i = 1; i <= _countLevel; i++)
             {
-                _levelMenuView.LevelElementView.LevelButton.interactable = i - 1 <= _completeLevel;
+                _levelMenuView.LevelElementView.LevelButton.interactable = i - 1 <= CompleteLevel;
                 _levelMenuView.LevelElementView.LevelNumber.text = i.ToString();
                 Instantiate(_levelMenuView.LevelElementView, _levelMenuView.ElementGrid);
             }

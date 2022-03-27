@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 2378478931388519472}
   - component: {fileID: 2963534093953126581}
   - component: {fileID: 6667459704196665146}
+  - component: {fileID: 1102833831544335234}
   m_Layer: 6
   m_Name: CharacterJust
   m_TagString: Untagged
@@ -279,6 +280,14 @@ MonoBehaviour:
   _panelAfterDie: {fileID: 6478494111684431022}
   _dieSound: {fileID: 4113239188735799080}
   _audioMixer: {fileID: 24300002, guid: 761f1e5b3abc4984b8494cb4169a56d8, type: 2}
+--- !u!81 &1102833831544335234
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963534093953126575}
+  m_Enabled: 1
 --- !u!1 &6528155679121943413
 GameObject:
   m_ObjectHideFlags: 0

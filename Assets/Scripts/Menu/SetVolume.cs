@@ -12,6 +12,10 @@ namespace Menu
         [SerializeField] private Slider _musicSlider;
         [SerializeField] private Slider _effectSlider;
 
+        private void Awake()
+        {
+        }
+
         private void Start()
         {
             _audioMixer.audioMixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume"));
@@ -22,6 +26,33 @@ namespace Menu
 
             ChangeEffectsVolume(PlayerPrefs.GetFloat("AllEffectVolume"));
             _effectSlider.value = PlayerPrefs.GetFloat("AllEffectVolume");
+
+            if (!PlayerPrefs.HasKey("MasterVolume"))
+            {
+                PlayerPrefs.SetFloat("MasterVolume", 0);
+                _audioMixer.audioMixer.SetFloat("MasterVolume", 0);
+                _musicSlider.value = 1;
+            }
+
+            if (!PlayerPrefs.HasKey("MusicVolume"))
+            {
+                PlayerPrefs.SetFloat("MusicVolume", 0);
+                _audioMixer.audioMixer.SetFloat("MusicVolume", 0);
+            }
+
+            if (!PlayerPrefs.HasKey("ImportantVolume"))
+            {
+                PlayerPrefs.SetFloat("ImportantVolume", 0);
+                _audioMixer.audioMixer.SetFloat("ImportantVolume", 0);
+                _effectSlider.value = 1;
+            }
+
+            if (!PlayerPrefs.HasKey("EffectVolume"))
+            {
+                PlayerPrefs.SetFloat("EffectVolume", 0);
+                _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
+                _effectSlider.value = 1;
+            }
         }
 
         public void ToggleSounds(bool enable)

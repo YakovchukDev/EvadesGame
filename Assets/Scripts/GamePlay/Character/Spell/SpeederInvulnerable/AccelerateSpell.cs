@@ -12,10 +12,12 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
         [SerializeField] private GameObject _accelerationParticle;
         [SerializeField] private AudioSource _accelerateSound;
         [SerializeField] private AudioSource _windSound;
+        [SerializeField] private Animator _animator;
         private float _speedAccelerate;
         private float _maxManaCost;
         private float _time;
         private float _starterTime;
+        private static readonly int Magmax = Animator.StringToHash("Magmax");
         public bool CheckAccelerate { get; set; }
 
 
@@ -84,6 +86,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 _accelerationParticle.SetActive(true);
                 _accelerateSound.Play();
                 _windSound.Play();
+                _animator.SetInteger(Magmax,1);
             }
             else
             {
@@ -92,6 +95,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 _accelerationParticle.SetActive(false);
                 _accelerateSound.Stop();
                 _windSound.Stop();
+                _animator.SetInteger(Magmax,0);
             }
         }
     }
