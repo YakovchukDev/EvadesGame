@@ -12,7 +12,7 @@ namespace GamePlay.Character
         {
             if (WhatPlaying == "Level")
             {
-                SpawnCharacter(new Vector3(0, 1, 68));
+                SpawnCharacter(new Vector3(0, 1, 65));
             }
             else if (WhatPlaying == "Infinity")
             {

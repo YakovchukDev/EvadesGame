@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6686578694387742510}
   - component: {fileID: 6686578694387742511}
-  - component: {fileID: 8294900314071779598}
-  - component: {fileID: 1826140087775476308}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -50,37 +48,6 @@ MonoBehaviour:
   _entities: {fileID: 0}
   _difficulty: 10
   _difficultyFromTo: 010000000a000000
-  _length: 10
-  _branchs: 5
-  _sizeChank: 20
---- !u!114 &8294900314071779598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6686578694387742509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db8319e3af1a334aabc6a0cb18fa42c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _type:
-  - {fileID: 2963534093953126575, guid: 896c1960df869cd45a8eb459e866abf2, type: 3}
-  - {fileID: 1717912554360977961, guid: 5d0839d216134a7428643b19ee74a357, type: 3}
-  - {fileID: 5460984050080916392, guid: 950abaa21770e4c49a0e2cdd15c8503f, type: 3}
-  - {fileID: 1911395832924520791, guid: 121027de14f92694ebfc84f1bd41f3db, type: 3}
-  - {fileID: 8882896568688617212, guid: cb15d70a9125f4b48beeaf368c5205c9, type: 3}
-  - {fileID: 624432820001003063, guid: e04dbc46d27ab1b47b5b1cb8eed5ee4e, type: 3}
---- !u!114 &1826140087775476308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6686578694387742509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7862e9ac478d2d4096829b9e2a67705, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _length: 50
+  _branchs: 10
+  _sizeChank: 10

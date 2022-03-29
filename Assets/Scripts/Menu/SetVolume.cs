@@ -12,10 +12,6 @@ namespace Menu
         [SerializeField] private Slider _musicSlider;
         [SerializeField] private Slider _effectSlider;
 
-        private void Awake()
-        {
-        }
-
         private void Start()
         {
             _audioMixer.audioMixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume"));
@@ -31,13 +27,13 @@ namespace Menu
             {
                 PlayerPrefs.SetFloat("MasterVolume", 0);
                 _audioMixer.audioMixer.SetFloat("MasterVolume", 0);
-                _musicSlider.value = 1;
             }
 
             if (!PlayerPrefs.HasKey("MusicVolume"))
             {
                 PlayerPrefs.SetFloat("MusicVolume", 0);
                 _audioMixer.audioMixer.SetFloat("MusicVolume", 0);
+                _musicSlider.value = 1;
             }
 
             if (!PlayerPrefs.HasKey("ImportantVolume"))

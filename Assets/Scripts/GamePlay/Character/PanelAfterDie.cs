@@ -12,7 +12,7 @@ namespace GamePlay.Character
       {
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
          Time.timeScale = 1;
-         InterfaceController.Time = 0;
+         InfinityInterfaceController.Time = 0;
          InfinityEnemySpawner.SpawnNumber = 0;
          _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
       }
@@ -20,9 +20,9 @@ namespace GamePlay.Character
       {
          SceneManager.LoadScene("Menu");
          Time.timeScale = 1;
-         InterfaceController.Time = 0;
+         InfinityInterfaceController.Time = 0;
          InfinityEnemySpawner.SpawnNumber = 0;
-         InterfaceController.TimeSave();
+         InfinityInterfaceController.TimeSave();
          _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
       }
    

@@ -74,7 +74,7 @@ namespace GamePlay.Character
             {
                 Time.timeScale = 0;
                 _panelAfterDie.SetActive(true);
-                InterfaceController.TimeSave();
+                InfinityInterfaceController.TimeSave();
                 _dieSound.Play();
                 _audioMixer.audioMixer.SetFloat("EffectVolume", -80);
             }

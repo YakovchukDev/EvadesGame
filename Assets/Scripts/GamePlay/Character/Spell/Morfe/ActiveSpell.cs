@@ -8,16 +8,20 @@ namespace GamePlay.Character.Spell.Morfe
     {
         [SerializeField] private ManaController _manaController;
         [SerializeField] private ReloadSpell _reloadSpell;
+        [SerializeField] private List<Transform> _patronPoint;
         [SerializeField] private List<GameObject> _minimizePatrons;
         [SerializeField] private List<GameObject> _deactivatingPatrons;
         [SerializeField] private GameObject _minimizePatron;
         [SerializeField] private GameObject _deactivatingPatron;
         [SerializeField] private float _manaCostMinimize;
         [SerializeField] private float _manaCostDeactivating;
+        [SerializeField] private Animator _animator; 
         private float _minimizeRotation = -12.5f;
         private float _deactivatingRotation = -12.5f;
         private float _timeReloadFirstSpell;
         private float _timeReloadSecondSpell;
+        private static readonly int Morfe = Animator.StringToHash("Morfe");
+        private static readonly int Fire = Animator.StringToHash("Fire");
 
         private void Start()
         {
@@ -89,18 +93,28 @@ namespace GamePlay.Character.Spell.Morfe
                 _reloadSpell.ReloadFirstSpell(_timeReloadFirstSpell);
                 if (_manaController.ManaReduction(_manaCostMinimize))
                 {
+                    _animator.SetTrigger(Fire);
+
                     _minimizeRotation = -12.5f;
                     foreach (var minimizePatrons in _minimizePatrons)
                     {
                         minimizePatrons.transform.rotation = Quaternion.identity;
                     }
 
-                    foreach (var minimizePatrons in _minimizePatrons)
+                    /*foreach (var minimizePatrons in _minimizePatrons)
                     {
-                        minimizePatrons.transform.position = transform.position;
+                        minimizePatrons.transform.position = _patronPoint[minimizePatrons].position;
                         minimizePatrons.transform.rotation = transform.rotation;
                         minimizePatrons.transform.Rotate(0, _minimizeRotation += 5, 0);
                         minimizePatrons.SetActive(true);
+                    }*/
+
+                    for (int i = 0; i < _minimizePatrons.Count; i++)
+                    {
+                       _minimizePatrons[i].transform.position = _patronPoint[i].position;
+                       _minimizePatrons[i].transform.rotation = transform.rotation;
+                       _minimizePatrons[i].transform.Rotate(0, _minimizeRotation += 5, 0);
+                       _minimizePatrons[i].SetActive(true);
                     }
                 }
             }
@@ -113,19 +127,27 @@ namespace GamePlay.Character.Spell.Morfe
                 _reloadSpell.ReloadSecondSpell(_timeReloadSecondSpell);
                 if (_manaController.ManaReduction(_manaCostDeactivating))
                 {
+                    _animator.SetTrigger(Fire);
+                    
                     _deactivatingRotation = -12.5f;
                     foreach (var deactivatingPatrons in _deactivatingPatrons)
                     {
                         deactivatingPatrons.transform.rotation = Quaternion.identity;
                     }
 
-                    foreach (var deactivatingPatrons in _deactivatingPatrons)
+                    /*foreach (var deactivatingPatrons in _deactivatingPatrons)
                     {
                         deactivatingPatrons.transform.position = transform.position;
                         deactivatingPatrons.transform.rotation = transform.rotation;
-
                         deactivatingPatrons.transform.Rotate(0, _deactivatingRotation += 5, 0);
                         deactivatingPatrons.SetActive(true);
+                    }*/
+                    for (int i = 0; i < _deactivatingPatrons.Count; i++)
+                    {
+                        _deactivatingPatrons[i].transform.position = _patronPoint[i].position;
+                        _deactivatingPatrons[i].transform.rotation = transform.rotation;
+                        _deactivatingPatrons[i].transform.Rotate(0, _deactivatingRotation += 5, 0);
+                        _deactivatingPatrons[i].SetActive(true);
                     }
                 }
             }

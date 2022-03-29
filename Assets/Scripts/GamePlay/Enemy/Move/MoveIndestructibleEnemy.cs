@@ -25,7 +25,6 @@ namespace GamePlay.Enemy.Move
                 DirectionAndSpeedMovement();
             }
         }
-
         private void MoveSystem()
         {
             if (InfinityEnemySpawner.SpawnNumber >= 40)

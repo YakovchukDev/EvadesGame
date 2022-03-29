@@ -12,7 +12,6 @@ namespace GamePlay.Enemy
         private float _speed;
         private bool _worked;
 
-
         private void Start()
         {
             if (SceneManager.GetActiveScene().name == "InfinityGame")
@@ -54,6 +53,17 @@ namespace GamePlay.Enemy
             }
             else
             {
+                var moveScript = gameObject.GetComponent<MoveEnemy>();
+                var moveStoperScript = gameObject.GetComponent<MoveStoperEnemy>();
+                if (moveScript != null)
+                {
+                    moveScript.enabled=true;
+                }
+                if (moveStoperScript != null)
+                {
+                    moveStoperScript.enabled=true;
+                }
+
                 Destroy(GetComponent<StartOnInfinity>());
             }
         }

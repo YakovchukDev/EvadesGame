@@ -72,7 +72,6 @@ namespace GamePlay.Enemy.Move
             }
         }
 
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Freeze"))

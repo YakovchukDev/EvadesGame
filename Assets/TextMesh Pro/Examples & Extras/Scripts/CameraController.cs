@@ -25,6 +25,10 @@ namespace TextMesh_Pro.Scripts
 
         private void LateUpdate()
         {
+            if (_player == null)
+            {
+                _player = GameObject.Find(_characterObject[CharacterType]);
+            }
             var position = _player.transform.position;
             _cameraPosition.x = position.x;
             _cameraPosition.y = position.y + OffSetY;

@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: -2981923434778932814}
   - component: {fileID: 7024353885279352940}
   - component: {fileID: -9220734749106810596}
+  - component: {fileID: 1157809134412230550}
   m_Layer: 8
   m_Name: AtractionEnemy
   m_TagString: Untagged
@@ -263,6 +264,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29cc2af00bc8a246ad191fc053a6f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!122 &1157809134412230550
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3239914737928764452}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4286611584
+  m_Size: -1.3
 --- !u!1001 &3722485256152213870
 PrefabInstance:
   m_ObjectHideFlags: 0
