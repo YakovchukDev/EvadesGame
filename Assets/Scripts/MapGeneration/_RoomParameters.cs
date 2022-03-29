@@ -5,6 +5,7 @@ namespace MapGeneration
 {
     public class _RoomParameters : MonoBehaviour
     {        
+        //***нужно сделать скрытие стен безопсной зоны
         public delegate void UpdateOfRoomsAround(int indexX, int indexY);
         public static event UpdateOfRoomsAround EnterNewRoom;
 
@@ -35,6 +36,8 @@ namespace MapGeneration
 
         private int cordinatX;
         private int cordinatY;
+
+        private bool destroyEnemy = false;
 
         public float GetLengthX()
         {
@@ -76,11 +79,19 @@ namespace MapGeneration
             cordinatX = x;
             cordinatY = y;
         }
+        public void DestroyAllEnemy(bool isDestroy)
+        {
+            destroyEnemy = isDestroy;
+        }
         private void OnTriggerEnter(Collider other)
         {
             if(other.gameObject.tag == "Player")
             {
                 EnterNewRoom(cordinatX, cordinatY);
+            }
+            else if(destroyEnemy)
+            {
+                Destroy(other);
             }
         }
     }

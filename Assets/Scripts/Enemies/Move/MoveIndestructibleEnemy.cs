@@ -1,38 +1,45 @@
+
 using UnityEngine;
 
-namespace Enemy.Move
+namespace GamePlay.Enemy.Move
 {
     public class MoveIndestructibleEnemy : MonoBehaviour
     {
-        [SerializeField] private float z, x;
-        private float helpY = 90;
-        private float y = 0;
+        private const float Z = -10;
+        private const float X = 0;
+        private const float Y = 0;
+        private const float HelpY = 90;
+        private float _speed = 0.01f;
+        private float _time;
+
         private void FixedUpdate()
         {
-            MoveSystem(0.02f);
+            MoveSystem();
         }
+
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.tag == "Wall")
+            if (other.gameObject.CompareTag("Wall"))
             {
-                DirectioAndSpeedMovement();
+                DirectionAndSpeedMovement();
             }
-
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "Wall")
+            if (other.gameObject.CompareTag("Wall"))
             {
-                DirectioAndSpeedMovement();
+                DirectionAndSpeedMovement();
             }
         }
-        private void MoveSystem(float speed)
+
+        private void MoveSystem()
         {
-            transform.Translate(new Vector3(x * speed, 0, z * speed));
+                transform.parent.Translate(new Vector3(X * _speed, 0, Z * _speed));
         }
-        private void DirectioAndSpeedMovement()
+
+        private void DirectionAndSpeedMovement()
         {
-            transform.Rotate(0, y + helpY, 0);
+            transform.parent.Rotate(0, Y + HelpY, 0);
         }
     }
 }
