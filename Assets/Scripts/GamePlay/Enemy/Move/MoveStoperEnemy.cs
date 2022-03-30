@@ -1,5 +1,6 @@
 using GamePlay.Enemy.Spawner;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GamePlay.Enemy.Move
 {
@@ -14,6 +15,14 @@ namespace GamePlay.Enemy.Move
         private float _startLifetimeParticle;
         private bool _rotate = true;
         private GameObject _gameObject;
+
+        private void Awake()
+        {
+            if (SceneManager.GetActiveScene().name == "MapGeneratorBeta")
+            {
+                GetComponent<MoveStoperEnemy>().enabled = true;
+            }
+        }
 
         private void Start()
         {
@@ -49,7 +58,6 @@ namespace GamePlay.Enemy.Move
             {
                 FreezeMe(3);
             }
-
         }
 
         private void OnCollisionEnter(Collision other)
@@ -86,6 +94,7 @@ namespace GamePlay.Enemy.Move
                 _moveParticle.startLifetime *= 0;
             }
         }
+
         private void RotateController()
         {
             if (_rotate)

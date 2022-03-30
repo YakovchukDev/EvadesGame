@@ -8,8 +8,11 @@ namespace GamePlay.Character.Spell.Nexus
         [SerializeField] private ManaController _manaController;
         [SerializeField] private ReloadSpell _reloadSpell;
         [SerializeField] private GameObject _invulnerableField;
+        [SerializeField] private AudioSource _invulnerableAudio;
+
         private float _manaCost;
         private float _timeReloadSecondSpell;
+        private float _levelSpell1;
 
         private void Start()
         {
@@ -34,16 +37,17 @@ namespace GamePlay.Character.Spell.Nexus
         {
             if (SelectionClassView.WhatPlaying == "Level")
             {
-                if (CharacterUpdate.CanSpell2Update)
+                if (CharacterUpdate.CanSpell1Update)
                 {
-                    for (int i = 0; i < CharacterUpdate.NumberSpell2Update; i++)
+                    if(_levelSpell1 < CharacterUpdate.NumberSpell1Update) 
                     {
                         _manaCost -= 2f;
                         _timeReloadSecondSpell -= 0.6f;
+                        _levelSpell1++;
                     }
 
 
-                    CharacterUpdate.CanSpell2Update = false;
+                    CharacterUpdate.CanSpell1Update = false;
                 }
             }
         }
@@ -55,6 +59,7 @@ namespace GamePlay.Character.Spell.Nexus
                 _reloadSpell.ReloadSecondSpell(_timeReloadSecondSpell);
                 if (_manaController.ManaReduction(_manaCost))
                 {
+                    _invulnerableAudio.Play();
                     _invulnerableField.transform.position = transform.position;
                     _invulnerableField.SetActive(true);
                 }

@@ -32,7 +32,7 @@ namespace MapGeneration
         private int lastcordY = 0;
         private GameObject lastEmptyWallStart;
         private GameObject lastEmptyWallEnd;
-        
+        private readonly float[] _possibleSizes = {20f, 40f, 100f};
         private void Start()
         {
             _listEntities = new GameObject[_length, _branchs * 2 + 1, 30];
@@ -470,12 +470,17 @@ namespace MapGeneration
                             (_arena.GetLengthX() / 2f + _saveZone.GetLengthX() / 2f + _arena.GetLengthX() * row + _saveZone.GetLengthX() * row) + Random.Range(listCordX[0], listCordX[1]), 
                             2f, 
                             (_arena.GetLengthZ() * column) + listCordY[Random.Range(0, listCordY.GetLength(0))]
-                        ), Quaternion.identity);
+                        ), Quaternion.Euler(-180,0,0));
                     }
                     else
                     {
                         float indent = 3f;
-                        _listEntities[row, column, height].gameObject.transform.localScale = new Vector3(100f, 100f, 100f);
+                        /////////////////////  
+                        var enemySize = _possibleSizes[Random.Range(0, _possibleSizes.Length)];
+                        _listEntities[row, column, height].gameObject.transform.localScale = new Vector3(enemySize,enemySize,enemySize);
+                        /////////////////////
+                        
+                        //_listEntities[row, column, height].gameObject.transform.localScale = new Vector3(100f, 100f, 100f);  SASHA
                         _listEntities[row, column, height] = Instantiate(_listEntities[row, column, height], new Vector3
                         (
                             Random.Range

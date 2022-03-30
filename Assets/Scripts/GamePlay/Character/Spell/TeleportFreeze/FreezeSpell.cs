@@ -18,6 +18,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
         private float _size;
         private bool _goFreeze;
         private float _timeReloadFirstSpell;
+        private float _levelSpell1;
 
         private void Start()
         {
@@ -53,11 +54,12 @@ namespace GamePlay.Character.Spell.TeleportFreeze
             {
                 if (CharacterUpdate.CanSpell1Update)
                 {
-                    for (int i = 0; i < CharacterUpdate.NumberSpell1Update; i++)
+                    if(_levelSpell1 < CharacterUpdate.NumberSpell1Update) 
                     {
                         _manaCost -= 2f;
                         _maxSize += 0.8f;
                         _timeReloadFirstSpell -= 0.8f;
+                        _levelSpell1++;
                     }
 
                     CharacterUpdate.CanSpell1Update = false;

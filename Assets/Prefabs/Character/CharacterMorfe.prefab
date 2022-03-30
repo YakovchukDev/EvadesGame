@@ -650,7 +650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 63f0e215c7fb11141adbc00555cbee27, type: 3}
+  m_Sprite: {fileID: 8552491731070374634, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -696,8 +696,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -171.11534, y: 54.62745}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: -375.00024, y: 99.99932}
+  m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4067152339558766582
 CanvasRenderer:
@@ -727,7 +727,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 39344478891921046864b9f17ceaac51, type: 3}
+  m_Sprite: {fileID: -1857308142125042288, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -784,18 +784,6 @@ MonoBehaviour:
       - m_Target: {fileID: 5460984050080916393}
         m_TargetAssemblyTypeName: GamePlay.Character.Spell.Morfe.ActiveSpell, Assembly-CSharp
         m_MethodName: MinimizeSpell
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6295985987539870387}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -870,7 +858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 39344478891921046864b9f17ceaac51, type: 3}
+  m_Sprite: {fileID: -1857308142125042288, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -982,8 +970,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 67.8846, y: 54.62745}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: -124.99988, y: 99.99933}
+  m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4067152340675968550
 CanvasRenderer:
@@ -1013,7 +1001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 63f0e215c7fb11141adbc00555cbee27, type: 3}
+  m_Sprite: {fileID: 8552491731070374634, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1076,18 +1064,6 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 4
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6295985987539870387}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -1576,6 +1552,7 @@ MonoBehaviour:
   _manaCostMinimize: 10
   _manaCostDeactivating: 10
   _animator: {fileID: 8625855926112390619}
+  _fireAudio: {fileID: 6295985987539870387}
 --- !u!114 &5709669047882220473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,8 +1998,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50, y: 50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &12963161893279070
 PrefabInstance:
@@ -2451,6 +2428,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4067152341129975934}
     m_Modifications:
+    - target: {fileID: 3265034824368103626, guid: da3f7b47427d07946918eac87358f837, type: 3}
+      propertyPath: _manaController
+      value: 
+      objectReference: {fileID: 2783912067833965830}
     - target: {fileID: 5416232796036632428, guid: da3f7b47427d07946918eac87358f837, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

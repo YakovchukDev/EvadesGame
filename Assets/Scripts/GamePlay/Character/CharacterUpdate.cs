@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class CharacterUpdate : MonoBehaviour
 {
+    [SerializeField] private ManaController _manaController;
     [SerializeField] private List<TMP_Text> _abilityLevel;
     private int _numberSpeedUpdate = 1;
     private int _numberMaxManaUpdate = 1;
@@ -18,16 +19,27 @@ public class CharacterUpdate : MonoBehaviour
     public static bool CanSpell1Update;
     public static bool CanSpell2Update;
 
+    private float _allMana;
+
     private void Start()
     {
         if (SelectionClassView.WhatPlaying == "Infinity")
         {
             Destroy(gameObject);
         }
+
         foreach (var abilityLevel in _abilityLevel)
         {
             abilityLevel.text = "1";
         }
+
+        _numberSpeedUpdate = 1;
+        _numberMaxManaUpdate = 1;
+        _numberManaRegenUpdate = 1;
+        NumberSpell1Update = 1;
+        NumberSpell2Update = 1;
+        CanSpell1Update = false;
+        CanSpell2Update = false;
     }
 
     public void SpeedUpdate()
@@ -49,8 +61,9 @@ public class CharacterUpdate : MonoBehaviour
         {
             if (_numberMaxManaUpdate <= 5)
             {
-                ManaController.Mana = 100;
-                ManaController.Mana += 20 * _numberMaxManaUpdate;
+                _allMana = 100;
+                _allMana += 20 * _numberMaxManaUpdate;
+                _manaController.SetAllMana(_allMana);
                 _numberMaxManaUpdate++;
                 _abilityLevel[1].text = _numberMaxManaUpdate.ToString();
             }
@@ -78,7 +91,7 @@ public class CharacterUpdate : MonoBehaviour
             {
                 NumberSpell1Update++;
                 CanSpell1Update = true;
-                _abilityLevel[3].text = CanSpell1Update.ToString();
+                _abilityLevel[3].text = NumberSpell1Update.ToString();
             }
         }
     }
@@ -91,7 +104,7 @@ public class CharacterUpdate : MonoBehaviour
             {
                 NumberSpell2Update++;
                 CanSpell2Update = true;
-                _abilityLevel[4].text = CanSpell2Update.ToString();
+                _abilityLevel[4].text = NumberSpell2Update.ToString();
             }
         }
     }

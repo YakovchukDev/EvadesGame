@@ -33,7 +33,7 @@ namespace GamePlay.Character.Spell
         {
             if (_spellNumber >= 1)
             {
-                _audioMixer.audioMixer.SetFloat("SoundVolume", 0);
+                _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
                 _killer.SetActive(false);
                 transform.position = _diePosition;
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;

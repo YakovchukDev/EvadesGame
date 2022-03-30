@@ -15,12 +15,14 @@ namespace GamePlay.Character.Spell.Morfe
         [SerializeField] private GameObject _deactivatingPatron;
         [SerializeField] private float _manaCostMinimize;
         [SerializeField] private float _manaCostDeactivating;
-        [SerializeField] private Animator _animator; 
+        [SerializeField] private Animator _animator;
+        [SerializeField] private AudioSource _fireAudio;
         private float _minimizeRotation = -12.5f;
         private float _deactivatingRotation = -12.5f;
         private float _timeReloadFirstSpell;
         private float _timeReloadSecondSpell;
-        private static readonly int Morfe = Animator.StringToHash("Morfe");
+        private float _levelSpell1;
+        private float _levelSpell2;
         private static readonly int Fire = Animator.StringToHash("Fire");
 
         private void Start()
@@ -29,15 +31,15 @@ namespace GamePlay.Character.Spell.Morfe
             {
                 _manaCostMinimize = 20;
                 _manaCostDeactivating = 20;
-                _timeReloadFirstSpell=6;
-                _timeReloadSecondSpell=6;
+                _timeReloadFirstSpell = 6;
+                _timeReloadSecondSpell = 6;
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
                 _manaCostMinimize = 10;
                 _manaCostDeactivating = 10;
-                _timeReloadFirstSpell=3;
-                _timeReloadSecondSpell=3;
+                _timeReloadFirstSpell = 3;
+                _timeReloadSecondSpell = 3;
             }
 
             for (var i = 0; i < 5; i++)
@@ -64,10 +66,11 @@ namespace GamePlay.Character.Spell.Morfe
             {
                 if (CharacterUpdate.CanSpell2Update)
                 {
-                    for (int i = 0; i < CharacterUpdate.NumberSpell2Update; i++)
+                    if(_levelSpell2 < CharacterUpdate.NumberSpell2Update) 
                     {
                         _manaCostMinimize -= 2f;
-                        _timeReloadFirstSpell-=0.6f;
+                        _timeReloadFirstSpell -= 0.6f;
+                        _levelSpell2++;
                     }
 
                     CharacterUpdate.CanSpell2Update = false;
@@ -75,10 +78,11 @@ namespace GamePlay.Character.Spell.Morfe
 
                 if (CharacterUpdate.CanSpell1Update)
                 {
-                    for (int i = 0; i < CharacterUpdate.NumberSpell1Update; i++)
+                    if(_levelSpell1 < CharacterUpdate.NumberSpell1Update) 
                     {
                         _manaCostDeactivating -= 2f;
-                        _timeReloadSecondSpell-=0.6f;
+                        _timeReloadSecondSpell -= 0.6f;
+                        _levelSpell1++;
                     }
 
                     CharacterUpdate.CanSpell1Update = false;
@@ -94,27 +98,19 @@ namespace GamePlay.Character.Spell.Morfe
                 if (_manaController.ManaReduction(_manaCostMinimize))
                 {
                     _animator.SetTrigger(Fire);
-
+                    _fireAudio.Play();
                     _minimizeRotation = -12.5f;
                     foreach (var minimizePatrons in _minimizePatrons)
                     {
                         minimizePatrons.transform.rotation = Quaternion.identity;
                     }
 
-                    /*foreach (var minimizePatrons in _minimizePatrons)
-                    {
-                        minimizePatrons.transform.position = _patronPoint[minimizePatrons].position;
-                        minimizePatrons.transform.rotation = transform.rotation;
-                        minimizePatrons.transform.Rotate(0, _minimizeRotation += 5, 0);
-                        minimizePatrons.SetActive(true);
-                    }*/
-
                     for (int i = 0; i < _minimizePatrons.Count; i++)
                     {
-                       _minimizePatrons[i].transform.position = _patronPoint[i].position;
-                       _minimizePatrons[i].transform.rotation = transform.rotation;
-                       _minimizePatrons[i].transform.Rotate(0, _minimizeRotation += 5, 0);
-                       _minimizePatrons[i].SetActive(true);
+                        _minimizePatrons[i].transform.position = _patronPoint[i].position;
+                        _minimizePatrons[i].transform.rotation = transform.rotation;
+                        _minimizePatrons[i].transform.Rotate(0, _minimizeRotation += 5, 0);
+                        _minimizePatrons[i].SetActive(true);
                     }
                 }
             }
@@ -128,20 +124,13 @@ namespace GamePlay.Character.Spell.Morfe
                 if (_manaController.ManaReduction(_manaCostDeactivating))
                 {
                     _animator.SetTrigger(Fire);
-                    
+                    _fireAudio.Play();
                     _deactivatingRotation = -12.5f;
                     foreach (var deactivatingPatrons in _deactivatingPatrons)
                     {
                         deactivatingPatrons.transform.rotation = Quaternion.identity;
                     }
 
-                    /*foreach (var deactivatingPatrons in _deactivatingPatrons)
-                    {
-                        deactivatingPatrons.transform.position = transform.position;
-                        deactivatingPatrons.transform.rotation = transform.rotation;
-                        deactivatingPatrons.transform.Rotate(0, _deactivatingRotation += 5, 0);
-                        deactivatingPatrons.SetActive(true);
-                    }*/
                     for (int i = 0; i < _deactivatingPatrons.Count; i++)
                     {
                         _deactivatingPatrons[i].transform.position = _patronPoint[i].position;

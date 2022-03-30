@@ -48,6 +48,7 @@ namespace GamePlay.Character
                 gameObject.transform.GetComponent<Renderer>().materials[0].color = _color1;
                 transform.localScale = Vector3.one;
                 _hpNumber--;
+                Immortality = true;
                 HpChecker();
             }
         }
@@ -64,6 +65,7 @@ namespace GamePlay.Character
                 {
                     gameObject.layer = 6;
                     Immortality = false;
+                    ImmortalityTime = 0;
                 }
             }
         }

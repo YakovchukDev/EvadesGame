@@ -12,6 +12,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
         private float _manaCost;
         private float _teleportationLength;
         private float _timeReloadSecondSpell;
+        private float _levelSpell2;
 
         private void Start()
         {
@@ -40,10 +41,11 @@ namespace GamePlay.Character.Spell.TeleportFreeze
             {
                 if (CharacterUpdate.CanSpell2Update)
                 {
-                    for (int i = 0; i < CharacterUpdate.NumberSpell2Update; i++)
+                    if(_levelSpell2 < CharacterUpdate.NumberSpell2Update) 
                     {
                         _manaCost -= 2f;
                         _timeReloadSecondSpell -= 0.6f;
+                        _levelSpell2++;
                     }
 
                     CharacterUpdate.CanSpell2Update = false;

@@ -46,8 +46,6 @@ namespace GamePlay.Enemy
             }
             else
             {
-                var moveScript = gameObject.GetComponent<MoveEnemy>();
-                moveScript.enabled=true;
                 Destroy(GetComponent<StartOnInfinityField>());
             }
         }

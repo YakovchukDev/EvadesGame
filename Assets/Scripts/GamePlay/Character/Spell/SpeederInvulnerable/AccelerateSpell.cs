@@ -19,6 +19,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
         private float _starterTime;
         private static readonly int Magmax = Animator.StringToHash("Magmax");
         private static readonly int Accelerate1 = Animator.StringToHash("Accelerate");
+        private float _levelSpell1;
         public bool CheckAccelerate { get; set; }
 
 
@@ -65,9 +66,10 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
             {
                 if (CharacterUpdate.CanSpell1Update)
                 {
-                    for (int i = 0; i < CharacterUpdate.NumberSpell1Update; i++)
+                    if(_levelSpell1 < CharacterUpdate.NumberSpell1Update) 
                     {
                         _maxManaCost -= 0.06f;
+                        _levelSpell1++;
                     }
 
                     CharacterUpdate.CanSpell1Update = false;

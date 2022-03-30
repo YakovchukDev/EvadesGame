@@ -19,13 +19,13 @@ namespace GamePlay
 
         public void OnPause()
         {
-            UnityEngine.Time.timeScale = 0;
+            Time.timeScale = 0;
             _audioMixer.audioMixer.SetFloat("EffectVolume", -80);
         }
 
         public void OffPause()
         {
-            UnityEngine.Time.timeScale = 1;
+            Time.timeScale = 1;
             _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
         }
 

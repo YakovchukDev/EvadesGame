@@ -7,6 +7,8 @@ namespace Menu.level
     {
         [SerializeField] private LevelMenuView _levelMenuView;
         [SerializeField] private ClassAvailability _classAvailability;
+        [SerializeField] private Animator _selectionAnimator;
+        [SerializeField] private Animator _levelsAnimator;
         [SerializeField] private GameObject _selectionClassView;
         [SerializeField] private GameObject _levelView;
         [SerializeField] private int _countLevel;
@@ -29,7 +31,8 @@ namespace Menu.level
             {
                 _classAvailability.CheckClassForLevel();
                 _selectionClassView.SetActive(true);
-                _levelView.SetActive(false);
+                _selectionAnimator.SetInteger("Selection", 0);
+                _levelsAnimator.SetInteger("Levels", 1);
                 LevelElementController.OnView = false;
             }
         }

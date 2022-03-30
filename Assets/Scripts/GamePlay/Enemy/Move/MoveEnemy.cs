@@ -1,7 +1,9 @@
+using System;
 using GamePlay.Enemy.Spawner;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 namespace GamePlay.Enemy.Move
 {
@@ -19,6 +21,13 @@ namespace GamePlay.Enemy.Move
         public bool Rotate { get; set; }
         protected bool CanFreeze;
 
+        private void Awake()
+        {
+            if (SceneManager.GetActiveScene().name == "MapGeneratorBeta")
+            {
+                GetComponent<MoveEnemy>().enabled=true;
+            }
+        }
 
         private void Start()
         {

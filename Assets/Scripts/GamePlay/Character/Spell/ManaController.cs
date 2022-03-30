@@ -44,7 +44,13 @@ namespace GamePlay.Character.Spell
             {
                 _numberRegen = Regen;
             }
+
             ManaRegen(Regen);
+        }
+
+        public void SetAllMana(float allMana)
+        {
+            _allMana = allMana;
         }
 
         public bool ManaReduction(float minusMana)
@@ -65,7 +71,7 @@ namespace GamePlay.Character.Spell
         {
             _regenTime -= Time.deltaTime;
 
-            if (Mana < 100 && _regenTime <= 0)
+            if (Mana < _allMana && _regenTime <= 0)
             {
                 _regenTime = _startRegenTime;
                 Mana += speedRegen;
