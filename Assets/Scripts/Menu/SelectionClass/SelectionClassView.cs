@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,11 @@ namespace Menu.SelectionClass
     {
         protected static int CharacterType { get; private set; }
         public static string WhatPlaying { get; private set; }
+
+        private void Start()
+        {
+            ChoiceTypeOfCharacter(PlayerPrefs.GetInt("SelectionNumber"));
+        }
 
         public void ChoiceTypeOfCharacter(int characterType)
         {

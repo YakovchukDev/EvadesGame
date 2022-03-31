@@ -1,11 +1,15 @@
 using UnityEngine;
 
-namespace Menu
+namespace Menu.Settings
 {
     public class FirstStart : MonoBehaviour
     {
         private void Awake()
         {
+            if (!PlayerPrefs.HasKey("SelectionNumber"))
+            {
+                PlayerPrefs.SetInt("SelectionNumber", 0);
+            }
             if (!PlayerPrefs.HasKey("Language"))
             {
                 PlayerPrefs.SetString("Language", "English");

@@ -5,106 +5,109 @@ using Menu.SelectionClass;
 using TMPro;
 using UnityEngine;
 
-public class CharacterUpdate : MonoBehaviour
+namespace GamePlay.Character
 {
-    [SerializeField] private ManaController _manaController;
-    [SerializeField] private List<TMP_Text> _abilityLevel;
-    private int _numberSpeedUpdate = 1;
-    private int _numberMaxManaUpdate = 1;
-    private int _numberManaRegenUpdate = 1;
-
-    public static int NumberSpell1Update = 1;
-    public static int NumberSpell2Update = 1;
-
-    public static bool CanSpell1Update;
-    public static bool CanSpell2Update;
-
-    private float _allMana;
-
-    private void Start()
+    public class CharacterUpdate : MonoBehaviour
     {
-        if (SelectionClassView.WhatPlaying == "Infinity")
-        {
-            Destroy(gameObject);
-        }
+        [SerializeField] private ManaController _manaController;
+        [SerializeField] private List<TMP_Text> _abilityLevel;
+        private int _numberSpeedUpdate = 1;
+        private int _numberMaxManaUpdate = 1;
+        private int _numberManaRegenUpdate = 1;
 
-        foreach (var abilityLevel in _abilityLevel)
-        {
-            abilityLevel.text = "1";
-        }
+        public static int NumberSpell1Update = 1;
+        public static int NumberSpell2Update = 1;
 
-        _numberSpeedUpdate = 1;
-        _numberMaxManaUpdate = 1;
-        _numberManaRegenUpdate = 1;
-        NumberSpell1Update = 1;
-        NumberSpell2Update = 1;
-        CanSpell1Update = false;
-        CanSpell2Update = false;
-    }
+        public static bool CanSpell1Update;
+        public static bool CanSpell2Update;
 
-    public void SpeedUpdate()
-    {
-        if (SelectionClassView.WhatPlaying == "Level")
+        private float _allMana;
+
+        private void Start()
         {
-            if (_numberSpeedUpdate <= 5)
+            if (SelectionClassView.WhatPlaying == "Infinity")
             {
-                JoystickPlayerExample.Speed += 2;
-                _numberSpeedUpdate++;
-                _abilityLevel[0].text = _numberSpeedUpdate.ToString();
+                Destroy(gameObject);
+            }
+
+            foreach (var abilityLevel in _abilityLevel)
+            {
+                abilityLevel.text = "1";
+            }
+
+            _numberSpeedUpdate = 1;
+            _numberMaxManaUpdate = 1;
+            _numberManaRegenUpdate = 1;
+            NumberSpell1Update = 1;
+            NumberSpell2Update = 1;
+            CanSpell1Update = false;
+            CanSpell2Update = false;
+        }
+
+        public void SpeedUpdate()
+        {
+            if (SelectionClassView.WhatPlaying == "Level")
+            {
+                if (_numberSpeedUpdate <= 5)
+                {
+                    JoystickPlayerExample.Speed += 2;
+                    _numberSpeedUpdate++;
+                    _abilityLevel[0].text = _numberSpeedUpdate.ToString();
+                }
             }
         }
-    }
 
-    public void MaxManaUpdate()
-    {
-        if (SelectionClassView.WhatPlaying == "Level")
+        public void MaxManaUpdate()
         {
-            if (_numberMaxManaUpdate <= 5)
+            if (SelectionClassView.WhatPlaying == "Level")
             {
-                _allMana = 100;
-                _allMana += 20 * _numberMaxManaUpdate;
-                _manaController.SetAllMana(_allMana);
-                _numberMaxManaUpdate++;
-                _abilityLevel[1].text = _numberMaxManaUpdate.ToString();
+                if (_numberMaxManaUpdate <= 5)
+                {
+                    _allMana = 100;
+                    _allMana += 20 * _numberMaxManaUpdate;
+                    _manaController.SetAllMana(_allMana);
+                    _numberMaxManaUpdate++;
+                    _abilityLevel[1].text = _numberMaxManaUpdate.ToString();
+                }
             }
         }
-    }
 
-    public void ManaRegenUpdate()
-    {
-        if (SelectionClassView.WhatPlaying == "Level")
+        public void ManaRegenUpdate()
         {
-            if (_numberManaRegenUpdate <= 5)
+            if (SelectionClassView.WhatPlaying == "Level")
             {
-                ManaController.Regen += 0.2f;
-                _numberManaRegenUpdate++;
-                _abilityLevel[2].text = _numberManaRegenUpdate.ToString();
+                if (_numberManaRegenUpdate <= 5)
+                {
+                    ManaController.Regen += 0.2f;
+                    _numberManaRegenUpdate++;
+                    _abilityLevel[2].text = _numberManaRegenUpdate.ToString();
+                }
             }
         }
-    }
 
-    public void Spell1Update()
-    {
-        if (SelectionClassView.WhatPlaying == "Level")
+        public void Spell1Update()
         {
-            if (NumberSpell1Update <= 5)
+            if (SelectionClassView.WhatPlaying == "Level")
             {
-                NumberSpell1Update++;
-                CanSpell1Update = true;
-                _abilityLevel[3].text = NumberSpell1Update.ToString();
+                if (NumberSpell1Update <= 5)
+                {
+                    NumberSpell1Update++;
+                    CanSpell1Update = true;
+                    _abilityLevel[3].text = NumberSpell1Update.ToString();
+                }
             }
         }
-    }
 
-    public void Spell2Update()
-    {
-        if (SelectionClassView.WhatPlaying == "Level")
+        public void Spell2Update()
         {
-            if (NumberSpell2Update <= 5)
+            if (SelectionClassView.WhatPlaying == "Level")
             {
-                NumberSpell2Update++;
-                CanSpell2Update = true;
-                _abilityLevel[4].text = NumberSpell2Update.ToString();
+                if (NumberSpell2Update <= 5)
+                {
+                    NumberSpell2Update++;
+                    CanSpell2Update = true;
+                    _abilityLevel[4].text = NumberSpell2Update.ToString();
+                }
             }
         }
     }

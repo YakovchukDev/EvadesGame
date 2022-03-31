@@ -15,6 +15,7 @@ namespace Menu
         [SerializeField] private TMP_Text _spellText2;
         [SerializeField] private Image _spellImage1;
         [SerializeField] private Image _spellImage2;
+        private int _characterNumber;
 
         private readonly string[] _englishSkillType1 =
             {"Nothing", "Resurrection", "Reduction", "Freezing field", "Acceleration", "Resurrection"};
@@ -36,31 +37,27 @@ namespace Menu
 
         private void Start()
         {
-            SetAbilities(0);
-            ApplySpell(0);
+            SetAbilities(PlayerPrefs.GetInt("SelectionNumber"));
         }
 
         public void SetAbilities(int characterNumber)
         {
+            PlayerPrefs.SetInt("SelectionNumber", characterNumber);
             _spellImage1.sprite = _spellSprites1[characterNumber];
             _spellImage2.sprite = _spellSprites2[characterNumber];
-        }
-
-        public void ApplySpell(int skillType)
-        {
             switch (PlayerPrefs.GetString("Language"))
             {
                 case "English":
-                    _spellText1.text = _englishSkillType1[skillType];
-                    _spellText2.text = _englishSkillType2[skillType];
+                    _spellText1.text = _englishSkillType1[characterNumber];
+                    _spellText2.text = _englishSkillType2[characterNumber];
                     break;
                 case "Russian":
-                    _spellText1.text = _russianSkillType1[skillType];
-                    _spellText2.text = _russianSkillType2[skillType];
+                    _spellText1.text = _russianSkillType1[characterNumber];
+                    _spellText2.text = _russianSkillType2[characterNumber];
                     break;
                 case "Ukrainian":
-                    _spellText1.text = _ukrainianSkillType1[skillType];
-                    _spellText2.text = _ukrainianSkillType2[skillType];
+                    _spellText1.text = _ukrainianSkillType1[characterNumber];
+                    _spellText2.text = _ukrainianSkillType2[characterNumber];
                     break;
             }
         }
