@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4464688701804638509}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.861683, y: 2, z: -2.4460182}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4464688702218637360}
   - {fileID: 3389532560970305537}
@@ -137,9 +137,9 @@ GameObject:
   - component: {fileID: 4464688702218637363}
   - component: {fileID: 4464688702218637362}
   - component: {fileID: 4464688702218637361}
-  - component: {fileID: 4464688702218637353}
   - component: {fileID: 5407156467003821566}
   - component: {fileID: 3175347176168299264}
+  - component: {fileID: 4464688702218637353}
   m_Layer: 7
   m_Name: Repulsion
   m_TagString: Repulsion
@@ -188,7 +188,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b6e783f4d0ea4a44ea8856c46338925a, type: 2}
+  - {fileID: 2100000, guid: 4d4a624b937467e4089d93256928ccf8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -223,18 +223,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1422355
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4464688702218637353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4464688702218637367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa5424c00a586c4eb8916ec3814bccf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &5407156467003821566
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -261,6 +249,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc451edac3d40c44dac704fc774cd73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4464688702218637353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4464688702218637367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa5424c00a586c4eb8916ec3814bccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2918526736792303594
@@ -329,7 +329,23 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 002a1f4bc20ea6c4a860209543be1b54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6816c419970f09e44992bf23d1c712b7, type: 2}
+      objectReference: {fileID: 2100000, guid: e9e2e8908198a2844930e9a7e1874b49, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 002a1f4bc20ea6c4a860209543be1b54, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e0e58ff660ad6c49bead522599d8f69, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 002a1f4bc20ea6c4a860209543be1b54, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f6cc5a45237b1c4a955805ff736b712, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 002a1f4bc20ea6c4a860209543be1b54, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f6cc5a45237b1c4a955805ff736b712, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 002a1f4bc20ea6c4a860209543be1b54, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f6cc5a45237b1c4a955805ff736b712, type: 2}
     - target: {fileID: 919132149155446097, guid: 002a1f4bc20ea6c4a860209543be1b54, type: 3}
       propertyPath: m_Name
       value: "\u043C\u0430\u04332"
@@ -478,7 +494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.00012755394
+      value: 0.07060099
       objectReference: {fileID: 0}
     - target: {fileID: 2364745442801785036, guid: e89803900ad1883428106f37e24044fe, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r

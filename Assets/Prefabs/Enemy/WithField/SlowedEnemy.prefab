@@ -4855,7 +4855,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5246570446611896554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.61, y: 7, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children:
   - {fileID: 5246570447083970345}
@@ -5011,7 +5011,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46af87a205a693a4e8a9f38eb915fc14, type: 2}
+  - {fileID: 2100000, guid: be5620d98e98de145b48f7a8e46a1d24, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5124,7 +5124,23 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 002a1f4bc20ea6c4a860209543be1b54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e652b6dbb9154304f84cfbaab68bbef6, type: 2}
+      objectReference: {fileID: 2100000, guid: c96751a6b39fa0d42845740eeb436187, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 002a1f4bc20ea6c4a860209543be1b54, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 60436de7b11409e42acc7cb95636a149, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 002a1f4bc20ea6c4a860209543be1b54, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: d40caf8e49ccf414c819e03b3547bb89, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 002a1f4bc20ea6c4a860209543be1b54, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: d40caf8e49ccf414c819e03b3547bb89, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 002a1f4bc20ea6c4a860209543be1b54, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: d40caf8e49ccf414c819e03b3547bb89, type: 2}
     - target: {fileID: 919132149155446097, guid: 002a1f4bc20ea6c4a860209543be1b54, type: 3}
       propertyPath: m_Name
       value: "\u043C\u0430\u04332"

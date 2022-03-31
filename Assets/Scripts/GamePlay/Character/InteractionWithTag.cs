@@ -37,7 +37,7 @@ namespace GamePlay.Character
             }
             if (other.gameObject.CompareTag("ManaEater"))
             {
-                _manaController.ManaReduction(0.1f);
+                _manaController.ManaReduction(0.5f);
             }
         }
         private void OnTriggerExit(Collider other)

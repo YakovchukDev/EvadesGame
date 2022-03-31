@@ -1,5 +1,7 @@
+using System;
 using GamePlay.Enemy.Move;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GamePlay.Enemy
 {
@@ -8,9 +10,14 @@ namespace GamePlay.Enemy
         [SerializeField] private MoveEnemy _moveEnemy;
         [SerializeField] private GameObject _horns;
 
+        private void Start()
+        {
+            _horns.SetActive(false);
+        }
+
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag("GravityRadius")&& other.gameObject.layer!=11)
+            if (other.CompareTag("GravityRadius") && other.gameObject.layer != 11)
             {
                 _moveEnemy.Rotate = true;
                 Vector3 direction = other.transform.position - transform.position;

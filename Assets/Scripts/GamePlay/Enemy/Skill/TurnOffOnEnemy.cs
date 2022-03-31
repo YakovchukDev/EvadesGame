@@ -26,32 +26,40 @@ namespace GamePlay.Enemy.Skill
             _timeForMove += Time.deltaTime;
             if (_timeForMove >= 5 && _timeForMove < 10)
             {
-                Color color = new Color(0.3f, 0.3f, 0.3f, 0.3f);
+                Color Bodycolor = new Color(0f, 0f, 0f, 0.3f);
+                Color Eyecolor = new Color(1f, 0f, 0f, 0.3f);
+                Color Helmetcolor = new Color(0.35f, 0.35f, 0.35f, 0.3f);
                 foreach (var particle in _particles)
                 {
                     particle.SetActive(true);
                 }
-
-                foreach (var material in gameObject.transform.GetChild(0).GetComponent<Renderer>().materials)
+                gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[0].color = Bodycolor;
+                gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[1].color = Eyecolor;
+                gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[2].color = Helmetcolor;
+                /*(var material in gameObject.transform.GetChild(0).GetComponent<Renderer>().materials)
                 {
                     material.color = color;
-                }
+                }*/
 
 
                 gameObject.layer = 12;
             }
             else if (_timeForMove >= 10)
             {
-                Color color = new Color(0.3f, 0.3f, 0.3f, 1f);
+                Color Bodycolor = new Color(0f, 0f, 0f, 1f);
+                Color Eyecolor = new Color(1f, 0f, 0f, 1f);
+                Color Helmetcolor = new Color(0.35f, 0.35f, 0.35f, 1f);
                 foreach (var particle in _particles)
                 {
                     particle.SetActive(false);
                 }
-
-                foreach (var material in gameObject.transform.GetChild(0).GetComponent<Renderer>().materials)
+                gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[0].color = Bodycolor;
+                gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[1].color = Eyecolor;
+                gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[2].color = Helmetcolor;
+                /*foreach (var material in gameObject.transform.GetChild(0).GetComponent<Renderer>().materials)
                 {
                     material.color = color;
-                }
+                }*/
 
                 _timeForMove = 0;
                 gameObject.layer = 8;
