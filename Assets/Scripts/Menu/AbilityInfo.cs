@@ -1,22 +1,23 @@
 using System.Collections.Generic;
-using Menu.SelectionClass;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Menu
 {
-    public class AbilityInfo : SelectionClassView
+    public class AbilityInfo : MonoBehaviour
     {
         [SerializeField] private List<Sprite> _spellSprites1;
         [SerializeField] private List<Sprite> _spellSprites2;
 
         [SerializeField] private TMP_Text _spellText1;
         [SerializeField] private TMP_Text _spellText2;
+        [SerializeField] private TMP_Text _class;
         [SerializeField] private Image _spellImage1;
         [SerializeField] private Image _spellImage2;
-        private int _characterNumber;
-
+        private readonly string[] _classType =
+            {"Weak", "Necro", "Shooter", "Neo", "Tank", "Necromus"};
+        
         private readonly string[] _englishSkillType1 =
             {"Nothing", "Resurrection", "Reduction", "Freezing field", "Acceleration", "Resurrection"};
 
@@ -37,12 +38,13 @@ namespace Menu
 
         private void Start()
         {
-            SetAbilities(PlayerPrefs.GetInt("SelectionNumber"));
+            SetAbilitiesAndClass(PlayerPrefs.GetInt("SelectionNumber"));
         }
 
-        public void SetAbilities(int characterNumber)
+        public void SetAbilitiesAndClass(int characterNumber)
         {
             PlayerPrefs.SetInt("SelectionNumber", characterNumber);
+            _class.text=_classType[characterNumber];
             _spellImage1.sprite = _spellSprites1[characterNumber];
             _spellImage2.sprite = _spellSprites2[characterNumber];
             switch (PlayerPrefs.GetString("Language"))

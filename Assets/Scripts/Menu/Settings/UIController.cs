@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Menu
+namespace Menu.Settings
 {
     public class UIController : MonoBehaviour
     {
@@ -11,7 +11,15 @@ namespace Menu
         private void Start()
         {
             _variableJoystick = FindObjectOfType<VariableJoystick>();
-         
+        }
+
+        private void Update()
+        {
+            UIChange();
+        }
+
+        private void UIChange()
+        {
             if (_variableJoystick != null)
             {
                 _variableJoystick.transform.position = UIFor.Joystick;
@@ -21,7 +29,14 @@ namespace Menu
             {
                 foreach (var spellButton in _spellButtons)
                 {
-                    spellButton.anchoredPosition = UIFor.SpellButtons;
+                    if (PlayerPrefs.GetString("RightOrLeft") == "Right")
+                    {
+                        spellButton.anchoredPosition=new Vector2(300,200); 
+                    }
+                    else if(PlayerPrefs.GetString("RightOrLeft") == "Left")
+                    {
+                        spellButton.anchoredPosition=new Vector2(1620,200);
+                    }
                 }
             }
         }

@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace TextMesh_Pro.Scripts
 {
-    public class CameraController : SelectionClassView
+    public class CameraController : MonoBehaviour
     {
         private readonly string[] _characterObject =
         {
-            "CharacterJust(Clone)", "CharacterNecro(Clone)", "CharacterMorfe(Clone)", "CharacterNeo(Clone)",
-            "CharacterMagmax(Clone)", "CharacterNexusComponent"
+            "CharacterWeak(Clone)", "CharacterNecro(Clone)", "CharacterShooter(Clone)", "CharacterNeo(Clone)",
+            "CharacterTank(Clone)", "CharacterNecromusComponent"
         };
 
         [SerializeField] private GameObject _player;
@@ -19,7 +19,7 @@ namespace TextMesh_Pro.Scripts
         {
             if (_player == null)
             {
-                _player = GameObject.Find(_characterObject[CharacterType]);
+                _player = GameObject.Find(_characterObject[SelectionClassView.CharacterType]);
             }
         }
 
@@ -27,7 +27,7 @@ namespace TextMesh_Pro.Scripts
         {
             if (_player == null)
             {
-                _player = GameObject.Find(_characterObject[CharacterType]);
+                _player = GameObject.Find(_characterObject[SelectionClassView.CharacterType]);
             }
             var position = _player.transform.position;
             _cameraPosition.x = position.x;

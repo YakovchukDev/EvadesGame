@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace GamePlay.Character
 {
-    public class CharacterSpawner : SelectionClassView
+    public class CharacterSpawner : MonoBehaviour
     {
         [SerializeField] private List<GameObject> _type;
 
         void Start()
         {
-            if (WhatPlaying == "Level")
+            if (SelectionClassView.WhatPlaying == "Level")
             {
                 SpawnCharacter(new Vector3(0, 1, 65));
             }
-            else if (WhatPlaying == "Infinity")
+            else if (SelectionClassView.WhatPlaying == "Infinity")
             {
                 SpawnCharacter(new Vector3(0, 1, 0));
             }
@@ -23,7 +23,7 @@ namespace GamePlay.Character
 
         private void SpawnCharacter(Vector3 startPosition)
         {
-            Instantiate(_type[CharacterType], startPosition, Quaternion.identity);
+            Instantiate(_type[SelectionClassView.CharacterType], startPosition, Quaternion.identity);
         }
     }
 }

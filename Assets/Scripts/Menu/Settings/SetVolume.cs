@@ -1,9 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-namespace Menu
+namespace Menu.Settings
 {
     public class SetVolume : MonoBehaviour
     {

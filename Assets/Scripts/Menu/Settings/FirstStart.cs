@@ -6,6 +6,11 @@ namespace Menu.Settings
     {
         private void Awake()
         {
+            if (!PlayerPrefs.HasKey("newLanguage"))
+            {
+                PlayerPrefs.SetInt("newLanguage", 0);
+            }
+
             if (!PlayerPrefs.HasKey("SelectionNumber"))
             {
                 PlayerPrefs.SetInt("SelectionNumber", 0);

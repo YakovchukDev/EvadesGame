@@ -29,19 +29,21 @@ namespace GamePlay.Character
             {
                 Destroy(gameObject);
             }
-
-            foreach (var abilityLevel in _abilityLevel)
+            else
             {
-                abilityLevel.text = "1";
-            }
+                foreach (var abilityLevel in _abilityLevel)
+                {
+                    abilityLevel.text = "1";
+                }
 
-            _numberSpeedUpdate = 1;
-            _numberMaxManaUpdate = 1;
-            _numberManaRegenUpdate = 1;
-            NumberSpell1Update = 1;
-            NumberSpell2Update = 1;
-            CanSpell1Update = false;
-            CanSpell2Update = false;
+                _numberSpeedUpdate = 1;
+                _numberMaxManaUpdate = 1;
+                _numberManaRegenUpdate = 1;
+                NumberSpell1Update = 1;
+                NumberSpell2Update = 1;
+                CanSpell1Update = false;
+                CanSpell2Update = false; 
+            }
         }
 
         public void SpeedUpdate()

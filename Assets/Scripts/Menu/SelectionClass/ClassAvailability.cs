@@ -11,19 +11,31 @@ namespace Menu.SelectionClass
         [SerializeField] private List<Button> _classes;
         [SerializeField] private List<TMP_Text> _maxTime;
         [SerializeField] private Button _levelButton;
+        [SerializeField] private GameObject _levelInfoText;
         [SerializeField] private float[] _recordTime;
         private float _neededTime = 25;
         private int _neededPassedLevels = 5;
 
+        public void OpenAllClass()
+        {
+            PlayerPrefs.SetFloat("JustTime", 200);
+            PlayerPrefs.SetFloat("NecroTime", 200);
+            PlayerPrefs.SetFloat("MorfeTime", 200);
+            PlayerPrefs.SetFloat("NeoTime", 200);
+            PlayerPrefs.SetFloat("InvulnerableTime", 200);
+            PlayerPrefs.SetFloat("NexusTime", 200);
+        }
+
         private void Start()
         {
             _recordTime = new float[_maxTime.Count];
-            _recordTime[0] = 200; //PlayerPrefs.GetFloat("JustTime");
-            _recordTime[1] = 200; //PlayerPrefs.GetFloat("NecroTime");
-            _recordTime[2] = 200; //PlayerPrefs.GetFloat("MorfeTime");
-            _recordTime[3] = 200; //PlayerPrefs.GetFloat("NeoTime");
-            _recordTime[4] =200; //PlayerPrefs.GetFloat("InvulnerableTime");
-            _recordTime[5] =200; //PlayerPrefs.GetFloat("NexusTime");
+
+            _recordTime[0] = PlayerPrefs.GetFloat("JustTime");
+            _recordTime[1] = PlayerPrefs.GetFloat("NecroTime");
+            _recordTime[2] = PlayerPrefs.GetFloat("MorfeTime");
+            _recordTime[3] = PlayerPrefs.GetFloat("NeoTime");
+            _recordTime[4] = PlayerPrefs.GetFloat("InvulnerableTime");
+            _recordTime[5] = PlayerPrefs.GetFloat("NexusTime");
 
             for (int i = 0; i < _maxTime.Count; i++)
             {
@@ -31,6 +43,7 @@ namespace Menu.SelectionClass
             }
 
             _levelButton.interactable = (_recordTime[0] >= 25);
+            _levelInfoText.SetActive(_recordTime[0] < 25);
         }
 
         public void CheckClassForInfinity()
