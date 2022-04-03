@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Joystick_Pack.Examples;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -11,10 +12,11 @@ namespace GamePlay.Character.Spell
         [SerializeField] private HealthController _healthController;
         [SerializeField] private AudioMixerGroup _audioMixer;
         [SerializeField] private GameObject _respawnParticle;
-        [SerializeField] private Button _spell1;
+        [SerializeField] private List<Button> _spell1;
         [SerializeField] private int _spellNumber = 1;
         private GameObject _killer;
         private Vector3 _diePosition;
+
         private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
@@ -22,7 +24,11 @@ namespace GamePlay.Character.Spell
             {
                 if (_spellNumber >= 1)
                 {
-                    _spell1.interactable = true;
+                    foreach (var spell in _spell1)
+                    {
+                        spell.interactable = true;
+                    }
+
                     _killer = other.gameObject;
                     _diePosition = transform.position;
                 }
@@ -43,7 +49,10 @@ namespace GamePlay.Character.Spell
                 _respawnParticle.SetActive(true);
                 HealthController.ImmortalityTime = 0;
                 HealthController.Immortality = true;
-                _spell1.interactable = false;
+                foreach (var spell in _spell1)
+                {
+                    spell.interactable = false;
+                }
             }
         }
     }

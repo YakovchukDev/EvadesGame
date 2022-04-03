@@ -41,7 +41,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
             {
                 if (CharacterUpdate.CanSpell2Update)
                 {
-                    if(_levelSpell2 < CharacterUpdate.NumberSpell2Update) 
+                    if (_levelSpell2 < CharacterUpdate.NumberSpell2Update)
                     {
                         _manaCost -= 2f;
                         _timeReloadSecondSpell -= 0.6f;
@@ -64,6 +64,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
                     Instantiate(_splashParticle, transform.position, Quaternion.identity);
                     Ray ray = new Ray(transform.position, transform.forward);
                     if (Physics.Raycast(ray, out var hit))
+                    {
                         if (Physics.Raycast(ray, out hit, _teleportationLength))
                         {
                             if (hit.transform.gameObject.CompareTag("Wall"))
@@ -71,11 +72,19 @@ namespace GamePlay.Character.Spell.TeleportFreeze
                                 transform.position = hit.point;
                                 transform.position -= transform.forward;
                             }
+                            else
+                            {
+                                transform.position += transform.forward * _teleportationLength;
+                                print(1);
+                            }
                         }
                         else
                         {
                             transform.position += transform.forward * _teleportationLength;
+                            print(1);
                         }
+                    }
+
                 }
             }
         }

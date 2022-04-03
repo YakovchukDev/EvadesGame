@@ -32,11 +32,12 @@ namespace Joystick_Pack.Examples
             _frictionSound.Play();
             Speed = MaxSpeed;
             _rigidbody = GetComponent<Rigidbody>();
-            _variableJoystick = FindObjectOfType<VariableJoystick>();
         }
 
         public void FixedUpdate()
         {
+            _variableJoystick = FindObjectOfType<VariableJoystick>();
+
             MoveCharacter();
         }
 

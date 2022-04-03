@@ -276,7 +276,6 @@ GameObject:
   - component: {fileID: 2963534093953126581}
   - component: {fileID: 6667459704196665146}
   - component: {fileID: 1102833831544335234}
-  - component: {fileID: 7663017519730007577}
   m_Layer: 6
   m_Name: CharacterWeak
   m_TagString: Untagged
@@ -423,19 +422,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2963534093953126575}
   m_Enabled: 1
---- !u!114 &7663017519730007577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2963534093953126575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef101d9c19802f44af632015651f688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spellButtons: []
 --- !u!1 &4001905535545596569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,13 +1517,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0276da4f7f58f52488624adb26f2ec92, type: 3}
---- !u!4 &8997539001364860882 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4333003994165406, guid: 0276da4f7f58f52488624adb26f2ec92, type: 3}
-  m_PrefabInstance: {fileID: 8994474421568847692}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &9083849540370172844 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198892667053978848, guid: 0276da4f7f58f52488624adb26f2ec92, type: 3}
+  m_PrefabInstance: {fileID: 8994474421568847692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8997539001364860882 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4333003994165406, guid: 0276da4f7f58f52488624adb26f2ec92, type: 3}
   m_PrefabInstance: {fileID: 8994474421568847692}
   m_PrefabAsset: {fileID: 0}

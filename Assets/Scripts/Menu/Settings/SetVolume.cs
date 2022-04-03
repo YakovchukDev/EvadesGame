@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -21,7 +22,7 @@ namespace Menu.Settings
 
             ChangeEffectsVolume(PlayerPrefs.GetFloat("AllEffectVolume"));
             _effectSlider.value = PlayerPrefs.GetFloat("AllEffectVolume");
-
+            
             if (!PlayerPrefs.HasKey("MasterVolume"))
             {
                 PlayerPrefs.SetFloat("MasterVolume", 0);
@@ -32,21 +33,18 @@ namespace Menu.Settings
             {
                 PlayerPrefs.SetFloat("MusicVolume", 0);
                 _audioMixer.audioMixer.SetFloat("MusicVolume", 0);
-                _musicSlider.value = 1;
             }
 
             if (!PlayerPrefs.HasKey("ImportantVolume"))
             {
                 PlayerPrefs.SetFloat("ImportantVolume", 0);
                 _audioMixer.audioMixer.SetFloat("ImportantVolume", 0);
-                _effectSlider.value = 1;
             }
 
             if (!PlayerPrefs.HasKey("EffectVolume"))
             {
                 PlayerPrefs.SetFloat("EffectVolume", 0);
                 _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
-                _effectSlider.value = 1;
             }
         }
 
@@ -74,7 +72,16 @@ namespace Menu.Settings
         {
             _audioMixer.audioMixer.SetFloat("ImportantVolume", Mathf.Lerp(-80, 0, volume));
             _audioMixer.audioMixer.SetFloat("EffectVolume", Mathf.Lerp(-80, 0, volume));
+            PlayerPrefs.SetFloat("ImportantVolume", volume);
+            PlayerPrefs.SetFloat("EffectVolume", volume);
             PlayerPrefs.SetFloat("AllEffectVolume", volume);
+
+        }
+
+        private void Update()
+        {
+            print(PlayerPrefs.GetFloat("EffectVolume"));
+
         }
     }
 }

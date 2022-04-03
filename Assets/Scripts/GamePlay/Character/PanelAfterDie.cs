@@ -14,7 +14,6 @@ namespace GamePlay.Character
          Time.timeScale = 1;
          InfinityInterfaceController.Time = 0;
          InfinityEnemySpawner.SpawnNumber = 0;
-         _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
       }
       public void ExitButton()
       {
@@ -23,7 +22,8 @@ namespace GamePlay.Character
          InfinityInterfaceController.Time = 0;
          InfinityEnemySpawner.SpawnNumber = 0;
          InfinityInterfaceController.TimeSave();
-         _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
+         _audioMixer.audioMixer.SetFloat("ImportantVolume", Mathf.Lerp(-80, 0, PlayerPrefs.GetFloat("ImportantVolume")));
+         _audioMixer.audioMixer.SetFloat("EffectVolume", Mathf.Lerp(-80, 0, PlayerPrefs.GetFloat("EffectVolume")));
       }
    
    }

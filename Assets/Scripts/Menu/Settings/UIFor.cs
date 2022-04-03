@@ -6,8 +6,10 @@ namespace Menu.Settings
 {
     public class UIFor : MonoBehaviour
     {
-        public static Vector2 Joystick;
         private string _rightOrLeft;
+        [SerializeField] private JoystickController _joystickController;
+        private SpellButtonController _spellButtonController;
+
         [SerializeField] private TMP_Text _forWhoText;
         
         [SerializeField] private Image _thisImage;
@@ -17,16 +19,66 @@ namespace Menu.Settings
 
         private void Start()
         {
-            RightOrLeftHanded();
-            RightOrLeftHanded();
+            StartSet();
         }
 
-        public void RightOrLeftHanded()
+        private void StartSet()
         {
             _rightOrLeft = PlayerPrefs.GetString("RightOrLeft");
             if (_rightOrLeft == "Right")
             {
-                Joystick = new Vector3(840, 0, 0);
+                switch (PlayerPrefs.GetString("Language"))
+                {
+                    case "English":
+                        _forWhoText.text = "For left handed";
+                        break;
+                    case "Russian":
+                        _forWhoText.text = "Для левшей";
+
+                        break;
+                    case "Ukrainian":
+                        _forWhoText.text = "Для лівшів";
+                        break;
+                }
+
+                _thisImage.sprite = _forLeftHanded;
+            }
+            else if (_rightOrLeft == "Left")
+            {
+                switch (PlayerPrefs.GetString("Language"))
+                {
+                    case "English":
+                        _forWhoText.text = "For right handed";
+                        break;
+                    case "Russian":
+                        _forWhoText.text = "Для правшей";
+
+                        break;
+                    case "Ukrainian":
+                        _forWhoText.text = "Для правшів";
+                        break;
+                }
+
+                _thisImage.sprite = _forRightHanded;
+                
+            }
+        }
+        public void RightOrLeftHanded()
+        {
+            _rightOrLeft = PlayerPrefs.GetString("RightOrLeft");
+            _spellButtonController = FindObjectOfType<SpellButtonController>();
+            if (_joystickController != null)
+            {
+                _joystickController.SelectJoystickPosition();
+            }
+
+            if (_spellButtonController != null)
+            {
+                _spellButtonController.SelectButtonPosition();
+            }
+
+            if (_rightOrLeft == "Right")
+            {
                 switch (PlayerPrefs.GetString("Language"))
                 {
                     case "English":
@@ -45,7 +97,6 @@ namespace Menu.Settings
             }
             else if (_rightOrLeft == "Left")
             {
-                Joystick = new Vector3(-120, 0, 0);
                 switch (PlayerPrefs.GetString("Language"))
                 {
                     case "English":

@@ -25,7 +25,7 @@ namespace GamePlay.Enemy.Skill
                 _affectedBodies.Remove(other.attachedRigidbody);
             }
         }
-        private void Update()
+        private void FixedUpdate()
         {
             if (Time.timeScale > 0)
             {
@@ -37,7 +37,7 @@ namespace GamePlay.Enemy.Skill
             foreach (var body in _affectedBodies)
             {
                 var directionToSphere = (transform.position - body.position).normalized;
-                var strength = body.mass * _componentRigidbody.mass;
+                var strength = body.mass * _componentRigidbody.mass*8;
 
                 body.AddForce(-directionToSphere * strength);
             }

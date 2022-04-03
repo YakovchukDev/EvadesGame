@@ -5,6 +5,7 @@ namespace GamePlay.Enemy.Move
 {
     public class MoveIndestructibleEnemy : MonoBehaviour
     {
+        private const float LengthForTurn=1.1f;
         private const float Z = -10;
         private const float X = 0;
         private const float Y = 0;
@@ -14,17 +15,18 @@ namespace GamePlay.Enemy.Move
         
         private void FixedUpdate()
         {
-            transform.parent.localScale = new Vector3(30, 30, 30);
+            transform.localScale = new Vector3(30, 30, 30);
             MoveSystem();
+            DirectionAndSpeedMovement();
         }
 
-        private void OnCollisionEnter(Collision other)
+        /*private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.CompareTag("Wall"))
             {
                 DirectionAndSpeedMovement();
             }
-        }
+        }*/
         private void MoveSystem()
         {
             if (InfinityEnemySpawner.SpawnNumber >= 40)
@@ -36,17 +38,27 @@ namespace GamePlay.Enemy.Move
                     _speed += 0.0005f;
                 }
 
-                transform.parent.Translate(new Vector3(X * _speed, 0, Z * _speed));
+                transform.Translate(new Vector3(X * _speed, 0, Z * _speed));
             }
             else
             {
-                transform.parent.Translate(new Vector3(X * _speed, 0, Z * _speed));
+                transform.Translate(new Vector3(X * _speed, 0, Z * _speed));
             }
         }
 
         private void DirectionAndSpeedMovement()
         {
-            transform.parent.Rotate(0, Y + HelpY, 0);
+            Ray ray = new Ray(transform.position, -transform.forward);
+            if (Physics.Raycast(ray, out var hit))
+            {
+                if (Physics.Raycast(ray, out hit, LengthForTurn))
+                {
+                    if (hit.transform.gameObject.CompareTag("Wall"))
+                    {
+                        transform.Rotate(0, Y + HelpY, 0);
+                    }
+                }
+            }
         }
     }
 }

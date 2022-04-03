@@ -30,7 +30,7 @@ namespace Menu.Settings
             }
             if (!PlayerPrefs.HasKey("AllEffectVolume"))
             {
-                PlayerPrefs.SetFloat("AllEffectVolume", 0);
+                PlayerPrefs.SetFloat("AllEffectVolume", 1);
             }
 
             if (!PlayerPrefs.HasKey("RightOrLeft"))
