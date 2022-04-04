@@ -1,6 +1,3 @@
-using System.Collections;
-using Menu.SelectionClass;
-using TMPro;
 using UnityEngine;
 
 namespace GamePlay.Enemy

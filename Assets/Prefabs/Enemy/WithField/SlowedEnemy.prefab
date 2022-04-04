@@ -4835,8 +4835,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5246570446611896548}
   - component: {fileID: 5246570446611896553}
-  - component: {fileID: 3191412896521841564}
   - component: {fileID: 5234301711315636993}
+  - component: {fileID: 3191412896521841564}
   - component: {fileID: 1864262372321720574}
   - component: {fileID: -794495009539933768}
   - component: {fileID: -3174053932260099544}
@@ -4879,22 +4879,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.014
   m_Center: {x: 0, y: 0.003, z: 0}
---- !u!114 &3191412896521841564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5246570446611896554}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 344f86410b82eb54291f43d1f2c265fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _freezeField: {fileID: 0}
-  _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
-  _speed: 5
-  _bounceSound: {fileID: 7379492243953211655}
 --- !u!54 &5234301711315636993
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4911,6 +4895,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &3191412896521841564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5246570446611896554}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344f86410b82eb54291f43d1f2c265fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _freezeField: {fileID: 0}
+  _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
+  _speed: 5
+  _bounceSound: {fileID: 7379492243953211655}
 --- !u!114 &1864262372321720574
 MonoBehaviour:
   m_ObjectHideFlags: 0

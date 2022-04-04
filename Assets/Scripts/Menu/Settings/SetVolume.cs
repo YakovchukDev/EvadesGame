@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -22,7 +21,7 @@ namespace Menu.Settings
 
             ChangeEffectsVolume(PlayerPrefs.GetFloat("AllEffectVolume"));
             _effectSlider.value = PlayerPrefs.GetFloat("AllEffectVolume");
-            
+
             if (!PlayerPrefs.HasKey("MasterVolume"))
             {
                 PlayerPrefs.SetFloat("MasterVolume", 0);
@@ -75,13 +74,6 @@ namespace Menu.Settings
             PlayerPrefs.SetFloat("ImportantVolume", volume);
             PlayerPrefs.SetFloat("EffectVolume", volume);
             PlayerPrefs.SetFloat("AllEffectVolume", volume);
-
-        }
-
-        private void Update()
-        {
-            print(PlayerPrefs.GetFloat("EffectVolume"));
-
         }
     }
 }

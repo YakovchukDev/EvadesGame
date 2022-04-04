@@ -1,4 +1,3 @@
-using System;
 using GamePlay.Enemy.Move;
 using UnityEngine;
 using Random = UnityEngine.Random;

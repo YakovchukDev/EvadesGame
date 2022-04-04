@@ -1,8 +1,6 @@
-using System;
 using GamePlay.Enemy.Spawner;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 namespace GamePlay.Enemy.Move
