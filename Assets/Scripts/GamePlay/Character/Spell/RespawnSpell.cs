@@ -14,6 +14,8 @@ namespace GamePlay.Character.Spell
         [SerializeField] private GameObject _respawnParticle;
         [SerializeField] private List<Button> _spell1;
         [SerializeField] private int _spellNumber = 1;
+        [SerializeField] private Animator _leftDieAnimator;
+        [SerializeField] private Animator _rightDieAnimator;
         private GameObject _killer;
         private Vector3 _diePosition;
 
@@ -53,7 +55,14 @@ namespace GamePlay.Character.Spell
                 {
                     spell.interactable = false;
                 }
+
+                DieClosed();
             }
+        }
+        public void DieClosed()
+        {
+            _leftDieAnimator.SetInteger("LeftDie", 1);
+            _rightDieAnimator.SetInteger("RightDie", 1);
         }
     }
 }

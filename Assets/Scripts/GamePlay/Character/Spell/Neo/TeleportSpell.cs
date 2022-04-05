@@ -75,13 +75,11 @@ namespace GamePlay.Character.Spell.TeleportFreeze
                             else
                             {
                                 transform.position += transform.forward * _teleportationLength;
-                                print(1);
                             }
                         }
                         else
                         {
                             transform.position += transform.forward * _teleportationLength;
-                            print(1);
                         }
                     }
 

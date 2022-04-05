@@ -8,7 +8,7 @@ namespace Menu.Settings
     {
         private string _rightOrLeft;
         [SerializeField] private JoystickController _joystickController;
-        private SpellButtonController _spellButtonController;
+        private SelectUIPosition _selectUIPosition;
 
         [SerializeField] private TMP_Text _forWhoText;
         
@@ -66,15 +66,15 @@ namespace Menu.Settings
         public void RightOrLeftHanded()
         {
             _rightOrLeft = PlayerPrefs.GetString("RightOrLeft");
-            _spellButtonController = FindObjectOfType<SpellButtonController>();
+            _selectUIPosition = FindObjectOfType<SelectUIPosition>();
             if (_joystickController != null)
             {
                 _joystickController.SelectJoystickPosition();
             }
 
-            if (_spellButtonController != null)
+            if (_selectUIPosition != null)
             {
-                _spellButtonController.SelectButtonPosition();
+                _selectUIPosition.SelectButtonPosition();
             }
 
             if (_rightOrLeft == "Right")

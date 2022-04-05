@@ -1,12 +1,14 @@
+using Menu.Settings;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 namespace GamePlay.Character
 {
     public class HealthController : MonoBehaviour
     {
+        [SerializeField] private SelectUIPosition _selectUIPosition;
         [SerializeField] private int _hpNumber = 1;
-        [SerializeField] private GameObject _panelAfterDie;
         [SerializeField] private AudioSource _dieSound;
         [SerializeField] private AudioMixerGroup _audioMixer;
         public static float ImmortalityTime;
@@ -16,6 +18,9 @@ namespace GamePlay.Character
         private Color _color2;
         private Renderer _renderer;
 
+        [SerializeField] private Animator _leftDieAnimator;
+        [SerializeField] private Animator _rightDieAnimator;
+       
 
         public int HpNumber
         {
@@ -75,11 +80,17 @@ namespace GamePlay.Character
             if (_hpNumber <= 0)
             {
                 Time.timeScale = 0;
-                _panelAfterDie.SetActive(true);
                 InfinityInterfaceController.TimeSave();
                 _dieSound.Play();
                 _audioMixer.audioMixer.SetFloat("EffectVolume", -80);
+                _selectUIPosition.SelectDiePanelPosition();
+                DieOpen();
             }
+        }
+        public void DieOpen()
+        {
+            _leftDieAnimator.SetInteger("LeftDie", 0);
+            _rightDieAnimator.SetInteger("RightDie", 0);
         }
     }
 }

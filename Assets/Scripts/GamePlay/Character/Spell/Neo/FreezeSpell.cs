@@ -23,13 +23,13 @@ namespace GamePlay.Character.Spell.Neo
         {
             if (SelectionClassView.WhatPlaying == "Level")
             {
-                _manaCost = 20;
+                _manaCost = 40;
                 _maxSize = 4;
                 _timeReloadFirstSpell = 8;
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
-                _manaCost = 10;
+                _manaCost = 30;
                 _maxSize = 8;
                 _timeReloadFirstSpell = 4;
             }

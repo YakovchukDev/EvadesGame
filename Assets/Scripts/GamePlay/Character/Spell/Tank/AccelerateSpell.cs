@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Joystick_Pack.Examples;
 using Menu.SelectionClass;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
     {
         [SerializeField] private JoystickPlayerExample _joystickPlayerExample;
         [SerializeField] private ManaController _manaController;
-        [SerializeField] private GameObject _spellImage;
+        [SerializeField] private List<GameObject> _spellImage;
         [SerializeField] private GameObject _accelerationParticle;
         [SerializeField] private AudioSource _accelerateSound;
         [SerializeField] private AudioSource _windSound;
@@ -29,13 +30,13 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
             {
                 _maxManaCost = 0.4f;
                 _time = 0.1f;
-                _speedAccelerate = 2;
+                _speedAccelerate = 1.5f;
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
                 _maxManaCost = 0.1f;
                 _time = 0.1f;
-                _speedAccelerate = 2;
+                _speedAccelerate = 1.5f;
             }
 
             _starterTime = _time;
@@ -66,7 +67,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
             {
                 if (CharacterUpdate.CanSpell1Update)
                 {
-                    if(_levelSpell1 < CharacterUpdate.NumberSpell1Update) 
+                    if (_levelSpell1 < CharacterUpdate.NumberSpell1Update)
                     {
                         _maxManaCost -= 0.06f;
                         _levelSpell1++;
@@ -85,20 +86,28 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
             if (CheckAccelerate)
             {
                 JoystickPlayerExample.Speed *= _speedAccelerate;
-                _spellImage.SetActive(false);
+                foreach (var spellImage in _spellImage)
+                {
+                    spellImage.SetActive(false);
+                }
+
                 _accelerationParticle.SetActive(true);
                 _accelerateSound.Play();
                 _windSound.Play();
-                _animator.SetInteger(Magmax,1);
+                _animator.SetInteger(Magmax, 1);
             }
             else
             {
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;
-                _spellImage.SetActive(true);
+                foreach (var spellImage in _spellImage)
+                {
+                    spellImage.SetActive(true);
+                }
+
                 _accelerationParticle.SetActive(false);
                 _accelerateSound.Stop();
                 _windSound.Stop();
-                _animator.SetInteger(Magmax,2);
+                _animator.SetInteger(Magmax, 2);
             }
         }
     }

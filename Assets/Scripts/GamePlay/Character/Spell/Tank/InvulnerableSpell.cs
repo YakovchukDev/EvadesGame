@@ -1,9 +1,11 @@
+using System.Collections.Generic;
+using GamePlay.Character.Spell.SpeederInvulnerable;
 using Joystick_Pack.Examples;
 using Menu.SelectionClass;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace GamePlay.Character.Spell.SpeederInvulnerable
+namespace GamePlay.Character.Spell.Tank
 {
     public class InvulnerableSpell : MonoBehaviour
     {
@@ -12,9 +14,9 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
         [SerializeField] private AccelerateSpell _accelerateSpell;
         [SerializeField] private GameObject _gravityRadius;
         [SerializeField] private GameObject _invulnerableParticle;
-        [SerializeField] private GameObject _spellImage;
-        [SerializeField] private GameObject _otherSpellImage;
-        [SerializeField] private Button _otherSpellButton;
+        [SerializeField] private List<GameObject> _spellImage;
+        [SerializeField] private List<GameObject> _otherSpellImage;
+        [SerializeField] private List<Button> _otherSpellButton;
         [SerializeField] private AudioSource _invulnerableSound;
         [SerializeField] private Animator _animator;
         private float _maxManaCost;
@@ -70,7 +72,7 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
             {
                 if (CharacterUpdate.CanSpell2Update)
                 {
-                    if(_levelSpell2 < CharacterUpdate.NumberSpell2Update) 
+                    if (_levelSpell2 < CharacterUpdate.NumberSpell2Update)
                     {
                         _maxManaCost -= 0.2f;
                         _levelSpell2++;
@@ -92,12 +94,24 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 JoystickPlayerExample.Speed = 0;
                 gameObject.layer = 11;
                 _gravityRadius.layer = 11;
-                _spellImage.SetActive(false);
-                _otherSpellImage.SetActive(false);
-                _otherSpellButton.interactable = false;
+                foreach (var spellImage in _spellImage)
+                {
+                    spellImage.SetActive(false);
+                }
+
+                foreach (var otherSpellImage in _otherSpellImage)
+                {
+                    otherSpellImage.SetActive(false);
+                }
+
+                foreach (var otherSpellButton in _otherSpellButton)
+                {
+                    otherSpellButton.interactable = false;
+                }
+
                 _invulnerableParticle.SetActive(true);
                 _invulnerableSound.Play();
-                _animator.SetInteger(Magmax,3);
+                _animator.SetInteger(Magmax, 3);
             }
             else
             {
@@ -106,13 +120,25 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;
                 gameObject.layer = 6;
                 _gravityRadius.layer = 6;
-                _spellImage.SetActive(true);
-                _otherSpellImage.SetActive(true);
-                _otherSpellButton.interactable = true;
+                foreach (var spellImage in _spellImage)
+                {
+                    spellImage.SetActive(true);
+                }
+
+                foreach (var otherSpellImage in _otherSpellImage)
+                {
+                    otherSpellImage.SetActive(true);
+                }
+
+                foreach (var otherSpellButton in _otherSpellButton)
+                {
+                    otherSpellButton.interactable = true;
+                }
+
                 _invulnerableParticle.SetActive(false);
                 _accelerateSpell.Accelerate();
                 _invulnerableSound.Stop();
-                _animator.SetInteger(Magmax,0);
+                _animator.SetInteger(Magmax, 0);
             }
         }
     }

@@ -3,10 +3,12 @@ using UnityEngine;
 
 namespace Menu.Settings
 {
-    public class SpellButtonController : MonoBehaviour
+    public class SelectUIPosition : MonoBehaviour
     {
         [SerializeField] private List<GameObject> _leftSpellButtons;
         [SerializeField] private List<GameObject> _rightSpellButtons;
+        [SerializeField] private GameObject _leftPanelDie;
+        [SerializeField] private GameObject _rightPanelDie;
 
         private void Start()
         {
@@ -16,6 +18,7 @@ namespace Menu.Settings
                 {
                     spellButton.SetActive(true);
                 }
+
                 foreach (var spellButton in _leftSpellButtons)
                 {
                     spellButton.SetActive(false);
@@ -27,11 +30,13 @@ namespace Menu.Settings
                 {
                     spellButton.SetActive(false);
                 }
+
                 foreach (var spellButton in _leftSpellButtons)
                 {
                     spellButton.SetActive(true);
                 }
-            }        }
+            }
+        }
 
         public void SelectButtonPosition()
         {
@@ -41,6 +46,7 @@ namespace Menu.Settings
                 {
                     spellButton.SetActive(false);
                 }
+
                 foreach (var spellButton in _leftSpellButtons)
                 {
                     spellButton.SetActive(true);
@@ -52,10 +58,27 @@ namespace Menu.Settings
                 {
                     spellButton.SetActive(true);
                 }
+
                 foreach (var spellButton in _leftSpellButtons)
                 {
                     spellButton.SetActive(false);
                 }
+            }
+        }
+
+        public void SelectDiePanelPosition()
+        {
+            if (PlayerPrefs.GetString("RightOrLeft") == "Right")
+            {
+                _leftPanelDie.SetActive(true);
+                _rightPanelDie.SetActive(false);
+                print("right");
+            }
+            else if (PlayerPrefs.GetString("RightOrLeft") == "Left")
+            {
+                _leftPanelDie.SetActive(false);
+                _rightPanelDie.SetActive(true);
+                print("left");
             }
         }
     }
