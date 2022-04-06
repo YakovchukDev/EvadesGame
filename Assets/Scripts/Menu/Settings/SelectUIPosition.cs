@@ -72,13 +72,11 @@ namespace Menu.Settings
             {
                 _leftPanelDie.SetActive(true);
                 _rightPanelDie.SetActive(false);
-                print("right");
             }
             else if (PlayerPrefs.GetString("RightOrLeft") == "Left")
             {
                 _leftPanelDie.SetActive(false);
                 _rightPanelDie.SetActive(true);
-                print("left");
             }
         }
     }
