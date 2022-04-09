@@ -39,7 +39,7 @@ namespace GamePlay.Character.Spell.Nexus
             {
                 if (CharacterUpdate.CanSpell1Update)
                 {
-                    if(_levelSpell1 < CharacterUpdate.NumberSpell1Update) 
+                    if (_levelSpell1 < CharacterUpdate.NumberSpell1Update)
                     {
                         _manaCost -= 4f;
                         _timeReloadSecondSpell -= 0.6f;
@@ -54,15 +54,13 @@ namespace GamePlay.Character.Spell.Nexus
 
         public void InvulnerableField()
         {
-            if (_reloadSpell._canUseSpellSecond)
+            if (_manaController.ManaReduction(_manaCost) && _reloadSpell._canUseSpellSecond)
             {
                 _reloadSpell.ReloadSecondSpell(_timeReloadSecondSpell);
-                if (_manaController.ManaReduction(_manaCost))
-                {
-                    _invulnerableAudio.Play();
-                    _invulnerableField.transform.position = transform.position;
-                    _invulnerableField.SetActive(true);
-                }
+
+                _invulnerableAudio.Play();
+                _invulnerableField.transform.position = transform.position;
+                _invulnerableField.SetActive(true);
             }
         }
     }

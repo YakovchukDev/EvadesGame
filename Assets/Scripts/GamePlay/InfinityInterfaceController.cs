@@ -19,7 +19,7 @@ namespace GamePlay
 
         [SerializeField] private TMP_Text _timer;
         public static float Time;
-   
+
 
         private void Update()
         {
@@ -38,13 +38,13 @@ namespace GamePlay
             UnityEngine.Time.timeScale = 0;
             _audioMixer.audioMixer.SetFloat("EffectVolume", -80);
             _audioMixer.audioMixer.SetFloat("ImportantVolume", -80);
-
         }
 
         public void OffPause()
         {
             UnityEngine.Time.timeScale = 1;
-            _audioMixer.audioMixer.SetFloat("ImportantVolume", Mathf.Lerp(-80, 0, PlayerPrefs.GetFloat("ImportantVolume")));
+            _audioMixer.audioMixer.SetFloat("ImportantVolume",
+                Mathf.Lerp(-80, 0, PlayerPrefs.GetFloat("ImportantVolume")));
             _audioMixer.audioMixer.SetFloat("EffectVolume", Mathf.Lerp(-80, 0, PlayerPrefs.GetFloat("EffectVolume")));
         }
 
@@ -56,8 +56,6 @@ namespace GamePlay
             Time = 0;
             InfinityEnemySpawner.SpawnNumber = 0;
             TimeSave();
-            _audioMixer.audioMixer.SetFloat("ImportantVolume", Mathf.Lerp(-80, 0, PlayerPrefs.GetFloat("ImportantVolume")));
-            _audioMixer.audioMixer.SetFloat("EffectVolume", Mathf.Lerp(-80, 0, PlayerPrefs.GetFloat("EffectVolume")));
         }
 
         public static void TimeSave()

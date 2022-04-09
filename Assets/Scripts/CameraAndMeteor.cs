@@ -45,7 +45,7 @@ public class CameraAndMeteor : MonoBehaviour
         if (_time1 >= 3 && _spawn1)
         {
             _meteor = Instantiate(_meteorPrefab,
-                new Vector3(_player.transform.position.x, 0, _player.transform.position.z),
+                new Vector3(_player.transform.position.x, 0.6f, _player.transform.position.z),
                 Quaternion.identity);
             _spawn1 = false;
         }

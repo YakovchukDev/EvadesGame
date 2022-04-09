@@ -12,29 +12,29 @@ namespace Menu.ScriptableObject
         [Tooltip("Место для спавна")] [SerializeField]
         private Transform _spawnCharacterPosition;
 
-        [SerializeField] private List<GameObject> _infoEnemyPrefab;
         [SerializeField] private List<InfoPanel> _infoEnemyPanels;
-
-        [SerializeField] private List<GameObject> _infoFieldEnemyPrefab;
         [SerializeField] private List<InfoPanel> _infoFieldEnemyPanels;
-
-        [SerializeField] private List<GameObject> _infoCharacterPrefab;
         [SerializeField] private List<InfoPanel> _infoCharacterPanels;
-
+        [SerializeField] private GameObject _infoPrefab;
 
         private void Awake()
         {
-            for (int i = 0; i < _infoEnemyPanels.Count && i < _infoEnemyPrefab.Count; i++)
+            foreach (var infoEnemyPanel in _infoEnemyPanels)
             {
-                Instantiate(_infoEnemyPrefab[i], _spawnEnemyPosition);
+                var infoPanel= Instantiate(_infoPrefab, _spawnEnemyPosition);
+                infoPanel.GetComponent<PanelObject>().InfoPanel = infoEnemyPanel;
             }
-            for (int i = 0; i < _infoFieldEnemyPanels.Count && i < _infoFieldEnemyPrefab.Count; i++)
+
+            foreach (var infoFieldEnemyPanel in _infoFieldEnemyPanels)
             {
-                Instantiate(_infoFieldEnemyPrefab[i], _spawnFieldEnemyPosition);
+                var infoPanel= Instantiate(_infoPrefab, _spawnFieldEnemyPosition);
+                infoPanel.GetComponent<PanelObject>().InfoPanel = infoFieldEnemyPanel;
             }
-            for (int i = 0; i < _infoCharacterPanels.Count && i < _infoCharacterPrefab.Count; i++)
+
+            foreach (var infoCharacterPanel in _infoCharacterPanels)
             {
-                Instantiate(_infoCharacterPrefab[i], _spawnCharacterPosition);
+                var infoPanel= Instantiate(_infoPrefab, _spawnCharacterPosition);
+                infoPanel.GetComponent<PanelObject>().InfoPanel = infoCharacterPanel;
             }
         }
     }

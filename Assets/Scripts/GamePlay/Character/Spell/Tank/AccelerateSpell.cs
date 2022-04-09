@@ -51,7 +51,8 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
                 {
                     if (!_manaController.ManaReduction(_maxManaCost))
                     {
-                        CheckAccelerate = false;
+                        CheckAccelerate = true;
+                        Accelerate();
                     }
 
                     _time = _starterTime;

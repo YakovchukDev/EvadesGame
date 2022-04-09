@@ -12,21 +12,23 @@ namespace Menu.ScriptableObject
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _text;
 
+        public InfoPanel InfoPanel { get; set; }
+
         private void Start()
         {
-            _backImage.sprite = _infoPanel.BackImage;
-            _backText.sprite = _infoPanel.BackText;
-            _image.sprite = _infoPanel.Image;
+            _backImage.sprite = InfoPanel.BackImage;
+            _backText.sprite = InfoPanel.BackText;
+            _image.sprite = InfoPanel.Image;
             switch (PlayerPrefs.GetString("Language"))
             {
                 case "English":
-                    _text.text = _infoPanel.EnglishText;
+                    _text.text = InfoPanel.EnglishText;
                     break;
                 case "Russian":
-                    _text.text = _infoPanel.RussianText;
+                    _text.text = InfoPanel.RussianText;
                     break;
                 case "Ukrainian":
-                    _text.text = _infoPanel.UkrainianText;
+                    _text.text = InfoPanel.UkrainianText;
                     break;
             }
         }

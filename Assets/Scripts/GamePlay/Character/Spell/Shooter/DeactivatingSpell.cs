@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GamePlay.Character.Spell.Morfe
+namespace GamePlay.Character.Spell.Shooter
 {
     public class DeactivatingSpell : MonoBehaviour
     {
@@ -33,7 +33,7 @@ namespace GamePlay.Character.Spell.Morfe
             {
                 if (_direction != new Vector3(0, 0, 0))
                 {
-                    gameObject.transform.Translate(_direction);
+                    gameObject.transform.Translate(_direction * (Time.deltaTime * 60));
                 }
             }
 

@@ -53,7 +53,7 @@ namespace GamePlay.Character.Spell.Neo
             {
                 if (CharacterUpdate.CanSpell1Update)
                 {
-                    if(_levelSpell1 < CharacterUpdate.NumberSpell1Update) 
+                    if (_levelSpell1 < CharacterUpdate.NumberSpell1Update)
                     {
                         _manaCost -= 2f;
                         _maxSize += 0.8f;
@@ -70,14 +70,11 @@ namespace GamePlay.Character.Spell.Neo
         {
             if (_goFreeze == false)
             {
-                if (_reloadSpell._canUseSpellFirst)
+                if (_reloadSpell._canUseSpellFirst && _manaController.ManaReduction(_manaCost))
                 {
                     _reloadSpell.ReloadFirstSpell(_timeReloadFirstSpell);
-                    if (_manaController.ManaReduction(_manaCost))
-                    {
-                        _goFreeze = true;
-                        _freezeSound.Play();
-                    }
+                    _goFreeze = true;
+                    _freezeSound.Play();
                 }
             }
         }
@@ -87,7 +84,7 @@ namespace GamePlay.Character.Spell.Neo
             _freezeField.SetActive(true);
             _gravityRadius.SetActive(false);
             _size += 4 * Time.deltaTime;
-            _freezeField.transform.localScale = new Vector3(_size, transform.localScale.y, _size);
+            _freezeField.transform.localScale = new Vector3(_size, 0.1f, _size);
             if (_size >= maxSize)
             {
                 _size = maxSize;

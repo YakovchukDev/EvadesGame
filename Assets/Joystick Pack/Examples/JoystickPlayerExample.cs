@@ -50,7 +50,7 @@ namespace Joystick_Pack.Examples
                     foreach (ContactPoint missileHit in other.contacts)
                     {
                         Vector3 hitPoint = missileHit.point;
-                        Instantiate(_frictionParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z),
+                        Instantiate(_frictionParticle, new Vector3(hitPoint.x, transform.position.y, hitPoint.z),
                             transform.rotation);
 
                         _frictionSound.mute = false;

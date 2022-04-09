@@ -55,34 +55,31 @@ namespace GamePlay.Character.Spell.TeleportFreeze
 
         public void TeleportSkill()
         {
-            if (_reloadSpell._canUseSpellSecond)
+            if (_reloadSpell._canUseSpellSecond && _manaController.ManaReduction(_manaCost))
             {
                 _reloadSpell.ReloadSecondSpell(_timeReloadSecondSpell);
-                if (_manaController.ManaReduction(_manaCost))
+
+                _teleportSound.Play();
+                Instantiate(_splashParticle, transform.position, Quaternion.identity);
+                Ray ray = new Ray(transform.position, transform.forward);
+                if (Physics.Raycast(ray, out var hit))
                 {
-                    _teleportSound.Play();
-                    Instantiate(_splashParticle, transform.position, Quaternion.identity);
-                    Ray ray = new Ray(transform.position, transform.forward);
-                    if (Physics.Raycast(ray, out var hit))
+                    if (Physics.Raycast(ray, out hit, _teleportationLength))
                     {
-                        if (Physics.Raycast(ray, out hit, _teleportationLength))
+                        if (hit.transform.gameObject.CompareTag("Wall"))
                         {
-                            if (hit.transform.gameObject.CompareTag("Wall"))
-                            {
-                                transform.position = hit.point;
-                                transform.position -= transform.forward;
-                            }
-                            else
-                            {
-                                transform.position += transform.forward * _teleportationLength;
-                            }
+                            transform.position = hit.point;
+                            transform.position -= transform.forward;
                         }
                         else
                         {
                             transform.position += transform.forward * _teleportationLength;
                         }
                     }
-
+                    else
+                    {
+                        transform.position += transform.forward * _teleportationLength;
+                    }
                 }
             }
         }
