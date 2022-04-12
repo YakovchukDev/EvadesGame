@@ -7415,8 +7415,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8882896568688617191}
-  - component: {fileID: 8882896568688617184}
-  - component: {fileID: 8882896568688617185}
   - component: {fileID: 8882896568688617187}
   - component: {fileID: 8315043695191958115}
   - component: {fileID: 1598006098151319634}
@@ -7456,55 +7454,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8882896568688617184
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8882896568688617212}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8882896568688617185
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8882896568688617212}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 210c437101b0f05488f4fee01eca5434, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!54 &8882896568688617187
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7824,11 +7773,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
---- !u!1 &1396787209531139462 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2132687621507603389, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
-  m_PrefabInstance: {fileID: 1079375750206651963}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6309901550294002439 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6443508132798338364, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
@@ -7837,6 +7781,11 @@ RectTransform:
 --- !u!95 &7107401996487127225 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7807032779815292546, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
+  m_PrefabInstance: {fileID: 1079375750206651963}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1396787209531139462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2132687621507603389, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
   m_PrefabInstance: {fileID: 1079375750206651963}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3626496895732595267
@@ -8253,14 +8202,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 864479541962325495, guid: 9b9709be2e6f03e448465ae294e368fa, type: 3}
   m_PrefabInstance: {fileID: 7618368727108374925}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &8771076327521551396 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1153201384221300137, guid: 9b9709be2e6f03e448465ae294e368fa, type: 3}
-  m_PrefabInstance: {fileID: 7618368727108374925}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2789411488079586043 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5695957343387120502, guid: 9b9709be2e6f03e448465ae294e368fa, type: 3}
+  m_PrefabInstance: {fileID: 7618368727108374925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8771076327521551396 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1153201384221300137, guid: 9b9709be2e6f03e448465ae294e368fa, type: 3}
   m_PrefabInstance: {fileID: 7618368727108374925}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9115957140092314475

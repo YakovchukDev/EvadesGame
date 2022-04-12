@@ -8,6 +8,7 @@ namespace GamePlay.Character.Spell.TeleportFreeze
         [SerializeField] private ManaController _manaController;
         [SerializeField] private ReloadSpell _reloadSpell;
         [SerializeField] private GameObject _splashParticle;
+        [SerializeField] private GameObject _indicator;
         [SerializeField] private AudioSource _teleportSound;
         private float _manaCost;
         private float _teleportationLength;
@@ -16,16 +17,17 @@ namespace GamePlay.Character.Spell.TeleportFreeze
 
         private void Start()
         {
+            _indicator.SetActive(false);
             if (SelectionClassView.WhatPlaying == "Level")
             {
                 _manaCost = 20;
-                _teleportationLength = 8;
+                _teleportationLength = 6;
                 _timeReloadSecondSpell = 4;
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
                 _manaCost = 10;
-                _teleportationLength = 8;
+                _teleportationLength = 6;
                 _timeReloadSecondSpell = 1;
             }
         }
@@ -53,6 +55,17 @@ namespace GamePlay.Character.Spell.TeleportFreeze
             }
         }
 
+        public void TeleportPointerDown()
+        {
+            _indicator.SetActive(true);
+            Raycast(_indicator);
+        }
+       
+        public void TeleportPointerUp()
+        {
+            _indicator.SetActive(false);
+        }
+
         public void TeleportSkill()
         {
             if (_reloadSpell._canUseSpellSecond && _manaController.ManaReduction(_manaCost))
@@ -61,25 +74,30 @@ namespace GamePlay.Character.Spell.TeleportFreeze
 
                 _teleportSound.Play();
                 Instantiate(_splashParticle, transform.position, Quaternion.identity);
-                Ray ray = new Ray(transform.position, transform.forward);
-                if (Physics.Raycast(ray, out var hit))
+                Raycast(gameObject);
+
+            }
+        }
+        private void Raycast(GameObject objectTransform)
+        {
+            Ray ray = new Ray( objectTransform.transform.position,  objectTransform.transform.forward);
+            if (Physics.Raycast(ray, out var hit))
+            {
+                if (Physics.Raycast(ray, out hit, _teleportationLength))
                 {
-                    if (Physics.Raycast(ray, out hit, _teleportationLength))
+                    if (hit.transform.gameObject.CompareTag("Wall"))
                     {
-                        if (hit.transform.gameObject.CompareTag("Wall"))
-                        {
-                            transform.position = hit.point;
-                            transform.position -= transform.forward;
-                        }
-                        else
-                        {
-                            transform.position += transform.forward * _teleportationLength;
-                        }
+                        objectTransform.transform.position = hit.point;
+                        objectTransform.transform.position -= objectTransform.transform.forward;
                     }
                     else
                     {
-                        transform.position += transform.forward * _teleportationLength;
+                        objectTransform.transform.position +=  transform.forward * _teleportationLength;
                     }
+                }
+                else
+                {
+                    objectTransform.transform.position +=  transform.forward * _teleportationLength;
                 }
             }
         }

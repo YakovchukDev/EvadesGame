@@ -1,7 +1,7 @@
 using Menu.SelectionClass;
 using UnityEngine;
 
-namespace GamePlay.Character.Spell.Nexus
+namespace GamePlay.Character.Spell.Necromus
 {
     public class ActiveSpell : MonoBehaviour
     {
@@ -9,7 +9,7 @@ namespace GamePlay.Character.Spell.Nexus
         [SerializeField] private ReloadSpell _reloadSpell;
         [SerializeField] private GameObject _invulnerableField;
         [SerializeField] private AudioSource _invulnerableAudio;
-
+        [SerializeField]  private GameObject _indicator;
         private float _manaCost;
         private float _timeReloadSecondSpell;
         private float _levelSpell1;
@@ -26,6 +26,7 @@ namespace GamePlay.Character.Spell.Nexus
                 _manaCost = 25;
                 _timeReloadSecondSpell = 3;
             }
+            _indicator.SetActive(false);
         }
 
         private void Update()
@@ -51,10 +52,18 @@ namespace GamePlay.Character.Spell.Nexus
                 }
             }
         }
-
+        public void InvulnerablePointerDown()
+        {
+            _indicator.SetActive(true);
+        }
+       
+        public void InvulnerablePointerUp()
+        {
+            _indicator.SetActive(false);
+        }
         public void InvulnerableField()
         {
-            if (_manaController.ManaReduction(_manaCost) && _reloadSpell._canUseSpellSecond)
+            if ( _reloadSpell._canUseSpellSecond&&_manaController.ManaReduction(_manaCost))
             {
                 _reloadSpell.ReloadSecondSpell(_timeReloadSecondSpell);
 

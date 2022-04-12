@@ -8,6 +8,7 @@ namespace GamePlay.Character.Spell.Neo
         [SerializeField] private ManaController _manaController;
         [SerializeField] private ReloadSpell _reloadSpell;
         [SerializeField] private GameObject _freezeField;
+        [SerializeField] private GameObject _indicator;
         [SerializeField] private GameObject _gravityRadius;
         [SerializeField] private AudioSource _freezeSound;
         private float _maxSize;
@@ -35,6 +36,10 @@ namespace GamePlay.Character.Spell.Neo
             }
 
             _freezeField.SetActive(false);
+            
+            _indicator.SetActive(false);
+            var maxSizeIndicator = _maxSize * 3.5f;
+            _indicator.transform.localScale =new Vector3(maxSizeIndicator,maxSizeIndicator,maxSizeIndicator);
         }
 
         private void Update()
@@ -58,6 +63,8 @@ namespace GamePlay.Character.Spell.Neo
                         _manaCost -= 2f;
                         _maxSize += 0.8f;
                         _timeReloadFirstSpell -= 0.8f;
+                        var maxSizeIndicator = _maxSize * 3.5f;
+                        _indicator.transform.localScale =new Vector3(maxSizeIndicator,maxSizeIndicator,maxSizeIndicator);
                         _levelSpell1++;
                     }
 
@@ -78,6 +85,10 @@ namespace GamePlay.Character.Spell.Neo
                 }
             }
         }
+        public void FreezePointerDown()
+        {
+            _indicator.SetActive(true);
+        }
 
         private void OnFreezeField(float maxSize)
         {
@@ -92,6 +103,7 @@ namespace GamePlay.Character.Spell.Neo
                 if (_timeExistenceAfterMaxSize >= 1 + _allTimeExistence)
                 {
                     _freezeField.SetActive(false);
+                    _indicator.SetActive(false);
                     _gravityRadius.SetActive(true);
 
                     _size = 1;

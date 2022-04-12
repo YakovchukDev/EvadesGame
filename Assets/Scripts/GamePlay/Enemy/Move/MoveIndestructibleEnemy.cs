@@ -1,11 +1,13 @@
 using GamePlay.Enemy.Spawner;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GamePlay.Enemy.Move
 {
     public class MoveIndestructibleEnemy : MonoBehaviour
     {
-        private const float LengthForTurn=1.1f;
+        [FormerlySerializedAs("Spikes")] [SerializeField] private GameObject _spikes;
+        private const float LengthForTurn=1.38f;
         private const float Z = -10;
         private const float X = 0;
         private const float Y = 0;
@@ -18,15 +20,9 @@ namespace GamePlay.Enemy.Move
             transform.localScale = new Vector3(30, 30, 30);
             MoveSystem();
             DirectionAndSpeedMovement();
+            SpikeRotate();
         }
 
-        /*private void OnCollisionEnter(Collision other)
-        {
-            if (other.gameObject.CompareTag("Wall"))
-            {
-                DirectionAndSpeedMovement();
-            }
-        }*/
         private void MoveSystem()
         {
             if (InfinityEnemySpawner.SpawnNumber >= 40)
@@ -59,6 +55,11 @@ namespace GamePlay.Enemy.Move
                     }
                 }
             }
+        }
+
+        private void SpikeRotate()
+        {
+            _spikes.transform.Rotate(0,0,-3);
         }
     }
 }
