@@ -8,8 +8,9 @@ namespace Menu
         [SerializeField] private Animator _informationAnimator;
         [SerializeField] private Animator _selectionAnimator;
         [SerializeField] private Animator _levelsAnimator;
+        [SerializeField] private Animator _infoAnimator;
+        [SerializeField] private Animator _shopAnimator;
 
-        
 
         public void Settings(int index)
         {
@@ -29,6 +30,15 @@ namespace Menu
         public void Levels(int index)
         {
             _levelsAnimator.SetInteger("Levels", index);
+        }
+
+        public void Info(int index)
+        {
+            _infoAnimator.SetInteger("Information", index);
+        }
+        public void Shop(int index)
+        {
+            _shopAnimator.SetInteger("Information", index);
         }
     }
 }
