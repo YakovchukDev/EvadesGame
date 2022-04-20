@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using GamePlay.Character.Spell;
 using Joystick_Pack.Examples;
@@ -20,6 +21,9 @@ public class CharacterUpdate : MonoBehaviour
     public static bool CanSpell2Update;
 
     private float _allMana;
+    private GameObject LevelValue;
+    private TMP_Text _quantityTokensTMP;
+
 
     private void Start()
     {
@@ -40,72 +44,100 @@ public class CharacterUpdate : MonoBehaviour
         NumberSpell2Update = 1;
         CanSpell1Update = false;
         CanSpell2Update = false;
+
+        LevelValue = GameObject.Find("LevelValue");
+        _quantityTokensTMP = LevelValue.GetComponent<TMP_Text>();
     }
 
     public void SpeedUpdate()
     {
-        if (SelectionClassView.WhatPlaying == "Level")
+        if(Convert.ToInt32(_quantityTokensTMP.text) > 0)
         {
-            if (_numberSpeedUpdate <= 5)
+            if (SelectionClassView.WhatPlaying == "Level")
             {
-                JoystickPlayerExample.Speed += 2;
-                _numberSpeedUpdate++;
-                _abilityLevel[0].text = _numberSpeedUpdate.ToString();
+                if (_numberSpeedUpdate <= 5)
+                {   
+                    JoystickPlayerExample.Speed += 2;
+                    _numberSpeedUpdate++;
+                    _abilityLevel[0].text = _numberSpeedUpdate.ToString();
+                }
             }
+            int value = Convert.ToInt32(_quantityTokensTMP.text);
+            _quantityTokensTMP.text = $"{--value}";
         }
     }
 
     public void MaxManaUpdate()
     {
-        if (SelectionClassView.WhatPlaying == "Level")
+        if(Convert.ToInt32(_quantityTokensTMP.text) > 0)
         {
-            if (_numberMaxManaUpdate <= 5)
+            if (SelectionClassView.WhatPlaying == "Level")
             {
-                _allMana = 100;
-                _allMana += 20 * _numberMaxManaUpdate;
-                _manaController.SetAllMana(_allMana);
-                _numberMaxManaUpdate++;
-                _abilityLevel[1].text = _numberMaxManaUpdate.ToString();
+                if (_numberMaxManaUpdate <= 5)
+                {
+                    _allMana = 100;
+                    _allMana += 20 * _numberMaxManaUpdate;
+                    _manaController.SetAllMana(_allMana);
+                    _numberMaxManaUpdate++;
+                    _abilityLevel[1].text = _numberMaxManaUpdate.ToString();
+                }
             }
+            int value = Convert.ToInt32(_quantityTokensTMP.text);
+            _quantityTokensTMP.text = $"{--value}";
         }
     }
 
     public void ManaRegenUpdate()
     {
-        if (SelectionClassView.WhatPlaying == "Level")
+        if(Convert.ToInt32(_quantityTokensTMP.text) > 0)
         {
-            if (_numberManaRegenUpdate <= 5)
+            if (SelectionClassView.WhatPlaying == "Level")
             {
-                ManaController.Regen += 0.2f;
-                _numberManaRegenUpdate++;
-                _abilityLevel[2].text = _numberManaRegenUpdate.ToString();
+                if (_numberManaRegenUpdate <= 5)
+                {
+                    ManaController.Regen += 0.2f;
+                    _numberManaRegenUpdate++;
+                    _abilityLevel[2].text = _numberManaRegenUpdate.ToString();
+                }
             }
+            int value = Convert.ToInt32(_quantityTokensTMP.text);
+            _quantityTokensTMP.text = $"{--value}";
         }
     }
 
     public void Spell1Update()
     {
-        if (SelectionClassView.WhatPlaying == "Level")
+        if(Convert.ToInt32(_quantityTokensTMP.text) > 0)
         {
-            if (NumberSpell1Update <= 5)
+            if (SelectionClassView.WhatPlaying == "Level")
             {
-                NumberSpell1Update++;
-                CanSpell1Update = true;
-                _abilityLevel[3].text = NumberSpell1Update.ToString();
+                if (NumberSpell1Update <= 5)
+                {
+                    NumberSpell1Update++;
+                    CanSpell1Update = true;
+                    _abilityLevel[3].text = NumberSpell1Update.ToString();
+                }
             }
+            int value = Convert.ToInt32(_quantityTokensTMP.text);
+            _quantityTokensTMP.text = $"{--value}";
         }
     }
 
     public void Spell2Update()
     {
-        if (SelectionClassView.WhatPlaying == "Level")
+        if(Convert.ToInt32(_quantityTokensTMP.text) > 0)
         {
-            if (NumberSpell2Update <= 5)
+            if (SelectionClassView.WhatPlaying == "Level")
             {
-                NumberSpell2Update++;
-                CanSpell2Update = true;
-                _abilityLevel[4].text = NumberSpell2Update.ToString();
+                if (NumberSpell2Update <= 5)
+                {
+                    NumberSpell2Update++;
+                    CanSpell2Update = true;
+                    _abilityLevel[4].text = NumberSpell2Update.ToString();
+                }
             }
+            int value = Convert.ToInt32(_quantityTokensTMP.text);
+            _quantityTokensTMP.text = $"{--value}";
         }
     }
 }

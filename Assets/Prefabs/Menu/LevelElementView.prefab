@@ -133,13 +133,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7833838450666476682}
+      - m_Target: {fileID: 4813958039679196980}
         m_TargetAssemblyTypeName: Menu.level.LevelElementController, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: SetLevelParametrs
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -509,6 +509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8754bb2b3ab313341bd69f944e0e6a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelNumber: 0
+  _levelParameters: {fileID: 0}
 --- !u!1 &8869483889475308706
 GameObject:
   m_ObjectHideFlags: 0
