@@ -1,19 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MapGeneration
+namespace Map
 {
-    public class _RoomParameters : MonoBehaviour
+    public class RoomParameters : MonoBehaviour
     {
         //***нужно сделать скрытие стен безопсной зоны
         public delegate void UpdateOfRoomsAround(int indexX, int indexY);
-
         public static event UpdateOfRoomsAround EnterNewRoom;
+
+        public List<CoinControl> CoinList; 
+
         [SerializeField] private GameObject _saveZoneUp;
         [SerializeField] private GameObject _saveZoneDown;
-        [SerializeField] private GameObject _doorUpper;
         [SerializeField] private GameObject _doorRight;
-        [SerializeField] private GameObject _doorLower;
         [SerializeField] private GameObject _doorLeft;
         [SerializeField] private GameObject _doorCentralLeft;
         [SerializeField] private GameObject _doorCentralRight;
@@ -23,6 +23,8 @@ namespace MapGeneration
         [SerializeField] private GameObject _wallUpperRight;
         [SerializeField] private GameObject _wallLowerLeft;
         [SerializeField] private GameObject _wallLowerRight;
+        [SerializeField] private GameObject _longWallUp;
+        [SerializeField] private GameObject _longWallDown;
         [SerializeField] private GameObject _floor;
 
         private int cordinatX;
@@ -45,9 +47,22 @@ namespace MapGeneration
         {
             _saveZoneUp.SetActive(!upper);
             _saveZoneDown.SetActive(!lower);
-            _doorUpper.SetActive(upper);
+
+            if(upper)
+            {
+                _longWallUp.SetActive(upper);
+                _wallUpperLeft.SetActive(!upper);
+                _wallUpperRight.SetActive(!upper);
+                _saveZoneUp.SetActive(!upper);
+            }
+            if(lower)
+            {
+                _longWallDown.SetActive(lower);
+                _wallLowerLeft.SetActive(!lower);
+                _wallLowerRight.SetActive(!lower);
+                _saveZoneDown.SetActive(!lower);
+            }
             _doorRight.SetActive(right);
-            _doorLower.SetActive(lower);
             _doorLeft.SetActive(left);
             _doorCentralLeft.SetActive(centralLeft);
             _doorCentralRight.SetActive(centralRight);
@@ -57,9 +72,9 @@ namespace MapGeneration
         {
             return new Dictionary<string, bool>()
             {
-                {"upper", _doorUpper},
+                {"upper", _longWallUp},
                 {"right", _doorRight},
-                {"lower", _doorLower},
+                {"lower", _longWallDown},
                 {"left", _doorLeft},
                 {"centralLeft", _doorCentralLeft},
                 {"centralRight", _doorCentralRight}
