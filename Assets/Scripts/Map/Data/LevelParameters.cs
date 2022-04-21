@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Map
@@ -10,5 +8,6 @@ namespace Map
         public int Branchs;
         public int Length;
         public int SizeChank;
+        public int TargetExpirience;
     }
 }

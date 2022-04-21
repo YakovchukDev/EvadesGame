@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6686578694387742510}
   - component: {fileID: 6686578694387742511}
-  - component: {fileID: 1923959342}
   - component: {fileID: 6686578693880097754}
   m_Layer: 0
   m_Name: MapManager
@@ -45,10 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ce583f06c00ef4483a6db67e452bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _arena: {fileID: 5344734779882293324, guid: b701fe8f6f7068d48aeaacfc34ec3f50, type: 3}
-  _saveZone: {fileID: 5914530841124491702, guid: f9d77479b1c9be84cb276fbb4c6abd19, type: 3}
-  _emptyWall: {fileID: 2881360877677854570, guid: 2c19b6f219e9b0642b6abb174ed46de9, type: 3}
-  _character: {fileID: 8338482391312124159, guid: 56ea17addd43b924eb02bfb573b20b27, type: 3}
+  _characterList: []
   _justEnemies:
   - {fileID: 8510527150873304264, guid: 4aa4d5399ea804e489c37ddec473dfaa, type: 3}
   - {fileID: 1912685854336025599, guid: 00277a838af39804fbac00637e20988c, type: 3}
@@ -63,30 +59,8 @@ MonoBehaviour:
   - {fileID: 138441598510828523, guid: b3af0bfaae6fefd4e9b366b3aa652d52, type: 3}
   - {fileID: 3239914737928764452, guid: 39932cce0f43acc49afc0d79e1bf0420, type: 3}
   _indestructibleEnemy: {fileID: 6880236342595149392, guid: 835d9c32d9b80904d808727024a60426, type: 3}
-  _difficulty: 10
-  _difficultyFromTo: 010000000a000000
-  _length: 40
-  _branchs: 5
-  _sizeChank: 7
---- !u!114 &1923959342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6686578694387742509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db8319e3af1a334aabc6a0cb18fa42c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _type:
-  - {fileID: 2963534093953126575, guid: 896c1960df869cd45a8eb459e866abf2, type: 3}
-  - {fileID: 1717912554360977961, guid: 5d0839d216134a7428643b19ee74a357, type: 3}
-  - {fileID: 5460984050080916392, guid: 950abaa21770e4c49a0e2cdd15c8503f, type: 3}
-  - {fileID: 1911395832924520791, guid: 121027de14f92694ebfc84f1bd41f3db, type: 3}
-  - {fileID: 8882896568688617212, guid: cb15d70a9125f4b48beeaf368c5205c9, type: 3}
-  - {fileID: 624432820001003063, guid: e04dbc46d27ab1b47b5b1cb8eed5ee4e, type: 3}
+  _maxCoin: 0
+  _coin: {fileID: 0}
 --- !u!114 &6686578693880097754
 MonoBehaviour:
   m_ObjectHideFlags: 0

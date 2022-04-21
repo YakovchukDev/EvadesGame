@@ -254,7 +254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1000293457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,6 +361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _longRoom: {fileID: 5344734779882293324, guid: b701fe8f6f7068d48aeaacfc34ec3f50, type: 3}
   _smallRoom: {fileID: 5914530841124491702, guid: f9d77479b1c9be84cb276fbb4c6abd19, type: 3}
+  _emptyWall: {fileID: 2881360877677854570, guid: 2c19b6f219e9b0642b6abb174ed46de9, type: 3}
   _star: {fileID: -7342826474707195929, guid: bca1edabed54c914490eb81ffcc021c8, type: 3}
 --- !u!4 &1428714890
 Transform:
@@ -2504,6 +2505,34 @@ PrefabInstance:
       propertyPath: _sizeChank
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6686578694387742511, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
+      propertyPath: _characterList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6686578694387742511, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
+      propertyPath: _characterList.Array.data[0]
+      value: 
+      objectReference: {fileID: 2963534093953126575, guid: 896c1960df869cd45a8eb459e866abf2, type: 3}
+    - target: {fileID: 6686578694387742511, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
+      propertyPath: _characterList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1717912554360977961, guid: 5d0839d216134a7428643b19ee74a357, type: 3}
+    - target: {fileID: 6686578694387742511, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
+      propertyPath: _characterList.Array.data[2]
+      value: 
+      objectReference: {fileID: 5460984050080916392, guid: 950abaa21770e4c49a0e2cdd15c8503f, type: 3}
+    - target: {fileID: 6686578694387742511, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
+      propertyPath: _characterList.Array.data[3]
+      value: 
+      objectReference: {fileID: 1911395832924520791, guid: 121027de14f92694ebfc84f1bd41f3db, type: 3}
+    - target: {fileID: 6686578694387742511, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
+      propertyPath: _characterList.Array.data[4]
+      value: 
+      objectReference: {fileID: 8882896568688617212, guid: cb15d70a9125f4b48beeaf368c5205c9, type: 3}
+    - target: {fileID: 6686578694387742511, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
+      propertyPath: _characterList.Array.data[5]
+      value: 
+      objectReference: {fileID: 624432820001003063, guid: e04dbc46d27ab1b47b5b1cb8eed5ee4e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
 --- !u!114 &6686578693880097754 stripped

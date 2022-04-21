@@ -5,7 +5,7 @@ namespace Menu.SelectionClass
 {
     public class SelectionClassView : MonoBehaviour
     {
-        protected static int CharacterType { get; private set; }
+        public static int CharacterType { get; private set; }
         public static string WhatPlaying { get; private set; }
 
         public void ChoiceTypeOfCharacter(int characterType)

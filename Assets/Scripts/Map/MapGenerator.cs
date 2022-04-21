@@ -2,30 +2,23 @@
 //код написан за 40 гривень, на качество були накладені санкції
 using System.Collections.Generic;
 using UnityEngine;
+using Menu.SelectionClass;
 
 namespace Map
 {
     public class MapGenerator : MonoBehaviour
     {
         //Нужно соединить этот код с GeneralParameters
-        [SerializeField] private RoomParameters _arena;
-        [SerializeField] private SaveZoneParameters _saveZone;
-        [SerializeField] private GameObject _emptyWall;
-        [SerializeField] private GameObject _character;
+        [SerializeField] private List<GameObject> _characterList;
         [SerializeField] private List<GameObject> _justEnemies;
         [SerializeField] private List<GameObject> _midleEnemies;
         [SerializeField] private List<GameObject> _hardEnemies;
         [SerializeField] private GameObject _indestructibleEnemy;
-        [SerializeField] private StarController _star;
-        [SerializeField] private int _difficulty;
-        [SerializeField] private int[] _difficultyFromTo = new int[2];
-        [SerializeField] private int _length;
-        [SerializeField] private int _branchs;
-        [SerializeField] private int _sizeChank;
 
         [SerializeField] private int _maxCoin;
         [SerializeField] private CoinControl _coin;
 
+        private GameObject _character;
         private RoomParameters[,] _map;
         private SaveZoneParameters[,] _saveZoneMap;
 
@@ -51,12 +44,12 @@ namespace Map
         }
         public void GoToCentralRoom()
         {
-            _character.transform.position = new Vector3(_character.transform.localPosition.x, _character.transform.localPosition.y, _arena.GetLengthZ() * _branchs);
-            spawnOnPoint(_branchs, _playerRoomY - 1);
+            _character.transform.position = new Vector3(_character.transform.localPosition.x, _character.transform.localPosition.y, GeneralParameters.LongRoom.GetLengthZ() * GeneralParameters.LevelParameters.Branchs);
+            spawnOnPoint(GeneralParameters.LevelParameters.Branchs, _playerRoomY - 1);
         }
         private void Generate()
         {
-            lastcordX = _branchs;
+            lastcordX = GeneralParameters.LevelParameters.Branchs;
             lastcordY = -1;
 
             generateOfPrimaryView();
@@ -66,12 +59,12 @@ namespace Map
             _listEntities = new GameObject[_map.GetLength(0), _map.GetLength(1), 30];
 
             showAllMap();
-            spawnOnPoint(_branchs, 0);
+            spawnOnPoint(GeneralParameters.LevelParameters.Branchs, 0);
 
             setExitSaveZone();
             setUpExitInRoom();
 
-            _character = Instantiate(_character, new Vector3(0, 2, _arena.GetLengthZ() * _branchs), Quaternion.identity);
+            _character = Instantiate(_characterList[SelectionClassView.CharacterType], new Vector3(0, 2, GeneralParameters.LongRoom.GetLengthZ() * GeneralParameters.LevelParameters.Branchs), Quaternion.identity);
             spawnStars();
         }
         private void getWherePlayer(int x, int y)
@@ -83,51 +76,51 @@ namespace Map
         private void generateOfPrimaryView()
         {
             // *** Транспоновати матрицю, щоб перебір даних виглядів більш коерктно 
-            _map = new RoomParameters[_length, _branchs * 2 + 1];
-            int [] quantityBranchsInChank = new int[_branchs];
-            int [] quantityBranchs = new int[_branchs];
+            _map = new RoomParameters[GeneralParameters.LevelParameters.Length, GeneralParameters.LevelParameters.Branchs * 2 + 1];
+            int [] quantityBranchsInChank = new int[GeneralParameters.LevelParameters.Branchs];
+            int [] quantityBranchs = new int[GeneralParameters.LevelParameters.Branchs];
 
             for(int row = 0; row < _map.GetLength(0); row++)
             {
-                if(row % _sizeChank == 0)
+                if(row % GeneralParameters.LevelParameters.SizeChank == 0)
                 {
-                    for(int i = 0; i < _branchs; i++)
+                    for(int i = 0; i < GeneralParameters.LevelParameters.Branchs; i++)
                     {
-                        quantityBranchsInChank[i] = (_difficulty * ((row /_sizeChank) + 1)) / (i + 1);
+                        quantityBranchsInChank[i] = (GeneralParameters.LevelParameters.Difficulty * ((row /GeneralParameters.LevelParameters.SizeChank) + 1)) / (i + 1);
                         quantityBranchs[i] = 0;
                     }
                 }
                 for(int column = 0; column < _map.GetLength(1); column++)
                 {
-                    if(column == _branchs)
+                    if(column == GeneralParameters.LevelParameters.Branchs)
                     {
-                        _map[row, column] = _arena;
+                        _map[row, column] = GeneralParameters.LongRoom;
                     }
                     else
                     {
-                        int indexBranch = column > _branchs ? column - _branchs - 1 : _branchs - column - 1;
+                        int indexBranch = column > GeneralParameters.LevelParameters.Branchs ? column - GeneralParameters.LevelParameters.Branchs - 1 : GeneralParameters.LevelParameters.Branchs - column - 1;
                         // *** Налаштувати quantityBranchs зараз розподіл працює не коректно
-                        if((row > 0 && _map[row - 1, column] != null) || column - 1 == _branchs || column + 1 == _branchs)
+                        if((row > 0 && _map[row - 1, column] != null) || column - 1 == GeneralParameters.LevelParameters.Branchs || column + 1 == GeneralParameters.LevelParameters.Branchs)
                         {
                             if(quantityBranchs[indexBranch] < quantityBranchsInChank[indexBranch])
                             {
                                 if(Random.Range(0, 2) == 1)
                                 {
-                                    _map[row, column] = _arena;
+                                    _map[row, column] = GeneralParameters.LongRoom;
                                     quantityBranchs[indexBranch]++;
                                 }
                                 else if(Random.Range(0, 2) == 1)
                                 {
-                                    if(column > _branchs)
+                                    if(column > GeneralParameters.LevelParameters.Branchs)
                                     {
-                                        _map[row, column] = _arena;
-                                        _map[row, column - 1] = _arena;
+                                        _map[row, column] = GeneralParameters.LongRoom;
+                                        _map[row, column - 1] = GeneralParameters.LongRoom;
                                         quantityBranchs[indexBranch]++;
                                     }
-                                    else if(column < _branchs)
+                                    else if(column < GeneralParameters.LevelParameters.Branchs)
                                     {
-                                        _map[row, column] = _arena;
-                                        _map[row, column + 1] = _arena;
+                                        _map[row, column] = GeneralParameters.LongRoom;
+                                        _map[row, column + 1] = GeneralParameters.LongRoom;
                                         quantityBranchs[indexBranch]++;
                                     }
                                 }
@@ -141,8 +134,8 @@ namespace Map
                                 {
                                     if(Random.Range(0, 3) == 1)
                                     {
-                                        _map[row, column] = _arena;
-                                        _map[row, column - 1] = _arena;
+                                        _map[row, column] = GeneralParameters.LongRoom;
+                                        _map[row, column - 1] = GeneralParameters.LongRoom;
                                         quantityBranchs[indexBranch]++;
                                     }
                                 }
@@ -153,8 +146,8 @@ namespace Map
                                 {
                                     if(Random.Range(0, 3) == 1)
                                     {
-                                        _map[row, column] = _arena;
-                                        _map[row, column + 1] = _arena;
+                                        _map[row, column] = GeneralParameters.LongRoom;
+                                        _map[row, column + 1] = GeneralParameters.LongRoom;
                                         quantityBranchs[indexBranch]++;
                                     }
                                 }
@@ -166,9 +159,9 @@ namespace Map
         }
         private void generateOfSaveZone()
         {
-            _saveZoneMap = new SaveZoneParameters[_length + 1, _branchs * 2 + 1];
+            _saveZoneMap = new SaveZoneParameters[GeneralParameters.LevelParameters.Length + 1, GeneralParameters.LevelParameters.Branchs * 2 + 1];
             
-            _saveZoneMap[0, _branchs] = _saveZone;
+            _saveZoneMap[0, GeneralParameters.LevelParameters.Branchs] = GeneralParameters.ShortRoom;
 
             for(int row = 0; row < _map.GetLength(0); row++)
             {
@@ -176,24 +169,24 @@ namespace Map
                 {
                     if(row + 1 < _map.GetLength(0) && _map[row + 1, column] != null && _map[row, column] != null)
                     {
-                        _saveZoneMap[row + 1, column] = _saveZone; 
+                        _saveZoneMap[row + 1, column] = GeneralParameters.ShortRoom; 
                     }
                     else if(_map[row, column] != null && Random.Range(0, 2) == 1)
                     {
-                        _saveZoneMap[row + 1, column] = _saveZone;
+                        _saveZoneMap[row + 1, column] = GeneralParameters.ShortRoom;
                     }
 
                     if(0 < row && _map[row - 1, column] != null && _map[row, column] != null)
                     {
-                        _saveZoneMap[row, column] = _saveZone;
+                        _saveZoneMap[row, column] = GeneralParameters.ShortRoom;
                     }
                     else if(_map[row, column] != null && Random.Range(0, 2) == 1)
                     {
-                        _saveZoneMap[row, column] = _saveZone;
+                        _saveZoneMap[row, column] = GeneralParameters.ShortRoom;
                     }
                 }
             }
-            _saveZoneMap[_saveZoneMap.GetLength(0) - 1, _branchs] = _saveZone;
+            _saveZoneMap[_saveZoneMap.GetLength(0) - 1, GeneralParameters.LevelParameters.Branchs] = GeneralParameters.ShortRoom;
         }
         
         private void setUpExitInRoom()
@@ -247,12 +240,12 @@ namespace Map
                         else if(row == _saveZoneMap.GetLength(0) - 1)
                         {
                             _saveZoneMap[row, column].name = $"SaveZoneLeft {column} | {row}";
-                            _saveZoneMap[row, column].SetOneWay("left", column == _branchs ? true : Random.Range(0, 2) == 1);
+                            _saveZoneMap[row, column].SetOneWay("left", column == GeneralParameters.LevelParameters.Branchs ? true : Random.Range(0, 2) == 1);
                         }
                         else if (row == 0)
                         {
                             _saveZoneMap[row, column].name = $"SaveZoneRight {column} | {row}";
-                            _saveZoneMap[row, column].SetOneWay("right", column == _branchs ? true : Random.Range(0, 2) == 1);
+                            _saveZoneMap[row, column].SetOneWay("right", column == GeneralParameters.LevelParameters.Branchs ? true : Random.Range(0, 2) == 1);
                         }
 
                         if(!(column == GeneralParameters.LevelParameters.Branchs && row == 0) && !(column == GeneralParameters.LevelParameters.Branchs && row == _saveZoneMap.GetLength(0) - 1) && _saveZoneMap[row, column].IsSaveZone)
@@ -275,7 +268,7 @@ namespace Map
                 {
                     if(_map[row, column] != null)
                     {
-                        _map[row, column] = Instantiate(_map[row, column], new Vector3(_arena.GetLengthX() / 2f + _saveZone.GetLengthX() / 2f + _arena.GetLengthX() * row + _saveZone.GetLengthX() * row, 0f, _arena.GetLengthZ() * column), Quaternion.identity);
+                        _map[row, column] = Instantiate(_map[row, column], new Vector3(GeneralParameters.LongRoom.GetLengthX() / 2f + GeneralParameters.ShortRoom.GetLengthX() / 2f + GeneralParameters.LongRoom.GetLengthX() * row + GeneralParameters.ShortRoom.GetLengthX() * row, 0f, GeneralParameters.LongRoom.GetLengthZ() * column), Quaternion.identity);
                         _map[row, column].SetCordinatRoom(column, row);
                         _map[row, column].gameObject.SetActive(false);
                     }
@@ -284,13 +277,13 @@ namespace Map
                 {
                     if(_saveZoneMap[row, column] != null)
                     {
-                        _saveZoneMap[row, column] = Instantiate(_saveZoneMap[row, column], new Vector3(_arena.GetLengthX() * row + _saveZone.GetLengthX() * row, 0, _saveZone.GetLengthZ() * column), Quaternion.identity);
+                        _saveZoneMap[row, column] = Instantiate(_saveZoneMap[row, column], new Vector3(GeneralParameters.LongRoom.GetLengthX() * row + GeneralParameters.ShortRoom.GetLengthX() * row, 0, GeneralParameters.ShortRoom.GetLengthZ() * column), Quaternion.identity);
                         _saveZoneMap[row,column].SetCoordinate(column, row);
                         _saveZoneMap[row, column].gameObject.SetActive(false);
                     }
                 }
             }
-            _saveZoneMap[_saveZoneMap.GetLength(0) - 1, _branchs].gameObject.AddComponent<LevelComplited>();
+            _saveZoneMap[_saveZoneMap.GetLength(0) - 1, GeneralParameters.LevelParameters.Branchs].gameObject.AddComponent<LevelComplited>();
         }
         private void generationCoinList()
         {
@@ -310,14 +303,14 @@ namespace Map
                                 (
                                     Random.Range
                                     (
-                                        (indent + _saveZone.GetLengthX() / 2f + _arena.GetLengthX() * row + _saveZone.GetLengthX() * row), 
-                                        (_arena.GetLengthX() - indent + _saveZone.GetLengthX() / 2f + _arena.GetLengthX() * row + _saveZone.GetLengthX() * row)
+                                        (indent + GeneralParameters.ShortRoom.GetLengthX() / 2f + GeneralParameters.LongRoom.GetLengthX() * row + GeneralParameters.ShortRoom.GetLengthX() * row), 
+                                        (GeneralParameters.LongRoom.GetLengthX() - indent + GeneralParameters.ShortRoom.GetLengthX() / 2f + GeneralParameters.LongRoom.GetLengthX() * row + GeneralParameters.ShortRoom.GetLengthX() * row)
                                     ), 
                                     1f, 
                                     Random.Range
                                     (    
-                                        _arena.GetLengthZ() * column - (_arena.GetLengthZ() / 2f + indent),
-                                        _arena.GetLengthZ() * column + (_arena.GetLengthZ() / 2f - indent)
+                                        GeneralParameters.LongRoom.GetLengthZ() * column - (GeneralParameters.LongRoom.GetLengthZ() / 2f + indent),
+                                        GeneralParameters.LongRoom.GetLengthZ() * column + (GeneralParameters.LongRoom.GetLengthZ() / 2f - indent)
                                     )
                                 ), Quaternion.identity)
                             );
@@ -391,13 +384,13 @@ namespace Map
             
             if(lastEmptyWallEnd != null && lastEmptyWallStart != null)
             {
-                lastEmptyWallStart.transform.position = new Vector3(_arena.GetLengthX() * (y - 1 > 0 ? y - 1 : 0) + _saveZone.GetLengthX() * (y - 1 > 0 ? y - 1 : 0) - _saveZone.GetLengthX() / 2f - 0.5f, 0f, _arena.GetLengthZ() * x);
-                lastEmptyWallEnd.transform.position = new Vector3(_arena.GetLengthX() * (y + 2) + _saveZone.GetLengthX() * (y + 2) + _saveZone.GetLengthX() / 2f + 0.5f, 0f, _arena.GetLengthZ() * x);
+                lastEmptyWallStart.transform.position = new Vector3(GeneralParameters.LongRoom.GetLengthX() * (y - 1 > 0 ? y - 1 : 0) + GeneralParameters.ShortRoom.GetLengthX() * (y - 1 > 0 ? y - 1 : 0) - GeneralParameters.ShortRoom.GetLengthX() / 2f - 0.5f, 0f, GeneralParameters.LongRoom.GetLengthZ() * x);
+                lastEmptyWallEnd.transform.position = new Vector3(GeneralParameters.LongRoom.GetLengthX() * (y + 2) + GeneralParameters.ShortRoom.GetLengthX() * (y + 2) + GeneralParameters.ShortRoom.GetLengthX() / 2f + 0.5f, 0f, GeneralParameters.LongRoom.GetLengthZ() * x);
             }
             else
             {
-                lastEmptyWallStart = Instantiate(_emptyWall, new Vector3(_arena.GetLengthX() * (y - 2 > 0 ? y - 2 : 0) + _saveZone.GetLengthX() * (y - 2 > 0 ? y - 2 : 0) - _saveZone.GetLengthX() / 2f - 0.5f, 0f, _arena.GetLengthZ() * x), Quaternion.identity);
-                lastEmptyWallEnd = Instantiate(_emptyWall, new Vector3(_arena.GetLengthX() * (y + 2) + _saveZone.GetLengthX() * (y + 2) + _saveZone.GetLengthX() / 2f + 0.5f, 0f, _arena.GetLengthZ() * x), Quaternion.identity);
+                lastEmptyWallStart = Instantiate(GeneralParameters.EmptyWall, new Vector3(GeneralParameters.LongRoom.GetLengthX() * (y - 2 > 0 ? y - 2 : 0) + GeneralParameters.ShortRoom.GetLengthX() * (y - 2 > 0 ? y - 2 : 0) - GeneralParameters.ShortRoom.GetLengthX() / 2f - 0.5f, 0f, GeneralParameters.LongRoom.GetLengthZ() * x), Quaternion.identity);
+                lastEmptyWallEnd = Instantiate(GeneralParameters.EmptyWall, new Vector3(GeneralParameters.LongRoom.GetLengthX() * (y + 2) + GeneralParameters.ShortRoom.GetLengthX() * (y + 2) + GeneralParameters.ShortRoom.GetLengthX() / 2f + 0.5f, 0f, GeneralParameters.LongRoom.GetLengthZ() * x), Quaternion.identity);
             }
 
             lastcordX = x;
@@ -536,8 +529,8 @@ namespace Map
                     }
                 }
                 
-                lastEmptyWallStart.transform.position = new Vector3(_arena.GetLengthX() * (y - 1 > 0 ? y - 1 : 0) + _saveZone.GetLengthX() * (y - 1 > 0 ? y - 1 : 0) - _saveZone.GetLengthX() / 2f - 0.5f, 0f, _arena.GetLengthZ() * x);
-                lastEmptyWallEnd.transform.position = new Vector3(_arena.GetLengthX() * (y + 2) + _saveZone.GetLengthX() * (y + 2) + _saveZone.GetLengthX() / 2f + 0.5f, 0f, _arena.GetLengthZ() * x);
+                lastEmptyWallStart.transform.position = new Vector3(GeneralParameters.LongRoom.GetLengthX() * (y - 1 > 0 ? y - 1 : 0) + GeneralParameters.ShortRoom.GetLengthX() * (y - 1 > 0 ? y - 1 : 0) - GeneralParameters.ShortRoom.GetLengthX() / 2f - 0.5f, 0f, GeneralParameters.LongRoom.GetLengthZ() * x);
+                lastEmptyWallEnd.transform.position = new Vector3(GeneralParameters.LongRoom.GetLengthX() * (y + 2) + GeneralParameters.ShortRoom.GetLengthX() * (y + 2) + GeneralParameters.ShortRoom.GetLengthX() / 2f + 0.5f, 0f, GeneralParameters.LongRoom.GetLengthZ() * x);
 
                 lastcordX = x;
                 lastcordY = y;
@@ -554,7 +547,7 @@ namespace Map
                     {
                         if(_saveZoneMap[row, column] != null)
                         {
-                            StarController star = Instantiate(_star, new Vector3
+                            StarController star = Instantiate(GeneralParameters.Star, new Vector3
                             (
                                 _saveZoneMap[row, column].gameObject.transform.position.x,
                                 _saveZoneMap[row, column].gameObject.transform.position.y,
@@ -580,7 +573,7 @@ namespace Map
                     {
                         if(_saveZoneMap[row, column] != null)
                         {
-                            StarController star = Instantiate(_star, new Vector3
+                            StarController star = Instantiate(GeneralParameters.Star, new Vector3
                             (
                                 _saveZoneMap[row, column].gameObject.transform.position.x,
                                 _saveZoneMap[row, column].gameObject.transform.position.y,
@@ -649,9 +642,9 @@ namespace Map
                         float [] listCordY = new float[2] { -5f, 5f };
                         _listEntities[row, column, height] = Instantiate(_listEntities[row, column, height], new Vector3
                         (
-                            (_arena.GetLengthX() / 2f + _saveZone.GetLengthX() / 2f + _arena.GetLengthX() * row + _saveZone.GetLengthX() * row) + Random.Range(listCordX[0], listCordX[1]), 
+                            (GeneralParameters.LongRoom.GetLengthX() / 2f + GeneralParameters.ShortRoom.GetLengthX() / 2f + GeneralParameters.LongRoom.GetLengthX() * row + GeneralParameters.ShortRoom.GetLengthX() * row) + Random.Range(listCordX[0], listCordX[1]), 
                             2f, 
-                            (_arena.GetLengthZ() * column) + listCordY[Random.Range(0, listCordY.GetLength(0))]
+                            (GeneralParameters.LongRoom.GetLengthZ() * column) + listCordY[Random.Range(0, listCordY.GetLength(0))]
                         ), Quaternion.Euler(-180,0,0));
                     }
                     else
@@ -667,14 +660,14 @@ namespace Map
                         (
                             Random.Range
                             (
-                                (indent + _saveZone.GetLengthX() / 2f + _arena.GetLengthX() * row + _saveZone.GetLengthX() * row), 
-                                (_arena.GetLengthX() - indent + _saveZone.GetLengthX() / 2f + _arena.GetLengthX() * row + _saveZone.GetLengthX() * row)
+                                (indent + GeneralParameters.ShortRoom.GetLengthX() / 2f + GeneralParameters.LongRoom.GetLengthX() * row + GeneralParameters.ShortRoom.GetLengthX() * row), 
+                                (GeneralParameters.LongRoom.GetLengthX() - indent + GeneralParameters.ShortRoom.GetLengthX() / 2f + GeneralParameters.LongRoom.GetLengthX() * row + GeneralParameters.ShortRoom.GetLengthX() * row)
                             ), 
                             2f, 
                             Random.Range
                             (    
-                                _arena.GetLengthZ() * column - (_arena.GetLengthZ() / 2f + indent),
-                                _arena.GetLengthZ() * column + (_arena.GetLengthZ() / 2f - indent)
+                                GeneralParameters.LongRoom.GetLengthZ() * column - (GeneralParameters.LongRoom.GetLengthZ() / 2f + indent),
+                                GeneralParameters.LongRoom.GetLengthZ() * column + (GeneralParameters.LongRoom.GetLengthZ() / 2f - indent)
                             )
                         ), Quaternion.identity);
                     }
