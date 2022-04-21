@@ -13,8 +13,8 @@ namespace GamePlay
 
         private static readonly string[] CharacterObject =
         {
-            "JustTime", "NecroTime", "MorfeTime", "NeoTime",
-            "InvulnerableTime", "NexusTime"
+            "WeakTime", "NecroTime", "ShooterTime", "NeoTime",
+            "TankTime", "NecromusTime"
         };
 
         [SerializeField] private TMP_Text _timer;

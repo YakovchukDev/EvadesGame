@@ -6,7 +6,6 @@ namespace Menu.ScriptableObject.Information
 {
     public class PanelObject : MonoBehaviour
     {
-        [SerializeField] private InfoPanel _infoPanel;
         [SerializeField] private Image _backImage;
         [SerializeField] private Transform _backTransformUp;
 

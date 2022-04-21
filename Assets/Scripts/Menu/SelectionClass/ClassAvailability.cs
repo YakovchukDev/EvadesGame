@@ -15,41 +15,60 @@ namespace Menu.SelectionClass
         [SerializeField] private float[] _recordTime;
         private float _neededTime = 25;
         private int _neededPassedLevels = 5;
+        private int[] _buyOpen;
 
         public void OpenAllClass()
         {
-            PlayerPrefs.SetFloat("JustTime", 200);
+            PlayerPrefs.SetFloat("WeakTime", 200);
             PlayerPrefs.SetFloat("NecroTime", 200);
-            PlayerPrefs.SetFloat("MorfeTime", 200);
+            PlayerPrefs.SetFloat("ShooterTime", 200);
             PlayerPrefs.SetFloat("NeoTime", 200);
-            PlayerPrefs.SetFloat("InvulnerableTime", 200);
-            PlayerPrefs.SetFloat("NexusTime", 200);
+            PlayerPrefs.SetFloat("TankTime", 200);
+            PlayerPrefs.SetFloat("NecromusTime", 200);
         }
 
         private void Start()
         {
             _recordTime = new float[_maxTime.Count];
-
-            _recordTime[0] = PlayerPrefs.GetFloat("JustTime");
+            _recordTime[0] = PlayerPrefs.GetFloat("WeakTime");
             _recordTime[1] = PlayerPrefs.GetFloat("NecroTime");
-            _recordTime[2] = PlayerPrefs.GetFloat("MorfeTime");
+            _recordTime[2] = PlayerPrefs.GetFloat("ShooterTime");
             _recordTime[3] = PlayerPrefs.GetFloat("NeoTime");
-            _recordTime[4] = PlayerPrefs.GetFloat("InvulnerableTime");
-            _recordTime[5] = PlayerPrefs.GetFloat("NexusTime");
-
+            _recordTime[4] = PlayerPrefs.GetFloat("TankTime");
+            _recordTime[5] = PlayerPrefs.GetFloat("NecromusTime");
+            _buyOpen = new int[_maxTime.Count];
+            _levelButton.interactable = false;
+            _levelInfoText.SetActive(true);
             for (int i = 0; i < _maxTime.Count; i++)
             {
+                _buyOpen[i] = PlayerPrefs.GetInt($"Open{i}");
                 _maxTime[i].text = Mathf.Round(_recordTime[i]).ToString();
-            }
 
-            _levelButton.interactable = (_recordTime[0] >= 25);
-            _levelInfoText.SetActive(_recordTime[0] < 25);
+                
+
+                
+            }
+        }
+
+        private void Update()
+        {
+            for (int i = 0; i < _maxTime.Count; i++)
+            {
+                _buyOpen[i] = PlayerPrefs.GetInt($"Open{i}");
+                if (_recordTime[i] >= 25||_buyOpen[i]==1)
+                {
+                    _levelButton.interactable = true;
+                    _levelInfoText.SetActive(false);
+                }
+            }
         }
 
         public void CheckClassForInfinity()
         {
             _classes[0].interactable = true;
-            for (int i = 1; i < _classes.Count; i++)
+            for (int i = 1;
+                i < _classes.Count;
+                i++)
             {
                 if (LevelController.CompleteLevel >= _neededPassedLevels)
                 {
@@ -64,12 +83,15 @@ namespace Menu.SelectionClass
             }
 
             _neededPassedLevels = 5;
+            BoughtCharacter();
         }
 
         public void CheckClassForLevel()
         {
             _classes[0].interactable = true;
-            for (int i = 1; i < _classes.Count; i++)
+            for (int i = 1;
+                i < _classes.Count;
+                i++)
             {
                 if (LevelController.CompleteLevel >= _neededPassedLevels)
                 {
@@ -100,6 +122,20 @@ namespace Menu.SelectionClass
             }
 
             _neededPassedLevels = 5;
+            BoughtCharacter();
+        }
+
+        private void BoughtCharacter()
+        {
+            for (int i = 1;
+                i < _classes.Count;
+                i++)
+            {
+                if (_buyOpen[i] == 1)
+                {
+                    _classes[i].interactable = true;
+                }
+            }
         }
 
         public void ExitClassSelection()
