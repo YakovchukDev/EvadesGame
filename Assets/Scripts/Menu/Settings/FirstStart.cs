@@ -41,9 +41,9 @@ namespace Menu.Settings
                 PlayerPrefs.SetString("RightOrLeft", "Left");
             }
 
-            if (!PlayerPrefs.HasKey("Money"))
+            if (!PlayerPrefs.HasKey("Coins"))
             {
-                PlayerPrefs.SetInt("Money", 10000);
+                PlayerPrefs.SetInt("Coins", 10000);
             }
         }
 

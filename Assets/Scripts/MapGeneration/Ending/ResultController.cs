@@ -15,7 +15,7 @@ namespace Map
 
         public void ShowResult()
         {
-            _coinsTMP.text = $"{GeneralParameters.MainDataCollector.Coins}";
+            _coinsTMP.text = $"Coins:{GeneralParameters.MainDataCollector.Coins}";
             _leftStar.gameObject.SetActive(GeneralParameters.MainDataCollector.Level.LeftStars);
             _centralStar.gameObject.SetActive(GeneralParameters.MainDataCollector.Level.IsComplited);
             _rightStar.gameObject.SetActive(GeneralParameters.MainDataCollector.Level.RightStars);

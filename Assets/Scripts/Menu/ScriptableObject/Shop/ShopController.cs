@@ -23,13 +23,13 @@ namespace Menu.ScriptableObject.Shop
 
         private void Awake()
         {
-            _money.text = PlayerPrefs.GetInt("Money").ToString();
+            _money.text = PlayerPrefs.GetInt("Coins").ToString();
             PanelSpawner(_spawnCharacterPosition, _shopCharacterPanels, _shopPrefab);
         }
 
         private void Update()
         {
-            _money.text = PlayerPrefs.GetInt("Money").ToString();
+            _money.text = PlayerPrefs.GetInt("Coins").ToString();
         }
 
         private void PanelSpawner(Transform spawnPosition, List<ShopPanel> shopPanels, GameObject prefab)
