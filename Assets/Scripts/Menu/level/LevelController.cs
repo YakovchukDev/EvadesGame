@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MapGeneration.Data;
 using Menu.SelectionClass;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace Menu.level
     public class LevelController : MonoBehaviour
     {
         [SerializeField] private LevelMenuView _levelMenuView;
-        [SerializeField] private List<Map.LevelParameters> _levelParameters;
+        [SerializeField] private List<LevelParameters> _levelParameters;
         [SerializeField] private ClassAvailability _classAvailability;
         [SerializeField] private Animator _selectionAnimator;
         [SerializeField] private Animator _levelsAnimator;

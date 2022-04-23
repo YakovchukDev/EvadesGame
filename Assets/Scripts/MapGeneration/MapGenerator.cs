@@ -2,6 +2,7 @@
 //код написан за 40 гривень, на качество були накладені санкції
 
 using System.Collections.Generic;
+using MapGeneration.Coins;
 using UnityEngine;
 using Menu.SelectionClass;
 
@@ -427,7 +428,7 @@ namespace Map
 
                         foreach (CoinControl room in _map[row, column].CoinList)
                         {
-                            if (!room.IsUse)
+                            if (!room._isUse)
                             {
                                 room.gameObject.SetActive(true);
                             }
@@ -600,7 +601,7 @@ namespace Map
 
                             foreach (CoinControl room in _map[row, column].CoinList)
                             {
-                                if (!room.IsUse)
+                                if (!room._isUse)
                                 {
                                     room.gameObject.SetActive(true);
                                 }

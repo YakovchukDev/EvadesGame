@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Map
+namespace MapGeneration.Data
 {
     public class LevelParameters : MonoBehaviour
     {
@@ -9,5 +9,7 @@ namespace Map
         public int Length;
         public int SizeChank;
         public int TargetExpirience;
+
+        
     }
 }

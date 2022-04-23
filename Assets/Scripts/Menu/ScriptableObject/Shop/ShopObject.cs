@@ -30,9 +30,9 @@ namespace Menu.ScriptableObject.Shop
 
         public void BuyCharacter()
         {
-            if (PlayerPrefs.GetInt("Money") >= ShopPanel.CharacterCost)
+            if (PlayerPrefs.GetInt("Coins") >= ShopPanel.CharacterCost)
             {
-                PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - ShopPanel.CharacterCost);
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - ShopPanel.CharacterCost);
                 PlayerPrefs.SetInt($"Open{ShopPanel.NumberForUnlock}", 1);
                 _text.text = "Bought";
                 _button.interactable = false;

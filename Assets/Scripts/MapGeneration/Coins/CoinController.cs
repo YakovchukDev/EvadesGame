@@ -1,3 +1,4 @@
+using MapGeneration.Coins;
 using UnityEngine;
 using TMPro;
 

@@ -43,7 +43,6 @@ namespace Menu
 
         public void SetAbilitiesAndClass(int characterNumber)
         {
-            PlayerPrefs.SetInt("SelectionNumber", characterNumber);
             _class.text=_classType[characterNumber];
             _spellImage1.sprite = _spellSprites1[characterNumber];
             _spellImage2.sprite = _spellSprites2[characterNumber];

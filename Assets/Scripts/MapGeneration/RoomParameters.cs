@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MapGeneration.Coins;
 using UnityEngine;
 
 namespace Map

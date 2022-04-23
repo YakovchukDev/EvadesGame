@@ -1182,7 +1182,7 @@ MonoBehaviour:
           m_StringArgument: Nexus
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8667955411658656184}
+      - m_Target: {fileID: 3341935778243946388}
         m_TargetAssemblyTypeName: Menu.AbilityInfo, Assembly-CSharp
         m_MethodName: SetAbilitiesAndClass
         m_Mode: 3
@@ -1919,7 +1919,7 @@ MonoBehaviour:
           m_StringArgument: Nexus
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8667955411658656184}
+      - m_Target: {fileID: 3341935778243946388}
         m_TargetAssemblyTypeName: Menu.AbilityInfo, Assembly-CSharp
         m_MethodName: SetAbilitiesAndClass
         m_Mode: 3
@@ -2369,7 +2369,7 @@ MonoBehaviour:
           m_StringArgument: Nexus
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8667955411658656184}
+      - m_Target: {fileID: 3341935778243946388}
         m_TargetAssemblyTypeName: Menu.AbilityInfo, Assembly-CSharp
         m_MethodName: SetAbilitiesAndClass
         m_Mode: 3
@@ -2547,7 +2547,7 @@ MonoBehaviour:
           m_StringArgument: Nexus
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8667955411658656184}
+      - m_Target: {fileID: 3341935778243946388}
         m_TargetAssemblyTypeName: Menu.AbilityInfo, Assembly-CSharp
         m_MethodName: SetAbilitiesAndClass
         m_Mode: 3
@@ -2998,6 +2998,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5696843061989220334}
   - component: {fileID: 5696843061989220335}
+  - component: {fileID: 3341935778243946388}
   - component: {fileID: 79116328}
   m_Layer: 5
   m_Name: SelectionClassMenuView
@@ -3055,6 +3056,37 @@ MonoBehaviour:
   - {fileID: 5696843061364449449}
   - {fileID: 5696843061712240840}
   - {fileID: 5696843060729741918}
+--- !u!114 &3341935778243946388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696843061989220333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8141d1fe8ba34f42abb0286cda17e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spellSprites1:
+  - {fileID: 1307224741209697111, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
+  - {fileID: -8391832610174604681, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
+  - {fileID: -1857308142125042288, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
+  - {fileID: -2320405702318098482, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
+  - {fileID: 6146261892016400092, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
+  - {fileID: -8391832610174604681, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
+  _spellSprites2:
+  - {fileID: 1307224741209697111, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
+  - {fileID: 1307224741209697111, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
+  - {fileID: 8552491731070374634, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
+  - {fileID: -8400984316997222590, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
+  - {fileID: -8463188938384056555, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
+  - {fileID: 6556067333537114197, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
+  _spellText1: {fileID: 958359112566970978}
+  _spellText2: {fileID: 4970420906012001449}
+  _class: {fileID: 5575486096797176125}
+  _spellImage1: {fileID: 2025074658343918147}
+  _spellImage2: {fileID: 5218664722585797969}
 --- !u!95 &79116328
 Animator:
   serializedVersion: 3
@@ -3209,7 +3241,7 @@ MonoBehaviour:
           m_StringArgument: Nexus
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8667955411658656184}
+      - m_Target: {fileID: 3341935778243946388}
         m_TargetAssemblyTypeName: Menu.AbilityInfo, Assembly-CSharp
         m_MethodName: SetAbilitiesAndClass
         m_Mode: 3
@@ -3521,7 +3553,7 @@ MonoBehaviour:
           m_StringArgument: Nexus
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8667955411658656184}
+      - m_Target: {fileID: 3341935778243946388}
         m_TargetAssemblyTypeName: Menu.AbilityInfo, Assembly-CSharp
         m_MethodName: SetAbilitiesAndClass
         m_Mode: 3
@@ -4053,7 +4085,6 @@ GameObject:
   m_Component:
   - component: {fileID: 511437758420569738}
   - component: {fileID: 2985711896068584557}
-  - component: {fileID: 8667955411658656184}
   - component: {fileID: 520696264281699560}
   m_Layer: 5
   m_Name: AbilityAndClass
@@ -4114,37 +4145,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8667955411658656184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7711459494817788697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8141d1fe8ba34f42abb0286cda17e02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spellSprites1:
-  - {fileID: 1307224741209697111, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
-  - {fileID: -8391832610174604681, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
-  - {fileID: -1857308142125042288, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
-  - {fileID: -2320405702318098482, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
-  - {fileID: 6146261892016400092, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
-  - {fileID: -8391832610174604681, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
-  _spellSprites2:
-  - {fileID: 1307224741209697111, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
-  - {fileID: 1307224741209697111, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
-  - {fileID: 8552491731070374634, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
-  - {fileID: -8400984316997222590, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
-  - {fileID: -8463188938384056555, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
-  - {fileID: 6556067333537114197, guid: 3ac15076f9662dc43be134d7bb6de1cd, type: 3}
-  _spellText1: {fileID: 958359112566970978}
-  _spellText2: {fileID: 4970420906012001449}
-  _class: {fileID: 5575486096797176125}
-  _spellImage1: {fileID: 2025074658343918147}
-  _spellImage2: {fileID: 5218664722585797969}
 --- !u!222 &520696264281699560
 CanvasRenderer:
   m_ObjectHideFlags: 0

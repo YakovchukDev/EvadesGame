@@ -1,3 +1,4 @@
+using MapGeneration.Data;
 using UnityEngine;
 
 namespace Menu.level
@@ -5,7 +6,7 @@ namespace Menu.level
     public class LevelElementController : MonoBehaviour
     {
         [SerializeField] private int _levelNumber;
-        [SerializeField] private Map.LevelParameters _levelParameters;
+        [SerializeField] private LevelParameters _levelParameters;
         public static bool OnView;
 
         public void ButtonPlay()
@@ -23,7 +24,7 @@ namespace Menu.level
             Map.GeneralParameters.SetMapData(_levelParameters);
         }
 
-        public void SetLevelParametrs(Map.LevelParameters levelParameters)
+        public void SetLevelParametrs(LevelParameters levelParameters)
         {
             _levelParameters = levelParameters;
         }

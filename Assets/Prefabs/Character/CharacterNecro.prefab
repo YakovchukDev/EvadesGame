@@ -226,10 +226,6 @@ MonoBehaviour:
   _manaController: {fileID: 0}
   _abilityLevel:
   - {fileID: 1692775751574999483}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1717912554360977961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,6 +1222,7 @@ MonoBehaviour:
   _noGrowUp:
   - {fileID: 6289964556785718006}
   _father: {fileID: 1717912554360977961}
+  _coin: {fileID: 7399607792626322687, guid: a1d0b66346cb6e348bb4bda922383cdf, type: 3}
 --- !u!135 &3701317209741768468
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -9,46 +9,23 @@ namespace Menu.SelectionClass
     {
         public static int CharacterType { get; private set; }
         public static string WhatPlaying { get; private set; }
-        [SerializeField] private List<Animator> _buttonSelectionAnimator;
         [SerializeField] private List<Button> _buttonSelection;
-        private int _selectNumber;
+
 
         private void Start()
         {
             ChoiceTypeOfCharacter(PlayerPrefs.GetInt("SelectionNumber"));
         }
 
-        private void Update()
-        {
-            if (_selectNumber != PlayerPrefs.GetInt("SelectionNumber") &&
-                _buttonSelection[_selectNumber].interactable)
-            {
-                _buttonSelectionAnimator[_selectNumber].SetTrigger("Normal");
-                _selectNumber++;
-                if (_selectNumber == _buttonSelectionAnimator.Count)
-                {
-                    _selectNumber = 0;
-                }
-            }
-            else if(_selectNumber == PlayerPrefs.GetInt("SelectionNumber")&&
-                    _buttonSelection[_selectNumber].interactable)
-            {
-                _buttonSelectionAnimator[_selectNumber].SetTrigger("Selected");
-                _selectNumber++;
-                if (_selectNumber == _buttonSelectionAnimator.Count)
-                {
-                    _selectNumber = 0;
-                }
-            }
-            else
-            {
-                _buttonSelectionAnimator[_selectNumber].SetTrigger("Disabled");
-            }
-        }
-
         public void ChoiceTypeOfCharacter(int characterType)
         {
             CharacterType = characterType;
+            PlayerPrefs.SetInt("SelectionNumber", characterType);
+            foreach (var buttonSelection in _buttonSelection)
+            {
+                buttonSelection.transform.localScale = new Vector3(1, 1, 1);
+            }
+            _buttonSelection[CharacterType].transform.localScale = new Vector3(1.2f,1.2f,1);
         }
 
         public void SetWhatPlaying(string whatPlaying)

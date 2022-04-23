@@ -1,13 +1,13 @@
 using UnityEngine;
 
-namespace Map
+namespace MapGeneration.Coins
 {
     public class CoinControl : MonoBehaviour
     {
         public delegate void GiveExpirience();
         public static event GiveExpirience GiveCoin;
 
-        public bool IsUse = false;
+        public bool _isUse;
         [SerializeField] private int _speed;
         private int _value = 1;
         private void Start()
@@ -24,11 +24,11 @@ namespace Map
         }
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.tag == "Player")
+            if(other.gameObject.CompareTag("Player"))
             {
-                GiveCoin();
-                this.gameObject.SetActive(false);
-                IsUse = true;
+                /*GiveCoin();
+                gameObject.SetActive(false);
+                _isUse = true;*/
             }
         }
     }
