@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Menu.level;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,9 +9,11 @@ namespace Menu.SelectionClass
 {
     public class SelectionClassView : MonoBehaviour
     {
+        [SerializeField] private ClassAvailability _classAvailability;
         public static int CharacterType { get; private set; }
         public static string WhatPlaying { get; private set; }
         [SerializeField] private List<Button> _buttonSelection;
+        [SerializeField] private TMP_Text _infoTime;
 
 
         private void Start()
@@ -25,7 +29,21 @@ namespace Menu.SelectionClass
             {
                 buttonSelection.transform.localScale = new Vector3(1, 1, 1);
             }
-            _buttonSelection[CharacterType].transform.localScale = new Vector3(1.2f,1.2f,1);
+
+            _buttonSelection[CharacterType].transform.localScale = new Vector3(1.2f, 1.2f, 1);
+
+            switch (PlayerPrefs.GetString("Language"))
+            {
+                case "English":
+                    _infoTime.text = "Record: " + Mathf.Round(_classAvailability.RecordTime[characterType]);
+                    break;
+                case "Russian":
+                    _infoTime.text = "Рекорд: " + Mathf.Round(_classAvailability.RecordTime[characterType]);
+                    break;
+                case "Ukrainian":
+                    _infoTime.text = "Рекорд: " + Mathf.Round(_classAvailability.RecordTime[characterType]);
+                    break;
+            }
         }
 
         public void SetWhatPlaying(string whatPlaying)

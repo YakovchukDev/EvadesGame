@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GamePlay.Character.Spell;
 using Menu.SelectionClass;
 using UnityEngine;
 
@@ -23,7 +24,9 @@ namespace GamePlay.Character
 
         private void SpawnCharacter(Vector3 startPosition)
         {
-            Instantiate(_type[SelectionClassView.CharacterType], startPosition, Quaternion.identity);
+            
+         GameObject game = Instantiate(_type[SelectionClassView.CharacterType], startPosition, Quaternion.identity);
+         game.GetComponent<ManaController>();
         }
     }
 }

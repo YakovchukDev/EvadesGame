@@ -16,7 +16,6 @@ namespace Menu.level
         [SerializeField] private int _countLevel;
         public static int CompleteLevel;
 
-
         private void Start()
         {
             if (PlayerPrefs.HasKey("CompleteLevel"))

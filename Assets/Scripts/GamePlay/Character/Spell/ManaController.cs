@@ -7,37 +7,37 @@ namespace GamePlay.Character.Spell
     public class ManaController : MonoBehaviour
     {
         [SerializeField] private Image _manaComponent;
-        private float _allMana;
+        public static float AllMana;
         private float _startRegenTime;
         private float _numberRegen;
         private float _regenTime;
-        public static float Mana;
+        private float _mana;
         public static float Regen;
 
         private void Start()
         {
             if (SelectionClassView.WhatPlaying == "Level")
             {
-                _allMana = 100;
+                AllMana = 100;
                 _numberRegen = 1;
                 _startRegenTime = 1;
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
-                _allMana = 200;
+                AllMana = 200;
                 _numberRegen = 2;
                 _startRegenTime = 1;
             }
 
-            Mana = _allMana;
+            _mana = AllMana;
             Regen = _numberRegen;
         }
 
         private void Update()
         {
-            if (_allMana < Mana)
+            if (AllMana < _mana)
             {
-                _allMana = Mana;
+                AllMana = _mana;
             }
 
             if (_numberRegen < Regen)
@@ -47,18 +47,12 @@ namespace GamePlay.Character.Spell
 
             ManaRegen(Regen);
         }
-
-        public void SetAllMana(float allMana)
-        {
-            _allMana = allMana;
-        }
-
         public bool ManaReduction(float minusMana)
         {
-            if (Mana >= minusMana)
+            if (_mana >= minusMana)
             {
-                Mana -= minusMana;
-                _manaComponent.fillAmount = Mana / _allMana;
+                _mana -= minusMana;
+                _manaComponent.fillAmount = _mana / AllMana;
                 return true;
             }
             else
@@ -71,11 +65,11 @@ namespace GamePlay.Character.Spell
         {
             _regenTime -= Time.deltaTime;
 
-            if (Mana < _allMana && _regenTime <= 0)
+            if (_mana < AllMana && _regenTime <= 0)
             {
                 _regenTime = _startRegenTime;
-                Mana += speedRegen;
-                _manaComponent.fillAmount = Mana / _allMana;
+                _mana += speedRegen;
+                _manaComponent.fillAmount = _mana / AllMana;
             }
         }
     }

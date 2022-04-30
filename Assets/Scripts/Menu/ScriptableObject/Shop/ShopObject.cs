@@ -1,4 +1,3 @@
-using Menu.SelectionClass;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +22,19 @@ namespace Menu.ScriptableObject.Shop
 
             if (PlayerPrefs.GetInt($"Open{ShopPanel.NumberForUnlock}") == 1)
             {
-                _text.text = "Bought";
+                switch (PlayerPrefs.GetString("Language"))
+                {
+                    case "English":
+                        _text.text = "Bought";
+                        break;
+                    case "Russian":
+                        _text.text = "Куплено";
+                        break;
+                    case "Ukrainian":
+                        _text.text = "Куплено";
+                        break;
+                }
+
                 _button.interactable = false;
             }
         }
@@ -34,7 +45,19 @@ namespace Menu.ScriptableObject.Shop
             {
                 PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - ShopPanel.CharacterCost);
                 PlayerPrefs.SetInt($"Open{ShopPanel.NumberForUnlock}", 1);
-                _text.text = "Bought";
+                switch (PlayerPrefs.GetString("Language"))
+                {
+                    case "English":
+                        _text.text = "Bought";
+                        break;
+                    case "Russian":
+                        _text.text = "Куплено";
+                        break;
+                    case "Ukrainian":
+                        _text.text = "Куплено";
+                        break;
+                }
+
                 _button.interactable = false;
             }
         }

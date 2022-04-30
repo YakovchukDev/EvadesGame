@@ -5,13 +5,14 @@ using Joystick_Pack.Examples;
 using Menu.SelectionClass;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GamePlay.Character
 {
     public class CharacterUpdate : MonoBehaviour
     {
-        [SerializeField] private ManaController _manaController;
         [SerializeField] private List<TMP_Text> _abilityLevel;
+        [SerializeField] private List<Button> _updateButtons;
         private int _numberSpeedUpdate = 1;
         private int _numberMaxManaUpdate = 1;
         private int _numberManaRegenUpdate = 1;
@@ -28,27 +29,32 @@ namespace GamePlay.Character
 
         private void Start()
         {
-            if (SelectionClassView.WhatPlaying == "Infinity")
+            if (SelectionClassView.CharacterType == 0 || SelectionClassView.CharacterType == 1)
             {
-                Destroy(gameObject);
-            }
-            else
-            {
-                foreach (var abilityLevel in _abilityLevel)
+                for (int i = 1; i < _updateButtons.Count; i++)
                 {
-                    abilityLevel.text = "1";
+                    _updateButtons[i].interactable = false;
                 }
-
-                _numberSpeedUpdate = 1;
-                _numberMaxManaUpdate = 1;
-                _numberManaRegenUpdate = 1;
-                NumberSpell1Update = 1;
-                NumberSpell2Update = 1;
-                CanSpell1Update = false;
-                CanSpell2Update = false;
-                _levelValue = GameObject.Find("LevelValue");
-                _quantityTokensTMP = _levelValue.GetComponent<TMP_Text>();
             }
+            else if(SelectionClassView.CharacterType == 5)
+            {
+                _updateButtons[4].interactable = false;
+            }
+
+            foreach (var abilityLevel in _abilityLevel)
+            {
+                abilityLevel.text = "1";
+            }
+
+            _numberSpeedUpdate = 1;
+            _numberMaxManaUpdate = 1;
+            _numberManaRegenUpdate = 1;
+            NumberSpell1Update = 1;
+            NumberSpell2Update = 1;
+            CanSpell1Update = false;
+            CanSpell2Update = false;
+            _levelValue = GameObject.Find("LevelValue");
+            _quantityTokensTMP = _levelValue.GetComponent<TMP_Text>();
         }
 
         public void SpeedUpdate()
@@ -80,7 +86,7 @@ namespace GamePlay.Character
                     {
                         _allMana = 100;
                         _allMana += 20 * _numberMaxManaUpdate;
-                        _manaController.SetAllMana(_allMana);
+                        ManaController.AllMana = _allMana;
                         _numberMaxManaUpdate++;
                         _abilityLevel[1].text = _numberMaxManaUpdate.ToString();
                         int value = Convert.ToInt32(_quantityTokensTMP.text);

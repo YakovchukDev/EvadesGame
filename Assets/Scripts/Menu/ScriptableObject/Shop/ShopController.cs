@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Menu.ScriptableObject.Information;
 using TMPro;
 using UnityEngine;
 

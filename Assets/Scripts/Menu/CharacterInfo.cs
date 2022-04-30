@@ -5,16 +5,18 @@ using UnityEngine.UI;
 
 namespace Menu
 {
-    public class AbilityInfo : MonoBehaviour
+    public class CharacterInfo : MonoBehaviour
     {
         [SerializeField] private List<Sprite> _spellSprites1;
         [SerializeField] private List<Sprite> _spellSprites2;
+        [SerializeField] private List<Sprite> _characterSprites;
 
         [SerializeField] private TMP_Text _spellText1;
         [SerializeField] private TMP_Text _spellText2;
         [SerializeField] private TMP_Text _class;
         [SerializeField] private Image _spellImage1;
         [SerializeField] private Image _spellImage2;
+        [SerializeField] private Image _characterImage;
         private readonly string[] _classType =
             {"Weak", "Necro", "Shooter", "Neo", "Tank", "Necromus"};
         
@@ -46,6 +48,7 @@ namespace Menu
             _class.text=_classType[characterNumber];
             _spellImage1.sprite = _spellSprites1[characterNumber];
             _spellImage2.sprite = _spellSprites2[characterNumber];
+            _characterImage.sprite=_characterSprites[characterNumber];
             switch (PlayerPrefs.GetString("Language"))
             {
                 case "English":

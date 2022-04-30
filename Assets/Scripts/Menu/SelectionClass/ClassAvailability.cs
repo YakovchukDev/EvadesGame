@@ -9,13 +9,14 @@ namespace Menu.SelectionClass
     public class ClassAvailability : MonoBehaviour
     {
         [SerializeField] private List<Button> _classes;
-        [SerializeField] private List<TMP_Text> _maxTime;
         [SerializeField] private Button _levelButton;
         [SerializeField] private GameObject _levelInfoText;
         [SerializeField] private float[] _recordTime;
         private float _neededTime = 25;
         private int _neededPassedLevels = 5;
         private int[] _buyOpen;
+
+        public float[] RecordTime => _recordTime;
 
         public void OpenAllClass()
         {
@@ -29,30 +30,25 @@ namespace Menu.SelectionClass
 
         private void Start()
         {
-            _recordTime = new float[_maxTime.Count];
+            _recordTime = new float[_classes.Count];
             _recordTime[0] = PlayerPrefs.GetFloat("WeakTime");
             _recordTime[1] = PlayerPrefs.GetFloat("NecroTime");
             _recordTime[2] = PlayerPrefs.GetFloat("ShooterTime");
             _recordTime[3] = PlayerPrefs.GetFloat("NeoTime");
             _recordTime[4] = PlayerPrefs.GetFloat("TankTime");
             _recordTime[5] = PlayerPrefs.GetFloat("NecromusTime");
-            _buyOpen = new int[_maxTime.Count];
+            _buyOpen = new int[_classes.Count];
             _levelButton.interactable = false;
             _levelInfoText.SetActive(true);
-            for (int i = 0; i < _maxTime.Count; i++)
+            for (int i = 0; i < _classes.Count; i++)
             {
                 _buyOpen[i] = PlayerPrefs.GetInt($"Open{i}");
-                _maxTime[i].text = Mathf.Round(_recordTime[i]).ToString();
-
-                
-
-                
             }
         }
 
         private void Update()
         {
-            for (int i = 0; i < _maxTime.Count; i++)
+            for (int i = 0; i < _classes.Count; i++)
             {
                 _buyOpen[i] = PlayerPrefs.GetInt($"Open{i}");
                 if (_recordTime[i] >= 25||_buyOpen[i]==1)
