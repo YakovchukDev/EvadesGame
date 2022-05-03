@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 5446301729060158306}
   - component: {fileID: 3095504998923274473}
   - component: {fileID: 6561430060618041682}
+  - component: {fileID: 478570547}
+  - component: {fileID: 3348631129706270170}
+  - component: {fileID: 2058591591880316758}
   m_Layer: 0
   m_Name: InfinityGameManager
   m_TagString: Untagged
@@ -103,7 +106,7 @@ MonoBehaviour:
   - {fileID: 5460984050080916392, guid: 950abaa21770e4c49a0e2cdd15c8503f, type: 3}
   - {fileID: 1911395832924520791, guid: 121027de14f92694ebfc84f1bd41f3db, type: 3}
   - {fileID: 8882896568688617212, guid: cb15d70a9125f4b48beeaf368c5205c9, type: 3}
-  - {fileID: 624432820001003063, guid: e04dbc46d27ab1b47b5b1cb8eed5ee4e, type: 3}
+  - {fileID: 4929027674744662730, guid: 28318606d4f68ff4989a0e4090e1d1b5, type: 3}
 --- !u!114 &3390834592028967129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +168,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pauseSettingsAnimator: {fileID: 0}
   _pauseMainAnimator: {fileID: 0}
+--- !u!114 &478570547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058591591030872339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ab690445f045244826a110a3e80ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinPrefab: {fileID: 7399607792626322687, guid: a1d0b66346cb6e348bb4bda922383cdf, type: 3}
+  _coinTMP: {fileID: 0}
+--- !u!114 &3348631129706270170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058591591030872339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8c45adca2e28846927ca4ba07d1c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meteorPrefab: {fileID: 6669575682680208967, guid: 22d0cf1f0054e9e46b176977e143c9a7, type: 3}
+  _characterSpawner: {fileID: 2058591591030872340}
+--- !u!114 &2058591591880316758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058591591030872339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17565c53884440a9b6bac359b62272fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leftSpellButtons: {fileID: 0}
+  _rightSpellButtons: {fileID: 0}
+  _leftPanelDie: {fileID: 0}
+  _rightPanelDie: {fileID: 0}
+  _leftDieAnimator: {fileID: 0}
+  _rightDieAnimator: {fileID: 0}

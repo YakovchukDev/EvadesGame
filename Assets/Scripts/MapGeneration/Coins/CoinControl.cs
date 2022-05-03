@@ -1,11 +1,12 @@
+using System;
 using UnityEngine;
 
 namespace MapGeneration.Coins
 {
     public class CoinControl : MonoBehaviour
     {
-        public delegate void GiveExpirience();
-        public static event GiveExpirience GiveCoin;
+        public static event Action GiveCoin;
+        public static event Action Survive;
 
         public bool _isUse;
         [SerializeField] private int _speed;
@@ -26,9 +27,10 @@ namespace MapGeneration.Coins
         {
             if(other.gameObject.CompareTag("Player"))
             {
-                /*GiveCoin();
+                GiveCoin?.Invoke();
                 gameObject.SetActive(false);
-                _isUse = true;*/
+                _isUse = true;
+                Survive?.Invoke();
             }
         }
     }

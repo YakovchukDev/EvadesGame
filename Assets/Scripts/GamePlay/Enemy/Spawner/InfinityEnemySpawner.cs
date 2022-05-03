@@ -14,7 +14,6 @@ namespace GamePlay.Enemy.Spawner
         [SerializeField] private List<GameObject> _allEnemy;
         [SerializeField] private List<Animation> _animation;
         [SerializeField] private ParticleSystem _enemyDieParticle;
-        [SerializeField] private GameObject _coin;
 
         private readonly Vector3[] _spawnPos = new Vector3[4];
         private readonly float[] _possibleSizes = {20f, 40f, 100f};
@@ -30,7 +29,6 @@ namespace GamePlay.Enemy.Spawner
             _spawnPos[2] = new Vector3(0, 2, 22);
             _spawnPos[3] = new Vector3(0, 2, -22);
             StartCoroutine(EnemySpawner());
-            Instantiate(_coin, new Vector3(Random.Range(17, -17), 1, Random.Range(-17, 17)), Quaternion.identity);
         }
 
 

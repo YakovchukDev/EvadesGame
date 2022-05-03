@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Joystick_Pack.Examples;
+using Menu.Settings;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -14,8 +15,6 @@ namespace GamePlay.Character.Spell
         [SerializeField] private GameObject _respawnParticle;
         [SerializeField] private List<Button> _spell1;
         [SerializeField] private int _spellNumber = 1;
-        [SerializeField] private Animator _leftDieAnimator;
-        [SerializeField] private Animator _rightDieAnimator;
         private GameObject _killer;
         private Vector3 _diePosition;
 
@@ -45,24 +44,20 @@ namespace GamePlay.Character.Spell
                 _killer.SetActive(false);
                 transform.position = _diePosition;
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;
-                _healthController.HpNumber++;
+                _healthController._hpNumber++;
                 Time.timeScale = 1;
                 _spellNumber--;
                 _respawnParticle.SetActive(true);
-                HealthController.ImmortalityTime = 0;
-                HealthController.Immortality = true;
+                _healthController._immortalityTime = 0;
+                _healthController._immortality = true;
                 foreach (var spell in _spell1)
                 {
                     spell.interactable = false;
                 }
 
-                DieClosed();
+                SelectUIPosition diePanel = FindObjectOfType<SelectUIPosition>();
+                diePanel.DieClosed();
             }
-        }
-        public void DieClosed()
-        {
-            _leftDieAnimator.SetInteger("LeftDie", 1);
-            _rightDieAnimator.SetInteger("RightDie", 1);
         }
     }
 }

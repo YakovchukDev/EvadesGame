@@ -1,32 +1,34 @@
-using MapGeneration.Coins;
-using UnityEngine;
+using Map;
 using TMPro;
+using UnityEngine;
 
-namespace Map
+namespace MapGeneration.Coins
 {
     public class CoinController : MonoBehaviour
     {
         [SerializeField] private TMP_Text _coinTMP;
 
-        void OnEnable()
+        private void OnEnable()
         {
-            CoinControl.GiveCoin += updateQuantityCoin;
+            CoinControl.GiveCoin += UpdateQuantityCoin;
             GeneralParameters.LoadedGeneralParameters += StartWork;
         }
-        void OnDisable()
+
+        private void OnDisable()
         {
-            CoinControl.GiveCoin -= updateQuantityCoin;
+            CoinControl.GiveCoin -= UpdateQuantityCoin;
             GeneralParameters.LoadedGeneralParameters -= StartWork;
         }
+
         private void StartWork()
         {
             _coinTMP.text = $"{GeneralParameters.MainDataCollector.Coins}";
         }
 
-        private void updateQuantityCoin()
+        private void UpdateQuantityCoin()
         {
             GeneralParameters.MainDataCollector.Coins++;
             _coinTMP.text = $"{GeneralParameters.MainDataCollector.Coins}";
-        }        
-}
+        }
+    }
 }

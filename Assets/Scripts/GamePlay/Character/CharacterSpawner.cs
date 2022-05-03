@@ -8,8 +8,11 @@ namespace GamePlay.Character
     public class CharacterSpawner : MonoBehaviour
     {
         [SerializeField] private List<GameObject> _type;
+        [SerializeField] private GameObject _leftSpellButtons;
+        [SerializeField] private GameObject _rightSpellButtons;
+        public GameObject Character { get; private set; }
 
-        void Start()
+        private void Awake()
         {
             if (SelectionClassView.WhatPlaying == "Level")
             {
@@ -24,9 +27,8 @@ namespace GamePlay.Character
 
         private void SpawnCharacter(Vector3 startPosition)
         {
-            
-         GameObject game = Instantiate(_type[SelectionClassView.CharacterType], startPosition, Quaternion.identity);
-         game.GetComponent<ManaController>();
+            Character = Instantiate(_type[SelectionClassView.CharacterType], startPosition, Quaternion.identity);
+            Character.GetComponent<ManaController>();
         }
     }
 }

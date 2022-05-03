@@ -7,11 +7,10 @@ namespace Menu.Settings
     public class UIFor : MonoBehaviour
     {
         private string _rightOrLeft;
-        [SerializeField] private JoystickController _joystickController;
-        private SelectUIPosition _selectUIPosition;
-
+        [SerializeField] private SelectUIPosition _selectUIPosition;
+        private ButtonSpellPosition _buttonSpellPosition;
         [SerializeField] private TMP_Text _forWhoText;
-        
+
         [SerializeField] private Image _thisImage;
 
         [SerializeField] private Sprite _forRightHanded;
@@ -60,22 +59,13 @@ namespace Menu.Settings
                 }
 
                 _thisImage.sprite = _forRightHanded;
-                
             }
         }
+
         public void RightOrLeftHanded()
         {
             _rightOrLeft = PlayerPrefs.GetString("RightOrLeft");
-            _selectUIPosition = FindObjectOfType<SelectUIPosition>();
-            if (_joystickController != null)
-            {
-                _joystickController.SelectJoystickPosition();
-            }
 
-            if (_selectUIPosition != null)
-            {
-                _selectUIPosition.SelectButtonPosition();
-            }
 
             if (_rightOrLeft == "Right")
             {
@@ -92,7 +82,8 @@ namespace Menu.Settings
                         _forWhoText.text = "Для правшів";
                         break;
                 }
-                _thisImage.sprite= _forRightHanded;
+
+                _thisImage.sprite = _forRightHanded;
                 PlayerPrefs.SetString("RightOrLeft", "Left");
             }
             else if (_rightOrLeft == "Left")
@@ -110,8 +101,16 @@ namespace Menu.Settings
                         _forWhoText.text = "Для лівшів";
                         break;
                 }
-                _thisImage.sprite= _forLeftHanded;
+
+                _thisImage.sprite = _forLeftHanded;
                 PlayerPrefs.SetString("RightOrLeft", "Right");
+            }
+
+            _selectUIPosition.SelectJoystickPosition();
+            _buttonSpellPosition = FindObjectOfType<ButtonSpellPosition>();
+            if (_buttonSpellPosition != null)
+            {
+                _buttonSpellPosition.SelectButtonPosition();
             }
         }
     }

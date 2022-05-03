@@ -14,7 +14,6 @@ namespace GamePlay.Character.Spell.Shade
         private float _levelSpell2;
         private float _speedAccelerate;
         private float _startAbilityDuration;
-
         private float _abilityDuration;
 
         private void Start()
@@ -78,9 +77,8 @@ namespace GamePlay.Character.Spell.Shade
             if (_reloadSpell._canUseSpellSecond && _manaController.ManaReduction(_manaCost))
             {
                 _reloadSpell.ReloadSecondSpell(_timeReloadSecondSpell);
-
                 JoystickPlayerExample.Speed *= _speedAccelerate;
-                _healthController.HpNumber++;
+                _healthController._hpNumber++;
             }
         }
     }

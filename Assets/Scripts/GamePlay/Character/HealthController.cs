@@ -1,3 +1,4 @@
+using System;
 using Menu.SelectionClass;
 using Menu.Settings;
 using UnityEngine;
@@ -8,18 +9,13 @@ namespace GamePlay.Character
 {
     public class HealthController : MonoBehaviour
     {
-        [SerializeField] private SelectUIPosition _selectUIPosition;
-        [SerializeField] private int _hpNumber = 1;
+        public int _hpNumber = 1;
         [SerializeField] private AudioSource _dieSound;
         [SerializeField] private AudioMixerGroup _audioMixer;
-        public static float ImmortalityTime;
-        public static bool Immortality;
-        [SerializeField] private Animator _leftDieAnimator;
-        [SerializeField] private Animator _rightDieAnimator;
-       
-
-        public int HpNumber { get; set; }
-
+        public float _immortalityTime;
+        public bool _immortality;
+        public static Action OnZeroHp;
+        
         private void Start()
         {
             if (SelectionClassView.WhatPlaying == "Level")
@@ -30,8 +26,9 @@ namespace GamePlay.Character
             {
                 _hpNumber = 1;
             }
-            ImmortalityTime = 0;
-            Immortality = true;
+
+            _immortalityTime = 0;
+            _immortality = true;
         }
 
         private void Update()
@@ -47,22 +44,22 @@ namespace GamePlay.Character
             {
                 transform.localScale = Vector3.one;
                 _hpNumber--;
-                Immortality = true;
+                _immortality = true;
                 HpChecker();
             }
         }
 
         private void HpImmortality()
         {
-            if (Immortality)
+            if (_immortality)
             {
-                ImmortalityTime += Time.deltaTime;
+                _immortalityTime += Time.deltaTime;
                 gameObject.layer = 11;
-                if (ImmortalityTime >= 1.6f)
+                if (_immortalityTime >= 1.6f)
                 {
                     gameObject.layer = 6;
-                    Immortality = false;
-                    ImmortalityTime = 0;
+                    _immortality = false;
+                    _immortalityTime = 0;
                 }
             }
         }
@@ -72,17 +69,10 @@ namespace GamePlay.Character
             if (_hpNumber <= 0)
             {
                 Time.timeScale = 0;
-                InfinityInterfaceController.TimeSave();
                 _dieSound.Play();
                 _audioMixer.audioMixer.SetFloat("EffectVolume", -80);
-                _selectUIPosition.SelectDiePanelPosition();
-                DieOpen();
+                OnZeroHp?.Invoke();
             }
-        }
-        public void DieOpen()
-        {
-            _leftDieAnimator.SetInteger("LeftDie", 0);
-            _rightDieAnimator.SetInteger("RightDie", 0);
         }
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using GamePlay.Character;
 using GamePlay.Enemy.Spawner;
 using Menu.SelectionClass;
 using TMPro;
@@ -20,6 +22,10 @@ namespace GamePlay
         [SerializeField] private TMP_Text _timer;
         public static float Time;
 
+        private void Start()
+        {
+            HealthController.OnZeroHp += TimeSave;
+        }
 
         private void Update()
         {
@@ -51,11 +57,11 @@ namespace GamePlay
 
         public void ExitButton()
         {
+            TimeSave();
             SceneManager.LoadScene("Menu");
             UnityEngine.Time.timeScale = 1;
             Time = 0;
             InfinityEnemySpawner.SpawnNumber = 0;
-            TimeSave();
         }
 
         public static void TimeSave()
@@ -64,6 +70,11 @@ namespace GamePlay
             {
                 PlayerPrefs.SetFloat(CharacterObject[SelectionClassView.CharacterType], Time);
             }
+        }
+
+        private void OnDestroy()
+        {
+            HealthController.OnZeroHp -= TimeSave;
         }
     }
 }

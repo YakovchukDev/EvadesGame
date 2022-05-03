@@ -1,3 +1,4 @@
+using Menu.SelectionClass;
 using UnityEngine;
 
 namespace Menu
@@ -10,8 +11,7 @@ namespace Menu
         [SerializeField] private Animator _levelsAnimator;
         [SerializeField] private Animator _infoAnimator;
         [SerializeField] private Animator _shopAnimator;
-
-
+       
         public void Settings(int index)
         {
             _settingsAnimator.SetInteger("Settings", index);
@@ -22,12 +22,12 @@ namespace Menu
             _informationAnimator.SetInteger("Information", index);
         }
 
-        public void Selection(int index)
+        public void Survive(int index)
         {
             _selectionAnimator.SetInteger("Selection", index);
         }
 
-        public void Levels(int index)
+        public void Company(int index)
         {
             _levelsAnimator.SetInteger("Levels", index);
         }

@@ -15,6 +15,8 @@ namespace Menu.SelectionClass
         [SerializeField] private List<Button> _buttonSelection;
         [SerializeField] private TMP_Text _infoTime;
 
+        public TMP_Text InfoTime => _infoTime;
+
 
         private void Start()
         {
@@ -32,23 +34,42 @@ namespace Menu.SelectionClass
 
             _buttonSelection[CharacterType].transform.localScale = new Vector3(1.2f, 1.2f, 1);
 
-            switch (PlayerPrefs.GetString("Language"))
+            if (WhatPlaying == "Infinity")
             {
-                case "English":
-                    _infoTime.text = "Record: " + Mathf.Round(_classAvailability.RecordTime[characterType]);
-                    break;
-                case "Russian":
-                    _infoTime.text = "Рекорд: " + Mathf.Round(_classAvailability.RecordTime[characterType]);
-                    break;
-                case "Ukrainian":
-                    _infoTime.text = "Рекорд: " + Mathf.Round(_classAvailability.RecordTime[characterType]);
-                    break;
+                switch (PlayerPrefs.GetString("Language"))
+                {
+                    case "English":
+                        _infoTime.text = "Record: " + Mathf.Round(_classAvailability.RecordTime[characterType]);
+                        break;
+                    case "Russian":
+                        _infoTime.text = "Рекорд: " + Mathf.Round(_classAvailability.RecordTime[characterType]);
+                        break;
+                    case "Ukrainian":
+                        _infoTime.text = "Рекорд: " + Mathf.Round(_classAvailability.RecordTime[characterType]);
+                        break;
+                }
             }
         }
 
         public void SetWhatPlaying(string whatPlaying)
         {
             WhatPlaying = whatPlaying;
+            CharacterType = PlayerPrefs.GetInt("SelectionNumber");
+            if (WhatPlaying == "Infinity")
+            {
+                switch (PlayerPrefs.GetString("Language"))
+                {
+                    case "English":
+                        _infoTime.text = "Record: " + Mathf.Round(_classAvailability.RecordTime[CharacterType]);
+                        break;
+                    case "Russian":
+                        _infoTime.text = "Рекорд: " + Mathf.Round(_classAvailability.RecordTime[CharacterType]);
+                        break;
+                    case "Ukrainian":
+                        _infoTime.text = "Рекорд: " + Mathf.Round(_classAvailability.RecordTime[CharacterType]);
+                        break;
+                }
+            }
         }
 
         public void CheckWhatPlaying()

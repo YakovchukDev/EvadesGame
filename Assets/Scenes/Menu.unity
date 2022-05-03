@@ -2886,7 +2886,7 @@ RectTransform:
   m_Children:
   - {fileID: 1447905212}
   m_Father: {fileID: 1449619073}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -7698,18 +7698,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1845360768}
-        m_TargetAssemblyTypeName: MenuAnimatorController, Assembly-CSharp
-        m_MethodName: Levels
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 872816209}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
@@ -7718,6 +7706,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1845360768}
+        m_TargetAssemblyTypeName: Menu.MenuAnimatorController, Assembly-CSharp
+        m_MethodName: Company
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7893,6 +7893,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1105704816}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1424660581}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -7905,16 +7917,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1845360768}
-        m_TargetAssemblyTypeName: MenuAnimatorController, Assembly-CSharp
-        m_MethodName: Levels
-        m_Mode: 3
+      - m_Target: {fileID: 79116327}
+        m_TargetAssemblyTypeName: Menu.SelectionClass.SelectionClassView, Assembly-CSharp
+        m_MethodName: SetWhatPlaying
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Level
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 872816209}
@@ -7929,21 +7941,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 79116327}
-        m_TargetAssemblyTypeName: Menu.SelectionClass.SelectionClassView, Assembly-CSharp
-        m_MethodName: SetWhatPlaying
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Level
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1105704816}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 1845360768}
+        m_TargetAssemblyTypeName: Menu.MenuAnimatorController, Assembly-CSharp
+        m_MethodName: Company
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10525,7 +10525,7 @@ GameObject:
   - component: {fileID: 1424660583}
   - component: {fileID: 1424660584}
   m_Layer: 5
-  m_Name: LevelMenuView
+  m_Name: CompanyMenuView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10565,8 +10565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bcc455c4fba99f479f36366788ca8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelElementController: {fileID: 4813958039679196980, guid: 446975721ae18f64992dbc4adc73726d, type: 3}
-  _levelElementView: {fileID: 2892858388125499756, guid: 446975721ae18f64992dbc4adc73726d, type: 3}
+  _levelElement: {fileID: 2892858388125499756, guid: 446975721ae18f64992dbc4adc73726d, type: 3}
   _elementGrid: {fileID: 218919373}
 --- !u!95 &1424660584
 Animator:
@@ -10746,6 +10745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1449619073}
+  - component: {fileID: 1449619074}
   m_Layer: 5
   m_Name: MainMenuView
   m_TagString: Untagged
@@ -10766,8 +10766,8 @@ RectTransform:
   m_Children:
   - {fileID: 1105704812}
   - {fileID: 1806832252}
-  - {fileID: 1714166841}
   - {fileID: 390702286}
+  - {fileID: 1714166841}
   - {fileID: 1284562368}
   - {fileID: 1806845553}
   - {fileID: 1410551837}
@@ -10780,6 +10780,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1449619074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449619072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df5931d2e1b6944b8104538f2748cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _company: {fileID: 1105704813}
+  _survive: {fileID: 1806832253}
+  _shop: {fileID: 390702288}
+  _information: {fileID: 1714166842}
+  _settings: {fileID: 1284562369}
+  _info: {fileID: 1806845554}
 --- !u!1 &1450531884
 GameObject:
   m_ObjectHideFlags: 0
@@ -13041,7 +13059,7 @@ RectTransform:
   m_Children:
   - {fileID: 414768159}
   m_Father: {fileID: 1449619073}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -13719,8 +13737,8 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1845360768}
-        m_TargetAssemblyTypeName: MenuAnimatorController, Assembly-CSharp
-        m_MethodName: Selection
+        m_TargetAssemblyTypeName: Menu.MenuAnimatorController, Assembly-CSharp
+        m_MethodName: Survive
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14068,9 +14086,10 @@ MonoBehaviour:
   - {fileID: 1923612990}
   - {fileID: 1144385452}
   _classAvailability: {fileID: 1845360763}
+  _selectionClassView: {fileID: 79116327}
   _selectionAnimator: {fileID: 79116328}
   _levelsAnimator: {fileID: 1424660584}
-  _selectionClassView: {fileID: 79116325}
+  _selectionClass: {fileID: 79116325}
   _countLevel: 30
 --- !u!4 &1845360762
 Transform:
@@ -16125,6 +16144,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1845360768}
+    - target: {fileID: 5696843060704743828, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Survive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696843060704743828, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: Menu.MenuAnimatorController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5696843060729741917, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
