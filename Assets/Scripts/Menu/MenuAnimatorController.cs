@@ -1,4 +1,5 @@
 using Menu.SelectionClass;
+using TMPro;
 using UnityEngine;
 
 namespace Menu
@@ -11,7 +12,6 @@ namespace Menu
         [SerializeField] private Animator _levelsAnimator;
         [SerializeField] private Animator _infoAnimator;
         [SerializeField] private Animator _shopAnimator;
-       
         public void Settings(int index)
         {
             _settingsAnimator.SetInteger("Settings", index);
