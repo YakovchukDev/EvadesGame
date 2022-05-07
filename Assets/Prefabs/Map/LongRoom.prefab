@@ -251,8 +251,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3325264902502426848}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2, z: 5.9479}
-  m_LocalScale: {x: 1.0957, y: 4, z: 11}
+  m_LocalPosition: {x: 0, y: 2, z: 6}
+  m_LocalScale: {x: 1.1, y: 4, z: 11}
   m_Children: []
   m_Father: {fileID: 7695041278180422160}
   m_RootOrder: 2
@@ -564,6 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CoinList: []
+  EnemyList: []
   _saveZoneUp: {fileID: 3325264902502426848}
   _saveZoneDown: {fileID: 6716835231280381641}
   _doorRight: {fileID: 8045383107266541911}
@@ -617,8 +618,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6716835231280381641}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2, z: -5.9}
-  m_LocalScale: {x: 1, y: 4, z: 11}
+  m_LocalPosition: {x: 0, y: 2, z: -6}
+  m_LocalScale: {x: 1.1, y: 4, z: 11}
   m_Children: []
   m_Father: {fileID: 7695041278180422160}
   m_RootOrder: 3

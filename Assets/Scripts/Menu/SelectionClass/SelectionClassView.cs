@@ -20,30 +20,44 @@ namespace Menu.SelectionClass
 
         private void Update()
         {
+            /*
+            Debug.Log("1");
+            Debug.Log(_selectNumber);
+            Debug.Log(_buttonSelection.Count);
             if (_selectNumber != PlayerPrefs.GetInt("SelectionNumber") &&
                 _buttonSelection[_selectNumber].interactable)
             {
+            Debug.Log("2");
                 _buttonSelectionAnimator[_selectNumber].SetTrigger("Normal");
                 _selectNumber++;
                 if (_selectNumber == _buttonSelectionAnimator.Count)
                 {
                     _selectNumber = 0;
                 }
+                
+            Debug.Log("3");
             }
             else if(_selectNumber == PlayerPrefs.GetInt("SelectionNumber")&&
                     _buttonSelection[_selectNumber].interactable)
             {
+                
+            Debug.Log("4");
                 _buttonSelectionAnimator[_selectNumber].SetTrigger("Selected");
                 _selectNumber++;
                 if (_selectNumber == _buttonSelectionAnimator.Count)
                 {
                     _selectNumber = 0;
                 }
+                
+            Debug.Log("5");
             }
             else
             {
+                
+            Debug.Log("6");
                 _buttonSelectionAnimator[_selectNumber].SetTrigger("Disabled");
             }
+            */
         }
 
         public void ChoiceTypeOfCharacter(int characterType)

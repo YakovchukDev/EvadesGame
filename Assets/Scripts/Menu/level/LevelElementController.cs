@@ -1,4 +1,5 @@
 using UnityEngine;
+using Map.Data;
 
 namespace Menu.level
 {
@@ -15,17 +16,21 @@ namespace Menu.level
 
         public void SetIdLevel()
         {
-            Map.GeneralParameters.MainDataCollector.GiveDataAboutLevel(_levelNumber);
+            PlayerPrefs.SetInt("LevelNumber", _levelNumber);
         }
 
         public void SetLevelParametrs()
         {
-            Map.GeneralParameters.SetMapData(_levelParameters);
+            GeneralParameters.SetMapData(_levelParameters);
         }
 
         public void SetLevelParametrs(Map.LevelParameters levelParameters)
         {
             _levelParameters = levelParameters;
+        }
+        public void SetLevelNumber(int levelNumber) 
+        {
+            _levelNumber = levelNumber;
         }
     }
 }

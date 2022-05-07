@@ -170,7 +170,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &22362817
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +220,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &31483794
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64386216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1397.213, y: -57.229065, z: 662.1581}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 86220410}
@@ -651,7 +655,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &76032905
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,7 +810,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &93250191
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,7 +971,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &130607389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,7 +1445,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &168613850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +1495,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!114 &170545321 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5696843061898344289, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
@@ -2111,7 +2125,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &305219999
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,7 +3862,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &501786055
 GameObject:
   m_ObjectHideFlags: 0
@@ -3894,7 +3912,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &513834664
 GameObject:
   m_ObjectHideFlags: 0
@@ -4154,7 +4174,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &540736779
 GameObject:
   m_ObjectHideFlags: 0
@@ -4352,7 +4374,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &559094750
 GameObject:
   m_ObjectHideFlags: 0
@@ -4625,7 +4649,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &577970330
 GameObject:
   m_ObjectHideFlags: 0
@@ -5256,7 +5282,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &660095871
 GameObject:
   m_ObjectHideFlags: 0
@@ -6719,7 +6747,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &888850669
 GameObject:
   m_ObjectHideFlags: 0
@@ -6815,9 +6845,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Difficulty: 10
   Branchs: 5
-  Length: 10
-  SizeChank: 10
-  TargetExpirience: 4
+  Length: 3
+  SizeChank: 3
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &943421472
 GameObject:
   m_ObjectHideFlags: 0
@@ -7601,7 +7633,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1105704811
 GameObject:
   m_ObjectHideFlags: 0
@@ -8076,7 +8110,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1184710840
 GameObject:
   m_ObjectHideFlags: 0
@@ -9010,7 +9046,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1305419064
 GameObject:
   m_ObjectHideFlags: 0
@@ -10620,7 +10658,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1460324390
 GameObject:
   m_ObjectHideFlags: 0
@@ -10951,7 +10991,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1512185459
 GameObject:
   m_ObjectHideFlags: 0
@@ -12215,7 +12257,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!114 &1654353260 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5696843060414532260, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
@@ -12424,7 +12468,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1691676472
 GameObject:
   m_ObjectHideFlags: 0
@@ -12661,7 +12707,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!114 &1713127311 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5696843060356257863, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
@@ -13187,7 +13235,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1806832251
 GameObject:
   m_ObjectHideFlags: 0
@@ -14095,7 +14145,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1873449690
 GameObject:
   m_ObjectHideFlags: 0
@@ -14509,7 +14561,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1950155276
 GameObject:
   m_ObjectHideFlags: 0
@@ -14892,7 +14946,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &2037482188
 GameObject:
   m_ObjectHideFlags: 0
@@ -14938,9 +14994,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Difficulty: 10
   Branchs: 5
-  Length: 10
-  SizeChank: 10
-  TargetExpirience: 4
+  Length: 3
+  SizeChank: 3
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &2092598036
 GameObject:
   m_ObjectHideFlags: 0
@@ -14988,7 +15046,9 @@ MonoBehaviour:
   Branchs: 5
   Length: 10
   SizeChank: 10
-  TargetExpirience: 4
+  TargetExpirience: 3
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &2096780886
 GameObject:
   m_ObjectHideFlags: 0

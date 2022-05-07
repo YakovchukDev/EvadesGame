@@ -17,7 +17,7 @@ namespace GamePlay.Enemy.Move
         
         private void FixedUpdate()
         {
-            transform.localScale = new Vector3(30, 30, 30);
+            transform.localScale = new Vector3(20, 20, 20);
             MoveSystem();
             DirectionAndSpeedMovement();
             SpikeRotate();
@@ -33,7 +33,6 @@ namespace GamePlay.Enemy.Move
                     _time = 0;
                     _speed += 0.0005f;
                 }
-
                 transform.Translate(new Vector3(X * _speed, 0, Z * _speed));
             }
             else

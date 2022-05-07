@@ -33,6 +33,7 @@ namespace Menu.level
                 _levelMenuView.LevelElementView.LevelButton.interactable = i - 1 <= CompleteLevel;
                 _levelMenuView.LevelElementView.LevelNumber.text = i.ToString();
                 _levelMenuView.LevelElementController.SetLevelParametrs(_levelParameters[i - 1]);
+                _levelMenuView.LevelElementController.SetLevelNumber(i);
                 Instantiate(_levelMenuView.LevelElementView, _levelMenuView.ElementGrid);
             }
         }

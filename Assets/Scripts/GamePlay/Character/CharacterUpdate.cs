@@ -5,11 +5,15 @@ using Joystick_Pack.Examples;
 using Menu.SelectionClass;
 using TMPro;
 using UnityEngine;
+using Map.Expirience;
+using Map;
 
 namespace GamePlay.Character
 {
     public class CharacterUpdate : MonoBehaviour
     {
+        [SerializeField] private GameObject _simplifiedBoostPanel;
+        [SerializeField] private GameObject _fullBoostPanel;
         [SerializeField] private ManaController _manaController;
         [SerializeField] private List<TMP_Text> _abilityLevel;
         private int _numberSpeedUpdate = 1;
@@ -26,6 +30,17 @@ namespace GamePlay.Character
         private GameObject _levelValue;
         private TMP_Text _quantityTokensTMP;
 
+        private void OnEnable()
+        {
+            ExpirienceControl.OpenBoostMenu += SetActiveBoostMenu;
+            MapGenerator.HandOverManaController += SetManaController;
+            
+        } 
+        private void Disable()
+        {
+            ExpirienceControl.OpenBoostMenu -= SetActiveBoostMenu;
+            MapGenerator.HandOverManaController -= SetManaController;
+        } 
         private void Start()
         {
             if (SelectionClassView.WhatPlaying == "Infinity")
@@ -51,6 +66,10 @@ namespace GamePlay.Character
             }
         }
 
+        public void SetManaController(ManaController manaController)
+        {
+            _manaController = manaController;
+        }
         public void SpeedUpdate()
         {
             if (Convert.ToInt32(_quantityTokensTMP.text) > 0)
@@ -62,8 +81,10 @@ namespace GamePlay.Character
                         JoystickPlayerExample.Speed += 2;
                         _numberSpeedUpdate++;
                         _abilityLevel[0].text = _numberSpeedUpdate.ToString();
+                        _abilityLevel[5].text = _numberSpeedUpdate.ToString();
                         int value = Convert.ToInt32(_quantityTokensTMP.text);
                         _quantityTokensTMP.text = $"{--value}";
+
                     }
                 }
             }
@@ -141,6 +162,23 @@ namespace GamePlay.Character
                         _quantityTokensTMP.text = $"{--value}";
                     }
                 }
+            }
+        }
+        private void SetActiveBoostMenu(bool isEnter)
+        {
+            if(_manaController != null)
+            {
+                try
+                {
+                    _fullBoostPanel.gameObject.SetActive(isEnter);   
+                }catch{}
+            }
+            else
+            {
+                try
+                {
+                    _simplifiedBoostPanel.gameObject.SetActive(isEnter);  
+                }catch{}
             }
         }
     }

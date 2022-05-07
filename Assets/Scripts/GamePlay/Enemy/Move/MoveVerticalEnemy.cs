@@ -25,7 +25,7 @@ namespace GamePlay.Enemy.Move
         }
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.CompareTag("WallX"))
+            if (other.gameObject.CompareTag("Wall"))
             {
                 Invoke(nameof(Direction), 1);
             }

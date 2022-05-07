@@ -2,13 +2,14 @@ using Menu.Settings;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Serialization;
+using System;
 
 namespace GamePlay.Character
 {
     public class HealthController : MonoBehaviour
     {
         [SerializeField] private SelectUIPosition _selectUIPosition;
-        [SerializeField] private int _hpNumber = 1;
+        [SerializeField] private int _hpNumber = 3;
         [SerializeField] private AudioSource _dieSound;
         [SerializeField] private AudioMixerGroup _audioMixer;
         public static float ImmortalityTime;
@@ -27,6 +28,9 @@ namespace GamePlay.Character
             get => _hpNumber;
             set => _hpNumber = value;
         }
+        public static event Action OnBackToSafeZone;
+        public static event HealthChange HealthPanelUpdate;       
+        public delegate void HealthChange(int hpCount);
 
         private void Start()
         {
@@ -37,6 +41,8 @@ namespace GamePlay.Character
            // gameObject.transform.GetComponent<Renderer>().materials[0].color = _color1;
             ImmortalityTime = 0;
             Immortality = true;
+            
+            HealthPanelUpdate(_hpNumber);
         }
 
         private void Update()
@@ -53,6 +59,8 @@ namespace GamePlay.Character
                // gameObject.transform.GetComponent<Renderer>().materials[0].color = _color1;
                 transform.localScale = Vector3.one;
                 _hpNumber--;
+                OnBackToSafeZone();
+                HealthPanelUpdate(_hpNumber);
                 Immortality = true;
                 HpChecker();
             }
