@@ -13,12 +13,10 @@ public class CameraController : MonoBehaviour
     {
         _player = _characterSpawner.Character;
     }
-
     private void Update()
     {
         Camera();
     }
-
     private void Camera()
     {
         var position = _player.transform.position;

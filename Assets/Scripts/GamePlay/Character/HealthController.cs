@@ -4,6 +4,7 @@ using Menu.Settings;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Serialization;
+using System;
 
 namespace GamePlay.Character
 {
@@ -15,12 +16,15 @@ namespace GamePlay.Character
         public float _immortalityTime;
         public bool _immortality;
         public static Action OnZeroHp;
+        public static event Action OnBackToSafeZone;
+        public static event Action<int> HealthPanelUpdate;    
         
         private void Start()
         {
             if (SelectionClassView.WhatPlaying == "Level")
             {
                 _hpNumber = 3;
+                HealthPanelUpdate(_hpNumber);
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
@@ -44,6 +48,14 @@ namespace GamePlay.Character
             {
                 transform.localScale = Vector3.one;
                 _hpNumber--;
+                if (SelectionClassView.WhatPlaying == "Level")
+                {
+                    if(_hpNumber != 0)
+                    {
+                        OnBackToSafeZone();
+                    }
+                    HealthPanelUpdate(_hpNumber);
+                }
                 _immortality = true;
                 HpChecker();
             }

@@ -20,7 +20,14 @@ namespace Menu.SelectionClass
 
         private void Start()
         {
-            ChoiceTypeOfCharacter(PlayerPrefs.GetInt("SelectionNumber"));
+            if(PlayerPrefs.HasKey("SelectionNumber"))
+            {
+                ChoiceTypeOfCharacter(PlayerPrefs.GetInt("SelectionNumber"));
+            }
+            else
+            {
+                ChoiceTypeOfCharacter(0);
+            }
         }
 
         public void ChoiceTypeOfCharacter(int characterType)
@@ -76,7 +83,7 @@ namespace Menu.SelectionClass
         {
             if (WhatPlaying == "Level")
             {
-                SceneManager.LoadScene("MapGeneratorBeta");
+                SceneManager.LoadScene("Company");
             }
             else if (WhatPlaying == "Infinity")
             {

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using MapGeneration.Data;
+using Map;
 using Menu.SelectionClass;
 using UnityEngine;
 
@@ -30,12 +30,12 @@ namespace Menu.level
                 PlayerPrefs.SetInt("CompleteLevel", 0);
             }
 
-            CompleteLevel = 30;
             for (int i = 1; i <= _countLevel; i++)
             {
                 _levelMenuView.LevelElement.LevelButton.interactable = i - 1 <= CompleteLevel;
                 _levelMenuView.LevelElement.LevelNumberText.text = i.ToString();
                 _levelMenuView.LevelElement.SetLevelParametrs(_levelParameters[i - 1]);
+                _levelMenuView.LevelElement.SetLevelNumber(i);
                 LevelElement element = Instantiate(_levelMenuView.LevelElement, _levelMenuView.ElementGrid);
                 element.LevelNumber = i;
                 element.Initialize();

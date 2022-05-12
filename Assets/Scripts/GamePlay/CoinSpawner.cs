@@ -1,4 +1,4 @@
-using MapGeneration.Coins;
+using Map.Coins;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,7 +14,7 @@ public class CoinSpawner : MonoBehaviour
     {
         _coin = Instantiate(_coinPrefab, new Vector3(Random.Range(17, -17), 1, Random.Range(-17, 17)),
             Quaternion.identity);
-        CoinControl.Survive += CoinReloadOnSurvive;
+        CoinControl.Survive += CoinReloadOnSurvive; 
         _coinTMP.text = "0";
         //CoinControl.GiveCoin += UpdateQuantityCoin;
         //  GeneralParameters.LoadedGeneralParameters += StartWork;
