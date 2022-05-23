@@ -45,6 +45,10 @@ namespace Menu.Settings
             {
                 PlayerPrefs.SetInt("Coins", 10000);
             }
+            if (!PlayerPrefs.HasKey("CompanyOpened"))
+            {
+                PlayerPrefs.SetInt("CompanyOpened", 0);
+            }
         }
 
         public void RestartButton()

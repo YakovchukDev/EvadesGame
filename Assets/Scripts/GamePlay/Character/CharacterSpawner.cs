@@ -8,8 +8,6 @@ namespace GamePlay.Character
     public class CharacterSpawner : MonoBehaviour
     {
         [SerializeField] private List<GameObject> _type;
-        [SerializeField] private GameObject _leftSpellButtons;
-        [SerializeField] private GameObject _rightSpellButtons;
         public GameObject Character { get; private set; }
 
         private void Awake()

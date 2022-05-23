@@ -1,4 +1,3 @@
-using System;
 using GamePlay.Character;
 using GamePlay.Enemy.Spawner;
 using Menu.SelectionClass;

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Menu.level;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,24 +8,12 @@ namespace Menu.SelectionClass
     public class ClassAvailability : MonoBehaviour
     {
         [SerializeField] private List<Button> _classes;
-        [SerializeField] private Button _levelButton;
-        [SerializeField] private GameObject _levelInfoText;
         [SerializeField] private float[] _recordTime;
         private float _neededTime = 25;
         private int _neededPassedLevels = 5;
         private int[] _buyOpen;
 
         public float[] RecordTime => _recordTime;
-
-        public void OpenAllClass()
-        {
-            PlayerPrefs.SetFloat("WeakTime", 200);
-            PlayerPrefs.SetFloat("NecroTime", 200);
-            PlayerPrefs.SetFloat("ShooterTime", 200);
-            PlayerPrefs.SetFloat("NeoTime", 200);
-            PlayerPrefs.SetFloat("TankTime", 200);
-            PlayerPrefs.SetFloat("NecromusTime", 200);
-        }
 
         private void Start()
         {
@@ -38,25 +25,18 @@ namespace Menu.SelectionClass
             _recordTime[4] = PlayerPrefs.GetFloat("TankTime");
             _recordTime[5] = PlayerPrefs.GetFloat("NecromusTime");
             _buyOpen = new int[_classes.Count];
-            _levelButton.interactable = false;
-            _levelInfoText.SetActive(true);
             for (int i = 0; i < _classes.Count; i++)
             {
                 _buyOpen[i] = PlayerPrefs.GetInt($"Open{i}");
+                if (_recordTime[i] >= 25 || _buyOpen[i] == 1)
+                {
+                    PlayerPrefs.SetInt("CompanyOpened", 1);
+                }
             }
         }
 
         private void Update()
         {
-            for (int i = 0; i < _classes.Count; i++)
-            {
-                _buyOpen[i] = PlayerPrefs.GetInt($"Open{i}");
-                if (_recordTime[i] >= 25||_buyOpen[i]==1)
-                {
-                    _levelButton.interactable = true;
-                    _levelInfoText.SetActive(false);
-                }
-            }
         }
 
         public void CheckClassForInfinity()
@@ -85,9 +65,7 @@ namespace Menu.SelectionClass
         public void CheckClassForLevel()
         {
             _classes[0].interactable = true;
-            for (int i = 1;
-                i < _classes.Count;
-                i++)
+            for (int i = 1; i < _classes.Count; i++)
             {
                 if (LevelController.CompleteLevel >= _neededPassedLevels)
                 {
@@ -123,9 +101,7 @@ namespace Menu.SelectionClass
 
         private void BoughtCharacter()
         {
-            for (int i = 1;
-                i < _classes.Count;
-                i++)
+            for (int i = 1; i < _classes.Count; i++)
             {
                 if (_buyOpen[i] == 1)
                 {

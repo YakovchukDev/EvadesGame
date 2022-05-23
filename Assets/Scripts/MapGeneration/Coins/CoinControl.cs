@@ -11,17 +11,14 @@ namespace MapGeneration.Coins
         public bool _isUse;
         [SerializeField] private int _speed;
         private int _value = 1;
-        private void Start()
-        {
-            transform.Rotate(0, 0, 90f);
-        }
+
         public void SetQuantityAddCoins(int value)
         {
             _value = value;
         }
         private void FixedUpdate()
         {
-            transform.Rotate(_speed * Time.deltaTime, 0, 0);
+            transform.Rotate(0, _speed * Time.deltaTime, 0);
         }
         private void OnTriggerEnter(Collider other)
         {

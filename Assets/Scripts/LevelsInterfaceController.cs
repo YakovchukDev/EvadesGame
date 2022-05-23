@@ -4,37 +4,34 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
-namespace GamePlay
+public class LevelsInterfaceController : SelectionClassView
 {
-    public class LevelsInterfaceController : SelectionClassView
+    [SerializeField] private AudioMixerGroup _audioMixer;
+
+    private static readonly string[] CharacterObject =
     {
-        [SerializeField] private AudioMixerGroup _audioMixer;
+        "JustTime", "NecroTime", "MorfeTime", "NeoTime",
+        "InvulnerableTime", "NexusTime"
+    };
 
-        private static readonly string[] CharacterObject =
-        {
-            "JustTime", "NecroTime", "MorfeTime", "NeoTime",
-            "InvulnerableTime", "NexusTime"
-        };
+    public void OnPause()
+    {
+        Time.timeScale = 0;
+        _audioMixer.audioMixer.SetFloat("EffectVolume", -80);
+    }
 
-        public void OnPause()
-        {
-            Time.timeScale = 0;
-            _audioMixer.audioMixer.SetFloat("EffectVolume", -80);
-        }
+    public void OffPause()
+    {
+        Time.timeScale = 1;
+        _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
+    }
 
-        public void OffPause()
-        {
-            Time.timeScale = 1;
-            _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
-        }
+    public void ExitButton()
+    {
+        SceneManager.LoadScene("Menu");
 
-        public void ExitButton()
-        {
-            SceneManager.LoadScene("Menu");
-
-            Time.timeScale = 1;
-            InfinityEnemySpawner.SpawnNumber = 0;
-            _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
-        }
+        Time.timeScale = 1;
+        InfinityEnemySpawner.SpawnNumber = 0;
+        _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using Menu.SelectionClass;
 using TMPro;
 using UnityEngine;
@@ -9,9 +10,17 @@ namespace Menu
         [SerializeField] private Animator _settingsAnimator;
         [SerializeField] private Animator _informationAnimator;
         [SerializeField] private Animator _selectionAnimator;
-        [SerializeField] private Animator _levelsAnimator;
+        [SerializeField] private Animator _companyUnlockedAnimator;
+        [SerializeField] private Animator _companyLockedAnimator;
         [SerializeField] private Animator _infoAnimator;
         [SerializeField] private Animator _shopAnimator;
+        [SerializeField] private Animator _gamePlaySurvival;
+        [SerializeField] private Animator _gamePlayCompany;
+        private void Start()
+        {
+            CompanyButton.OnCompanyUnlocked += CompanyUnlocked;
+        }
+
         public void Settings(int index)
         {
             _settingsAnimator.SetInteger("Settings", index);
@@ -24,21 +33,40 @@ namespace Menu
 
         public void Survive(int index)
         {
-            _selectionAnimator.SetInteger("Selection", index);
+            _selectionAnimator.SetInteger("Information", index);
         }
 
-        public void Company(int index)
+        public void CompanyUnlocked(int index)
         {
-            _levelsAnimator.SetInteger("Levels", index);
+            _companyUnlockedAnimator.SetInteger("Information", index);
+        }
+
+        public void CompanyLocked(int index)
+        {
+            _companyLockedAnimator.SetInteger("CompanyInfo", index);
         }
 
         public void Info(int index)
         {
             _infoAnimator.SetInteger("Information", index);
         }
+
         public void Shop(int index)
         {
             _shopAnimator.SetInteger("Information", index);
+        }
+        public void GamePlaySurvival(int index)
+        {
+            _gamePlaySurvival.SetInteger("Information", index);
+        }
+        public void GamePlayCompany(int index)
+        {
+            _gamePlayCompany.SetInteger("Information", index);
+        }
+
+        private void OnDestroy()
+        {
+            CompanyButton.OnCompanyUnlocked -= CompanyUnlocked;
         }
     }
 }

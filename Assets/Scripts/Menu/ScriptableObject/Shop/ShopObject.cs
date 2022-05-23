@@ -1,3 +1,4 @@
+using Menu.SelectionClass;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -58,6 +59,7 @@ namespace Menu.ScriptableObject.Shop
                         break;
                 }
 
+                PlayerPrefs.SetInt("CompanyOpened",1);
                 _button.interactable = false;
             }
         }

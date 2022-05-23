@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using MapGeneration.Data;
+using Menu.ScriptableObject.Company;
 using Menu.SelectionClass;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Menu.level
 {
@@ -12,11 +14,16 @@ namespace Menu.level
         [SerializeField] private ClassAvailability _classAvailability;
         [SerializeField] private SelectionClassView _selectionClassView;
         [SerializeField] private Animator _selectionAnimator;
-        [SerializeField] private Animator _levelsAnimator;
         [SerializeField] private GameObject _selectionClass;
         [SerializeField] private int _countLevel;
+        [SerializeField] private List<CompanyPanel> _companyPanels;
+        [SerializeField] private HorizontalLayoutGroup _horizontalLayoutGroup;
+        private LevelElement _levelElement;
+
         public static int CompleteLevel;
         public static int ChoiceLevel;
+        private int _newTypeLevels = 4;
+        private int _scriptableNumber;
 
         private void Start()
         {
@@ -31,15 +38,51 @@ namespace Menu.level
             }
 
             CompleteLevel = 30;
-            for (int i = 1; i <= _countLevel; i++)
+
+            CompanyButton.OnCompanyUnlocked += SpawnLevelElement;
+        }
+
+        private void SpawnLevelElement(int parametr)
+        {
+            for (int i = 0, textNumber = 1; i <= _countLevel - 1; i++, textNumber++)
             {
-                _levelMenuView.LevelElement.LevelButton.interactable = i - 1 <= CompleteLevel;
-                _levelMenuView.LevelElement.LevelNumberText.text = i.ToString();
-                _levelMenuView.LevelElement.SetLevelParametrs(_levelParameters[i - 1]);
-                LevelElement element = Instantiate(_levelMenuView.LevelElement, _levelMenuView.ElementGrid);
-                element.LevelNumber = i;
-                element.Initialize();
-                element.OnLevel += LevelSelected;
+                _levelMenuView.LevelElement.LevelButton.interactable = i <= CompleteLevel;
+                _levelMenuView.LevelElement.LevelNumberText.text = textNumber.ToString();
+                _levelMenuView.LevelElement.SetLevelParametrs(_levelParameters[i]);
+                _levelElement = Instantiate(_levelMenuView.LevelElement, _levelMenuView.ElementGrid);
+                InitializeLevelElement(textNumber, i);
+            }
+
+            Canvas.ForceUpdateCanvases();
+            _horizontalLayoutGroup.enabled = false;
+
+
+            CompanyButton.OnCompanyUnlocked -= SpawnLevelElement;
+        }
+
+        private void InitializeLevelElement(int textNumber, int i)
+        {
+            _levelElement.LevelNumber = textNumber;
+            _levelElement.Initialize();
+            _levelElement.OnLevel += LevelSelected;
+            if (i <= _newTypeLevels)
+            {
+                foreach (var star in _levelElement.Stars)
+                {
+                    star.sprite = _companyPanels[_scriptableNumber].CloseStarSprite;
+                }
+
+                _levelElement.LevelButton.image.sprite = _companyPanels[_scriptableNumber].MainSprite1;
+                _levelElement.LevelNumberText.rectTransform.anchoredPosition =
+                    _companyPanels[_scriptableNumber].TextTransformPosition;
+            }
+
+            _levelElement.Transform.localPosition =
+                new Vector2(transform.position.x, Random.Range(-50,100));
+            if (i == _newTypeLevels)
+            {
+                _scriptableNumber++;
+                _newTypeLevels += 5;
             }
         }
 
@@ -60,8 +103,12 @@ namespace Menu.level
 
             _classAvailability.CheckClassForLevel();
             _selectionClass.SetActive(true);
-            _selectionAnimator.SetInteger("Selection", 0);
-            _levelsAnimator.SetInteger("Levels", 1);
+            _selectionAnimator.SetInteger("Information", 0);
+        }
+
+        private void OnDestroy()
+        {
+            _levelElement.OnLevel -= LevelSelected;
         }
     }
 }

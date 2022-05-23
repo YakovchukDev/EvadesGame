@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         _player = _characterSpawner.Character;
+        print(_player);
     }
 
     private void Update()
