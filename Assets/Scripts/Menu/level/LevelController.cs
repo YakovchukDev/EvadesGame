@@ -105,10 +105,5 @@ namespace Menu.level
             _selectionClass.SetActive(true);
             _selectionAnimator.SetInteger("Information", 0);
         }
-
-        private void OnDestroy()
-        {
-            _levelElement.OnLevel -= LevelSelected;
-        }
     }
 }

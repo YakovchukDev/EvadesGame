@@ -11,9 +11,11 @@ namespace Audio
         [HideInInspector] public AudioSource _source;
         public AudioClip _clip;
         public AudioMixerGroup _mixerGroup;
+        public bool _mute;
         [Range(0f, 1f)] public float _volume;
         [Range(0.1f, 3f)] public float _pitch;
         [Range(0, 1)] public int _spatialBlend;
+        public bool _playOnAwake;
         public bool _loop;
     }
 }

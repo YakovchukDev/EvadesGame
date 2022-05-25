@@ -25,16 +25,13 @@ namespace Audio
                 sound._source = gameObject.AddComponent<AudioSource>();
                 sound._source.clip = sound._clip;
                 sound._source.outputAudioMixerGroup = sound._mixerGroup;
+                sound._source.mute = sound._mute;
                 sound._source.volume = sound._volume;
                 sound._source.pitch = sound._pitch;
                 sound._source.spatialBlend = sound._spatialBlend;
+                sound._source.playOnAwake = sound._playOnAwake;
                 sound._source.loop = sound._loop;
             }
-        }
-
-        private void Start()
-        {
-            Play("MenuMusic");
         }
 
         public void Play(string name)
@@ -63,15 +60,16 @@ namespace Audio
             sound._source.Stop();
         }
 
-        public bool IsPlaying(string name)
+        public void IsMute(string name, bool isMute)
         {
             Sound sound = Array.Find(_sounds, sound => sound._name == name);
             if (sound == null)
             {
                 Debug.LogWarning("Wrong name of the sound");
-                return false;
+                return;
             }
-            return sound._source.isPlaying;
+
+            sound._source.mute = isMute;
         }
     }
 }

@@ -61,12 +61,19 @@ namespace Menu
                 {
                     _companyInfo.SetActive(true);
                     _menuAnimatorController.CompanyLocked(0);
+                    StartCoroutine(CloseCompanyInfo());
                 }
                 else
                 {
                     _menuAnimatorController.CompanyLocked(1);
                 }
             }
+        }
+
+        private IEnumerator CloseCompanyInfo()
+        {
+            yield return new WaitForSeconds(15);
+            _menuAnimatorController.CompanyLocked(1);
         }
 
         private void ClickButton(int index)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Audio;
 using MapGeneration.Data;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace Menu.level
 {
     public class LevelElement : MonoBehaviour
     {
+        private AudioManager _audioManager;
         [SerializeField] private TMP_Text _levelNumberText;
         [SerializeField] private Button _levelButton;
         [SerializeField] private List<Image> _stars;
@@ -26,6 +28,11 @@ namespace Menu.level
 
         public event Action OnLevel;
 
+        private void Start()
+        {
+            _audioManager = AudioManager.Instanse;
+        }
+
         public void Initialize()
         {
             _levelButton.onClick.AddListener(SetLevel);
@@ -34,6 +41,7 @@ namespace Menu.level
         private void SetLevel()
         {
             LevelController.ChoiceLevel = LevelNumber;
+            _audioManager.Play("PressButton");
             OnLevel?.Invoke();
         }
 

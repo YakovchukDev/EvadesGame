@@ -1,3 +1,4 @@
+using Audio;
 using Menu.SelectionClass;
 using TMPro;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace Menu.ScriptableObject.Shop
 {
     public class ShopObject : MonoBehaviour
     {
+        private AudioManager _audioManager;
         [SerializeField] private Image _backImage;
         [SerializeField] private Button _button;
         [SerializeField] private Image _image;
@@ -20,7 +22,7 @@ namespace Menu.ScriptableObject.Shop
             _button.image.sprite = ShopPanel.BackText;
             _image.sprite = ShopPanel.Image;
             _text.text = "Price:" + ShopPanel.CharacterCost;
-
+            _audioManager=AudioManager.Instanse;
             if (PlayerPrefs.GetInt($"Open{ShopPanel.NumberForUnlock}") == 1)
             {
                 switch (PlayerPrefs.GetString("Language"))
@@ -42,6 +44,7 @@ namespace Menu.ScriptableObject.Shop
 
         public void BuyCharacter()
         {
+            _audioManager.Play("PressButton");
             if (PlayerPrefs.GetInt("Coins") >= ShopPanel.CharacterCost)
             {
                 PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - ShopPanel.CharacterCost);

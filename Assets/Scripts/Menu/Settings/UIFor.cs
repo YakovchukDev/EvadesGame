@@ -29,24 +29,6 @@ namespace Menu.Settings
                 switch (PlayerPrefs.GetString("Language"))
                 {
                     case "English":
-                        _forWhoText.text = "For left handed";
-                        break;
-                    case "Russian":
-                        _forWhoText.text = "Для левшей";
-
-                        break;
-                    case "Ukrainian":
-                        _forWhoText.text = "Для лівшів";
-                        break;
-                }
-
-                _thisImage.sprite = _forLeftHanded;
-            }
-            else if (_rightOrLeft == "Left")
-            {
-                switch (PlayerPrefs.GetString("Language"))
-                {
-                    case "English":
                         _forWhoText.text = "For right handed";
                         break;
                     case "Russian":
@@ -59,6 +41,24 @@ namespace Menu.Settings
                 }
 
                 _thisImage.sprite = _forRightHanded;
+            }
+            else if (_rightOrLeft == "Left")
+            {
+                switch (PlayerPrefs.GetString("Language"))
+                {
+                    case "English":
+                        _forWhoText.text = "For left handed";
+                        break;
+                    case "Russian":
+                        _forWhoText.text = "Для левшей";
+
+                        break;
+                    case "Ukrainian":
+                        _forWhoText.text = "Для лівшів";
+                        break;
+                }
+
+                _thisImage.sprite = _forLeftHanded;
             }
         }
 
@@ -72,25 +72,6 @@ namespace Menu.Settings
                 switch (PlayerPrefs.GetString("Language"))
                 {
                     case "English":
-                        _forWhoText.text = "For right handed";
-                        break;
-                    case "Russian":
-                        _forWhoText.text = "Для правшей";
-
-                        break;
-                    case "Ukrainian":
-                        _forWhoText.text = "Для правшів";
-                        break;
-                }
-
-                _thisImage.sprite = _forRightHanded;
-                PlayerPrefs.SetString("RightOrLeft", "Left");
-            }
-            else if (_rightOrLeft == "Left")
-            {
-                switch (PlayerPrefs.GetString("Language"))
-                {
-                    case "English":
                         _forWhoText.text = "For left handed";
                         break;
                     case "Russian":
@@ -103,10 +84,33 @@ namespace Menu.Settings
                 }
 
                 _thisImage.sprite = _forLeftHanded;
+                PlayerPrefs.SetString("RightOrLeft", "Left");
+            }
+            else if (_rightOrLeft == "Left")
+            {
+                switch (PlayerPrefs.GetString("Language"))
+                {
+                    case "English":
+                        _forWhoText.text = "For right handed";
+                        break;
+                    case "Russian":
+                        _forWhoText.text = "Для правшей";
+
+                        break;
+                    case "Ukrainian":
+                        _forWhoText.text = "Для правшів";
+                        break;
+                }
+
+                _thisImage.sprite = _forRightHanded;
                 PlayerPrefs.SetString("RightOrLeft", "Right");
             }
 
-            _selectUIPosition.SelectJoystickPosition();
+            if (_selectUIPosition != null)
+            {
+                _selectUIPosition.SelectJoystickPosition();
+            }
+
             _buttonSpellPosition = FindObjectOfType<ButtonSpellPosition>();
             if (_buttonSpellPosition != null)
             {

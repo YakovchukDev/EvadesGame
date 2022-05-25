@@ -1,23 +1,25 @@
 using System;
+using Audio;
 using Menu.SelectionClass;
-using Menu.Settings;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Serialization;
 
 namespace GamePlay.Character
 {
     public class HealthController : MonoBehaviour
     {
         public int _hpNumber = 1;
-        [SerializeField] private AudioSource _dieSound;
+       // [SerializeField] private AudioSource _dieSound;
         [SerializeField] private AudioMixerGroup _audioMixer;
         public float _immortalityTime;
         public bool _immortality;
         public static Action OnZeroHp;
-        
+        private AudioManager _audioManager;
+
         private void Start()
         {
+            _audioManager=AudioManager.Instanse;
+
             if (SelectionClassView.WhatPlaying == "Level")
             {
                 _hpNumber = 3;
@@ -69,7 +71,7 @@ namespace GamePlay.Character
             if (_hpNumber <= 0)
             {
                 Time.timeScale = 0;
-                _dieSound.Play();
+                _audioManager.Play("Die");
                 _audioMixer.audioMixer.SetFloat("EffectVolume", -80);
                 OnZeroHp?.Invoke();
             }

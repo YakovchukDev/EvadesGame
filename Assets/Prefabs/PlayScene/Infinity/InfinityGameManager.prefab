@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2058591591030872340}
   - component: {fileID: 3390834592028967129}
   - component: {fileID: 5446301729060158306}
-  - component: {fileID: 3095504998923274473}
   - component: {fileID: 6561430060618041682}
   - component: {fileID: 478570547}
   - component: {fileID: 3348631129706270170}
@@ -119,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0ae5b2cbbd6874bbf6ba83e19a1814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _joystickController: {fileID: 3095504998923274473}
+  _selectUIPosition: {fileID: 0}
   _forWhoText: {fileID: 0}
   _thisImage: {fileID: 0}
   _forRightHanded: {fileID: 4689753401836871432, guid: aa0fd11e549f3a84299697d73aad189c, type: 3}
@@ -140,20 +139,6 @@ MonoBehaviour:
   _soundsToggle: {fileID: 0}
   _musicSlider: {fileID: 0}
   _effectSlider: {fileID: 0}
---- !u!114 &3095504998923274473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058591591030872339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef101d9c19802f44af632015651f688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _leftVariableJoystick: {fileID: 0}
-  _rightVariableJoystick: {fileID: 0}
 --- !u!114 &6561430060618041682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,8 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17565c53884440a9b6bac359b62272fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftSpellButtons: {fileID: 0}
-  _rightSpellButtons: {fileID: 0}
+  _leftVariableJoystick: {fileID: 0}
+  _rightVariableJoystick: {fileID: 0}
   _leftPanelDie: {fileID: 0}
   _rightPanelDie: {fileID: 0}
   _leftDieAnimator: {fileID: 0}
