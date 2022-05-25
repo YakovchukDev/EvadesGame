@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Audio;
 using Menu.SelectionClass;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,20 +9,21 @@ namespace Menu
 {
     public class CompanyButton : MonoBehaviour
     {
+        private AudioManager _audioManager;
         [SerializeField] private MenuAnimatorController _menuAnimatorController;
         [SerializeField] private SelectionClassView _selectionClassView;
         [SerializeField] private GameObject _companyInfo;
         [SerializeField] private GameObject _companyButton;
         [SerializeField] private GameObject _companyMenuView;
-        [SerializeField] private AudioSource _pressButton;
         [SerializeField] private Animator _animatorButton;
         private bool _openClose;
-        
+
         public static event Action<int> OnCompanyUnlocked;
 
         private void Start()
         {
             Initialize();
+            _audioManager = AudioManager.Instanse;
             if (PlayerPrefs.GetInt("CompanyOpened") == 0)
             {
                 _companyButton.GetComponent<Image>().color = new Color(0.6f, 0.6f, 0.6f);
@@ -69,7 +71,7 @@ namespace Menu
 
         private void ClickButton(int index)
         {
-            _pressButton.Play();
+            _audioManager.Play("PressButton");
             _animatorButton.Play(index);
         }
 
