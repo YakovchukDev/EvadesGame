@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Map.Data;
+using Map.Coins;
 
 namespace Map
 {
@@ -13,13 +14,14 @@ namespace Map
         [SerializeField] private Image _centralStar;
         [SerializeField] private Image _rightStar;
         [SerializeField] private TMP_Text _coinsTMP;
-
+        [SerializeField] private CoinController _coinController;
+        
         public void ShowResult()
         {
-            _coinsTMP.text = GeneralParameters.MainDataCollector.Coins.ToString();
-            _leftStar.gameObject.SetActive(GeneralParameters.MainDataCollector.Level.LeftStars);
-            _centralStar.gameObject.SetActive(GeneralParameters.MainDataCollector.Level.IsComplited);
-            _rightStar.gameObject.SetActive(GeneralParameters.MainDataCollector.Level.RightStars);
+            _coinsTMP.text = _coinController.GetCoinsResult().ToString();
+            _leftStar.gameObject.SetActive(MapManager.MainDataCollector.Level.UpStars);
+            _centralStar.gameObject.SetActive(MapManager.MainDataCollector.Level.IsComplited);
+            _rightStar.gameObject.SetActive(MapManager.MainDataCollector.Level.DownStars);
         }
     }
 }

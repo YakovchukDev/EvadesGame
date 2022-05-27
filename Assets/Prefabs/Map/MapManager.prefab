@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6686578694387742510}
+  - component: {fileID: 3472384311856425679}
   - component: {fileID: 6686578694387742511}
-  - component: {fileID: 6686578693880097754}
+  - component: {fileID: 2179846425791587030}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3472384311856425679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6686578694387742509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98326fbeb8c4c8f4fbee549d50841f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainDataCollector: {fileID: 0}
+  _cameraController: {fileID: 0}
 --- !u!114 &6686578694387742511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,24 +59,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ce583f06c00ef4483a6db67e452bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterList: []
-  _justEnemies:
-  - {fileID: 8510527150873304264, guid: 4aa4d5399ea804e489c37ddec473dfaa, type: 3}
-  - {fileID: 1912685854336025599, guid: 00277a838af39804fbac00637e20988c, type: 3}
-  - {fileID: 9168754128252031128, guid: c4ad8752ca88d5e47a6dc3ed5d84362e, type: 3}
-  - {fileID: 5628239827406890741, guid: e7fd980360b9e6d4c8c22b40394cc555, type: 3}
-  - {fileID: 2676826178133515840, guid: 23dd0e12632ce034c8192604a65c4627, type: 3}
-  _midleEnemies:
-  - {fileID: 8836489298002113124, guid: 5c1efe6793b95df48938c26d9feb0daf, type: 3}
-  - {fileID: 5246570446611896554, guid: 53134d3897a96c54d93235071b38a63b, type: 3}
-  - {fileID: 4464688701804638509, guid: 7de2ebf3f24a21e4ca639dde83e725ec, type: 3}
-  _hardEnemies:
-  - {fileID: 138441598510828523, guid: b3af0bfaae6fefd4e9b366b3aa652d52, type: 3}
-  - {fileID: 3239914737928764452, guid: 39932cce0f43acc49afc0d79e1bf0420, type: 3}
-  _indestructibleEnemy: {fileID: 6880236342595149392, guid: 835d9c32d9b80904d808727024a60426, type: 3}
-  _maxCoin: 0
+  _cameraController: {fileID: 0}
+  _longRoom: {fileID: 0}
+  _shortRoom: {fileID: 0}
+  _emptyWall: {fileID: 0}
+  _star: {fileID: 0}
   _coin: {fileID: 0}
---- !u!114 &6686578693880097754
+  _characterList: []
+  _enemyList: []
+  _indestructibleEnemy: {fileID: 6880236342595149392, guid: 835d9c32d9b80904d808727024a60426, type: 3}
+  _mainDataCollector: {fileID: 0}
+--- !u!114 &2179846425791587030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,7 +78,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6686578694387742509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30cbd862473f836499731d6a1a8d2e79, type: 3}
+  m_Script: {fileID: 11500000, guid: 2640900c513f3b247a8489bc1470b70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioMixer: {fileID: 24300002, guid: 761f1e5b3abc4984b8494cb4169a56d8, type: 2}
+  _mainDataCollector: {fileID: 0}
+  _emptyWall: {fileID: 0}
+  _star: {fileID: 0}
+  _coin: {fileID: 0}
+  _characterList: []
+  _enemyList: []
+  _indestructibleEnemy: {fileID: 0}

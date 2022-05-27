@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Joystick_Pack.Examples;
 using Menu.Settings;
@@ -17,6 +18,7 @@ namespace GamePlay.Character.Spell
         [SerializeField] private int _spellNumber = 1;
         private GameObject _killer;
         private Vector3 _diePosition;
+        public static event Action<int> UpdateHearts;
 
         private void OnCollisionEnter(Collision other)
         {
@@ -38,13 +40,14 @@ namespace GamePlay.Character.Spell
 
         public void Respawn()
         {
-            if (_spellNumber >= 1)
+            if (_spellNumber >= 1 && _healthController.HpNumber > 0)
             {
                 _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
                 _killer.SetActive(false);
                 transform.position = _diePosition;
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;
-                _healthController._hpNumber++;
+                _healthController.HpNumber++;
+                UpdateHearts?.Invoke(_healthController.HpNumber);
                 Time.timeScale = 1;
                 _spellNumber--;
                 _respawnParticle.SetActive(true);

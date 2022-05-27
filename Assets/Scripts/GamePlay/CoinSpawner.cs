@@ -5,42 +5,25 @@ using Random = UnityEngine.Random;
 
 public class CoinSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _coinPrefab;
-    private GameObject _coin;
-    [SerializeField] private TMP_Text _coinTMP;
+    [SerializeField] private CoinControl _coinPrefab;
+    private CoinControl _coin;
 
-
+    private void OnEnable()
+    {
+        CoinControl.SetNewCoinOnSurvive += CoinReloadOnSurvive;
+    }
+    private void OnDisable()
+    {
+        CoinControl.SetNewCoinOnSurvive -= CoinReloadOnSurvive;
+    }
     private void Start()
     {
-        _coin = Instantiate(_coinPrefab, new Vector3(Random.Range(17, -17), 1, Random.Range(-17, 17)),
-            Quaternion.identity);
-        CoinControl.Survive += CoinReloadOnSurvive; 
-        _coinTMP.text = "0";
-        //CoinControl.GiveCoin += UpdateQuantityCoin;
-        //  GeneralParameters.LoadedGeneralParameters += StartWork;
+        CoinReloadOnSurvive();
     }
-
     private void CoinReloadOnSurvive()
     {
-        _coin.transform.position = new Vector3(Random.Range(17, -17), 1, Random.Range(-17, 17));
-        _coin.SetActive(true);
-    }
-
-    /*private void StartWork()
-    {
-        _coinTMP.text = $"{GeneralParameters.MainDataCollector.Coins}";
-    }
-
-    private void UpdateQuantityCoin()
-    {
-        //GeneralParameters.MainDataCollector.Coins++;
-        _coinTMP.text = $"{GeneralParameters.MainDataCollector.Coins}";
-    }*/
-
-    private void OnDestroy()
-    {
-        CoinControl.Survive -= CoinReloadOnSurvive;
-       // CoinControl.GiveCoin -= UpdateQuantityCoin;
-        //GeneralParameters.LoadedGeneralParameters -= StartWork;
+        Destroy(_coin);
+        _coin = Instantiate(_coinPrefab, new Vector3(Random.Range(17, -17), 1, Random.Range(-17, 17)), Quaternion.identity); 
+        _coin.SetQuantityAddCoins(1);
     }
 }

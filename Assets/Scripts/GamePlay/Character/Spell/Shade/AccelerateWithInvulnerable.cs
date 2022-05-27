@@ -78,7 +78,7 @@ namespace GamePlay.Character.Spell.Shade
             {
                 _reloadSpell.ReloadSecondSpell(_timeReloadSecondSpell);
                 JoystickPlayerExample.Speed *= _speedAccelerate;
-                _healthController._hpNumber++;
+                _healthController.HpNumber++;
             }
         }
     }

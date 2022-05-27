@@ -8,11 +8,11 @@ namespace Map.Expirience
         public delegate void BoostMenu(bool isEnter);
         public static event giveExpirience GiveExpiriencs;
         public static event BoostMenu OpenBoostMenu;
-        private SaveZoneParameters _saveZone;
+        private SafeZoneParameters _saveZone;
 
         private void Awake()
         {
-            _saveZone = GetComponent<SaveZoneParameters>();
+            _saveZone = GetComponent<SafeZoneParameters>();
         }
         private void OnTriggerEnter(Collider other)
         {

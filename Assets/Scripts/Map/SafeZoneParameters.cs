@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Map
 {
-    public class SaveZoneParameters : MonoBehaviour
+    public class SafeZoneParameters : MonoBehaviour
     {
         public bool IsSaveZone = false;
         [SerializeField] private GameObject _horizontalRoom;
@@ -12,7 +12,7 @@ namespace Map
         [SerializeField] private List<GameObject> _saveZoneWall;
         [SerializeField] private GameObject _floor;
         private bool _isHaveExpirience = false;
-        [SerializeField] private Vector2Int _positionRoom;
+        private Vector2Int _positionRoom;
         public static event Action<Vector2Int> OnEnterSafeZone;
 
         private void OnTriggerEnter(Collider other)

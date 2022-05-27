@@ -4,13 +4,12 @@ using Menu.Settings;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Serialization;
-using System;
 
 namespace GamePlay.Character
 {
     public class HealthController : MonoBehaviour
     {
-        public int _hpNumber = 1;
+        public int HpNumber = 1;
         [SerializeField] private AudioSource _dieSound;
         [SerializeField] private AudioMixerGroup _audioMixer;
         public float _immortalityTime;
@@ -23,12 +22,12 @@ namespace GamePlay.Character
         {
             if (SelectionClassView.WhatPlaying == "Level")
             {
-                _hpNumber = 3;
-                HealthPanelUpdate(_hpNumber);
+                HpNumber = 3;
+                HealthPanelUpdate?.Invoke(HpNumber);
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
-                _hpNumber = 1;
+                HpNumber = 1;
             }
 
             _immortalityTime = 0;
@@ -46,15 +45,14 @@ namespace GamePlay.Character
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
                 other.gameObject.layer == LayerMask.NameToLayer("IndestructibleEnemy"))
             {
-                transform.localScale = Vector3.one;
-                _hpNumber--;
+                HpNumber--;
                 if (SelectionClassView.WhatPlaying == "Level")
                 {
-                    if(_hpNumber != 0)
+                    if(HpNumber != 0)
                     {
-                        OnBackToSafeZone();
+                        OnBackToSafeZone?.Invoke();
                     }
-                    HealthPanelUpdate(_hpNumber);
+                    HealthPanelUpdate?.Invoke(HpNumber);
                 }
                 _immortality = true;
                 HpChecker();
@@ -78,8 +76,9 @@ namespace GamePlay.Character
 
         private void HpChecker()
         {
-            if (_hpNumber <= 0)
+            if (HpNumber <= 0)
             {
+                Debug.Log("allo blet");
                 Time.timeScale = 0;
                 _dieSound.Play();
                 _audioMixer.audioMixer.SetFloat("EffectVolume", -80);

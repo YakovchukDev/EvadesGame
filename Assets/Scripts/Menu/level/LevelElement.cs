@@ -15,10 +15,9 @@ namespace Menu.level
         [SerializeField] private Button _levelButton;
         [SerializeField] private List<Image> _stars;
         [SerializeField] private LevelParameters _levelParameters;
-        [SerializeField] private int _levelNumber;
         public TMP_Text LevelNumberText => _levelNumberText;
         public Button LevelButton => _levelButton;
-        public List<Image> Stars => _stars;
+        [SerializeField] private List<Image> _starsList => _stars;
 
         public int LevelNumber { get; set; }
     
@@ -43,21 +42,28 @@ namespace Menu.level
 
         public void SetIdLevel()
         {
-            PlayerPrefs.SetInt("LevelNumber", _levelNumber);
+            PlayerPrefs.SetInt("LevelNumber", LevelNumber);
         }
 
         public void SetLevelParametrs()
         {
-            GeneralParameters.SetMapData(_levelParameters);
+            Map.MapManager.LevelParameters = _levelParameters;
         }
 
         public void SetLevelParametrs(LevelParameters levelParameters)
         {
             _levelParameters = levelParameters;
         }
-        public void SetLevelNumber(int levelNumber) 
+        public void SetAchievedTarggets()
         {
-            _levelNumber = levelNumber;
+            if(PlayerPrefs.HasKey($"Level{LevelNumber}"))
+            {
+                string stars = PlayerPrefs.GetString($"Level{LevelNumber}");
+                for(int i = 0; i < stars.Length && i < _starsList.Count; i++)
+                {
+                    _starsList[i].gameObject.SetActive(stars[i] == '*' ? true : false);
+                }
+            }
         }
     }
 }

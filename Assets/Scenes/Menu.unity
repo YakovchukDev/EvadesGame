@@ -15000,6 +15000,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6553645248555616403, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}
+      propertyPath: Difficulty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6553645249180931468, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}
       propertyPath: m_Name
       value: LevelParameters
@@ -15048,17 +15052,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6553645249500304053, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}
+      propertyPath: Length
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553645249500304053, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}
+      propertyPath: Branchs
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553645249500304053, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}
+      propertyPath: SizeChank
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553645249500304053, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}
+      propertyPath: Difficulty
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553645249500304053, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}
+      propertyPath: MaxCoinInRoom
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553645249500304053, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}
+      propertyPath: MaxEnemiesInRoom
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553645249500304053, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}
+      propertyPath: TargetExpirience
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6553645250111826355, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}
       propertyPath: Length
-      value: 4
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6553645250111826355, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}
       propertyPath: Branchs
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6553645250111826355, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}
       propertyPath: SizeChank
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6553645249180931469, guid: aeeb52e1bbfc8eb4095c1fd51f2bbe09, type: 3}

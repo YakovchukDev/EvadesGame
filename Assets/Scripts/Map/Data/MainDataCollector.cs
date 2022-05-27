@@ -1,3 +1,4 @@
+using Map.Coins;
 using UnityEngine;
 
 namespace Map.Data
@@ -5,13 +6,12 @@ namespace Map.Data
     public class MainDataCollector : MonoBehaviour
     {
         public Level Level;
-        public int Coins;
+        private CoinController _coinController;
         private int _levelNumber; 
         
         public MainDataCollector()
         {
             Level = new Level();
-            Coins = 0;
             GiveDataAboutLevel();
         }
         public void SaveData()
@@ -19,21 +19,19 @@ namespace Map.Data
             try
             {
                 SaveCoins();
-
-                PlayerPrefs.SetString($"Level{_levelNumber}", (Level.IsComplited ? "*" : " ") + (Level.LeftStars ? "*" : " ") + (Level.RightStars ? "*" : " "));
-
+                PlayerPrefs.SetString($"Level{_levelNumber}", (Level.UpStars ? "*" : " ") + (Level.IsComplited ? "*" : " ") + (Level.DownStars ? "*" : " "));
                 if(PlayerPrefs.HasKey("CompleteLevel"))
                 {
-                    int complitedLevels = 0;
+                    int complitedLevelsCount = 0;
                     for(int levelNumber = 1; levelNumber <= 30; levelNumber++)
                     {
                         if(PlayerPrefs.HasKey($"Level{levelNumber}"))
                         {
                             string levelData = PlayerPrefs.GetString($"Level{levelNumber}");
-                            complitedLevels += levelData[0] == '*' ? 1 : 0;
+                            complitedLevelsCount += levelData[0] == '*' ? 1 : 0;
                         }
                     }
-                    PlayerPrefs.SetInt("CompleteLevel", complitedLevels);
+                    PlayerPrefs.SetInt("CompleteLevel", complitedLevelsCount);
                 }
                 else
                 {
@@ -47,16 +45,17 @@ namespace Map.Data
         }
         public void SaveCoins()
         {
+            int coins = _coinController.GetCoinsResult();
             try
             {
                 if(PlayerPrefs.HasKey("Coins"))
                 {
-                    int coins = PlayerPrefs.GetInt("Coins") + Coins;
-                    PlayerPrefs.SetInt("Coins", coins);
+                    int allCoins = PlayerPrefs.GetInt("Coins") + coins;
+                    PlayerPrefs.SetInt("Coins", allCoins);
                 }
                 else
                 {
-                    PlayerPrefs.SetInt("Coins", Coins);
+                    PlayerPrefs.SetInt("Coins", coins);
                 }
             }
             catch(UnityException exception)
@@ -71,11 +70,11 @@ namespace Map.Data
                 _levelNumber = PlayerPrefs.GetInt("LevelNumber");
                 if(PlayerPrefs.HasKey($"Level{_levelNumber}"))
                 {
-                    string stars = PlayerPrefs.GetString($"Level{_levelNumber}");
                     Level = new Level();
+                    string stars = PlayerPrefs.GetString($"Level{_levelNumber}");
                     Level.IsComplited = stars[0] == '*' ? true : false;
-                    Level.LeftStars = stars[1] == '*' ? true : false;
-                    Level.RightStars = stars[2] == '*' ? true : false;
+                    Level.UpStars = stars[1] == '*' ? true : false;
+                    Level.DownStars = stars[2] == '*' ? true : false;
                 }
                 else
                 {
@@ -87,56 +86,11 @@ namespace Map.Data
                 Level = new Level();
             }
         }
-        public int GetLevelNumber()
+        public int GetLevelNumber() => _levelNumber;
+        public void SetCoinController(CoinController coinController)
         {
-            return 4;//_levelNumber;
+            _coinController = coinController;
         }
+
     }
 }
-
-/*
-            byte[] buffer = new byte[255];
-            FileStream stream = new FileStream(_path, FileMode.Open, FileAccess.Read);
-            stream.Read(buffer, 0, buffer.Length);
-            DataOfProgressPlayer data = JsonUtility.FromJson<DataOfProgressPlayer>(buffer.ToString());
-            Level = data.Company.Levels[id];
-*/
-
-/*
-            DataOfProgressPlayer data;
-            string jsonData;
-            byte[] buffer = new byte[255];
-            bool isFirstEnter = File.Exists(_path);
-
-            try
-            {
-                FileStream stream;
-                if(!isFirstEnter)
-                {
-                    stream = new FileStream(_path, FileMode.Create);
-                    data = new DataOfProgressPlayer(40);//1------------------------------------------------------
-                    stream.Close();
-                }
-                else
-                {
-                    stream = new FileStream(_path, FileMode.Open, FileAccess.Read);
-                    stream.Read(buffer, 0, buffer.Length);
-                    jsonData = System.Text.Encoding.Default.GetString(buffer);
-                    data = JsonUtility.FromJson<DataOfProgressPlayer>(jsonData);
-                    stream.Close();
-                }
-                //update info about level
-                data.Company.Levels[_idLevel] = Level;
-                data.QuantityCoins += Coins;
-
-                jsonData = JsonUtility.ToJson(data);
-                buffer = System.Text.Encoding.Default.GetBytes(jsonData);
-                stream = new FileStream(_path, FileMode.Open, FileAccess.Write);
-                stream.Write(buffer, 0, buffer.Length);
-                stream.Close();
-            }
-            catch(UnityException exception)
-            {
-                Debug.Log(exception.GetBaseException());
-            }
-*/

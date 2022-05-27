@@ -64,13 +64,13 @@ namespace GamePlay.Character
         private void OnEnable()
         {
             ExpirienceControl.OpenBoostMenu += SetActiveBoostMenu;
-            MapGenerator.HandOverManaController += SetManaController;
+            EntitiesGenerator.HandOverManaController += SetManaController;
             
         } 
         private void Disable()
         {
             ExpirienceControl.OpenBoostMenu -= SetActiveBoostMenu;
-            MapGenerator.HandOverManaController -= SetManaController;
+            EntitiesGenerator.HandOverManaController -= SetManaController;
         }
         public void SetManaController(ManaController manaController)
         {

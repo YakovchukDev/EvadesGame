@@ -7,6 +7,7 @@ namespace Map
     {
         [SerializeField] private GameObject _button;
         [SerializeField] private ResultController _resultPanel;
+        
         private void OnEnable()
         {
             LevelComplited.OpenFinishMenu += SetActiveButton;
@@ -21,8 +22,8 @@ namespace Map
         }
         public void EndOfGame()
         {
-            GeneralParameters.MainDataCollector.Level.IsComplited = true;
-            GeneralParameters.MainDataCollector.SaveData();
+            MapManager.MainDataCollector.Level.IsComplited = true;
+            MapManager.MainDataCollector.SaveData();
             _resultPanel.gameObject.SetActive(true);
             _resultPanel.ShowResult();
         }

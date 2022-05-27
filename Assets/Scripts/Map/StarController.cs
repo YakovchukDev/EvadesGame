@@ -6,9 +6,9 @@ namespace Map
     public class StarController : MonoBehaviour
     {
         [SerializeField] private int _speed;
-        private string _valueSide; 
+        private StarSide _valueSide;
         
-        void Start()
+        public void Start()
         {
             transform.Rotate(0, 0, 90);
         }
@@ -20,18 +20,24 @@ namespace Map
         {
             if(other.gameObject.tag == "Player")
             {
-                if(_valueSide == "left")
+                switch(_valueSide)
                 {
-                    GeneralParameters.MainDataCollector.Level.LeftStars = true;
+                    case StarSide.Up:
+                    {
+                        MapManager.MainDataCollector.Level.UpStars = true;
+                        Destroy(gameObject);
+                        break;
+                    }
+                    case StarSide.Down:
+                    {
+                        MapManager.MainDataCollector.Level.DownStars = true;
+                        Destroy(gameObject);
+                        break;
+                    }
                 }
-                else if(_valueSide == "right")
-                {
-                    GeneralParameters.MainDataCollector.Level.RightStars = true;
-                }
-                Destroy(gameObject);
             }
         }
-        public void SetValueSide(string valueSide)
+        public void SetValueSide(StarSide valueSide)
         {
             this._valueSide = valueSide;
         }

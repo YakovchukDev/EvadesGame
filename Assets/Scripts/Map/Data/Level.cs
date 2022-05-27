@@ -3,14 +3,14 @@ namespace Map.Data
     public class Level
     {
         public bool IsComplited;
-        public bool LeftStars;
-        public bool RightStars;
+        public bool UpStars;
+        public bool DownStars;
 
         public Level()
         {
             IsComplited = false;
-            LeftStars = false;
-            RightStars = false;
+            UpStars = false;
+            DownStars = false;
         }
     }
 }

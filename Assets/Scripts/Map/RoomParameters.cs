@@ -10,7 +10,6 @@ namespace Map
     {
         public List<CoinControl> CoinList; 
         public List<GameObject> EnemyList;
-
         [SerializeField] private GameObject _saveZoneUp;
         [SerializeField] private GameObject _saveZoneDown;
         [SerializeField] private GameObject _doorRight;

@@ -17,7 +17,7 @@ namespace Map.Expirience
         void Start()
         {
             _quantityTokensTMP.text = $"{_quantityTokens}";
-            _slider.maxValue = GeneralParameters.LevelParameters.TargetExpirience;
+            _slider.maxValue = MapManager.LevelParameters.TargetExpirience;
         }
         void OnEnable()
         {
@@ -30,12 +30,12 @@ namespace Map.Expirience
 
         private void UpdateSlider()
         {
-            if(_slider.value < GeneralParameters.LevelParameters.TargetExpirience)
+            if(_slider.value < MapManager.LevelParameters.TargetExpirience)
             {
                 _value += _fillSpeed;
             }
         
-            if(_value >= GeneralParameters.LevelParameters.TargetExpirience)
+            if(_value >= MapManager.LevelParameters.TargetExpirience)
             {
                 _value = 0;
                 _quantityTokens++;
@@ -45,7 +45,7 @@ namespace Map.Expirience
         }
         public void SetTargerProgress(int newTargetProgress)
         {
-            GeneralParameters.LevelParameters.TargetExpirience = newTargetProgress;
+            MapManager.LevelParameters.TargetExpirience = newTargetProgress;
         }
         public void SetSpeedProgress(float newFillingSpeed)
         {

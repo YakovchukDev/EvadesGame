@@ -5396,7 +5396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1488
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11958,7 +11958,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951322551}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 703f1a6f70d13b540b4752a1216f14e1, type: 3}
   m_Name: 
@@ -14631,6 +14631,10 @@ PrefabInstance:
       propertyPath: _coinTMP
       value: 
       objectReference: {fileID: 841880811}
+    - target: {fileID: 478570547, guid: 591534a9beb4faf4cbaf1df683fa615e, type: 3}
+      propertyPath: _coinPrefab
+      value: 
+      objectReference: {fileID: 5112639083197620180, guid: a1d0b66346cb6e348bb4bda922383cdf, type: 3}
     - target: {fileID: 2058591591030872336, guid: 591534a9beb4faf4cbaf1df683fa615e, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -14699,6 +14703,10 @@ PrefabInstance:
       propertyPath: _timer
       value: 
       objectReference: {fileID: 1947856098}
+    - target: {fileID: 2058591591030872343, guid: 591534a9beb4faf4cbaf1df683fa615e, type: 3}
+      propertyPath: _coinController
+      value: 
+      objectReference: {fileID: 1951322555}
     - target: {fileID: 2058591591880316758, guid: 591534a9beb4faf4cbaf1df683fa615e, type: 3}
       propertyPath: _leftPanelDie
       value: 

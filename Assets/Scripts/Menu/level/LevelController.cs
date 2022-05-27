@@ -32,14 +32,14 @@ namespace Menu.level
 
             for (int i = 1; i <= _countLevel; i++)
             {
-                _levelMenuView.LevelElement.LevelButton.interactable = i - 1 <= CompleteLevel;
-                _levelMenuView.LevelElement.LevelNumberText.text = i.ToString();
-                _levelMenuView.LevelElement.SetLevelParametrs(_levelParameters[i - 1]);
-                _levelMenuView.LevelElement.SetLevelNumber(i);
                 LevelElement element = Instantiate(_levelMenuView.LevelElement, _levelMenuView.ElementGrid);
+                element.LevelButton.interactable = i - 1 <= CompleteLevel;
+                element.LevelNumberText.text = i.ToString();
+                element.SetLevelParametrs(_levelParameters[i - 1]);
                 element.LevelNumber = i;
                 element.Initialize();
                 element.OnLevel += LevelSelected;
+                element.SetAchievedTarggets();
             }
         }
 
