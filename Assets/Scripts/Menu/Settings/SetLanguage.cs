@@ -5,7 +5,7 @@ namespace Menu.Settings
 {
     public class SetLanguage : MonoBehaviour
     {
-        [SerializeField] private GameObject _settings;
+        [HideInInspector] public GameObject _settings;
         [SerializeField] private Animator _settingsAnimator;
         
         private void Start()

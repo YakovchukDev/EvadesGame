@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using MapGeneration.Data;
 using Menu.ScriptableObject.Company;
 using Menu.SelectionClass;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace Menu.level
 {
@@ -17,9 +19,11 @@ namespace Menu.level
         [SerializeField] private GameObject _selectionClass;
         [SerializeField] private int _countLevel;
         [SerializeField] private List<CompanyPanel> _companyPanels;
-        [SerializeField] private HorizontalLayoutGroup _horizontalLayoutGroup;
-        private LevelElement _levelElement;
+        [Header("VerticalLevelHeight")]
+        [SerializeField] private int _minVerticalLevelHeight;
+        [SerializeField] private int _maxVerticalLevelHeight;
 
+        private LevelElement _levelElement;
         public static int CompleteLevel;
         public static int ChoiceLevel;
         private int _newTypeLevels = 4;
@@ -42,6 +46,7 @@ namespace Menu.level
             CompanyButton.OnCompanyUnlocked += SpawnLevelElement;
         }
 
+
         private void SpawnLevelElement(int parametr)
         {
             for (int i = 0, textNumber = 1; i <= _countLevel - 1; i++, textNumber++)
@@ -53,8 +58,8 @@ namespace Menu.level
                 InitializeLevelElement(textNumber, i);
             }
 
-            Canvas.ForceUpdateCanvases();
-            _horizontalLayoutGroup.enabled = false;
+            /*Canvas.ForceUpdateCanvases();
+            _horizontalLayoutGroup.enabled = false;*/
 
 
             CompanyButton.OnCompanyUnlocked -= SpawnLevelElement;
@@ -78,7 +83,7 @@ namespace Menu.level
             }
 
             _levelElement.Transform.localPosition =
-                new Vector2(transform.position.x, Random.Range(-50,100));
+                new Vector2(transform.position.x, Random.Range(_minVerticalLevelHeight,_maxVerticalLevelHeight));
             if (i == _newTypeLevels)
             {
                 _scriptableNumber++;

@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.256}
-  m_AnchoredPosition: {x: 0.0011749268, y: 0.17999268}
+  m_AnchoredPosition: {x: -0.23498535, y: -0.32998657}
   m_SizeDelta: {x: 0.47000122, y: 0.66000366}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &111079156517611513
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 860326810342491933, guid: eabb686d6868efd47881b0a62d7c44a4, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -158,7 +158,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111079158198123622}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -167,8 +167,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.034845635, y: 0.04637072}
   m_AnchorMax: {x: 0.9743231, y: 0.96025366}
-  m_AnchoredPosition: {x: -1.9994965, y: -0.13059998}
-  m_SizeDelta: {x: -4.6, y: 6.5287}
+  m_AnchoredPosition: {x: -0.00047302246, y: -1.2308044}
+  m_SizeDelta: {x: -4.6, y: 16.6389}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &111079158198123627
 CanvasRenderer:
@@ -243,7 +243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.256}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0004272461, y: 0.17999268}
+  m_AnchoredPosition: {x: 0.00036621094, y: -6}
   m_SizeDelta: {x: -0.0007019, y: -0.36499023}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &111079158274478788
@@ -454,7 +454,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 430.4707, y: 406.2899}
+  m_SizeDelta: {x: 480, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3819957091363337251
 MonoBehaviour:
