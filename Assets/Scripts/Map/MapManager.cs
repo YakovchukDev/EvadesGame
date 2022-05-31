@@ -1,9 +1,7 @@
-using System;
 using Map.Coins;
 using Map.Data;
 using UnityEngine;
 using Map.Teleport;
-using System.Collections.Generic;
 
 namespace Map
 {
@@ -72,13 +70,13 @@ namespace Map
         
         private void GoToSafeZone()
         {
-        _entitiesGenerator.SetPlayerCoordinates(new Vector3
+            _entitiesGenerator.SetPlayerCoordinates(new Vector3
             (
                 _mapGenerator.GetLongRoom().GetLengthX() * _safeZoneWherePlayerWasOrIs.y + _mapGenerator.GetShortRoom().GetLengthX() * _safeZoneWherePlayerWasOrIs.y,
                 1f,
                 _mapGenerator.GetLongRoom().GetLengthZ() * _safeZoneWherePlayerWasOrIs.x
             ));
-        ShowRoomsAroundSpecifiedCoordinates(_safeZoneWherePlayerWasOrIs);
+            ShowRoomsAroundSpecifiedCoordinates(_safeZoneWherePlayerWasOrIs);
         }
         private void ShowRoomsAroundSpecifiedCoordinates(Vector2Int position)
         {
@@ -126,29 +124,18 @@ namespace Map
             {
                 for(int row = startPos.y; row <= endPos.y; row++)
                 {
-                    if (_mapOfRooms[row, column] != null && !_mapOfRooms[row, column].gameObject.activeSelf == isShow)
+                    if (_mapOfRooms[row, column] != null)
                     {
-                        switch (isShow)
+                        if (isShow)
                         {
-                            case true:
-                            {
-                                ShowEnemiesInRoom(ref _mapOfRooms[row, column]);
-                                ShowCoinInRoom(ref _mapOfRooms[row, column]);
-                                break;
-                            }
-                            case false:
-                            {
-                                HideEnemiesInRoom(_mapOfRooms[row, column]);
-                                HideCoinsInRoom(_mapOfRooms[row, column]);
-                                break;
-                            }
+                            CheckIfEnteredRoom(_mapOfRooms[row, column]);
                         }
                         _mapOfRooms[row, column].gameObject.SetActive(isShow);
                     }
                 }
                 for (int row = startPos.y; row <= endPos.y + 1; row++)
                 {
-                    if (_mapOfSafeZones[row, column] != null && !_mapOfSafeZones[row, column].gameObject.activeSelf == isShow)
+                    if (_mapOfSafeZones[row, column] != null)
                     {
                         _mapOfSafeZones[row, column].gameObject.SetActive(isShow);
                     }
@@ -161,20 +148,9 @@ namespace Map
             {
                 if (room != null)
                 {
-                    switch (isShow)
+                    if(isShow)
                     {
-                        case true:
-                        {
-                            ShowCoinInRoom(ref _mapOfRooms[room.GetPosition().y, room.GetPosition().x]);
-                            ShowEnemiesInRoom(ref _mapOfRooms[room.GetPosition().y, room.GetPosition().x]);
-                            break;
-                        }
-                        case false:
-                        {
-                            HideCoinsInRoom(room);
-                            HideEnemiesInRoom(room);
-                            break;
-                        }
+                        CheckIfEnteredRoom(_mapOfRooms[room.GetPosition().y, room.GetPosition().x]);
                     }
                     room.gameObject.SetActive(isShow);
                 }
@@ -188,55 +164,13 @@ namespace Map
             }
         }
 
-        private void ShowCoinInRoom(ref RoomParameters room)
+        private void CheckIfEnteredRoom(RoomParameters room)
         {
-            if (room.CoinList == null || room.CoinList.Count == 0)
+            if (room.IsFirstEntrance)
             {
-                room.CoinList = _entitiesGenerator.GenerateAndSpawnCoinList(room);
-            }
-            else
-            {
-                foreach (CoinControl coin in room.CoinList)
-                {
-                    if (!coin.IsUse)
-                    {
-                        coin.gameObject.SetActive(true);
-                    }
-                }
-            }
-        }
-        private void HideCoinsInRoom(RoomParameters room)
-        {
-            if (room.CoinList != null && room.CoinList.Count > 0)
-            {
-                foreach (CoinControl coin in room.CoinList)
-                {
-                    coin.gameObject.SetActive(false);
-                }
-            }
-        }
-        private void ShowEnemiesInRoom(ref RoomParameters room)
-        {
-            if (room.EnemyList == null || room.EnemyList.Count == 0)
-            {
-                room.EnemyList = _entitiesGenerator.GenerateAndSpawnEmenyList(room);
-            }
-            else
-            {
-                foreach (GameObject enemy in room.EnemyList)
-                {
-                    enemy.SetActive(true);
-                }
-            }
-        }
-        private void HideEnemiesInRoom(RoomParameters room)
-        {
-            if (room.EnemyList != null && room.EnemyList.Count > 0)
-            {
-                foreach (GameObject enemy in room.EnemyList)
-                {
-                    enemy.SetActive(false);
-                }
+                _entitiesGenerator.GenerateAndSpawnEmenyList(room);
+                _entitiesGenerator.GenerateAndSpawnCoinList(room);
+                room.IsFirstEntrance = false;
             }
         }
     }

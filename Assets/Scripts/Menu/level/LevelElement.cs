@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using MapGeneration.Data;
+using Map.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Map;
-using Map.Data;
 
 namespace Menu.level
 {

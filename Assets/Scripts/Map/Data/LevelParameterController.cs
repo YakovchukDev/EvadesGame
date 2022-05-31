@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Map;
 
-namespace MapGeneration.Data
+namespace Map.Data
 {
     public class LevelParameterController : MonoBehaviour
     {

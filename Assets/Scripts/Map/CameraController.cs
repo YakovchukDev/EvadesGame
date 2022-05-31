@@ -1,4 +1,3 @@
-using GamePlay.Character;
 using UnityEngine;
 
 namespace Map

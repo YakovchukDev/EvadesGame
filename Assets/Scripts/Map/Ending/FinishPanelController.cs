@@ -1,7 +1,6 @@
 using UnityEngine;
-using Map.Data;
 
-namespace Map
+namespace Map.Ending
 {
     public class FinishPanelController : MonoBehaviour
     {

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Map;
+using Map.Data;
 using Menu.SelectionClass;
 using UnityEngine;
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Map.Data;
 
 namespace Map.Expirience
 {

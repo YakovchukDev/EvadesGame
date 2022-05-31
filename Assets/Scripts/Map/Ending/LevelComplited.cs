@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Map
+namespace Map.Ending
 {
     public class LevelComplited : MonoBehaviour
     {

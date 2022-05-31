@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
+using Map.Data;
 using UnityEngine;
 using Map.Expirience;
-using Map.Coins;
-using Map.Data;
 using Map.Teleport;
-using GamePlay.Character.Spell;
+using Map.Ending;
 
 namespace Map
 {
@@ -29,7 +26,7 @@ namespace Map
             SetExitSaveZone();
             SetExitInRoom();  
         }
-        public ref RoomParameters [,] GetMapOfRooms() => ref _mapOfRooms;
+        public ref RoomParameters[,] GetMapOfRooms() => ref _mapOfRooms;
         public ref SafeZoneParameters [,] GetMapOfSafeZones() => ref _mapOfSafeZones;
         public RoomParameters GetLongRoom() => _longRoom;
         public SafeZoneParameters GetShortRoom() => _shortRoom;
@@ -260,21 +257,21 @@ namespace Map
                             }
                             else if (_mapOfRooms[row, column] == null && _mapOfRooms[row - 1, column] != null)
                             {
-                                _mapOfSafeZones[row, column].SetOneWay((short)OpenSide.Left, UnityEngine.Random.Range(0, 1) == 0);
+                                _mapOfSafeZones[row, column].SetOneWayParameters((short)OpenSide.Left, UnityEngine.Random.Range(0, 1) == 0);
                             }
                             else if (_mapOfRooms[row, column] != null && _mapOfRooms[row - 1, column] == null)
                             {
-                                _mapOfSafeZones[row, column].SetOneWay((short)OpenSide.Right, UnityEngine.Random.Range(0, 1) == 0);
+                                _mapOfSafeZones[row, column].SetOneWayParameters((short)OpenSide.Right, UnityEngine.Random.Range(0, 1) == 0);
                             }
                         }
                         else if (row == _mapOfSafeZones.GetLength(0) - 1)
                         {
-                            _mapOfSafeZones[row, column].SetOneWay((short)OpenSide.Left,
+                            _mapOfSafeZones[row, column].SetOneWayParameters((short)OpenSide.Left,
                                 column == _levelParameters.Branchs ? true : UnityEngine.Random.Range(0, 1) == 0);
                         }
                         else if (row == 0)
                         {
-                            _mapOfSafeZones[row, column].SetOneWay((short)OpenSide.Right,
+                            _mapOfSafeZones[row, column].SetOneWayParameters((short)OpenSide.Right,
                                 column == _levelParameters.Branchs ? true : UnityEngine.Random.Range(0, 1) == 0);
                         }
 

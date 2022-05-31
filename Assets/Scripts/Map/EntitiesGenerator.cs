@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Map.Coins;
 using Map.Data;
+using Map.Stars;
 using Menu.SelectionClass;
 using GamePlay.Character.Spell;
 
@@ -22,7 +23,7 @@ namespace Map
         public void InstantiateCharacter(Vector3 coordinateCharacter)
         {
             _selectedCharacter = Instantiate(_characterList[SelectionClassView.CharacterType], coordinateCharacter, Quaternion.identity);
-            _selectedCharacter.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+            _selectedCharacter.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
             if (_selectedCharacter.GetComponent<ManaController>() != null)
             {
                 HandOverManaController(_selectedCharacter.GetComponent<ManaController>());
@@ -44,7 +45,7 @@ namespace Map
                         _safeZoneMap[row, column].gameObject.transform.position.x,
                         _safeZoneMap[row, column].gameObject.transform.position.y,
                         _safeZoneMap[row, column].gameObject.transform.position.z
-                    ), Quaternion.identity);
+                    ), Quaternion.identity, _safeZoneMap[row, column].transform);
                     star.SetValueSide(side);
                     return true;
                 }
@@ -82,14 +83,13 @@ namespace Map
                 MapManager.MainDataCollector.Level.DownStars = true;
             }
         }
-        public List<CoinControl> GenerateAndSpawnCoinList(RoomParameters room)
+        public void GenerateAndSpawnCoinList(RoomParameters room)
         {
             int maxCoinInRoom = UnityEngine.Random.Range(0, MapManager.LevelParameters.MaxCoinInRoom);
             float indent = 3f;
-            room.CoinList = new List<CoinControl>(maxCoinInRoom);
             for (int i = 0; i < maxCoinInRoom; i++)
             {
-                room.CoinList.Add(Instantiate(_coin, new Vector3
+                CoinControl coin = Instantiate(_coin, new Vector3
                 (
                     UnityEngine.Random.Range
                     (
@@ -102,12 +102,11 @@ namespace Map
                         room.gameObject.transform.position.z - room.GetLengthZ() / 2 + indent,
                         room.gameObject.transform.position.z + room.GetLengthZ() / 2 - indent
                     )
-                ), Quaternion.identity));
-                room.CoinList[room.CoinList.Count - 1].SetQuantityAddCoins(1);
+                ), Quaternion.identity, room.transform);
+                coin.SetQuantityAddCoins(1);
             }
-            return room.CoinList;
         }
-        public List<GameObject> GenerateAndSpawnEmenyList(RoomParameters room)
+        public void GenerateAndSpawnEmenyList(RoomParameters room)
         {
             //рахунок баллів для кімнати
             int score = MapManager.LevelParameters.Difficulty * 2 + 4 + 1 / 4;
@@ -148,7 +147,7 @@ namespace Map
                 }
             }
             //генерація списка ворогів і водночас їх спавн
-            while (score > 0 && room.EnemyList.Count < MapManager.LevelParameters.MaxEnemiesInRoom)
+            for(int enemyCount = 0; score > 0 && enemyCount < MapManager.LevelParameters.MaxEnemiesInRoom;)
             {
                 int index = UnityEngine.Random.Range(0, selectionEnemies.Count);
                 if (selectionEnemies[index].ScoreRate <= score)
@@ -158,13 +157,14 @@ namespace Map
                     {
                         int indexCoordX = UnityEngine.Random.Range(0, optionCoordX.Count);
                         int indexCoordZ = UnityEngine.Random.Range(0, optionCoordZ.Count);
-                        room.EnemyList.Add(Instantiate(selectionEnemies[index].EnemyObj, new Vector3
+                        GameObject enemy = Instantiate(selectionEnemies[index].EnemyObj, new Vector3
                         (
                             room.gameObject.transform.position.x + optionCoordX[indexCoordX],
                             1,
                             room.gameObject.transform.position.z + optionCoordZ[indexCoordZ]
-                        ), Quaternion.identity, room.transform));
-                        room.EnemyList[room.EnemyList.Count - 1].transform.Rotate(0, indexCoordZ == 0 ? 90 : -90, 180);
+                        ), Quaternion.identity, room.transform);
+                        enemyCount++;
+                        enemy.transform.Rotate(0, indexCoordZ == 0 ? 90 : -90, 180);
                         optionCoordX.RemoveAt(indexCoordX);
                         indestructibleEnemyCounter++;
                     }
@@ -173,7 +173,7 @@ namespace Map
                         selectionEnemies[index].EnemyObj.gameObject.transform.rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f);
                         int scaleSize = UnityEngine.Random.Range(30, 80);
                         selectionEnemies[index].EnemyObj.gameObject.transform.localScale = new Vector3(scaleSize, scaleSize, scaleSize);
-                        room.EnemyList.Add(Instantiate(selectionEnemies[index].EnemyObj,
+                        Instantiate(selectionEnemies[index].EnemyObj,
                         new Vector3
                         (
                             UnityEngine.Random.Range
@@ -187,7 +187,8 @@ namespace Map
                                 room.gameObject.transform.position.z - room.GetLengthZ() / 2 + indent,
                                 room.gameObject.transform.position.z + room.GetLengthZ() / 2 - indent
                             )
-                        ), Quaternion.identity));
+                        ), Quaternion.identity, room.transform);
+                        enemyCount++;
                     }
 
                     score -= selectionEnemies[index].ScoreRate;
@@ -197,7 +198,6 @@ namespace Map
                     selectionEnemies.RemoveAt(index);
                 }
             }
-            return room.EnemyList;
         }
     }
 }

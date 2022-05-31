@@ -26,5 +26,5 @@ namespace Map.Coins
             _coinCount += value;
             _coinTMP.text = $"{_coinCount}";
         } 
-}
+    }
 }

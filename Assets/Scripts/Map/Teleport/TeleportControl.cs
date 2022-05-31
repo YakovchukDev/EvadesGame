@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Map.Data;
 
 namespace Map.Teleport
 {

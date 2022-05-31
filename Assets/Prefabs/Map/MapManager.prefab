@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6686578694387742509
+--- !u!1 &8762555024085257501
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6686578694387742510}
-  - component: {fileID: 3472384311856425679}
-  - component: {fileID: 6686578694387742511}
-  - component: {fileID: 2179846425791587030}
+  - component: {fileID: 8707127079393642489}
+  - component: {fileID: 8033360803333957744}
+  - component: {fileID: 6677077478624224372}
+  - component: {fileID: 2126342842756212132}
+  - component: {fileID: 8762555024085257502}
+  - component: {fileID: 8762555024085257503}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -19,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6686578694387742510
+--- !u!4 &8707127079393642489
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6686578694387742509}
+  m_GameObject: {fileID: 8762555024085257501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,58 +35,99 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3472384311856425679
+--- !u!114 &8033360803333957744
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6686578694387742509}
+  m_GameObject: {fileID: 8762555024085257501}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98326fbeb8c4c8f4fbee549d50841f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainDataCollector: {fileID: 0}
   _cameraController: {fileID: 0}
---- !u!114 &6686578694387742511
+  _coinController: {fileID: 0}
+--- !u!114 &6677077478624224372
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6686578694387742509}
+  m_GameObject: {fileID: 8762555024085257501}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95ce583f06c00ef4483a6db67e452bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraController: {fileID: 0}
-  _longRoom: {fileID: 0}
-  _shortRoom: {fileID: 0}
-  _emptyWall: {fileID: 0}
-  _star: {fileID: 0}
-  _coin: {fileID: 0}
-  _characterList: []
-  _enemyList: []
-  _indestructibleEnemy: {fileID: 6880236342595149392, guid: 835d9c32d9b80904d808727024a60426, type: 3}
-  _mainDataCollector: {fileID: 0}
---- !u!114 &2179846425791587030
+  _longRoom: {fileID: 5344734779882293324, guid: b701fe8f6f7068d48aeaacfc34ec3f50, type: 3}
+  _shortRoom: {fileID: 415656320069676746, guid: f9d77479b1c9be84cb276fbb4c6abd19, type: 3}
+  _emptyWall: {fileID: 2881360877677854570, guid: 2c19b6f219e9b0642b6abb174ed46de9, type: 3}
+--- !u!114 &2126342842756212132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6686578694387742509}
+  m_GameObject: {fileID: 8762555024085257501}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2640900c513f3b247a8489bc1470b70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainDataCollector: {fileID: 0}
-  _emptyWall: {fileID: 0}
-  _star: {fileID: 0}
-  _coin: {fileID: 0}
-  _characterList: []
-  _enemyList: []
+  _emptyWall: {fileID: 2881360877677854570, guid: 2c19b6f219e9b0642b6abb174ed46de9, type: 3}
+  _star: {fileID: -7342826474707195929, guid: bca1edabed54c914490eb81ffcc021c8, type: 3}
+  _coin: {fileID: 5112639083197620180, guid: a1d0b66346cb6e348bb4bda922383cdf, type: 3}
+  _characterList:
+  - {fileID: 2963534093953126575, guid: 896c1960df869cd45a8eb459e866abf2, type: 3}
+  - {fileID: 1717912554360977961, guid: 5d0839d216134a7428643b19ee74a357, type: 3}
+  - {fileID: 5460984050080916392, guid: 950abaa21770e4c49a0e2cdd15c8503f, type: 3}
+  - {fileID: 1911395832924520791, guid: 121027de14f92694ebfc84f1bd41f3db, type: 3}
+  - {fileID: 8882896568688617212, guid: cb15d70a9125f4b48beeaf368c5205c9, type: 3}
+  _enemyList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _indestructibleEnemy: {fileID: 0}
+--- !u!114 &8762555024085257502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8762555024085257501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17565c53884440a9b6bac359b62272fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leftVariableJoystick: {fileID: 0}
+  _rightVariableJoystick: {fileID: 0}
+  _leftPanelDie: {fileID: 0}
+  _rightPanelDie: {fileID: 0}
+  _leftDieAnimator: {fileID: 0}
+  _rightDieAnimator: {fileID: 0}
+--- !u!114 &8762555024085257503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8762555024085257501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8242c6d9ef5a28547a2087cb9efab8a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundManager: {fileID: 0}
+  _pauseButton: {fileID: 0}
+  _pausePanel: {fileID: 0}

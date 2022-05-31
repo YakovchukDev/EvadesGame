@@ -7,7 +7,7 @@ namespace Map.Coins
     {
         public static event Action<int> GiveCoin;
         public static event Action SetNewCoinOnSurvive;
-        public bool IsUse = false;
+        public static event Action PlaySound;
         [SerializeField] private int _speed;
         private int _value;
 
@@ -22,8 +22,8 @@ namespace Map.Coins
             {
                 GiveCoin?.Invoke(_value);
                 SetNewCoinOnSurvive?.Invoke();
-                this.gameObject.SetActive(false);
-                IsUse = true;
+                PlaySound();
+                Destroy(this.gameObject);
             }
         }
         public void SetQuantityAddCoins(int value)
@@ -32,7 +32,6 @@ namespace Map.Coins
         }
         public void Initialize()
         {
-            IsUse = false;
             this.gameObject.SetActive(true);
         }
         private void FixedUpdate()

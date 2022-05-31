@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Map
+namespace Map.Data
 {
     public class LevelParameters : MonoBehaviour
     {

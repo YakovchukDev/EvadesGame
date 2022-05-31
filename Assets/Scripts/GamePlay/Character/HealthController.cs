@@ -78,7 +78,6 @@ namespace GamePlay.Character
         {
             if (HpNumber <= 0)
             {
-                Debug.Log("allo blet");
                 Time.timeScale = 0;
                 _dieSound.Play();
                 _audioMixer.audioMixer.SetFloat("EffectVolume", -80);

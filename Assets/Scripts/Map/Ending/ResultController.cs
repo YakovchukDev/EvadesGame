@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Map.Data;
 using Map.Coins;
 
-namespace Map
+namespace Map.Ending
 {
     public class ResultController : MonoBehaviour
     {
