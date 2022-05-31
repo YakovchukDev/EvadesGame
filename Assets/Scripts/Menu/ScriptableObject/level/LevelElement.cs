@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Menu.level
+namespace Menu.ScriptableObject.level
 {
     public class LevelElement : MonoBehaviour
     {

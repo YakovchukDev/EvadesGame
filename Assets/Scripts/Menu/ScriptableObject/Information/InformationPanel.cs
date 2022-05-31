@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace Menu.ScriptableObject.Information
 {
-    [CreateAssetMenu(fileName = "New Info", menuName = "ScriptableObject/InfoComponent")]
-    public class InfoPanel : UnityEngine.ScriptableObject
+    [CreateAssetMenu(fileName = "New Information", menuName = "ScriptableObject/InformationComponent")]
+    public class InformationPanel : UnityEngine.ScriptableObject
     {
         [SerializeField] private Sprite _backImage;
         [SerializeField] private Sprite _backText;

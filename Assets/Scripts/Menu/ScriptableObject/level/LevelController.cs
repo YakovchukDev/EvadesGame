@@ -1,13 +1,11 @@
-using System;
 using System.Collections.Generic;
 using MapGeneration.Data;
 using Menu.ScriptableObject.Company;
 using Menu.SelectionClass;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace Menu.level
+namespace Menu.ScriptableObject.level
 {
     public class LevelController : MonoBehaviour
     {

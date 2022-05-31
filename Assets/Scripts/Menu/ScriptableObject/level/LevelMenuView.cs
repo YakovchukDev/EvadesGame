@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Menu.level
+namespace Menu.ScriptableObject.level
 {
     public class LevelMenuView : MonoBehaviour
     {

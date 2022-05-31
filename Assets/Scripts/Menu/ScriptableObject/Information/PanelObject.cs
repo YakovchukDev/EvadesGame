@@ -15,7 +15,7 @@ namespace Menu.ScriptableObject.Information
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _text;
 
-        public InfoPanel InfoPanel { get; set; }
+        public InformationPanel InfoPanel { get; set; }
 
         private void Start()
         {

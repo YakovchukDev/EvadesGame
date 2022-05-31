@@ -15,9 +15,9 @@ namespace Menu.ScriptableObject.Information
         private Transform _spawnCharacterPosition;
 
 
-        [SerializeField] private List<InfoPanel> _infoEnemyPanels;
-        [SerializeField] private List<InfoPanel> _infoFieldEnemyPanels;
-        [SerializeField] private List<InfoPanel> _infoCharacterPanels;
+        [SerializeField] private List<InformationPanel> _infoEnemyPanels;
+        [SerializeField] private List<InformationPanel> _infoFieldEnemyPanels;
+        [SerializeField] private List<InformationPanel> _infoCharacterPanels;
         [SerializeField] private GameObject _infoPrefab;
 
 
@@ -28,7 +28,7 @@ namespace Menu.ScriptableObject.Information
             PanelSpawner(_spawnCharacterPosition, _infoCharacterPanels, _infoPrefab);
         }
 
-        private void PanelSpawner(Transform spawnPosition, List<InfoPanel> infoPanels, GameObject prefab)
+        private void PanelSpawner(Transform spawnPosition, List<InformationPanel> infoPanels, GameObject prefab)
         {
             foreach (var infoPanel in infoPanels)
             {

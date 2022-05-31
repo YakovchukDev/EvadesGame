@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Menu.level;
+using Menu.ScriptableObject.level;
 using UnityEngine;
 using UnityEngine.UI;
 
