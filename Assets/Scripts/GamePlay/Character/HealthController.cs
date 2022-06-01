@@ -1,32 +1,35 @@
 using System;
 using Audio;
 using Menu.SelectionClass;
+using Menu.Settings;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 namespace GamePlay.Character
 {
     public class HealthController : MonoBehaviour
     {
-        public int _hpNumber = 1;
-       // [SerializeField] private AudioSource _dieSound;
+        public int HpNumber = 1;
         [SerializeField] private AudioMixerGroup _audioMixer;
+        private AudioManager _audioManager;
         public float _immortalityTime;
         public bool _immortality;
         public static Action OnZeroHp;
-        private AudioManager _audioManager;
+        public static event Action OnBackToSafeZone;
+        public static event Action<int> HealthPanelUpdate;
 
         private void Start()
         {
-            _audioManager=AudioManager.Instanse;
-
+            _audioManager = AudioManager.Instanse;
             if (SelectionClassView.WhatPlaying == "Level")
             {
-                _hpNumber = 3;
+                HpNumber = 3;
+                HealthPanelUpdate?.Invoke(HpNumber);
             }
             else if (SelectionClassView.WhatPlaying == "Infinity")
             {
-                _hpNumber = 1;
+                HpNumber = 1;
             }
 
             _immortalityTime = 0;
@@ -44,8 +47,17 @@ namespace GamePlay.Character
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
                 other.gameObject.layer == LayerMask.NameToLayer("IndestructibleEnemy"))
             {
-                transform.localScale = Vector3.one;
-                _hpNumber--;
+                HpNumber--;
+                if (SelectionClassView.WhatPlaying == "Level")
+                {
+                    if (HpNumber != 0)
+                    {
+                        OnBackToSafeZone?.Invoke();
+                    }
+
+                    HealthPanelUpdate?.Invoke(HpNumber);
+                }
+
                 _immortality = true;
                 HpChecker();
             }
@@ -68,7 +80,7 @@ namespace GamePlay.Character
 
         private void HpChecker()
         {
-            if (_hpNumber <= 0)
+            if (HpNumber <= 0)
             {
                 Time.timeScale = 0;
                 _audioManager.Play("Die");

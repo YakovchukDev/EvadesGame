@@ -12,8 +12,8 @@ namespace Menu.ScriptableObject.Info
         [SerializeField] private List<InfoPanel> _infoPanels;
         [SerializeField] private InfoElement _elementGameObject;
         [SerializeField] private Transform _grid;
-        [SerializeField] private float _scrollSpeed;
-        private int _turnOffComponentNumber = 3;
+        [SerializeField][Min(0.01f)] private float _scrollSpeed;
+        public int _turnOffComponentNumber = 3;
         private int _forFirstSibling;
         private int _forLastSibling = 2;
 
@@ -21,12 +21,6 @@ namespace Menu.ScriptableObject.Info
         {
             SpawnInfoElement();
             _personsElements[1].transform.SetAsFirstSibling();
-
-            if (_scrollSpeed <= 0)
-            {
-                _scrollSpeed = 0.01f;
-            }
-
             for (int i = 0; i < _positions.Length; i++)
             {
                 _personsElements[i].Panel.SetActive(true);
@@ -63,7 +57,7 @@ namespace Menu.ScriptableObject.Info
                         break;
                     case "Ukrainian":
                         _personsElements[i].TmpText1.text = _infoPanels[i].UkrainianText1;
-                        _personsElements[i].TmpText2.text = _infoPanels[i].UkrainianText1;
+                        _personsElements[i].TmpText2.text = _infoPanels[i].UkrainianText2;
                         break;
                 }
 

@@ -171,6 +171,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &22362817
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +221,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &51784674
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64386216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1397.213, y: -57.229065, z: 662.1581}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 86220410}
@@ -615,7 +619,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 64386216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eddea7b8e9060a4ea627b33f4902055, type: 3}
+  m_Script: {fileID: 11500000, guid: a4bb39d752e4a9f42afe761904cec6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _levels:
@@ -697,6 +701,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &74297883
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +852,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &116070411
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,6 +979,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &130607389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,9 +1245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ae38216c04b36499a5cd8933130bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _daughtersObject:
-  - {fileID: 74297883}
-  - {fileID: 732869301}
   _rectTransformContent: {fileID: 1942520413}
   _moveSpeed: 0
 --- !u!114 &138172945
@@ -1480,6 +1487,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &168613850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,6 +1537,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &188757508
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,10 +2087,10 @@ RectTransform:
   m_Father: {fileID: 1424660582}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030518, y: -102.69}
-  m_SizeDelta: {x: 1920, y: 874.62}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 437.31}
+  m_SizeDelta: {x: 0, y: 874.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232207579
 MonoBehaviour:
@@ -2467,6 +2478,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &305219999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2794,7 +2807,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.07, y: -82.84949}
+  m_AnchoredPosition: {x: 480.69998, y: -82.84949}
   m_SizeDelta: {x: 303.8, y: 118.214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &366749661
@@ -4274,6 +4287,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &501786055
 GameObject:
   m_ObjectHideFlags: 0
@@ -4322,6 +4337,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &513834664
 GameObject:
   m_ObjectHideFlags: 0
@@ -4582,6 +4599,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &540736779
 GameObject:
   m_ObjectHideFlags: 0
@@ -4689,10 +4708,10 @@ RectTransform:
   m_Father: {fileID: 1334278800}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920.0001, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &543216254
 MonoBehaviour:
@@ -4780,6 +4799,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &559094750
 GameObject:
   m_ObjectHideFlags: 0
@@ -5053,6 +5074,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &577970330
 GameObject:
   m_ObjectHideFlags: 0
@@ -10735,6 +10758,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &660095871
 GameObject:
   m_ObjectHideFlags: 0
@@ -10922,10 +10947,10 @@ RectTransform:
   m_Father: {fileID: 1623128687}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &674368359
 Animator:
@@ -11010,6 +11035,7 @@ MonoBehaviour:
   _elementGameObject: {fileID: 8694240988191634933, guid: 8ad5ebb4665403441a197363939b3b11, type: 3}
   _grid: {fileID: 116070412}
   _scrollSpeed: 0.01
+  _turnOffComponentNumber: 3
 --- !u!1 &681079893
 GameObject:
   m_ObjectHideFlags: 0
@@ -11372,10 +11398,10 @@ RectTransform:
   m_Father: {fileID: 1139164067}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -721.489, y: 0}
-  m_SizeDelta: {x: 477.022, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 238.51099, y: 0}
+  m_SizeDelta: {x: 477.02197, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &765239242
 MonoBehaviour:
@@ -12241,6 +12267,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &888850669
 GameObject:
   m_ObjectHideFlags: 0
@@ -12496,6 +12524,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &943421472
 GameObject:
   m_ObjectHideFlags: 0
@@ -12636,9 +12666,9 @@ RectTransform:
   m_Father: {fileID: 765239241}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45, y: -84}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 193.51099, y: -84}
   m_SizeDelta: {x: 352.942, y: 779.826}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970308795
@@ -13206,7 +13236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 798.4501, y: -82.84949}
+  m_AnchoredPosition: {x: 809.5, y: -82.84949}
   m_SizeDelta: {x: 303.8, y: 118.214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1024925110
@@ -13980,6 +14010,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1105704811
 GameObject:
   m_ObjectHideFlags: 0
@@ -14411,6 +14443,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1184710840
 GameObject:
   m_ObjectHideFlags: 0
@@ -15481,6 +15515,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1305419064
 GameObject:
   m_ObjectHideFlags: 0
@@ -15580,7 +15616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.69, y: -82.84949}
+  m_AnchoredPosition: {x: 151.9, y: -82.84949}
   m_SizeDelta: {x: 303.8, y: 118.214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1308906920
@@ -16536,7 +16572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1117.8301, y: -82.84949}
+  m_AnchoredPosition: {x: 1138.3, y: -82.84949}
   m_SizeDelta: {x: 303.80005, y: 118.214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1419741087
@@ -17166,6 +17202,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1460324390
 GameObject:
   m_ObjectHideFlags: 0
@@ -17497,6 +17535,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1512185459
 GameObject:
   m_ObjectHideFlags: 0
@@ -18739,6 +18779,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1673495831
 GameObject:
   m_ObjectHideFlags: 0
@@ -18937,6 +18979,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1691676472
 GameObject:
   m_ObjectHideFlags: 0
@@ -19249,6 +19293,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1714166840
 GameObject:
   m_ObjectHideFlags: 0
@@ -24643,6 +24689,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1806832251
 GameObject:
   m_ObjectHideFlags: 0
@@ -24891,10 +24939,10 @@ RectTransform:
   m_Father: {fileID: 1449619073}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.023708338, y: 0.82800007}
-  m_AnchorMax: {x: 0.102479175, y: 0.96800005}
-  m_AnchoredPosition: {x: -0.484375, y: 0.43084717}
-  m_SizeDelta: {x: -1, y: -1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 120, y: -110.06915}
+  m_SizeDelta: {x: 174, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806845554
 MonoBehaviour:
@@ -25479,6 +25527,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1873449690
 GameObject:
   m_ObjectHideFlags: 0
@@ -25818,6 +25868,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &1935358560
 GameObject:
   m_ObjectHideFlags: 0
@@ -26318,6 +26370,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &2010590062
 GameObject:
   m_ObjectHideFlags: 0
@@ -31170,6 +31224,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &2041704159
 GameObject:
   m_ObjectHideFlags: 0
@@ -31363,6 +31419,8 @@ MonoBehaviour:
   Length: 10
   SizeChank: 10
   TargetExpirience: 4
+  MaxCoinInRoom: 2
+  MaxEnemiesInRoom: 10
 --- !u!1 &2096780886
 GameObject:
   m_ObjectHideFlags: 0
@@ -31519,9 +31577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ae38216c04b36499a5cd8933130bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _daughtersObject:
-  - {fileID: 1702936645}
-  - {fileID: 1089848701}
   _rectTransformContent: {fileID: 1942520413}
   _moveSpeed: 3
 --- !u!114 &2105358368
@@ -31832,7 +31887,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 6a9b3190d3d2ce4438e3f1a2a6e2e79c, type: 2}
     - target: {fileID: 79116330, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 511437758420569738, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchorMax.y
@@ -31890,6 +31945,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -303.861
       objectReference: {fileID: 0}
+    - target: {fileID: 3341935778243946388, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
+      propertyPath: _characterSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 41ac379607569bc429b5b84dccaa8a8d, type: 3}
     - target: {fileID: 4970420906012001449, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_fontColor.b
       value: 0
@@ -31948,7 +32007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5696843060451635952, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 201.66669
+      value: 226.66666
       objectReference: {fileID: 0}
     - target: {fileID: 5696843060451635952, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -32012,7 +32071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5696843060729741917, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1718.3335
+      value: 1993.3331
       objectReference: {fileID: 0}
     - target: {fileID: 5696843060729741917, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -32048,7 +32107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5696843061364449448, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1111.6667
+      value: 1286.6666
       objectReference: {fileID: 0}
     - target: {fileID: 5696843061364449448, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -32104,11 +32163,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5696843061712240951, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1415.0002
+      value: 1639.9999
       objectReference: {fileID: 0}
     - target: {fileID: 5696843061712240951, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -122.563995
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696843061883746710, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 59.005157
       objectReference: {fileID: 0}
     - target: {fileID: 5696843061989220333, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_Name
@@ -32216,7 +32279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5696843062133136553, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 808.33344
+      value: 933.33325
       objectReference: {fileID: 0}
     - target: {fileID: 5696843062133136553, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -32252,7 +32315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5696843062195022221, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 505.00006
+      value: 580
       objectReference: {fileID: 0}
     - target: {fileID: 5696843062195022221, guid: b19e5367a96b3164aa9fff43e1822a27, type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -151,7 +151,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -180,6 +180,30 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: PressButton
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2892858388125499756}
+        m_TargetAssemblyTypeName: Menu.ScriptableObject.level.LevelElement, Assembly-CSharp
+        m_MethodName: SetLevelParameters
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2892858388125499756}
+        m_TargetAssemblyTypeName: Menu.ScriptableObject.level.LevelElement, Assembly-CSharp
+        m_MethodName: SetIdLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &6038002416466500939
@@ -606,9 +630,8 @@ MonoBehaviour:
   - {fileID: 8738258660891583211}
   - {fileID: 4002030879199762334}
   - {fileID: 8418892400835967980}
-  _levelParameters: {fileID: 0}
   _transform: {fileID: 5133998460311941607}
-  _levelNumber: 0
+  _openStarSprite: {fileID: 21300000, guid: 6aa9acae61252e643b534ec1add0d261, type: 3}
 --- !u!1 &8869483889475308706
 GameObject:
   m_ObjectHideFlags: 0

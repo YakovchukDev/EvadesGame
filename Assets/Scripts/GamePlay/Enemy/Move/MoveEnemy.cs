@@ -21,7 +21,7 @@ namespace GamePlay.Enemy.Move
 
         private void Awake()
         {
-            if (SceneManager.GetActiveScene().name == "MapGeneratorBeta")
+            if (SceneManager.GetActiveScene().name == "Company")
             {
                 GetComponent<MoveEnemy>().enabled=true;
             }

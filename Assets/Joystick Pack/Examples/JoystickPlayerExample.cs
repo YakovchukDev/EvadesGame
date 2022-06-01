@@ -8,7 +8,6 @@ namespace Joystick_Pack.Examples
     public class JoystickPlayerExample : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _moveParticle;
-        //[SerializeField] private AudioSource _frictionSound;
         [SerializeField] private ParticleSystem _frictionParticle;
         private AudioManager _audioManager;
         private VariableJoystick _variableJoystick;
@@ -29,12 +28,9 @@ namespace Joystick_Pack.Examples
             {
                 MaxSpeed = 20;
             }
-
             _moveParticle.Stop();
-            //_frictionSound.mute = true;
             _audioManager.IsMute("Friction",true);
             _audioManager.Play("Friction");
-            //_frictionSound.Play();
             Speed = MaxSpeed;
             _rigidbody = GetComponent<Rigidbody>();
         }
@@ -42,7 +38,6 @@ namespace Joystick_Pack.Examples
         public void FixedUpdate()
         {
             _variableJoystick = FindObjectOfType<VariableJoystick>();
-
             MoveCharacter();
         }
 
@@ -57,8 +52,6 @@ namespace Joystick_Pack.Examples
                         Vector3 hitPoint = missileHit.point;
                         Instantiate(_frictionParticle, new Vector3(hitPoint.x, transform.position.y, hitPoint.z),
                             transform.rotation);
-
-                        //_frictionSound.mute = false;
                         _audioManager.IsMute("Friction",false);
 
                     }
@@ -70,6 +63,7 @@ namespace Joystick_Pack.Examples
         {
             if (other.gameObject.CompareTag("Wall"))
             {
+                print(1);
                 if (_variableJoystick.Horizontal != 0 || _variableJoystick.Vertical != 0)
                 {
                     foreach (ContactPoint missileHit in other.contacts)
@@ -78,16 +72,12 @@ namespace Joystick_Pack.Examples
                         Instantiate(_frictionParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z),
                             transform.rotation);
                     }
-
-                    //_frictionSound.mute = false;
                     _audioManager.IsMute("Friction",false);
 
                 }
                 else
                 {
-                    //_frictionSound.mute = true;
                     _audioManager.IsMute("Friction",true);
-
                 }
             }
         }
@@ -95,10 +85,8 @@ namespace Joystick_Pack.Examples
         private void OnCollisionExit(Collision other)
         {
             if (other.gameObject.CompareTag("Wall"))
-            {
-                //_frictionSound.mute = true;
+            { 
                 _audioManager.IsMute("Friction",true);
-
             }
         }
 

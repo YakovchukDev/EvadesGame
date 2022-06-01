@@ -9,7 +9,6 @@ namespace Menu.ScriptableObject.Company
         [SerializeField] private Sprite _mainSprite2;
         [SerializeField] private Sprite _mainSprite3;
         [SerializeField] private Sprite _mainSprite4;
-        [SerializeField] private Sprite _openStarSprite;
         [SerializeField] private Sprite _closeStarSprite;
         [SerializeField] private Vector3 _textTransformPosition;
         [SerializeField] private Vector3 _levelTransformPosition;
@@ -19,7 +18,6 @@ namespace Menu.ScriptableObject.Company
         public Sprite MainSprite2 => _mainSprite2;
         public Sprite MainSprite3 => _mainSprite3;
         public Sprite MainSprite4 => _mainSprite4;
-        public Sprite OpenStarSprite => _openStarSprite;
         public Sprite CloseStarSprite => _closeStarSprite;
 
         public Vector3 TextTransformPosition => _textTransformPosition;

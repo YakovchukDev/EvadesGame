@@ -75,7 +75,7 @@ namespace Menu.SelectionClass
         {
             if (WhatPlaying == "Level")
             {
-                SceneManager.LoadScene("MapGeneratorBeta");
+                SceneManager.LoadScene("Company");
             }
             else if (WhatPlaying == "Infinity")
             {

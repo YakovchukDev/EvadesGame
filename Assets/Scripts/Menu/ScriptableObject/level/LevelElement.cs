@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Audio;
-using MapGeneration.Data;
+using Map.Data;
+using Menu.ScriptableObject.Company;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,18 +11,17 @@ namespace Menu.ScriptableObject.level
 {
     public class LevelElement : MonoBehaviour
     {
-        private AudioManager _audioManager;
         [SerializeField] private TMP_Text _levelNumberText;
         [SerializeField] private Button _levelButton;
         [SerializeField] private List<Image> _stars;
-        [SerializeField] private LevelParameters _levelParameters;
         [SerializeField] private Transform _transform;
-        [SerializeField] private int _levelNumber;
+        [SerializeField] private Sprite _openStarSprite;
+        private LevelParameters _levelParameters;
+        private AudioManager _audioManager;
         public TMP_Text LevelNumberText => _levelNumberText;
         public Button LevelButton => _levelButton;
         public List<Image> Stars => _stars;
         public Transform Transform => _transform;
-
 
         public int LevelNumber { get; set; }
 
@@ -52,17 +52,29 @@ namespace Menu.ScriptableObject.level
 
         public void SetIdLevel()
         {
-            Map.GeneralParameters.MainDataCollector.GiveDataAboutLevel(_levelNumber);
+            PlayerPrefs.SetInt("LevelNumber", LevelNumber);
         }
 
-        public void SetLevelParametrs()
+        public void SetLevelParameters()
         {
-            Map.GeneralParameters.SetMapData(_levelParameters);
+            Map.MapManager.LevelParameters = _levelParameters;
         }
 
-        public void SetLevelParametrs(LevelParameters levelParameters)
+        public void SetLevelParameters(LevelParameters levelParameters)
         {
             _levelParameters = levelParameters;
+        }
+        public void SetAchievedTargets()
+        {
+            if(PlayerPrefs.HasKey($"Level{LevelNumber}"))
+            {
+                string stars = PlayerPrefs.GetString($"Level{LevelNumber}");
+                for(int i = 0; i < stars.Length && i < _stars.Count; i++)
+                {
+                    //_stars[i].gameObject.SetActive(stars[i] == '*');
+                    _stars[i].sprite = _openStarSprite;
+                }
+            }
         }
     }
 }

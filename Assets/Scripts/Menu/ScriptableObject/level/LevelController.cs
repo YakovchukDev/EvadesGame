@@ -1,5 +1,6 @@
+using System;
 using System.Collections.Generic;
-using MapGeneration.Data;
+using Map.Data;
 using Menu.ScriptableObject.Company;
 using Menu.SelectionClass;
 using UnityEngine;
@@ -17,8 +18,10 @@ namespace Menu.ScriptableObject.level
         [SerializeField] private GameObject _selectionClass;
         [SerializeField] private int _countLevel;
         [SerializeField] private List<CompanyPanel> _companyPanels;
-        [Header("VerticalLevelHeight")]
-        [SerializeField] private int _minVerticalLevelHeight;
+
+        [Header("VerticalLevelHeight")] [SerializeField]
+        private int _minVerticalLevelHeight;
+
         [SerializeField] private int _maxVerticalLevelHeight;
 
         private LevelElement _levelElement;
@@ -39,8 +42,6 @@ namespace Menu.ScriptableObject.level
                 PlayerPrefs.SetInt("CompleteLevel", 0);
             }
 
-            CompleteLevel = 30;
-
             CompanyButton.OnCompanyUnlocked += SpawnLevelElement;
         }
 
@@ -49,16 +50,14 @@ namespace Menu.ScriptableObject.level
         {
             for (int i = 0, textNumber = 1; i <= _countLevel - 1; i++, textNumber++)
             {
-                _levelMenuView.LevelElement.LevelButton.interactable = i <= CompleteLevel;
-                _levelMenuView.LevelElement.LevelNumberText.text = textNumber.ToString();
-                _levelMenuView.LevelElement.SetLevelParametrs(_levelParameters[i]);
                 _levelElement = Instantiate(_levelMenuView.LevelElement, _levelMenuView.ElementGrid);
+
+                _levelElement.LevelButton.interactable = i <= CompleteLevel;
+                _levelElement.LevelNumberText.text = textNumber.ToString();
+                _levelElement.SetLevelParameters(_levelParameters[i]);
                 InitializeLevelElement(textNumber, i);
+                _levelElement.SetAchievedTargets();
             }
-
-            /*Canvas.ForceUpdateCanvases();
-            _horizontalLayoutGroup.enabled = false;*/
-
 
             CompanyButton.OnCompanyUnlocked -= SpawnLevelElement;
         }
@@ -81,7 +80,7 @@ namespace Menu.ScriptableObject.level
             }
 
             _levelElement.Transform.localPosition =
-                new Vector2(transform.position.x, Random.Range(_minVerticalLevelHeight,_maxVerticalLevelHeight));
+                new Vector2(transform.position.x, Random.Range(_minVerticalLevelHeight, _maxVerticalLevelHeight));
             if (i == _newTypeLevels)
             {
                 _scriptableNumber++;
@@ -107,6 +106,11 @@ namespace Menu.ScriptableObject.level
             _classAvailability.CheckClassForLevel();
             _selectionClass.SetActive(true);
             _selectionAnimator.SetInteger("Information", 0);
+        }
+
+        private void OnDisable()
+        {
+            CompanyButton.OnCompanyUnlocked -= SpawnLevelElement;
         }
     }
 }

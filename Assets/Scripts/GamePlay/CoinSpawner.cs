@@ -1,49 +1,29 @@
-using MapGeneration.Coins;
+using Map.Coins;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace GamePlay
+public class CoinSpawner : MonoBehaviour
 {
-    public class CoinSpawner : MonoBehaviour
+    [SerializeField] private CoinControl _coinPrefab;
+    private CoinControl _coin;
+
+    private void OnEnable()
     {
-        [SerializeField] private GameObject _coinPrefab;
-        private GameObject _coin;
-        [SerializeField] private TMP_Text _coinTMP;
-
-
-        private void Start()
-        {
-            _coin = Instantiate(_coinPrefab, new Vector3(Random.Range(17, -17), 1, Random.Range(-17, 17)),
-                Quaternion.identity);
-            CoinControl.Survive += CoinReloadOnSurvive;
-            _coinTMP.text = "0";
-            //CoinControl.GiveCoin += UpdateQuantityCoin;
-            //  GeneralParameters.LoadedGeneralParameters += StartWork;
-        }
-
-        private void CoinReloadOnSurvive()
-        {
-            _coin.transform.position = new Vector3(Random.Range(17, -17), 1, Random.Range(-17, 17));
-            _coin.SetActive(true);
-        }
-
-        /*private void StartWork()
-    {
-        _coinTMP.text = $"{GeneralParameters.MainDataCollector.Coins}";
+        CoinControl.SetNewCoinOnSurvive += CoinReloadOnSurvive;
     }
-
-    private void UpdateQuantityCoin()
+    private void OnDisable()
     {
-        //GeneralParameters.MainDataCollector.Coins++;
-        _coinTMP.text = $"{GeneralParameters.MainDataCollector.Coins}";
-    }*/
-
-        private void OnDestroy()
-        {
-            CoinControl.Survive -= CoinReloadOnSurvive;
-            // CoinControl.GiveCoin -= UpdateQuantityCoin;
-            //GeneralParameters.LoadedGeneralParameters -= StartWork;
-        }
+        CoinControl.SetNewCoinOnSurvive -= CoinReloadOnSurvive;
+    }
+    private void Start()
+    {
+        CoinReloadOnSurvive();
+    }
+    private void CoinReloadOnSurvive()
+    {
+        Destroy(_coin);
+        _coin = Instantiate(_coinPrefab, new Vector3(Random.Range(17, -17), 1, Random.Range(-17, 17)), Quaternion.identity); 
+        _coin.SetQuantityAddCoins(1);
     }
 }
