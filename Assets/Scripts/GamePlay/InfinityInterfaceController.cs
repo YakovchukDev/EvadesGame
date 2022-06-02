@@ -87,8 +87,7 @@ namespace GamePlay
             if (!_isSave)
             {
                 //save time
-                if (PlayerPrefs.HasKey(CharacterObject[SelectionClassView.CharacterType]) &&
-                    Time > PlayerPrefs.GetFloat(CharacterObject[SelectionClassView.CharacterType]))
+                if (Time > PlayerPrefs.GetFloat(CharacterObject[SelectionClassView.CharacterType]))
                 {
                     PlayerPrefs.SetFloat(CharacterObject[SelectionClassView.CharacterType], Time);
                 }

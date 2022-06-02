@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Menu.ScriptableObject.level;
+using Menu.ScriptableObject.Shop;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,18 +36,12 @@ namespace Menu.SelectionClass
             }
         }
 
-        private void Update()
-        {
-        }
-
         public void CheckClassForInfinity()
         {
             _classes[0].interactable = true;
-            for (int i = 1;
-                i < _classes.Count;
-                i++)
+            for (int i = 1; i < _classes.Count; i++)
             {
-                if (LevelController.CompleteLevel >= _neededPassedLevels)
+                if (LevelController.CompleteLevel >= _neededPassedLevels || PlayerPrefs.GetInt($"Open{i}") == 1)
                 {
                     _classes[i].interactable = true;
                 }
@@ -91,6 +86,12 @@ namespace Menu.SelectionClass
                 {
                     _classes[i].interactable = false;
                 }
+
+                if (PlayerPrefs.GetInt($"Open{i}") == 1)
+                {
+                    _classes[i].interactable = true;
+                }
+                
 
                 _neededPassedLevels += 5;
             }
