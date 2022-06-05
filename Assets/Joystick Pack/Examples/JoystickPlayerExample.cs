@@ -63,7 +63,6 @@ namespace Joystick_Pack.Examples
         {
             if (other.gameObject.CompareTag("Wall"))
             {
-                print(1);
                 if (_variableJoystick.Horizontal != 0 || _variableJoystick.Vertical != 0)
                 {
                     foreach (ContactPoint missileHit in other.contacts)

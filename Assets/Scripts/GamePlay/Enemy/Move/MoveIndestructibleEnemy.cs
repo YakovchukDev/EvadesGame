@@ -6,15 +6,17 @@ namespace GamePlay.Enemy.Move
 {
     public class MoveIndestructibleEnemy : MonoBehaviour
     {
-        [FormerlySerializedAs("Spikes")] [SerializeField] private GameObject _spikes;
-        private const float LengthForTurn=1.38f;
+        [FormerlySerializedAs("Spikes")] [SerializeField]
+        private GameObject _spikes;
+
+        private const float LengthForTurn = 1.38f;
         private const float Z = -10;
         private const float X = 0;
         private const float Y = 0;
         private const float HelpY = 90;
         private float _speed = 0.01f;
         private float _time;
-        
+
         private void FixedUpdate()
         {
             transform.localScale = new Vector3(30, 30, 30);
@@ -59,7 +61,7 @@ namespace GamePlay.Enemy.Move
 
         private void SpikeRotate()
         {
-            _spikes.transform.Rotate(0,0,-3);
+            _spikes.transform.Rotate(0, 0, -3);
         }
     }
 }

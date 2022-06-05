@@ -12,7 +12,7 @@ namespace GamePlay.Character
             _materials = gameObject.transform.GetChild(0).GetComponent<Renderer>().materials;
         }
 
-        void Update()
+        private void Update()
         {
             if (gameObject.layer == 12)
             {

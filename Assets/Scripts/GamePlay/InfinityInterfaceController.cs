@@ -13,7 +13,7 @@ namespace GamePlay
     {
         [SerializeField] private AudioMixerGroup _audioMixer;
         [SerializeField] private CoinController _coinController;
-        private bool _isSave = false;
+        private bool _isSave;
 
         private readonly string[] CharacterObject =
         {

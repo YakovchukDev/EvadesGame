@@ -1,7 +1,7 @@
 using Menu.SelectionClass;
 using UnityEngine;
 
-namespace GamePlay.Character.Spell.TeleportFreeze
+namespace GamePlay.Character.Spell.Neo
 {
     public class TeleportSpell : MonoBehaviour
     {

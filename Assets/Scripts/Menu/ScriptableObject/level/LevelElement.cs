@@ -31,6 +31,14 @@ namespace Menu.ScriptableObject.level
         private void Start()
         {
             _audioManager = AudioManager.Instanse;
+            if (_levelButton.interactable == false)
+            {
+                foreach (var star in _stars)
+                {
+                    star.color= new Color(0.7f,0.7f,0.7f);
+                }
+            }
+            
         }
 
         public void Initialize()
@@ -71,7 +79,6 @@ namespace Menu.ScriptableObject.level
                 string stars = PlayerPrefs.GetString($"Level{LevelNumber}");
                 for(int i = 0; i < stars.Length && i < _stars.Count; i++)
                 {
-                    //_stars[i].gameObject.SetActive(stars[i] == '*');
                     _stars[i].sprite = _openStarSprite;
                 }
             }

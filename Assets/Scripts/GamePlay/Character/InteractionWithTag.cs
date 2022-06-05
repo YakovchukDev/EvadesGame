@@ -13,16 +13,6 @@ namespace GamePlay.Character
         private int _numberSlower;
         private int _numberFaster;
 
-
-        /*private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("Coin"))
-            {
-                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
-                _coinSpawner.CoinManipulate();
-            }
-        }*/
-
         private void OnTriggerStay(Collider other)
         {
             if (other.gameObject.CompareTag("Slower") && _numberSlower == 0)

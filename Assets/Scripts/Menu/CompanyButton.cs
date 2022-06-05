@@ -12,16 +12,19 @@ namespace Menu
         private AudioManager _audioManager;
         [SerializeField] private MenuAnimatorController _menuAnimatorController;
         [SerializeField] private SelectionClassView _selectionClassView;
+        [SerializeField] private Canvas _canvasMainMenu;
         [SerializeField] private GameObject _companyInfo;
         [SerializeField] private GameObject _companyButton;
         [SerializeField] private GameObject _companyMenuView;
         [SerializeField] private Animator _animatorButton;
         private bool _openClose;
+        private Image _companyImage;
 
         public static event Action<int> OnCompanyUnlocked;
 
         private void Start()
         {
+            _companyImage = _companyButton.GetComponent<Image>();
             Initialize();
             _audioManager = AudioManager.Instanse;
             if (PlayerPrefs.GetInt("CompanyOpened") == 0)
@@ -36,7 +39,7 @@ namespace Menu
         {
             if (PlayerPrefs.GetInt("CompanyOpened") == 1)
             {
-                _companyButton.GetComponent<Image>().color = new Color(1, 1, 1);
+                _companyImage.color = new Color(1, 1, 1);
             }
         }
 
@@ -52,6 +55,7 @@ namespace Menu
                 _companyMenuView.SetActive(true);
                 OnCompanyUnlocked?.Invoke(0);
                 _selectionClassView.SetWhatPlaying("Level");
+                _canvasMainMenu.enabled = false;
             }
             else
             {

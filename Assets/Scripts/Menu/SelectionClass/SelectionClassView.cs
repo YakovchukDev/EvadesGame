@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace Menu.SelectionClass
         public static string WhatPlaying { get; private set; }
         [SerializeField] private List<Button> _buttonSelection;
         [SerializeField] private TMP_Text _infoTime;
+        [SerializeField] private Image _progressLine;
+        [SerializeField] private Animator _slime;
 
         public TMP_Text InfoTime => _infoTime;
 
@@ -75,12 +78,25 @@ namespace Menu.SelectionClass
         {
             if (WhatPlaying == "Level")
             {
-                SceneManager.LoadScene("Company");
+                StartCoroutine(AsyncLoadScene("Company"));
+
             }
             else if (WhatPlaying == "Infinity")
             {
-                SceneManager.LoadScene("InfinityGame");
+                StartCoroutine(AsyncLoadScene("InfinityGame"));
             }
         }
+
+        private IEnumerator AsyncLoadScene(string sceneName)
+        {
+            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+            _slime.Play(0);
+            while (!operation.isDone)
+            { 
+                _progressLine.fillAmount=operation.progress;
+                yield return null;
+            }
+        }
+        
     }
 }

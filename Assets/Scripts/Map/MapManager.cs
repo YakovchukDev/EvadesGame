@@ -1,4 +1,4 @@
-using Audio;
+using System.Collections;
 using Map.Coins;
 using Map.Data;
 using UnityEngine;
@@ -18,11 +18,13 @@ namespace Map
         private RoomParameters[,] _mapOfRooms;
         private SafeZoneParameters[,] _mapOfSafeZones;
         [SerializeField] private CoinController _coinController;
-
+        [SerializeField] private ParticleSystem _teleportThereParticle;
+        [SerializeField] private ParticleSystem _teleportHereParticle;
+        private GameObject _character;
         private void OnEnable()
         {
             RoomParameters.OnEnterRoom += MoveMapArea;
-            TeleportController.OnTeleport += GoToCentralRoom;
+            TeleportController.OnTeleport += StartTeleportationToSaveZone;
             GamePlay.Character.HealthController.OnBackToSafeZone += GoToSafeZone;
             SafeZoneParameters.OnEnterSafeZone += SetLocationOfNewSafeZone;
             TeleportControl.OnGetCentralSafeZone += GetSafeZoneParameters;
@@ -31,7 +33,7 @@ namespace Map
         private void OnDisable()
         {
             RoomParameters.OnEnterRoom -= MoveMapArea;
-            TeleportController.OnTeleport -= GoToCentralRoom;
+            TeleportController.OnTeleport -= StartTeleportationToSaveZone;
             GamePlay.Character.HealthController.OnBackToSafeZone -= GoToSafeZone;
             SafeZoneParameters.OnEnterSafeZone -= SetLocationOfNewSafeZone;
             TeleportControl.OnGetCentralSafeZone -= GetSafeZoneParameters;
@@ -56,7 +58,26 @@ namespace Map
             ShowRoomsAroundSpecifiedCoordinates(new Vector2Int(LevelParameters.Branchs, 0));
         }
 
-        public void GoToCentralRoom()
+        private void StartTeleportationToSaveZone()
+        {
+            StartCoroutine(TeleportToCentralRoom());
+        }
+       
+
+        private IEnumerator TeleportToCentralRoom()
+        {
+            _character = _entitiesGenerator.GetSelectedCharacter();
+            _character.SetActive(false);
+            _teleportThereParticle.transform.position = _character.transform.position;
+            _teleportThereParticle.Play();
+            yield return new WaitForSeconds(1);
+            GoToCentralRoom();
+            _teleportHereParticle.transform.position = _character.transform.position;
+            _teleportHereParticle.Play();
+            yield return new WaitForSeconds(1);
+            _character.SetActive(true);
+        }
+        private void GoToCentralRoom()
         {
             _entitiesGenerator.SetPlayerCoordinates(new Vector3
             (
@@ -67,7 +88,6 @@ namespace Map
             ));
             ShowRoomsAroundSpecifiedCoordinates(new Vector2Int(LevelParameters.Branchs, _safeZoneWherePlayerWasOrIs.y));
         }
-
         public static ref MainDataCollector GetMainDataCollector() => ref MainDataCollector;
 
         private void SetLocationOfNewSafeZone(Vector2Int playerPosition)

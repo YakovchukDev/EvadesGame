@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Map.Data;
 using Menu.ScriptableObject.Company;
@@ -18,7 +17,6 @@ namespace Menu.ScriptableObject.level
         [SerializeField] private GameObject _selectionClass;
         [SerializeField] private int _countLevel;
         [SerializeField] private List<CompanyPanel> _companyPanels;
-
         [Header("VerticalLevelHeight")] [SerializeField]
         private int _minVerticalLevelHeight;
 

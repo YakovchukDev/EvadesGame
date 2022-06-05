@@ -1,10 +1,8 @@
 using System;
 using Audio;
 using Menu.SelectionClass;
-using Menu.Settings;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Serialization;
 
 namespace GamePlay.Character
 {
@@ -48,6 +46,7 @@ namespace GamePlay.Character
                 other.gameObject.layer == LayerMask.NameToLayer("IndestructibleEnemy"))
             {
                 HpNumber--;
+                _audioManager.Play("Die");
                 if (SelectionClassView.WhatPlaying == "Level")
                 {
                     if (HpNumber != 0)
@@ -83,7 +82,6 @@ namespace GamePlay.Character
             if (HpNumber <= 0)
             {
                 Time.timeScale = 0;
-                _audioManager.Play("Die");
                 _audioMixer.audioMixer.SetFloat("EffectVolume", -80);
                 OnZeroHp?.Invoke();
             }

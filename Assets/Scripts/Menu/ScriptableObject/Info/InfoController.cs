@@ -7,18 +7,22 @@ namespace Menu.ScriptableObject.Info
 {
     public class InfoController : MonoBehaviour
     {
-        [HideInInspector] public List<InfoElement> _personsElements;
+        
         [SerializeField] private Vector2[] _positions;
+
         [SerializeField] private List<InfoPanel> _infoPanels;
         [SerializeField] private InfoElement _elementGameObject;
         [SerializeField] private Transform _grid;
-        [SerializeField][Min(0.01f)] private float _scrollSpeed;
+        [SerializeField] [Min(0.01f)] private float _scrollSpeed;
+        private List<InfoElement> _personsElements;
+        private List<RectTransform> _rectTransforms;
         public int _turnOffComponentNumber = 3;
         private int _forFirstSibling;
         private int _forLastSibling = 2;
 
         private void Start()
         {
+            _personsElements = new List<InfoElement>();
             SpawnInfoElement();
             _personsElements[1].transform.SetAsFirstSibling();
             for (int i = 0; i < _positions.Length; i++)
@@ -35,6 +39,12 @@ namespace Menu.ScriptableObject.Info
             if (_turnOffComponentNumber < 0)
             {
                 _turnOffComponentNumber = 3;
+            }
+
+            _rectTransforms = new List<RectTransform>();
+            foreach (var personsElements in _personsElements)
+            {
+                _rectTransforms.Add(personsElements.GetComponent<RectTransform>());
             }
         }
 
@@ -99,11 +109,17 @@ namespace Menu.ScriptableObject.Info
 
         private IEnumerator SmoothMovement(int i)
         {
-            var rectTransform = _personsElements[i].GetComponent<RectTransform>();
-            while (rectTransform.anchoredPosition != _positions[i])
+            _personsElements[i].InfoButton.enabled = false;
+
+            while (Vector2.Distance(_rectTransforms[i].anchoredPosition, _positions[i]) > 1)
             {
-                rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition,
+                _rectTransforms[i].anchoredPosition = Vector2.Lerp(_rectTransforms[i].anchoredPosition,
                     _positions[i], _scrollSpeed);
+                if (Vector2.Distance(_rectTransforms[i].anchoredPosition, _positions[i]) > 10)
+                {
+                    _personsElements[i].InfoButton.enabled = true;
+                }
+
                 yield return new WaitForEndOfFrame();
             }
         }

@@ -26,7 +26,7 @@ namespace Map
             _cameraPosition.y = position.y + OffSetY;
             _cameraPosition.z = position.z;
 
-            transform.position = _cameraPosition;
+            transform.position =Vector3.Lerp(transform.position,_cameraPosition,0.5f); 
         }
     }
 }

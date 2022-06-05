@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e1173492fd84349bb25ec09ba86b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hpNumber: 1
+  HpNumber: 1
   _audioMixer: {fileID: 24300002, guid: 761f1e5b3abc4984b8494cb4169a56d8, type: 2}
   _immortalityTime: 0
   _immortality: 0
@@ -378,6 +378,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4333003994165406, guid: 0276da4f7f58f52488624adb26f2ec92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198892667053978848, guid: 0276da4f7f58f52488624adb26f2ec92, type: 3}
+      propertyPath: useUnscaledTime
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
