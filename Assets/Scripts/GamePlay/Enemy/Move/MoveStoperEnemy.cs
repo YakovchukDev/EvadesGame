@@ -15,6 +15,8 @@ namespace GamePlay.Enemy.Move
         private float _startLifetimeParticle;
         private bool _rotate = true;
         private GameObject _gameObject;
+        private readonly float[] _possiblesRotation1 = {-179, -89, 1, 91};
+        private readonly float[] _possiblesRotation2 = {-91, -1, 89, 179};
 
         private void Awake()
         {
@@ -27,8 +29,8 @@ namespace GamePlay.Enemy.Move
         private void Start()
         {
             _gameObject = GameObject.FindGameObjectWithTag("Freeze");
-            _rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
-            _startLifetimeParticle = _moveParticle.startLifetime;
+            _rotation = Quaternion.Euler(0,
+                Random.Range(_possiblesRotation1[Random.Range(0, 4)], _possiblesRotation2[Random.Range(0, 4)]), 0);
         }
 
         private void FixedUpdate()

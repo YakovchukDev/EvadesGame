@@ -14,7 +14,7 @@ namespace Map.Expirience
         public static event BoostMenu OpenBoostMenu;
         private SafeZoneParameters _saveZone;
         private AudioManager _audioManager;
-
+        public static bool InSaveZone;
         private void Awake()
         {
             _saveZone = GetComponent<SafeZoneParameters>();
@@ -25,6 +25,7 @@ namespace Map.Expirience
         {
             if (other.gameObject.tag == "Player")
             {
+                InSaveZone = true;
                 _audioManager.Play("SaveZoneOn");
                 if (_saveZone.IsSaveZone)
                 {
@@ -41,6 +42,7 @@ namespace Map.Expirience
         {
             if (other.gameObject.tag == "Player" && _saveZone.IsSaveZone)
             {
+                InSaveZone = false;
                 _audioManager.Play("SaveZoneOff");
 
                 OpenBoostMenu(false);

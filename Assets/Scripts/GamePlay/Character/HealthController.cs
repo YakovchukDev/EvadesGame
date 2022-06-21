@@ -36,6 +36,7 @@ namespace GamePlay.Character
 
         private void Update()
         {
+            
             HpImmortality();
         }
 

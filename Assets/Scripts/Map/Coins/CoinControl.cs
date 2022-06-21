@@ -39,10 +39,8 @@ namespace Map.Coins
             _collider.enabled = false;
             while (_material.GetFloat("_DissolveAmount") <= 1)
             {
-                print(_material.GetFloat("_DissolveAmount"));
                 _dissolveAmountValue +=0.03f;
                 _material.SetFloat("_DissolveAmount", _dissolveAmountValue);
-                print(_material.GetFloat("_DissolveAmount"));
 
                 yield return new WaitForEndOfFrame();
             }

@@ -1,4 +1,6 @@
+using GamePlay.Character;
 using GamePlay.Enemy.Move;
+using Map.Expirience;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,16 +16,35 @@ namespace GamePlay.Enemy
             _horns.SetActive(false);
         }
 
+        private void OnEnable()
+        {
+            HealthController.OnBackToSafeZone += Refresh;
+        }
+
+
+        private void OnDisable()
+        {
+            HealthController.OnBackToSafeZone -= Refresh;
+        }
+
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("GravityRadius") && other.gameObject.layer != 11)
             {
-                _moveEnemy.Rotate = true;
-                Vector3 direction = other.transform.position - transform.position;
-                direction.y = 0;
-                Quaternion rotation = Quaternion.LookRotation(direction);
-                _moveEnemy.Rotation = rotation;
-                _horns.SetActive(true);
+                print(ExpirienceControl.InSaveZone);
+                if (!ExpirienceControl.InSaveZone)
+                {
+                    _moveEnemy.Rotate = true;
+                    Vector3 direction = other.transform.position - transform.position;
+                    direction.y = 0;
+                    Quaternion rotation = Quaternion.LookRotation(direction);
+                    _moveEnemy.Rotation = rotation;
+                    _horns.SetActive(true);
+                }
+                else
+                {
+                    _horns.SetActive(false);
+                }
             }
         }
 
@@ -35,6 +56,11 @@ namespace GamePlay.Enemy
                 _moveEnemy.Rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
                 _horns.SetActive(false);
             }
+        }
+
+        private void Refresh()
+        {
+            _horns.SetActive(false);
         }
     }
 }

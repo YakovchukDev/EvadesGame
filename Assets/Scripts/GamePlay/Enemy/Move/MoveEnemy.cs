@@ -12,6 +12,8 @@ namespace GamePlay.Enemy.Move
         [SerializeField] private float _speed = 5;
         [SerializeField] private AudioSource _bounceSound;
         public Quaternion Rotation { get; set; }
+        private readonly float[] _possiblesRotation1 = {-179, -89, 1, 91};
+        private readonly float[] _possiblesRotation2 = {-91, -1, 89, 179};
         private GameObject _gameObject;
         private float _freezeTimer;
         private float _time;
@@ -23,14 +25,16 @@ namespace GamePlay.Enemy.Move
         {
             if (SceneManager.GetActiveScene().name == "Company")
             {
-                GetComponent<MoveEnemy>().enabled=true;
+                GetComponent<MoveEnemy>().enabled = true;
             }
         }
 
         private void Start()
         {
             _gameObject = GameObject.FindGameObjectWithTag("Freeze");
-            Rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+            Rotation = Quaternion.Euler(0,
+                Random.Range(_possiblesRotation1[Random.Range(0, 4)], _possiblesRotation2[Random.Range(0, 4)]), 0);
+            
         }
 
         private void FixedUpdate()

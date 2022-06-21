@@ -25,16 +25,16 @@ namespace Menu.SelectionClass
             ChoiceTypeOfCharacter(PlayerPrefs.GetInt("SelectionNumber"));
         }
 
-        public void ChoiceTypeOfCharacter(int characterType)
+        private void ChoiceTypeOfCharacter(int characterType)
         {
             CharacterType = characterType;
             PlayerPrefs.SetInt("SelectionNumber", characterType);
             foreach (var buttonSelection in _buttonSelection)
             {
-                buttonSelection.transform.localScale = new Vector3(1, 1, 1);
+                buttonSelection.GetComponent<RectTransform>().sizeDelta=new Vector2(250,250);
             }
 
-            _buttonSelection[CharacterType].transform.localScale = new Vector3(1.2f, 1.2f, 1);
+            _buttonSelection[CharacterType].GetComponent<RectTransform>().sizeDelta=new Vector2(300,300);
 
             if (WhatPlaying == "Infinity")
             {

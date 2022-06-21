@@ -189,7 +189,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 32639
   m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
@@ -1559,9 +1559,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4913160643675890344}
     - target: {fileID: 2126342842756212132, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
+      propertyPath: _characterList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126342842756212132, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
       propertyPath: _enemyList.Array.data[10]
       value: 
       objectReference: {fileID: 4913160643529305794}
+    - target: {fileID: 2126342842756212132, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
+      propertyPath: _characterList.Array.data[5]
+      value: 
+      objectReference: {fileID: 4929027674744662730, guid: 28318606d4f68ff4989a0e4090e1d1b5, type: 3}
     - target: {fileID: 2689113776418039495, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
       propertyPath: _musicSlider
       value: 

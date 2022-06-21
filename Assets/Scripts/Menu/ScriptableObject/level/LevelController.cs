@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Map.Data;
 using Menu.ScriptableObject.Company;
@@ -40,9 +41,14 @@ namespace Menu.ScriptableObject.level
                 PlayerPrefs.SetInt("CompleteLevel", 0);
             }
 
+            CompleteLevel = 30;
             CompanyButton.OnCompanyUnlocked += SpawnLevelElement;
         }
 
+        private void Update()
+        {
+            print(Random.Range(0,4));
+        }
 
         private void SpawnLevelElement(int parametr)
         {
