@@ -44,7 +44,6 @@ namespace Map.Coins
 
                 yield return new WaitForEndOfFrame();
             }
-            print(_material.GetFloat("_DissolveAmount"));
             Destroy(gameObject);
         }
 

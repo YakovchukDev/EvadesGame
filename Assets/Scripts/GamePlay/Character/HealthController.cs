@@ -1,5 +1,6 @@
 using System;
 using Audio;
+using GamePlay.Character.Spell;
 using Menu.SelectionClass;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -8,8 +9,9 @@ namespace GamePlay.Character
 {
     public class HealthController : MonoBehaviour
     {
-        public int HpNumber = 1;
+        [HideInInspector] public int HpNumber = 1;
         [SerializeField] private AudioMixerGroup _audioMixer;
+        private bool _restartComponent;
         private AudioManager _audioManager;
         public float _immortalityTime;
         public bool _immortality;
@@ -20,6 +22,7 @@ namespace GamePlay.Character
         private void Start()
         {
             _audioManager = AudioManager.Instanse;
+            _restartComponent = FindObjectOfType<RespawnSpell>();
             if (SelectionClassView.WhatPlaying == "Level")
             {
                 HpNumber = 3;
@@ -36,7 +39,6 @@ namespace GamePlay.Character
 
         private void Update()
         {
-            
             HpImmortality();
         }
 
@@ -46,21 +48,31 @@ namespace GamePlay.Character
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
                 other.gameObject.layer == LayerMask.NameToLayer("IndestructibleEnemy"))
             {
-                HpNumber--;
-                _audioManager.Play("Die");
-                if (SelectionClassView.WhatPlaying == "Level")
+                if (!_restartComponent)
                 {
-                    if (HpNumber != 0)
-                    {
-                        OnBackToSafeZone?.Invoke();
-                    }
+                    HpNumber--;
+                    _audioManager.Play("Die");
+                }
+            }
+        }
 
-                    HealthPanelUpdate?.Invoke(HpNumber);
+        public void LevelMinusHp()
+        {
+            HpNumber--;
+            _audioManager.Play("Die");
+
+            if (SelectionClassView.WhatPlaying == "Level")
+            {
+                if (HpNumber != 0)
+                {
+                    OnBackToSafeZone?.Invoke();
                 }
 
-                _immortality = true;
-                HpChecker();
+                HealthPanelUpdate?.Invoke(HpNumber);
             }
+
+            _immortality = true;
+            HpChecker();
         }
 
         private void HpImmortality()

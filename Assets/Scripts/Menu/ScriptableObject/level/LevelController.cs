@@ -18,6 +18,7 @@ namespace Menu.ScriptableObject.level
         [SerializeField] private GameObject _selectionClass;
         [SerializeField] private int _countLevel;
         [SerializeField] private List<CompanyPanel> _companyPanels;
+
         [Header("VerticalLevelHeight")] [SerializeField]
         private int _minVerticalLevelHeight;
 
@@ -41,13 +42,7 @@ namespace Menu.ScriptableObject.level
                 PlayerPrefs.SetInt("CompleteLevel", 0);
             }
 
-            CompleteLevel = 30;
             CompanyButton.OnCompanyUnlocked += SpawnLevelElement;
-        }
-
-        private void Update()
-        {
-            print(Random.Range(0,4));
         }
 
         private void SpawnLevelElement(int parametr)

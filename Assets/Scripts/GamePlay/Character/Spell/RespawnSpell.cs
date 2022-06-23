@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Joystick_Pack.Examples;
-using Menu.Settings;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -16,8 +16,11 @@ namespace GamePlay.Character.Spell
         [SerializeField] private GameObject _respawnParticle;
         [SerializeField] private List<Button> _spell1;
         [SerializeField] private int _spellNumber = 1;
+        [SerializeField] private GameObject _readoutPanel;
+        [SerializeField] private TMP_Text _readoutText;
+        private float _readout = 3;
+        private bool _forReadout;
         private GameObject _killer;
-        private Vector3 _diePosition;
         public static event Action<int> UpdateHearts;
 
         private void OnCollisionEnter(Collision other)
@@ -27,29 +30,65 @@ namespace GamePlay.Character.Spell
             {
                 if (_spellNumber >= 1)
                 {
+                    Time.timeScale = 0;
+                    _forReadout = true;
+                    _readoutPanel.SetActive(true);
                     foreach (var spell in _spell1)
                     {
                         spell.interactable = true;
                     }
 
                     _killer = other.gameObject;
-                    _diePosition = transform.position;
                 }
+                else
+                {
+                    _healthController.LevelMinusHp();
+                }
+            }
+        }
+
+        private void Update()
+        {
+            if (_forReadout)
+                Readout();
+        }
+
+        private void Readout()
+        {
+            _readout -= Time.unscaledDeltaTime;
+            _readoutText.text = Mathf.Round(_readout).ToString();
+            if (_readout <= 0 && _healthController.HpNumber <= 1)
+            {
+                Respawn();
+            }
+            else if (_readout <= 0)
+            {
+                _healthController.LevelMinusHp();
+                Time.timeScale = 1;
+                _readoutPanel.SetActive(false);
+                _forReadout = false;
+                foreach (var spell in _spell1)
+                {
+                    spell.interactable = false;
+                }
+
+                _readout = 3;
             }
         }
 
         public void Respawn()
         {
-            if (_spellNumber >= 1 && _healthController.HpNumber > 0)
+            if (_spellNumber >= 1)
             {
+                Time.timeScale = 1;
+                _readoutPanel.SetActive(false);
+                _forReadout = false;
+                _readout = 5;
+                _spellNumber--;
                 _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
                 _killer.SetActive(false);
-                transform.position = _diePosition;
                 JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;
-                _healthController.HpNumber++;
                 UpdateHearts?.Invoke(_healthController.HpNumber);
-                Time.timeScale = 1;
-                _spellNumber--;
                 _respawnParticle.SetActive(true);
                 _healthController._immortalityTime = 0;
                 _healthController._immortality = true;
@@ -57,9 +96,6 @@ namespace GamePlay.Character.Spell
                 {
                     spell.interactable = false;
                 }
-
-                SelectUIPosition diePanel = FindObjectOfType<SelectUIPosition>();
-                diePanel.DieClosed();
             }
         }
     }
