@@ -7,6 +7,5 @@ namespace Map.Data
         public GameObject EnemyObj;
         public int SpawnRate;
         public int ScoreRate;
-
     }
 }

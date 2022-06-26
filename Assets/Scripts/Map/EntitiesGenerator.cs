@@ -6,6 +6,7 @@ using Map.Data;
 using Map.Stars;
 using Menu.SelectionClass;
 using GamePlay.Character.Spell;
+using Random = UnityEngine.Random;
 
 namespace Map
 {
@@ -22,19 +23,24 @@ namespace Map
 
         public void InstantiateCharacter(Vector3 coordinateCharacter)
         {
-            _selectedCharacter = Instantiate(_characterList[SelectionClassView.CharacterType], coordinateCharacter, Quaternion.identity);
+            _selectedCharacter = Instantiate(_characterList[SelectionClassView.CharacterType], coordinateCharacter,
+                Quaternion.identity);
             _selectedCharacter.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
             if (_selectedCharacter.GetComponent<ManaController>() != null)
             {
                 HandOverManaController(_selectedCharacter.GetComponent<ManaController>());
             }
         }
+
         public GameObject GetSelectedCharacter() => _selectedCharacter;
+
         public void SetPlayerCoordinates(Vector3 coordinateCharacter)
         {
-            _selectedCharacter.transform.position = new Vector3 ( coordinateCharacter.x, _selectedCharacter.transform.position.y, coordinateCharacter.z);
+            _selectedCharacter.transform.position = new Vector3(coordinateCharacter.x,
+                _selectedCharacter.transform.position.y, coordinateCharacter.z);
         }
-        private bool LookLastRoom(StarSide side, int column, SafeZoneParameters [,] _safeZoneMap)
+
+        private bool LookLastRoom(StarSide side, int column, SafeZoneParameters[,] _safeZoneMap)
         {
             for (int row = _safeZoneMap.GetLength(0) - 1; row > 0; row--)
             {
@@ -50,27 +56,30 @@ namespace Map
                     return true;
                 }
             }
+
             return false;
         }
-        public void GenerateAndSpawnStars(SafeZoneParameters [,] _safeZoneMap)
+
+        public void GenerateAndSpawnStars(SafeZoneParameters[,] _safeZoneMap)
         {
             if (MapManager.LevelParameters.Branchs != 0)
             {
                 if (!MapManager.MainDataCollector.Level.UpStars)
                 {
-                    for(int column = 0; column < _safeZoneMap.GetLength(1); column++)
+                    for (int column = 0; column < _safeZoneMap.GetLength(1); column++)
                     {
-                        if(LookLastRoom(StarSide.Up, column, _safeZoneMap))
+                        if (LookLastRoom(StarSide.Up, column, _safeZoneMap))
                         {
                             break;
                         }
                     }
                 }
+
                 if (!MapManager.MainDataCollector.Level.DownStars)
                 {
-                    for(int column = _safeZoneMap.GetLength(1) - 1; column > 0; column--)
+                    for (int column = _safeZoneMap.GetLength(1) - 1; column > 0; column--)
                     {
-                        if(LookLastRoom(StarSide.Down, column, _safeZoneMap))
+                        if (LookLastRoom(StarSide.Down, column, _safeZoneMap))
                         {
                             break;
                         }
@@ -83,21 +92,22 @@ namespace Map
                 MapManager.MainDataCollector.Level.DownStars = true;
             }
         }
+
         public void GenerateAndSpawnCoinList(RoomParameters room)
         {
-            int maxCoinInRoom = UnityEngine.Random.Range(0, MapManager.LevelParameters.MaxCoinInRoom);
+            int maxCoinInRoom = Random.Range(0, MapManager.LevelParameters.MaxCoinInRoom);
             float indent = 3f;
             for (int i = 0; i < maxCoinInRoom; i++)
             {
                 CoinControl coin = Instantiate(_coin, new Vector3
                 (
-                    UnityEngine.Random.Range
+                    Random.Range
                     (
                         room.gameObject.transform.position.x - room.GetLengthX() / 2 + indent,
                         room.gameObject.transform.position.x + room.GetLengthX() / 2 - indent
                     ),
                     1,
-                    UnityEngine.Random.Range
+                    Random.Range
                     (
                         room.gameObject.transform.position.z - room.GetLengthZ() / 2 + indent,
                         room.gameObject.transform.position.z + room.GetLengthZ() / 2 - indent
@@ -106,6 +116,7 @@ namespace Map
                 coin.SetQuantityAddCoins(1);
             }
         }
+
         public void GenerateAndSpawnEmenyList(RoomParameters room)
         {
             //рахунок баллів для кімнати
@@ -122,6 +133,7 @@ namespace Map
                     optionCoordX.Add(i);
                 }
             }
+
             List<float> optionCoordZ = new List<float>()
             {
                 room.GetLengthZ() / 2 - indent,
@@ -146,17 +158,19 @@ namespace Map
                     }
                 }
             }
+
             //генерація списка ворогів і водночас їх спавн
-            for(int enemyCount = 0; score > 0 && enemyCount < MapManager.LevelParameters.MaxEnemiesInRoom;)
+            for (int enemyCount = 0; score > 0 && enemyCount < MapManager.LevelParameters.MaxEnemiesInRoom;)
             {
-                int index = UnityEngine.Random.Range(0, selectionEnemies.Count);
+                int index = Random.Range(0, selectionEnemies.Count);
                 if (selectionEnemies[index].ScoreRate <= score)
                 {
                     //перевіряю через імена, тому що при зрівненні геймобджектів видає fаlse, припускаю, що це взязанно з тим, що префаб в процессі роботи змінює свої параметри і таким чином не співпадає
-                    if (selectionEnemies[index].name == _indestructibleEnemy.name && indestructibleEnemyCounter < room.GetLengthX() / 2)
+                    if (selectionEnemies[index].name == _indestructibleEnemy.name &&
+                        indestructibleEnemyCounter < room.GetLengthX() / 2)
                     {
-                        int indexCoordX = UnityEngine.Random.Range(0, optionCoordX.Count);
-                        int indexCoordZ = UnityEngine.Random.Range(0, optionCoordZ.Count);
+                        int indexCoordX = Random.Range(0, optionCoordX.Count);
+                        int indexCoordZ = Random.Range(0, optionCoordZ.Count);
                         GameObject enemy = Instantiate(selectionEnemies[index].EnemyObj, new Vector3
                         (
                             room.gameObject.transform.position.x + optionCoordX[indexCoordX],
@@ -170,24 +184,26 @@ namespace Map
                     }
                     else
                     {
-                        selectionEnemies[index].EnemyObj.gameObject.transform.rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f);
-                        int scaleSize = UnityEngine.Random.Range(30, 80);
-                        selectionEnemies[index].EnemyObj.gameObject.transform.localScale = new Vector3(scaleSize, scaleSize, scaleSize);
+                        selectionEnemies[index].EnemyObj.gameObject.transform.rotation =
+                            Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+                        int scaleSize = Random.Range(30, 80);
+                        selectionEnemies[index].EnemyObj.gameObject.transform.localScale =
+                            new Vector3(scaleSize, scaleSize, scaleSize);
                         Instantiate(selectionEnemies[index].EnemyObj,
-                        new Vector3
-                        (
-                            UnityEngine.Random.Range
+                            new Vector3
                             (
-                                room.gameObject.transform.position.x - room.GetLengthX() / 2 + indent,
-                                room.gameObject.transform.position.x + room.GetLengthX() / 2 - indent
-                            ),
-                            1,
-                            UnityEngine.Random.Range
-                            (
-                                room.gameObject.transform.position.z - room.GetLengthZ() / 2 + indent,
-                                room.gameObject.transform.position.z + room.GetLengthZ() / 2 - indent
-                            )
-                        ), Quaternion.identity, room.transform);
+                                Random.Range
+                                (
+                                    room.gameObject.transform.position.x - room.GetLengthX() / 2 + indent,
+                                    room.gameObject.transform.position.x + room.GetLengthX() / 2 - indent
+                                ),
+                                1,
+                                Random.Range
+                                (
+                                    room.gameObject.transform.position.z - room.GetLengthZ() / 2 + indent,
+                                    room.gameObject.transform.position.z + room.GetLengthZ() / 2 - indent
+                                )
+                            ), Quaternion.Euler(0, Random.Range(0, 360), 0), room.transform);
                         enemyCount++;
                     }
 

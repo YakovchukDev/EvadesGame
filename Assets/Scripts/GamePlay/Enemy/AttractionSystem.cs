@@ -1,5 +1,6 @@
 using GamePlay.Character;
 using GamePlay.Enemy.Move;
+using Map.Data;
 using Map.Expirience;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,6 +11,7 @@ namespace GamePlay.Enemy
     {
         [SerializeField] private MoveEnemy _moveEnemy;
         [SerializeField] private GameObject _horns;
+        private bool _inSaveZone;
 
         private void Start()
         {
@@ -19,20 +21,26 @@ namespace GamePlay.Enemy
         private void OnEnable()
         {
             HealthController.OnBackToSafeZone += Refresh;
+            SafeZoneParameters.OnEnter += OrSaveZone;
+
         }
 
 
         private void OnDisable()
         {
             HealthController.OnBackToSafeZone -= Refresh;
-        }
+            SafeZoneParameters.OnEnter -= OrSaveZone;
 
+        }
+        private void OrSaveZone(bool orSaveZone)
+        {
+            _inSaveZone = orSaveZone;
+        }
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("GravityRadius") && other.gameObject.layer != 11)
             {
-                print(ExpirienceControl.InSaveZone);
-                if (!ExpirienceControl.InSaveZone)
+                if (!_inSaveZone)
                 {
                     _moveEnemy.Rotate = true;
                     Vector3 direction = other.transform.position - transform.position;

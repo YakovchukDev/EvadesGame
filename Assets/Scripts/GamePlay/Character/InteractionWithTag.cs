@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using GamePlay.Character.Spell;
 using Joystick_Pack.Examples;
+using Map.Data;
 using Map.Expirience;
 using UnityEngine;
 
@@ -14,32 +15,41 @@ namespace GamePlay.Character
         [SerializeField] private GameObject _father;
         private int _numberSlower;
         private int _numberFaster;
+        private bool _inSaveZone;
 
         private void OnEnable()
         {
             HealthController.OnBackToSafeZone += Refresh;
+            SafeZoneParameters.OnEnter += OrSaveZone;
+
         }
 
         private void OnDisable()
         {
             HealthController.OnBackToSafeZone -= Refresh;
+            SafeZoneParameters.OnEnter -= OrSaveZone;
+
         }
 
+        private void OrSaveZone(bool orSaveZone)
+        {
+            _inSaveZone = orSaveZone;
+        }
         private void OnTriggerStay(Collider other)
         {
-            if (other.gameObject.CompareTag("Slower") && _numberSlower == 0 && !ExpirienceControl.InSaveZone)
+            if (other.gameObject.CompareTag("Slower") && _numberSlower == 0 && !_inSaveZone)
             {
                 JoystickPlayerExample.Speed /= 2;
                 _numberSlower++;
             }
 
-            if (other.gameObject.CompareTag("Faster") && _numberFaster == 0 && !ExpirienceControl.InSaveZone)
+            if (other.gameObject.CompareTag("Faster") && _numberFaster == 0 && !_inSaveZone)
             {
                 JoystickPlayerExample.Speed *= 2;
                 _numberFaster++;
             }
 
-            if (other.gameObject.CompareTag("GrowUp") && !ExpirienceControl.InSaveZone)
+            if (other.gameObject.CompareTag("GrowUp") && !_inSaveZone)
             {
                 _father.transform.localScale = new Vector3(2, 2, 2);
                 foreach (var noGrowUp in _noGrowUp)
@@ -48,7 +58,7 @@ namespace GamePlay.Character
                 }
             }
 
-            if (other.gameObject.CompareTag("ManaEater") && _manaController != null && !ExpirienceControl.InSaveZone)
+            if (other.gameObject.CompareTag("ManaEater") && _manaController != null && !_inSaveZone)
             {
                 _manaController.ManaReduction(0.5f);
             }

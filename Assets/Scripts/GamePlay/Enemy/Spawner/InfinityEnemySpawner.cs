@@ -14,9 +14,7 @@ namespace GamePlay.Enemy.Spawner
         [SerializeField] private List<GameObject> _allEnemy;
         [SerializeField] private List<Animation> _animation;
         [SerializeField] private ParticleSystem _enemyDieParticle;
-
         private readonly Vector3[] _spawnPos = new Vector3[4];
-        private readonly float[] _possibleSizes = {20f, 40f, 100f};
         public static int SpawnNumber;
         public static int Index;
         private float _spawnTime = 2;
@@ -51,7 +49,7 @@ namespace GamePlay.Enemy.Spawner
                     _animation[Index].Play("SlidingDoors");
                     SpawnNumber++;
                     GameObject enemy = _enemyClass1[Random.Range(0, _enemyClass1.Count)];
-                    float enemySize = _possibleSizes[Random.Range(0, _possibleSizes.Length)];
+                    float enemySize = Random.Range(30f,100f);
                     enemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
                     _allEnemy.Add(Instantiate(enemy, _spawnPos[Index], Quaternion.Euler(-90, Random.Range(0, 360), 0)));
                     yield return new WaitForSeconds(_spawnTime += 0.2f);
@@ -67,7 +65,7 @@ namespace GamePlay.Enemy.Spawner
                     _animation[Index].Play("SlidingDoors");
                     SpawnNumber++;
                     GameObject enemy = _enemyClass2[Random.Range(0, _enemyClass2.Count)];
-                    float enemySize = _possibleSizes[Random.Range(0, _possibleSizes.Length)];
+                    float enemySize = Random.Range(30f,100f);
                     enemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
                     _allEnemy.Add(Instantiate(enemy, _spawnPos[Index], Quaternion.Euler(0, Random.Range(0, 360), 0)));
                     yield return new WaitForSeconds(_spawnTime);
@@ -82,7 +80,7 @@ namespace GamePlay.Enemy.Spawner
                     _animation[Index].Play("SlidingDoors");
                     SpawnNumber++;
                     GameObject enemy = _enemyClass3[Random.Range(0, _enemyClass3.Count)];
-                    float enemySize = _possibleSizes[Random.Range(0, _possibleSizes.Length)];
+                    float enemySize = Random.Range(30f,100f);
                     enemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
                     _allEnemy.Add(Instantiate(enemy, _spawnPos[Index], Quaternion.Euler(0, Random.Range(0, 360), 0)));
                     yield return new WaitForSeconds(_spawnTime);
@@ -97,7 +95,7 @@ namespace GamePlay.Enemy.Spawner
                     _animation[Index].Play("SlidingDoors");
                     SpawnNumber++;
                     GameObject enemy = _enemyClass4[Random.Range(0, _enemyClass4.Count)];
-                    float enemySize = _possibleSizes[Random.Range(0, _possibleSizes.Length)];
+                    float enemySize = Random.Range(30f,100f);
                     enemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
                     _allEnemy.Add(Instantiate(enemy, _spawnPos[Index], Quaternion.Euler(0, Random.Range(0, 360), 0)));
                     yield return new WaitForSeconds(_spawnTime);

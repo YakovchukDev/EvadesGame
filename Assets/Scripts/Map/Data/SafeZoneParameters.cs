@@ -15,8 +15,9 @@ namespace Map.Data
         private bool _isHaveExpirience;
         private Vector2Int _positionRoom;
         private AudioManager _audioManager;
-        public static event Action<Vector2Int> OnEnterSafeZone;
 
+        public static event Action<Vector2Int> OnEnterSafeZone;
+        public static event Action<bool> OnEnter;
         private void Start()
         {
             _audioManager = AudioManager.Instanse;
@@ -26,7 +27,8 @@ namespace Map.Data
         {
             if(other.gameObject.CompareTag("Player") && IsSaveZone)
             {
-                OnEnterSafeZone(_positionRoom);
+                OnEnterSafeZone?.Invoke(_positionRoom);
+                OnEnter?.Invoke(IsSaveZone);
                 if (_audioManager != null)
                 {
                     _audioManager.IsMute("Friction",true);
@@ -38,6 +40,15 @@ namespace Map.Data
                 other.gameObject.transform.SetParent(this.transform);
             }
         }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player") && IsSaveZone)
+            {
+                OnEnter?.Invoke(false);
+            }
+        }
+
         public void SetHorizontalParameters(bool isSaveZone)
         {
             IsSaveZone = isSaveZone;

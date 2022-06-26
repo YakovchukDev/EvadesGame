@@ -52,6 +52,7 @@ namespace GamePlay.Character
                 {
                     HpNumber--;
                     _audioManager.Play("Die");
+                    HpChecker();
                 }
             }
         }
