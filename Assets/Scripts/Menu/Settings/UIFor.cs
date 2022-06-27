@@ -7,7 +7,6 @@ namespace Menu.Settings
     public class UIFor : MonoBehaviour
     {
         private string _rightOrLeft;
-        [SerializeField] private SelectUIPosition _selectUIPosition;
         private ButtonSpellPosition _buttonSpellPosition;
         [SerializeField] private TMP_Text _forWhoText;
 
@@ -105,12 +104,6 @@ namespace Menu.Settings
                 _thisImage.sprite = _forRightHanded;
                 PlayerPrefs.SetString("RightOrLeft", "Right");
             }
-
-            if (_selectUIPosition != null)
-            {
-                _selectUIPosition.SelectJoystickPosition();
-            }
-
             _buttonSpellPosition = FindObjectOfType<ButtonSpellPosition>();
             if (_buttonSpellPosition != null)
             {

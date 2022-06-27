@@ -1,5 +1,4 @@
-﻿using System;
-using GamePlay.Character;
+﻿using GamePlay.Character;
 using UnityEngine;
 
 namespace Menu.Settings

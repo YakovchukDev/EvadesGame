@@ -46,58 +46,31 @@ namespace GamePlay.Enemy.Spawner
                 }
                 else if (SpawnNumber < 25)
                 {
-                    _animation[Index].Play("SlidingDoors");
-                    SpawnNumber++;
-                    GameObject enemy = _enemyClass1[Random.Range(0, _enemyClass1.Count)];
-                    float enemySize = Random.Range(30f,100f);
-                    enemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
-                    _allEnemy.Add(Instantiate(enemy, _spawnPos[Index], Quaternion.Euler(-90, Random.Range(0, 360), 0)));
-                    yield return new WaitForSeconds(_spawnTime += 0.2f);
 
+                    Spawn(_enemyClass1);
+                    yield return new WaitForSeconds(_spawnTime += 0.2f);
                     Index = Random.Range(0, 4);
+
                 }
                 else if (SpawnNumber < 30)
                 {
-                    _enemyDieParticle.transform.localScale = _allEnemy[0].transform.localScale / 480;
-                    Instantiate(_enemyDieParticle, _allEnemy[0].transform.position, Quaternion.identity);
-                    Destroy(_allEnemy[0]);
-                    _allEnemy.Remove(_allEnemy[0]);
-                    _animation[Index].Play("SlidingDoors");
-                    SpawnNumber++;
-                    GameObject enemy = _enemyClass2[Random.Range(0, _enemyClass2.Count)];
-                    float enemySize = Random.Range(30f,100f);
-                    enemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
-                    _allEnemy.Add(Instantiate(enemy, _spawnPos[Index], Quaternion.Euler(0, Random.Range(0, 360), 0)));
+                    
+                    Destroy();
+                    Spawn(_enemyClass2);
                     yield return new WaitForSeconds(_spawnTime);
                     Index = Random.Range(0, 4);
                 }
                 else if (SpawnNumber < 35)
                 {
-                    _enemyDieParticle.transform.localScale = _allEnemy[0].transform.localScale / 480;
-                    Instantiate(_enemyDieParticle, _allEnemy[0].transform.position, Quaternion.identity);
-                    Destroy(_allEnemy[0]);
-                    _allEnemy.Remove(_allEnemy[0]);
-                    _animation[Index].Play("SlidingDoors");
-                    SpawnNumber++;
-                    GameObject enemy = _enemyClass3[Random.Range(0, _enemyClass3.Count)];
-                    float enemySize = Random.Range(30f,100f);
-                    enemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
-                    _allEnemy.Add(Instantiate(enemy, _spawnPos[Index], Quaternion.Euler(0, Random.Range(0, 360), 0)));
+                    Destroy();
+                    Spawn(_enemyClass3);
                     yield return new WaitForSeconds(_spawnTime);
                     Index = Random.Range(0, 4);
                 }
                 else if (SpawnNumber < 40)
                 {
-                    _enemyDieParticle.transform.localScale = _allEnemy[0].transform.localScale / 480;
-                    Instantiate(_enemyDieParticle, _allEnemy[0].transform.position, Quaternion.identity);
-                    Destroy(_allEnemy[0]);
-                    _allEnemy.Remove(_allEnemy[0]);
-                    _animation[Index].Play("SlidingDoors");
-                    SpawnNumber++;
-                    GameObject enemy = _enemyClass4[Random.Range(0, _enemyClass4.Count)];
-                    float enemySize = Random.Range(30f,100f);
-                    enemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
-                    _allEnemy.Add(Instantiate(enemy, _spawnPos[Index], Quaternion.Euler(0, Random.Range(0, 360), 0)));
+                    Destroy();
+                    Spawn(_enemyClass4);
                     yield return new WaitForSeconds(_spawnTime);
                     Index = Random.Range(0, 4);
                 }
@@ -106,6 +79,26 @@ namespace GamePlay.Enemy.Spawner
                     SpawnNumber++;
                 }
             }
+        }
+
+        private void Destroy()
+        {
+            _enemyDieParticle.transform.localScale = _allEnemy[0].transform.localScale / 480;
+            Instantiate(_enemyDieParticle, _allEnemy[0].transform.position, Quaternion.identity);
+            Destroy(_allEnemy[0]);
+            _allEnemy.Remove(_allEnemy[0]);
+        }
+
+        private void Spawn(List<GameObject> _enemyClass)
+        {
+            
+            _animation[Index].Play("SlidingDoors");
+            SpawnNumber++;
+            GameObject enemy = _enemyClass[Random.Range(0, _enemyClass.Count)];
+            float enemySize = Random.Range(30f, 100f);
+            enemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
+            _allEnemy.Add(Instantiate(enemy, _spawnPos[Index], Quaternion.Euler(0, Random.Range(0, 360), 0)));
+            
         }
     }
 }
