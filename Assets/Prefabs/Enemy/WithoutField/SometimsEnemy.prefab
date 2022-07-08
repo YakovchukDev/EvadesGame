@@ -4804,7 +4804,7 @@ Transform:
   m_GameObject: {fileID: 2676826178133515840}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 51.225822, y: 51.225822, z: 51.225822}
   m_Children:
   - {fileID: 1912856491467408727}
   - {fileID: 385538354719706881}
@@ -4840,9 +4840,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344f86410b82eb54291f43d1f2c265fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _freezeField: {fileID: 0}
-  _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
   _speed: 5
+  _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
   _bounceSound: {fileID: 3527419095525908352}
 --- !u!54 &2676826178133515850
 Rigidbody:
@@ -4872,6 +4871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b900c92a8bade554fa45aca0ac2edc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _renderer: {fileID: 774891834322779704}
   _particles:
   - {fileID: 1274168631924484944}
   - {fileID: 382838314736084851}
@@ -4899,7 +4899,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e0339e3903eb044af063508344d5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _index: 0
 --- !u!114 &7085459589094039817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5108,13 +5107,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: bea9fe07b10ddbd4f97ae4ed193c59e8, type: 2}
     - target: {fileID: 919132149155446097, guid: 1962a6dab5d20374ead97cc6856db22a, type: 3}
       propertyPath: m_Name
-      value: "\u041F\u0443\u0448\u0435\u04402"
+      value: Model
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1962a6dab5d20374ead97cc6856db22a, type: 3}
 --- !u!4 &1912856491467408727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1962a6dab5d20374ead97cc6856db22a, type: 3}
+  m_PrefabInstance: {fileID: 2090072259099779772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &774891834322779704 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 1962a6dab5d20374ead97cc6856db22a, type: 3}
   m_PrefabInstance: {fileID: 2090072259099779772}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4170406165561549961

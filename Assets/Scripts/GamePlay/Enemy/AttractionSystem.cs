@@ -1,7 +1,6 @@
 using GamePlay.Character;
 using GamePlay.Enemy.Move;
 using Map.Data;
-using Map.Expirience;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +8,7 @@ namespace GamePlay.Enemy
 {
     public class AttractionSystem : MonoBehaviour
     {
-        [SerializeField] private MoveEnemy _moveEnemy;
+        [SerializeField] private MoveJust _moveJust;
         [SerializeField] private GameObject _horns;
         private bool _inSaveZone;
 
@@ -42,11 +41,10 @@ namespace GamePlay.Enemy
             {
                 if (!_inSaveZone)
                 {
-                    _moveEnemy.Rotate = true;
                     Vector3 direction = other.transform.position - transform.position;
                     direction.y = 0;
                     Quaternion rotation = Quaternion.LookRotation(direction);
-                    _moveEnemy.Rotation = rotation;
+                    _moveJust.Rotation = rotation;
                     _horns.SetActive(true);
                 }
                 else
@@ -60,8 +58,7 @@ namespace GamePlay.Enemy
         {
             if (other.CompareTag("GravityRadius"))
             {
-                _moveEnemy.Rotate = true;
-                _moveEnemy.Rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+                _moveJust.Rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
                 _horns.SetActive(false);
             }
         }

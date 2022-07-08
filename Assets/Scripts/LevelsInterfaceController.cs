@@ -1,4 +1,4 @@
-using GamePlay.Enemy.Spawner;
+using GamePlay.Enemy.ForInfinity.Spawner;
 using Menu.SelectionClass;
 using UnityEngine;
 using UnityEngine.Audio;

@@ -4,6 +4,7 @@ namespace GamePlay.Enemy.Skill
 {
     public class GrowUpDown : MonoBehaviour
     {
+        [SerializeField] private Renderer _renderer;
         [SerializeField] private GameObject _particleExhale;
         [SerializeField] private GameObject _particleInhale;
         private float _maxScale;
@@ -14,11 +15,10 @@ namespace GamePlay.Enemy.Skill
         private bool _timerGo;
         private bool _upDown = true;
 
-        void Start()
+        private void Start()
         {
             var localScale = transform.GetChild(0).localScale;
-            localScale = new Vector3
-                (localScale.x / 1.5f, localScale.y / 1.5f, localScale.z / 1.5f);
+            localScale = new Vector3(localScale.x / 1.5f, localScale.y / 1.5f, localScale.z / 1.5f);
             transform.GetChild(0).localScale = localScale;
             _minScale = localScale.x;
             _changeScale = localScale.x;
@@ -51,8 +51,7 @@ namespace GamePlay.Enemy.Skill
                 {
                     _changeScale += 0.09f * Time.deltaTime;
                     transform.GetChild(0).localScale = new Vector3(_changeScale, _changeScale, _changeScale);
-                    gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[2].color =
-                        Color.Lerp(Color.yellow, Color.red, Mathf.Abs(Mathf.Sin(Time.time)));
+                    _renderer.materials[2].color = Color.Lerp(Color.yellow, Color.red, Mathf.Abs(Mathf.Sin(Time.time)));
                     _particleExhale.SetActive(false);
                     _particleInhale.SetActive(true);
                 }
@@ -71,12 +70,11 @@ namespace GamePlay.Enemy.Skill
             {
                 if (_changeScale >= _minScale)
                 {
-                    _particleExhale.SetActive(true);
-                    _particleInhale.SetActive(false);
                     _changeScale -= 0.09f * Time.deltaTime;
                     transform.GetChild(0).localScale = new Vector3(_changeScale, _changeScale, _changeScale);
-                    gameObject.transform.GetChild(0).GetComponent<Renderer>().materials[2].color =
-                        Color.Lerp(Color.yellow, Color.red, Mathf.Abs(Mathf.Sin(Time.time)));
+                    _renderer.materials[2].color = Color.Lerp(Color.red, Color.yellow,Mathf.Abs(Mathf.Sin(Time.time)));
+                    _particleExhale.SetActive(true);
+                    _particleInhale.SetActive(false);
                 }
                 else
                     _upDown = true;

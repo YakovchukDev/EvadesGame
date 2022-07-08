@@ -1,5 +1,5 @@
 using System;
-using GamePlay.Enemy.Spawner;
+using GamePlay.Enemy.ForInfinity.Spawner;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;

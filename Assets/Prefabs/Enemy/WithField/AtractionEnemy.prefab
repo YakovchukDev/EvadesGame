@@ -169,7 +169,7 @@ Transform:
   m_GameObject: {fileID: 3239914737928764452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalScale: {x: 72.99478, y: 72.99478, z: 72.99478}
   m_Children:
   - {fileID: 8430019086521338474}
   - {fileID: 3239914737503903033}
@@ -220,9 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344f86410b82eb54291f43d1f2c265fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _freezeField: {fileID: 0}
-  _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
   _speed: 5
+  _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
   _bounceSound: {fileID: 4232053427744641639}
 --- !u!114 &-2981923434778932814
 MonoBehaviour:
@@ -250,7 +249,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startOff: {fileID: 3239914737503903038}
   _particle: {fileID: 6202012047040873091}
-  _index: 0
 --- !u!114 &-9220734749106810596
 MonoBehaviour:
   m_ObjectHideFlags: 0

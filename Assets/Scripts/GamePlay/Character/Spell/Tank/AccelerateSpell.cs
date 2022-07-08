@@ -3,7 +3,7 @@ using Joystick_Pack.Examples;
 using Menu.SelectionClass;
 using UnityEngine;
 
-namespace GamePlay.Character.Spell.SpeederInvulnerable
+namespace GamePlay.Character.Spell.Tank
 {
     public class AccelerateSpell : MonoBehaviour
     {
@@ -19,7 +19,6 @@ namespace GamePlay.Character.Spell.SpeederInvulnerable
         private float _time;
         private float _starterTime;
         private static readonly int Magmax = Animator.StringToHash("Magmax");
-        private static readonly int Accelerate1 = Animator.StringToHash("Accelerate");
         private float _levelSpell1;
         public bool CheckAccelerate { get; set; }
 

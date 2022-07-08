@@ -47,6 +47,7 @@ namespace GamePlay.Character.Spell
 
             ManaRegen(Regen);
         }
+
         public bool ManaReduction(float minusMana)
         {
             if (_mana >= minusMana)
@@ -55,10 +56,7 @@ namespace GamePlay.Character.Spell
                 _manaComponent.fillAmount = _mana / AllMana;
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         private void ManaRegen(float speedRegen)

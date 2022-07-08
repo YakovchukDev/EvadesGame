@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 9168754128252031128}
   m_LocalRotation: {x: 0, y: 0.6848752, z: 0, w: 0.7286604}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 54.27656, y: 54.27656, z: 54.27656}
   m_Children:
   - {fileID: 7823136947789073632}
   - {fileID: 4093326310677686699}
@@ -82,11 +82,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce318193cab6afe4683440bf68bd1aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _freezeField: {fileID: 0}
-  _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
   _speed: 5
+  _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
   _bounceSound: {fileID: 530250113446078833}
-  _moveParticle: {fileID: 4180414932579221045}
 --- !u!114 &-1316026555900600945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e0339e3903eb044af063508344d5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _index: 0
 --- !u!114 &8727108309681954660
 MonoBehaviour:
   m_ObjectHideFlags: 0

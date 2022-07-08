@@ -1,5 +1,5 @@
 using GamePlay.Character;
-using GamePlay.Enemy.Spawner;
+using GamePlay.Enemy.ForInfinity.Spawner;
 using Menu.SelectionClass;
 using TMPro;
 using UnityEngine;

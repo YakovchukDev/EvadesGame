@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GamePlay.Character.Spell.Morfe
+namespace GamePlay.Character.Spell.Shooter
 {
     public class MinimizeSpell : MonoBehaviour
     {

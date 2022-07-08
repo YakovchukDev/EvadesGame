@@ -1,50 +1,40 @@
-using GamePlay.Enemy.Spawner;
+using GamePlay.Enemy.ForInfinity.Spawner;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GamePlay.Enemy.Move
 {
-    public class MoveIndestructibleEnemy : MonoBehaviour
+    public class MoveIndestructible : EnemyMove
     {
-        [FormerlySerializedAs("Spikes")] [SerializeField]
-        private GameObject _spikes;
-
+        [SerializeField] private GameObject _spikes;
         private const float LengthForTurn = 1.38f;
         private const float Z = -10;
         private const float X = 0;
-        private const float Y = 0;
-        private const float HelpY = 90;
-        private float _speed = 0.01f;
-        private float _time;
+        private const float Turn = 90;
 
         private void FixedUpdate()
         {
             transform.localScale = new Vector3(30, 30, 30);
-            MoveSystem();
-            DirectionAndSpeedMovement();
+            MoveSystem(_speed);
+            ChangeDirection(Turn); // "+" - left; "-" - right;
             SpikeRotate();
         }
 
-        private void MoveSystem()
+        protected override void MoveSystem(float speed)
         {
             if (InfinityEnemySpawner.SpawnNumber >= 40)
             {
-                _time += Time.deltaTime;
-                if (_time > 5)
+                FasterTime += Time.deltaTime;
+                if (FasterTime > 5)
                 {
-                    _time = 0;
+                    FasterTime = 0;
                     _speed += 0.0005f;
                 }
+            }
 
-                transform.Translate(new Vector3(X * _speed, 0, Z * _speed));
-            }
-            else
-            {
-                transform.Translate(new Vector3(X * _speed, 0, Z * _speed));
-            }
+            transform.Translate(new Vector3(X * _speed, 0, Z * _speed));
         }
 
-        private void DirectionAndSpeedMovement()
+        private void ChangeDirection(float turn)
         {
             Ray ray = new Ray(transform.position, -transform.forward);
             if (Physics.Raycast(ray, out var hit))
@@ -53,7 +43,7 @@ namespace GamePlay.Enemy.Move
                 {
                     if (hit.transform.gameObject.CompareTag("Wall"))
                     {
-                        transform.Rotate(0, Y + HelpY, 0);
+                        transform.Rotate(0, turn, 0);
                     }
                 }
             }

@@ -11542,10 +11542,10 @@ RectTransform:
   m_Father: {fileID: 1006246787}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.825, y: -145.919}
-  m_SizeDelta: {x: 1933.474, y: 291.838}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.8250122, y: -145.919}
+  m_SizeDelta: {x: 13.473999, y: 291.838}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &765239242
 MonoBehaviour:
@@ -12349,7 +12349,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885446052}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -13227,7 +13227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1006246787
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13293,7 +13293,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006246786}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -25641,7 +25641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0ae5b2cbbd6874bbf6ba83e19a1814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectUIPosition: {fileID: 0}
   _forWhoText: {fileID: 431804472}
   _thisImage: {fileID: 305220002}
   _forRightHanded: {fileID: 4689753401836871432, guid: aa0fd11e549f3a84299697d73aad189c, type: 3}
@@ -32358,10 +32357,10 @@ RectTransform:
   m_Father: {fileID: 320137073}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.825, y: -145.919}
-  m_SizeDelta: {x: 1933.474, y: 291.838}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.8250122, y: -145.919}
+  m_SizeDelta: {x: 13.473999, y: 291.838}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2143526605
 MonoBehaviour:
