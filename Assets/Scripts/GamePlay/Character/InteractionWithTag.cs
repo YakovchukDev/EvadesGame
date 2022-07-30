@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Education.Level;
 using GamePlay.Character.Spell;
 using Joystick_Pack.Examples;
 using Map.Data;
-using Map.Expirience;
 using UnityEngine;
 
 namespace GamePlay.Character
@@ -21,46 +21,51 @@ namespace GamePlay.Character
         {
             HealthController.OnBackToSafeZone += Refresh;
             SafeZoneParameters.OnEnter += OrSaveZone;
-
+            EducationSaveZone.OnEnter += OrSaveZone;
         }
 
         private void OnDisable()
         {
             HealthController.OnBackToSafeZone -= Refresh;
             SafeZoneParameters.OnEnter -= OrSaveZone;
-
+            EducationSaveZone.OnEnter -= OrSaveZone;
         }
+
 
         private void OrSaveZone(bool orSaveZone)
         {
             _inSaveZone = orSaveZone;
         }
+
         private void OnTriggerStay(Collider other)
         {
-            if (other.gameObject.CompareTag("Slower") && _numberSlower == 0 && !_inSaveZone)
+            if (!_inSaveZone)
             {
-                JoystickPlayerExample.Speed /= 2;
-                _numberSlower++;
-            }
-
-            if (other.gameObject.CompareTag("Faster") && _numberFaster == 0 && !_inSaveZone)
-            {
-                JoystickPlayerExample.Speed *= 2;
-                _numberFaster++;
-            }
-
-            if (other.gameObject.CompareTag("GrowUp") && !_inSaveZone)
-            {
-                _father.transform.localScale = new Vector3(2, 2, 2);
-                foreach (var noGrowUp in _noGrowUp)
+                if (other.gameObject.CompareTag("Slower") && _numberSlower == 0)
                 {
-                    noGrowUp.transform.localScale = Vector3.one / 2;
+                    JoystickPlayerExample.Speed /= 2;
+                    _numberSlower++;
                 }
-            }
 
-            if (other.gameObject.CompareTag("ManaEater") && _manaController != null && !_inSaveZone)
-            {
-                _manaController.ManaReduction(0.5f);
+                if (other.gameObject.CompareTag("Faster") && _numberFaster == 0)
+                {
+                    JoystickPlayerExample.Speed *= 2;
+                    _numberFaster++;
+                }
+
+                if (other.gameObject.CompareTag("GrowUp"))
+                {
+                    _father.transform.localScale = new Vector3(2, 2, 2);
+                    foreach (var noGrowUp in _noGrowUp)
+                    {
+                        noGrowUp.transform.localScale = Vector3.one / 2;
+                    }
+                }
+
+                if (other.gameObject.CompareTag("ManaEater") && _manaController != null)
+                {
+                    _manaController.ManaReduction(0.5f);
+                }
             }
         }
 
@@ -91,7 +96,7 @@ namespace GamePlay.Character
             }
         }
 
-        private void Refresh()
+        public void Refresh()
         {
             if (_numberSlower == 1)
             {

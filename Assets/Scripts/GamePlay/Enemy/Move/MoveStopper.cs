@@ -7,6 +7,7 @@ namespace GamePlay.Enemy.Move
     public class MoveStopper : EnemyMove
     {
         private float _timeForMove;
+        private GameObject _bounceParticle;
 
 
         private void Awake()
@@ -19,6 +20,8 @@ namespace GamePlay.Enemy.Move
 
         private void Start()
         {
+            _bounceParticle = Instantiate(_enemyBounceParticle, transform.position, Quaternion.identity);
+            _bounceParticle.SetActive(false);
             Rotation = Quaternion.Euler(0,
                 Random.Range(PossiblesRotation1[Random.Range(0, 4)], PossiblesRotation2[Random.Range(0, 4)]), 0);
         }
@@ -32,9 +35,10 @@ namespace GamePlay.Enemy.Move
         {
             if (other.gameObject.CompareTag("Wall"))
             {
-                WallTouch(other);
+                WallTouch(other, _bounceParticle);
             }
         }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Freeze"))
@@ -43,9 +47,9 @@ namespace GamePlay.Enemy.Move
                 CanFreeze = true;
             }
         }
+
         protected override void MoveSystem(float speed)
         {
-            RotateController();
             if (CanFreeze == false)
             {
                 if (InfinityEnemySpawner.SpawnNumber >= 40)
@@ -57,7 +61,9 @@ namespace GamePlay.Enemy.Move
                         _speed += 0.05f;
                     }
                 }
+
                 MoveControl(speed);
+                RotateController();
             }
             else
             {

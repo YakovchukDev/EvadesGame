@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Map.Data;
 using Menu.ScriptableObject.Company;
@@ -14,14 +13,13 @@ namespace Menu.ScriptableObject.level
         [SerializeField] private List<LevelParameters> _levelParameters;
         [SerializeField] private ClassAvailability _classAvailability;
         [SerializeField] private SelectionClassView _selectionClassView;
+        [SerializeField] private CharacterInfo _characterInfo;
         [SerializeField] private Animator _selectionAnimator;
         [SerializeField] private GameObject _selectionClass;
         [SerializeField] private int _countLevel;
         [SerializeField] private List<CompanyPanel> _companyPanels;
 
-        [Header("VerticalLevelHeight")] [SerializeField]
-        private int _minVerticalLevelHeight;
-
+        [SerializeField] private int _minVerticalLevelHeight;
         [SerializeField] private int _maxVerticalLevelHeight;
 
         private LevelElement _levelElement;
@@ -41,7 +39,8 @@ namespace Menu.ScriptableObject.level
                 CompleteLevel = 0;
                 PlayerPrefs.SetInt("CompleteLevel", 0);
             }
- CompleteLevel = 30;
+
+            CompleteLevel = 30;
             CompanyButton.OnCompanyUnlocked += SpawnLevelElement;
         }
 
@@ -52,6 +51,11 @@ namespace Menu.ScriptableObject.level
                 _levelElement = Instantiate(_levelMenuView.LevelElement, _levelMenuView.ElementGrid);
 
                 _levelElement.LevelButton.interactable = i <= CompleteLevel;
+                if (i == 0 && PlayerPrefs.GetInt("Education") == 0)
+                {
+                    _levelElement.LevelButton.interactable = false;
+                }
+
                 _levelElement.LevelNumberText.text = textNumber.ToString();
                 _levelElement.SetLevelParameters(_levelParameters[i]);
                 InitializeLevelElement(textNumber, i);
@@ -105,6 +109,8 @@ namespace Menu.ScriptableObject.level
             _classAvailability.CheckClassForLevel();
             _selectionClass.SetActive(true);
             _selectionAnimator.SetInteger("Information", 0);
+            _selectionClassView.ChoiceTypeOfCharacter(PlayerPrefs.GetInt("SelectionNumber"));
+            _characterInfo.SetAbilitiesAndClass(PlayerPrefs.GetInt("SelectionNumber"));
         }
 
         private void OnDisable()

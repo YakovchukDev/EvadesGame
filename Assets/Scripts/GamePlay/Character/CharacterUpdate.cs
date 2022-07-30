@@ -1,76 +1,134 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using GamePlay.Character.Spell;
 using Joystick_Pack.Examples;
-using Menu.SelectionClass;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Map.Expirience;
-using Map;
+using DG.Tweening;
+using Education.Level.Controllers;
+using Education.Level.Controls;
+using GamePlay.Map;
+using GamePlay.Map.Expirience;
 
 namespace GamePlay.Character
 {
     public class CharacterUpdate : MonoBehaviour
     {
-        [SerializeField] private GameObject _simplifiedBoostPanel;
-        [SerializeField] private GameObject _fullBoostPanel;
-        [SerializeField] private ManaController _manaController;
-        [SerializeField] private List<TMP_Text> _abilityLevel;
-        [SerializeField] private List<Button> _updateButtons;
-        private int _numberSpeedUpdate = 1;
-        private int _numberMaxManaUpdate = 1;
-        private int _numberManaRegenUpdate = 1;
-
-        public static int NumberSpell1Update = 1;
-        public static int NumberSpell2Update = 1;
-
+        public static int NumberSpell1Update;
+        public static int NumberSpell2Update;
         public static bool CanSpell1Update;
         public static bool CanSpell2Update;
+        public int NumberSpeedUpdate { get; private set; }
+        public int NumberMaxManaUpdate { get; private set; }
+        public int NumberManaRegenUpdate { get; private set; }
+        [SerializeField] private Image _upgradeButton;
+        [SerializeField] private GameObject _panel;
+        [SerializeField] private Image _upgradeBlock;
 
+        [SerializeField] private ManaController _manaController;
+
+        [SerializeField] private List<UpgradeButton> _buttons;
+        [SerializeField] private UpgradeButton _buttonSpeed;
+        [SerializeField] private UpgradeButton _buttonMaxMana;
+        [SerializeField] private UpgradeButton _buttonManaRegen;
+        [SerializeField] private UpgradeButton _buttonSpell1;
+        [SerializeField] private UpgradeButton _buttonSpell2;
+        [SerializeField] private RectTransform _closeUpgradeBlockButton;
+        private AudioManager _audioManager;
         private float _allMana;
-        private GameObject _levelValue;
-        private TMP_Text _quantityTokensTMP;
+        private int _quantityLevelPoints;
+
+        public static Action<int> UseLevelPoints;
 
         private void Start()
         {
-            if (SelectionClassView.CharacterType == 0 || SelectionClassView.CharacterType == 1)
+            _upgradeButton.DOFade(0, 0f);
+            _upgradeBlock.DOFade(0, 0);
+            _upgradeBlock.rectTransform.DOScale(Vector3.zero, 0);
+            foreach (var button in _buttons)
             {
-                for (int i = 1; i < _updateButtons.Count; i++)
-                {
-                    _updateButtons[i].interactable = false;
-                }
-            }
-            else if(SelectionClassView.CharacterType == 5)
-            {
-                _updateButtons[4].interactable = false;
+                button.GetComponent<RectTransform>().DOScale(Vector3.zero, 0);
             }
 
-            foreach (var abilityLevel in _abilityLevel)
-            {
-                abilityLevel.text = "1";
-            }
+            _closeUpgradeBlockButton.DOScale(Vector3.zero, 0);
 
-            _numberSpeedUpdate = 1;
-            _numberMaxManaUpdate = 1;
-            _numberManaRegenUpdate = 1;
+            NumberSpeedUpdate = 1;
+            NumberMaxManaUpdate = 1;
+            NumberManaRegenUpdate = 1;
             NumberSpell1Update = 1;
             NumberSpell2Update = 1;
             CanSpell1Update = false;
             CanSpell2Update = false;
-            _levelValue = GameObject.Find("LevelValue");
-            _quantityTokensTMP = _levelValue.GetComponent<TMP_Text>();
+            _audioManager = AudioManager.Instanse;
         }
+
         private void OnEnable()
         {
-            ExpirienceControl.OpenBoostMenu += SetActiveBoostMenu;
-            EntitiesGenerator.HandOverManaController += SetManaController;
-            
-        } 
+            ExpirienceController.UpdateUpgradeMenu += SetUpgradeButtonStatus;
+            ExpirienceControl.OpenBoostMenu += SetUpgradeButtonStatus;
+
+            EducationExperienceController.UpdateUpgradeMenu += SetUpgradeButtonStatus;
+            EducationExperienceControl.OpenBoostMenu += SetUpgradeButtonStatus;
+
+            CharacterSpawner.HandOverManaController += SetManaController;
+            CharacterSpawner.InitializeUpgradePanel += Initialize;
+            ExpirienceController.OnGetLevelPoints += SetLevelPoints;
+
+            EducationExperienceController.OnGetLevelPoints += SetLevelPoints;
+
+            SpellChecker.OnRemoveSpell1 += RemoveSpell1;
+            SpellChecker.OnRemoveSpell2 += RemoveSpell2;
+        }
+
         private void OnDisable()
         {
-            ExpirienceControl.OpenBoostMenu -= SetActiveBoostMenu;
-            EntitiesGenerator.HandOverManaController -= SetManaController;
+            ExpirienceController.UpdateUpgradeMenu -= SetUpgradeButtonStatus;
+            ExpirienceControl.OpenBoostMenu -= SetUpgradeButtonStatus;
+
+            EducationExperienceController.UpdateUpgradeMenu -= SetUpgradeButtonStatus;
+            EducationExperienceControl.OpenBoostMenu -= SetUpgradeButtonStatus;
+
+            CharacterSpawner.HandOverManaController -= SetManaController;
+            CharacterSpawner.InitializeUpgradePanel -= Initialize;
+            ExpirienceController.OnGetLevelPoints -= SetLevelPoints;
+
+            EducationExperienceController.OnGetLevelPoints -= SetLevelPoints;
+
+            SpellChecker.OnRemoveSpell1 -= RemoveSpell1;
+            SpellChecker.OnRemoveSpell2 -= RemoveSpell2;
+        }
+
+        private void RemoveSpell1()
+        {
+            for (int i = 0; i < _buttons.Count; i++)
+            {
+                if (_buttons[i].Type == UpgradeButtonEnum.Spell1)
+                {
+                    Destroy(_buttons[i].gameObject);
+                    _buttons.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+
+        private void RemoveSpell2()
+        {
+            for (int i = 0; i < _buttons.Count; i++)
+            {
+                if (_buttons[i].Type == UpgradeButtonEnum.Spell2)
+                {
+                    Destroy(_buttons[i].gameObject);
+                    _buttons.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+
+        private void SetLevelPoints(int value)
+        {
+            _quantityLevelPoints = value;
         }
 
         private void SetManaController(ManaController manaController)
@@ -78,115 +136,199 @@ namespace GamePlay.Character
             _manaController = manaController;
         }
 
-        public void SpeedUpdate()
+        private void Initialize()
         {
-            if (Convert.ToInt32(_quantityTokensTMP.text) > 0)
+            for (int i = 0; i < _buttons.Count; i++)
             {
-                if (SelectionClassView.WhatPlaying == "Level")
+                if (_buttons[i].Type == UpgradeButtonEnum.None || _manaController == null && _buttons[i].IsNeedMana)
                 {
-                    if (_numberSpeedUpdate <= 5)
-                    {
-                        JoystickPlayerExample.Speed += 2;
-                        _numberSpeedUpdate++;
-                        _abilityLevel[0].text = _numberSpeedUpdate.ToString();
-                        _abilityLevel[5].text = _numberSpeedUpdate.ToString();
-                        int value = Convert.ToInt32(_quantityTokensTMP.text);
-                        _quantityTokensTMP.text = $"{--value}";
-                    }
+                    Destroy(_buttons[i].gameObject);
+                    _buttons.RemoveAt(i);
+                    i--;
                 }
             }
         }
 
+        public void SpeedUpdate()
+        {
+            if (_quantityLevelPoints >= NumberSpeedUpdate)
+            {
+                if (NumberSpeedUpdate <= 5)
+                {
+                    UseLevelPoints?.Invoke(NumberSpeedUpdate);
+                    JoystickPlayerExample.Speed += 2;
+                    NumberSpeedUpdate++;
+                    _audioManager.Play("PressButton");
+                    _buttonSpeed.GetText.text = NumberSpeedUpdate.ToString();
+                    CheckActiveBoostMenu();
+                }
+            }
+            else
+            {
+                ErrorUpgrade(_buttonSpeed);
+            }
+        }
 
         public void MaxManaUpdate()
         {
-            if (Convert.ToInt32(_quantityTokensTMP.text) > 0)
+            if (_quantityLevelPoints >= NumberMaxManaUpdate)
             {
-                if (SelectionClassView.WhatPlaying == "Level")
+                if (NumberMaxManaUpdate <= 5)
                 {
-                    if (_numberMaxManaUpdate <= 5)
-                    {
-                        _allMana = 100;
-                        _allMana += 20 * _numberMaxManaUpdate;
-                        ManaController.AllMana = _allMana;
-                        _numberMaxManaUpdate++;
-                        _abilityLevel[1].text = _numberMaxManaUpdate.ToString();
-                        int value = Convert.ToInt32(_quantityTokensTMP.text);
-                        _quantityTokensTMP.text = $"{--value}";
-                    }
+                    UseLevelPoints?.Invoke(NumberMaxManaUpdate);
+                    _allMana = 100;
+                    _allMana += 20 * NumberMaxManaUpdate;
+                    ManaController.AllMana = _allMana;
+                    NumberMaxManaUpdate++;
+                    _audioManager.Play("PressButton");
+                    _buttonMaxMana.GetText.text = NumberMaxManaUpdate.ToString();
+                    CheckActiveBoostMenu();
                 }
+            }
+            else
+            {
+                ErrorUpgrade(_buttonMaxMana);
             }
         }
 
         public void ManaRegenUpdate()
         {
-            if (Convert.ToInt32(_quantityTokensTMP.text) > 0)
+            if (_quantityLevelPoints >= NumberManaRegenUpdate)
             {
-                if (SelectionClassView.WhatPlaying == "Level")
+                if (NumberManaRegenUpdate <= 5)
                 {
-                    if (_numberManaRegenUpdate <= 5)
-                    {
-                        ManaController.Regen += 0.2f;
-                        _numberManaRegenUpdate++;
-                        _abilityLevel[2].text = _numberManaRegenUpdate.ToString();
-                        int value = Convert.ToInt32(_quantityTokensTMP.text);
-                        _quantityTokensTMP.text = $"{--value}";
-                    }
+                    UseLevelPoints?.Invoke(NumberManaRegenUpdate);
+                    ManaController.Regen += 0.2f;
+                    NumberManaRegenUpdate++;
+                    _audioManager.Play("PressButton");
+                    _buttonManaRegen.GetText.text = NumberManaRegenUpdate.ToString();
+                    CheckActiveBoostMenu();
                 }
+            }
+            else
+            {
+                ErrorUpgrade(_buttonManaRegen);
             }
         }
 
         public void Spell1Update()
         {
-            if (Convert.ToInt32(_quantityTokensTMP.text) > 0)
+            if (_quantityLevelPoints >= NumberSpell1Update)
             {
-                if (SelectionClassView.WhatPlaying == "Level")
+                if (NumberSpell1Update <= 5)
                 {
-                    if (NumberSpell1Update <= 5)
-                    {
-                        NumberSpell1Update++;
-                        CanSpell1Update = true;
-                        _abilityLevel[3].text = NumberSpell1Update.ToString();
-                        int value = Convert.ToInt32(_quantityTokensTMP.text);
-                        _quantityTokensTMP.text = $"{--value}";
-                    }
+                    UseLevelPoints?.Invoke(NumberSpell1Update);
+                    NumberSpell1Update++;
+                    CanSpell1Update = true;
+                    _audioManager.Play("PressButton");
+                    _buttonSpell1.GetText.text = NumberSpell1Update.ToString();
+                    CheckActiveBoostMenu();
                 }
+            }
+            else
+            {
+                ErrorUpgrade(_buttonSpell1);
             }
         }
 
         public void Spell2Update()
         {
-            if (Convert.ToInt32(_quantityTokensTMP.text) > 0)
+            if (_quantityLevelPoints >= NumberSpell2Update)
             {
-                if (SelectionClassView.WhatPlaying == "Level")
+                if (NumberSpell2Update <= 5)
                 {
-                    if (NumberSpell2Update <= 5)
-                    {
-                        NumberSpell2Update++;
-                        CanSpell2Update = true;
-                        _abilityLevel[4].text = NumberSpell2Update.ToString();
-                        int value = Convert.ToInt32(_quantityTokensTMP.text);
-                        _quantityTokensTMP.text = $"{--value}";
-                    }
+                    UseLevelPoints?.Invoke(NumberSpell2Update);
+                    NumberSpell2Update++;
+                    CanSpell2Update = true;
+                    _audioManager.Play("PressButton");
+                    _buttonSpell2.GetText.text = NumberSpell2Update.ToString();
+
+                    CheckActiveBoostMenu();
                 }
-            }
-        }
-        private void SetActiveBoostMenu(bool isEnter)
-        {
-            if(_manaController != null)
-            {
-                try
-                {
-                    _fullBoostPanel.gameObject.SetActive(isEnter);   
-                }catch{}
             }
             else
             {
-                try
-                {
-                    _simplifiedBoostPanel.gameObject.SetActive(isEnter);  
-                }catch{}
+                ErrorUpgrade(_buttonSpell2);
             }
+        }
+
+        private void ErrorUpgrade(UpgradeButton button)
+        {
+            _audioManager.Play("LittleExperience");
+            var sequence = DOTween.Sequence();
+
+            sequence.Append(button.ImageButton.DOColor(new Color(1, 0, 0), 0.5f));
+            sequence.Append(button.ImageButton.DOColor(new Color(1, 1, 1), 0.5f));
+        }
+
+        public void SetUpgradeButtonStatus(bool isActive)
+        {
+            if (_quantityLevelPoints > 0 && isActive)
+            {
+                _upgradeButton.DOFade(1, 0.6f);
+                _upgradeButton.rectTransform.DOAnchorPosX(-30, 0.6f);
+            }
+            else
+            {
+                _upgradeButton.DOFade(0, 0.6f);
+                _upgradeButton.rectTransform.DOAnchorPosX(_upgradeButton.rectTransform.sizeDelta.x, 0.6f);
+            }
+        }
+
+        public void SetUpgradeBlockStatus(bool isActive)
+        {
+            switch (isActive)
+            {
+                case true:
+                {
+                    StartCoroutine(ShowUpgradeBlock(0.8f));
+                    break;
+                }
+                case false:
+                {
+                    StartCoroutine(HideUpgradeBlock());
+                    break;
+                }
+            }
+        }
+
+        private void CheckActiveBoostMenu()
+        {
+            if (_quantityLevelPoints <= 0)
+            {
+                StartCoroutine(HideUpgradeBlock());
+            }
+        }
+
+        private IEnumerator ShowUpgradeBlock(float duration)
+        {
+            _panel.SetActive(true);
+            _upgradeBlock.DOFade(85f / 255f, duration);
+            _upgradeBlock.rectTransform.DOScale(Vector3.one, duration);
+            yield return new WaitForSeconds(0.5f);
+            foreach (var button in _buttons)
+            {
+                button.GetComponent<RectTransform>().DOScale(Vector3.one, duration);
+                yield return new WaitForSeconds(0.1f);
+            }
+
+            yield return new WaitForSeconds(0.1f);
+            _closeUpgradeBlockButton.DOScale(Vector3.one, duration);
+        }
+
+        private IEnumerator HideUpgradeBlock()
+        {
+            _closeUpgradeBlockButton.DOScale(Vector3.zero, 0.2f);
+            yield return new WaitForSeconds(0.2f);
+            _upgradeBlock.DOFade(0, 0.5f);
+            _upgradeBlock.rectTransform.DOScale(Vector3.zero, 0.5f);
+            yield return new WaitForSeconds(0.2f);
+            foreach (var button in _buttons)
+            {
+                button.GetComponent<RectTransform>().DOScale(Vector3.zero, 0f);
+            }
+
+            _panel.SetActive(false);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using GamePlay.Character;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Menu.Settings
 {
@@ -10,13 +9,10 @@ namespace Menu.Settings
 
         [SerializeField] private GameObject _leftPanelDie;
         [SerializeField] private GameObject _rightPanelDie;
-        [SerializeField] private Animator _leftDieAnimator;
-        [SerializeField] private Animator _rightDieAnimator;
 
         private void Start()
         {
             SelectJoystickPosition();
-            HealthController.OnZeroHp += DieOpened;
         }
 
 
@@ -34,13 +30,8 @@ namespace Menu.Settings
             }
         }
 
-        public void DieClosed()
-        {
-            _leftDieAnimator.SetInteger("LeftDie", 1);
-            _rightDieAnimator.SetInteger("RightDie", 1);
-        }
 
-        private void DieOpened()
+        public void OpenDiePanel()
         {
             if (PlayerPrefs.GetString("RightOrLeft") == "Right")
             {
@@ -54,11 +45,6 @@ namespace Menu.Settings
                 _leftPanelDie.SetActive(true);
                 _rightPanelDie.SetActive(false);
             }
-        }
-
-        private void OnDestroy()
-        {
-            HealthController.OnZeroHp -= DieOpened;
         }
     }
 }

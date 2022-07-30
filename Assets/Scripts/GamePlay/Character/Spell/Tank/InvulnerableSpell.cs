@@ -35,6 +35,10 @@ namespace GamePlay.Character.Spell.Tank
             {
                 _maxManaCost = 1;
             }
+            else if(SelectionClassView.WhatPlaying == "Education")
+            {
+                _maxManaCost = 2;
+            }
 
             _starterTime = 0.1f;
         }

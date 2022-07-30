@@ -18,7 +18,7 @@ namespace GamePlay.Enemy.ForInfinity.Spawner
         private readonly Vector3[] _spawnRotation = new Vector3[4];
         public static int SpawnNumber;
         public static int Index;
-        private float _spawnTime = 2;
+        private float _spawnTime = 3;
 
         private void Start()
         {
@@ -26,12 +26,12 @@ namespace GamePlay.Enemy.ForInfinity.Spawner
             _spawnPosition[1] = new Vector3(-22, 2, 0);
             _spawnPosition[2] = new Vector3(0, 2, 22);
             _spawnPosition[3] = new Vector3(0, 2, -22);
-            
-            _spawnRotation[0] = new Vector3(0,-90,0);
-            _spawnRotation[1] = new Vector3(0,90,0);
-            _spawnRotation[2] = new Vector3(0,180,0);
-            _spawnRotation[3] = new Vector3(0,0,0);
-            
+
+            _spawnRotation[0] = new Vector3(0, -90, 0);
+            _spawnRotation[1] = new Vector3(0, 90, 0);
+            _spawnRotation[2] = new Vector3(0, 180, 0);
+            _spawnRotation[3] = new Vector3(0, 0, 0);
+
             StartCoroutine(EnemySpawner());
         }
 
@@ -47,7 +47,8 @@ namespace GamePlay.Enemy.ForInfinity.Spawner
                     _animation[Index].Play("SlidingDoors");
                     SpawnNumber++;
                     _enemyClass1[0].transform.localScale = new Vector3(40f, 40f, 40f);
-                    _allEnemy.Add(Instantiate(_enemyClass1[0], _spawnPosition[Index], Quaternion.Euler(_spawnRotation[Index])));
+                    _allEnemy.Add(Instantiate(_enemyClass1[0], _spawnPosition[Index],
+                        Quaternion.Euler(_spawnRotation[Index])));
                     yield return new WaitForSeconds(1);
                 }
                 else if (SpawnNumber < 25)

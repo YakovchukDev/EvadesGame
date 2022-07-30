@@ -12,7 +12,7 @@ namespace Menu.SelectionClass
         [SerializeField] private ClassAvailability _classAvailability;
         public static int CharacterType { get; private set; }
         public static string WhatPlaying { get; private set; }
-        [SerializeField] private List<Button> _buttonSelection;
+        public List<Button> _buttonSelection;
         [SerializeField] private TMP_Text _infoTime;
         [SerializeField] private Image _progressLine;
         [SerializeField] private Animator _slime;
@@ -25,7 +25,7 @@ namespace Menu.SelectionClass
             ChoiceTypeOfCharacter(PlayerPrefs.GetInt("SelectionNumber"));
         }
 
-        private void ChoiceTypeOfCharacter(int characterType)
+        public void ChoiceTypeOfCharacter(int characterType)
         {
             CharacterType = characterType;
             PlayerPrefs.SetInt("SelectionNumber", characterType);
@@ -33,8 +33,14 @@ namespace Menu.SelectionClass
             {
                 buttonSelection.GetComponent<RectTransform>().sizeDelta=new Vector2(250,250);
             }
-
-            _buttonSelection[CharacterType].GetComponent<RectTransform>().sizeDelta=new Vector2(300,300);
+            if (_buttonSelection[CharacterType].interactable)
+            {
+                _buttonSelection[CharacterType].GetComponent<RectTransform>().sizeDelta=new Vector2(300,300);
+            }
+            else
+            {
+                _buttonSelection[0].GetComponent<RectTransform>().sizeDelta=new Vector2(300,300);
+            }
 
             if (WhatPlaying == "Infinity")
             {
@@ -79,11 +85,18 @@ namespace Menu.SelectionClass
             if (WhatPlaying == "Level")
             {
                 StartCoroutine(AsyncLoadScene("Company"));
-
             }
             else if (WhatPlaying == "Infinity")
             {
                 StartCoroutine(AsyncLoadScene("InfinityGame"));
+            }
+            else if(WhatPlaying == "Education")
+            {
+                StartCoroutine(AsyncLoadScene("EducationLevel"));
+            }
+            else
+            {
+                Debug.LogError("Mode not selected");
             }
         }
 

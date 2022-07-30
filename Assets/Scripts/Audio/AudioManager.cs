@@ -7,7 +7,6 @@ namespace Audio
     {
         public Sound[] _sounds;
         public static AudioManager Instanse;
-
         private void Awake()
         {
             if (Instanse == null)

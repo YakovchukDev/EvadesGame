@@ -104,6 +104,7 @@ namespace Menu.Settings
                 _thisImage.sprite = _forRightHanded;
                 PlayerPrefs.SetString("RightOrLeft", "Right");
             }
+
             _buttonSpellPosition = FindObjectOfType<ButtonSpellPosition>();
             if (_buttonSpellPosition != null)
             {

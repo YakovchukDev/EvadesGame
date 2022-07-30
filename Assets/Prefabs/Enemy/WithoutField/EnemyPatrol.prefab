@@ -4937,9 +4937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344f86410b82eb54291f43d1f2c265fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _freezeField: {fileID: 0}
-  _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
-  _speed: 5
+  _speed: 4
+  _enemyBounceParticle: {fileID: 5572787426482163498, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
   _bounceSound: {fileID: 6974377700405648684}
 --- !u!114 &-2749621171255866712
 MonoBehaviour:
@@ -4965,7 +4964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e0339e3903eb044af063508344d5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _index: 0
 --- !u!114 &6384230457773146667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5008,7 +5006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e349f291b018db94dbc012f41056b830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveEnemy: {fileID: 9120984248710984356}
+  _moveJust: {fileID: 9120984248710984356}
   _horns: {fileID: 1872819276733194253}
 --- !u!1 &3748812972622278733
 GameObject:

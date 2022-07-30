@@ -4,12 +4,12 @@ namespace GamePlay.Enemy
 {
     public class FieldEnemySize : MonoBehaviour
     {
-        private const float _scaleField = 26.8f;
+        private const float ScaleField = 26.8f;
 
         private void Start()
         {
-            transform.localScale = new Vector3(_scaleField / transform.parent.localScale.x,
-                _scaleField / transform.parent.localScale.y, _scaleField / transform.parent.localScale.z);
+            var localScale = transform.parent.localScale;
+            transform.localScale = new Vector3(ScaleField / localScale.x, ScaleField / localScale.y, ScaleField / localScale.z);
         }
     }
 }

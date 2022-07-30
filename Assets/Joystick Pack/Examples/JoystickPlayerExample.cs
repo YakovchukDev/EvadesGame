@@ -13,13 +13,13 @@ namespace Joystick_Pack.Examples
         private VariableJoystick _variableJoystick;
         private Rigidbody _rigidbody;
         public static float Speed;
-        public float MaxSpeed { get; private set; } = 20;
+        public float MaxSpeed { get; private set; }
         private Quaternion _rotation;
         private const float RotationSpeed = 10;
 
         private void Start()
         {
-            _audioManager=AudioManager.Instanse;
+            _audioManager = AudioManager.Instanse;
             if (SelectionClassView.WhatPlaying == "Level")
             {
                 MaxSpeed = 10;
@@ -28,8 +28,13 @@ namespace Joystick_Pack.Examples
             {
                 MaxSpeed = 20;
             }
+            else
+            {
+                MaxSpeed = 10;
+            }
+
             _moveParticle.Stop();
-            _audioManager.IsMute("Friction",true);
+            _audioManager.IsMute("Friction", true);
             _audioManager.Play("Friction");
             Speed = MaxSpeed;
             _rigidbody = GetComponent<Rigidbody>();
@@ -47,14 +52,7 @@ namespace Joystick_Pack.Examples
             {
                 if (_variableJoystick.Horizontal != 0 || _variableJoystick.Vertical != 0)
                 {
-                    foreach (ContactPoint missileHit in other.contacts)
-                    {
-                        Vector3 hitPoint = missileHit.point;
-                        Instantiate(_frictionParticle, new Vector3(hitPoint.x, transform.position.y, hitPoint.z),
-                            transform.rotation);
-                        _audioManager.IsMute("Friction",false);
-
-                    }
+                    Friction(other);
                 }
             }
         }
@@ -65,18 +63,11 @@ namespace Joystick_Pack.Examples
             {
                 if (_variableJoystick.Horizontal != 0 || _variableJoystick.Vertical != 0)
                 {
-                    foreach (ContactPoint missileHit in other.contacts)
-                    {
-                        Vector3 hitPoint = missileHit.point;
-                        Instantiate(_frictionParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z),
-                            transform.rotation);
-                    }
-                    _audioManager.IsMute("Friction",false);
-
+                    Friction(other);
                 }
                 else
                 {
-                    _audioManager.IsMute("Friction",true);
+                    _audioManager.IsMute("Friction", true);
                 }
             }
         }
@@ -84,9 +75,22 @@ namespace Joystick_Pack.Examples
         private void OnCollisionExit(Collision other)
         {
             if (other.gameObject.CompareTag("Wall"))
-            { 
-                _audioManager.IsMute("Friction",true);
+            {
+                _audioManager.IsMute("Friction", true);
             }
+        }
+
+        private void Friction(Collision other)
+        {
+            foreach (ContactPoint missileHit in other.contacts)
+            {
+                Vector3 hitPoint = missileHit.point;
+                _frictionParticle.transform.position = new Vector3(hitPoint.x, transform.position.y, hitPoint.z);
+                _frictionParticle.transform.rotation = transform.rotation;
+                _frictionParticle.Play();
+            }
+
+            _audioManager.IsMute("Friction", false);
         }
 
         private void MoveCharacter()

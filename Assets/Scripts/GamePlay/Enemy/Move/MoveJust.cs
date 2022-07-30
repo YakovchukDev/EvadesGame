@@ -7,6 +7,8 @@ namespace GamePlay.Enemy.Move
 {
     public class MoveJust : EnemyMove
     {
+        private GameObject _bounceParticle;
+
         private void Awake()
         {
             if (SceneManager.GetActiveScene().name == "Company")
@@ -17,6 +19,8 @@ namespace GamePlay.Enemy.Move
 
         private void Start()
         {
+            _bounceParticle = Instantiate(_enemyBounceParticle, transform.position, Quaternion.identity);
+            _bounceParticle.SetActive(false);
             Rotation = Quaternion.Euler(0,
                 Random.Range(PossiblesRotation1[Random.Range(0, 4)], PossiblesRotation2[Random.Range(0, 4)]), 0);
         }
@@ -30,7 +34,7 @@ namespace GamePlay.Enemy.Move
         {
             if (other.gameObject.CompareTag("Wall"))
             {
-                WallTouch(other);
+                WallTouch(other, _bounceParticle);
             }
         }
 
@@ -40,16 +44,16 @@ namespace GamePlay.Enemy.Move
             {
                 FreezeTimer = 0;
                 CanFreeze = true;
+                print(2);
             }
         }
 
 
         protected override void MoveSystem(float speed)
         {
-            RotateController();
             if (CanFreeze == false)
             {
-                if (InfinityEnemySpawner.SpawnNumber >= 40)
+                if (InfinityEnemySpawner.SpawnNumber >= 30)
                 {
                     FasterTime += Time.deltaTime;
                     if (FasterTime > 5)
@@ -60,6 +64,7 @@ namespace GamePlay.Enemy.Move
                 }
 
                 transform.Translate(Vector3.forward * (Time.deltaTime * speed));
+                RotateController();
             }
             else
             {

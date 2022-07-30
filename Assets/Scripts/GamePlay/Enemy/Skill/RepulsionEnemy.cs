@@ -1,3 +1,5 @@
+using Education.Level;
+using Map.Data;
 using UnityEngine;
 
 namespace GamePlay.Enemy.Skill
@@ -5,6 +7,24 @@ namespace GamePlay.Enemy.Skill
     public class RepulsionEnemy : MonoBehaviour
     {
         private Rigidbody _componentRigidbody;
+        private bool _inSaveZone;
+
+        private void OnEnable()
+        {
+            SafeZoneParameters.OnEnter += OrSaveZone;
+            EducationSaveZone.OnEnter += OrSaveZone;
+        }
+
+        private void OnDisable()
+        {
+            SafeZoneParameters.OnEnter -= OrSaveZone;
+            EducationSaveZone.OnEnter -= OrSaveZone;
+        }
+
+        private void OrSaveZone(bool orSaveZone)
+        {
+            _inSaveZone = orSaveZone;
+        }
 
         private void Start()
         {
@@ -13,7 +33,7 @@ namespace GamePlay.Enemy.Skill
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag("Player") && other.attachedRigidbody != null)
+            if (other.CompareTag("Player") && other.attachedRigidbody != null && !_inSaveZone)
             {
                 Repulsion(other.attachedRigidbody);
             }

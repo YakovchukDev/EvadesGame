@@ -1,3 +1,4 @@
+﻿using System;
 using UnityEngine;
 
 namespace GamePlay.Enemy.Move
@@ -11,13 +12,14 @@ namespace GamePlay.Enemy.Move
         protected const float TimeForFreeze = 3;
         protected float FreezeTimer;
         protected bool CanFreeze;
-        
+
         protected float FasterTime;
         private const float RotationSpeed = 100;
 
         [SerializeField] protected float _speed;
-        [SerializeField] protected ParticleSystem _enemyBounceParticle;
+        [SerializeField] protected GameObject _enemyBounceParticle;
         [SerializeField] private AudioSource _bounceSound;
+
 
         protected abstract void MoveSystem(float speed);
 
@@ -29,24 +31,27 @@ namespace GamePlay.Enemy.Move
             }
         }
 
-        protected void WallTouch(Collision other)
+        protected void WallTouch(Collision other, GameObject bounceParticle)
         {
             var reflectDir = Vector3.Reflect(transform.forward, other.GetContact(0).normal);
             Rotation = Quaternion.LookRotation(reflectDir);
 
             _bounceSound.Play();
-            foreach (var missileHit in other.contacts)
+            if (bounceParticle != null)
             {
-                var hitPoint = missileHit.point;
-                _enemyBounceParticle.transform.localScale = transform.localScale / 30;
-                Instantiate(_enemyBounceParticle, new Vector3(hitPoint.x, hitPoint.y, hitPoint.z),
-                    Quaternion.identity);
+                foreach (var missileHit in other.contacts)
+                {
+                    var hitPoint = missileHit.point;
+                    bounceParticle.SetActive(true);
+                    bounceParticle.transform.position = hitPoint;
+                }
             }
         }
 
         protected void FreezeMe(float allFreezeTime)
         {
-            MoveSystem(0);
+            print(1);
+            
             FreezeTimer += Time.deltaTime;
             if (FreezeTimer >= allFreezeTime)
             {

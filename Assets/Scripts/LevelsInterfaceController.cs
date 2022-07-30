@@ -8,12 +8,6 @@ public class LevelsInterfaceController : SelectionClassView
 {
     [SerializeField] private AudioMixerGroup _audioMixer;
 
-    private static readonly string[] CharacterObject =
-    {
-        "JustTime", "NecroTime", "MorfeTime", "NeoTime",
-        "InvulnerableTime", "NexusTime"
-    };
-
     public void OnPause()
     {
         Time.timeScale = 0;

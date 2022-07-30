@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Audio;
 using GamePlay.Character.Spell;
 using Menu.SelectionClass;
@@ -13,12 +14,12 @@ namespace GamePlay.Character
         [SerializeField] private AudioMixerGroup _audioMixer;
         private bool _restartComponent;
         private AudioManager _audioManager;
-        public float _immortalityTime;
-        public bool _immortality;
+        public float ImmortalityTime;
+        public bool Immortality;
         public static Action OnZeroHp;
         public static event Action OnBackToSafeZone;
         public static event Action<int> HealthPanelUpdate;
-
+        public static event Action OnEducationDie;
         private void Start()
         {
             _audioManager = AudioManager.Instanse;
@@ -32,9 +33,14 @@ namespace GamePlay.Character
             {
                 HpNumber = 1;
             }
+            else if (SelectionClassView.WhatPlaying == "Education")
+            {
+                HpNumber = 9999;
+                HealthPanelUpdate?.Invoke(HpNumber);
+            }
 
-            _immortalityTime = 0;
-            _immortality = true;
+            ImmortalityTime = 0;
+            Immortality = true;
         }
 
         private void Update()
@@ -51,8 +57,25 @@ namespace GamePlay.Character
                 if (!_restartComponent)
                 {
                     HpNumber--;
+                    if (SelectionClassView.WhatPlaying == "Level")
+                    {
+                        if (HpNumber != 0)
+                        {
+                            OnBackToSafeZone?.Invoke();
+                        }
+
+                        HealthPanelUpdate?.Invoke(HpNumber);
+                    }
+                    else if (SelectionClassView.WhatPlaying == "Education")
+                    {
+                        HealthPanelUpdate?.Invoke(HpNumber);
+                    }
+
                     _audioManager.Play("Die");
                     HpChecker();
+
+                    ImmortalityTime = 0;
+                    Immortality = true;
                 }
             }
         }
@@ -71,22 +94,29 @@ namespace GamePlay.Character
 
                 HealthPanelUpdate?.Invoke(HpNumber);
             }
-
-            _immortality = true;
+            else if (SelectionClassView.WhatPlaying == "Education")
+            {
+                HealthPanelUpdate?.Invoke(HpNumber);
+                if (HpNumber > 0)
+                {
+                    OnEducationDie?.Invoke();
+                }
+            }
+            Immortality = true;
             HpChecker();
         }
 
         private void HpImmortality()
         {
-            if (_immortality)
+            if (Immortality)
             {
-                _immortalityTime += Time.deltaTime;
+                ImmortalityTime += Time.deltaTime;
                 gameObject.layer = 11;
-                if (_immortalityTime >= 1.6f)
+                if (ImmortalityTime >= 1.6f)
                 {
                     gameObject.layer = 6;
-                    _immortality = false;
-                    _immortalityTime = 0;
+                    Immortality = false;
+                    ImmortalityTime = 0;
                 }
             }
         }

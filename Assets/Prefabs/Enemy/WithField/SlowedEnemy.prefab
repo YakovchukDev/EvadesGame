@@ -4854,9 +4854,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5246570446611896554}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.5844999, z: 0, w: 0.81139386}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalScale: {x: 58, y: 58, z: 58}
   m_Children:
   - {fileID: 934613267631103219}
   - {fileID: 5246570447083970345}
@@ -4907,9 +4907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344f86410b82eb54291f43d1f2c265fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _freezeField: {fileID: 0}
-  _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
-  _speed: 5
+  _speed: 4
+  _enemyBounceParticle: {fileID: 5572787426482163498, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
   _bounceSound: {fileID: 7379492243953211655}
 --- !u!114 &1864262372321720574
 MonoBehaviour:
@@ -4937,7 +4936,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startOff: {fileID: 5246570447083970344}
   _particle: {fileID: 3027401290500907619}
-  _index: 0
 --- !u!114 &-3174053932260099544
 MonoBehaviour:
   m_ObjectHideFlags: 0

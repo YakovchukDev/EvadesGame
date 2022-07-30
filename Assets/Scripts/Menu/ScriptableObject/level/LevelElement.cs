@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Audio;
 using Map.Data;
-using Menu.ScriptableObject.Company;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +10,7 @@ namespace Menu.ScriptableObject.level
 {
     public class LevelElement : MonoBehaviour
     {
+       
         [SerializeField] private TMP_Text _levelNumberText;
         [SerializeField] private Button _levelButton;
         [SerializeField] private List<Image> _stars;
@@ -51,6 +51,7 @@ namespace Menu.ScriptableObject.level
             LevelController.ChoiceLevel = LevelNumber;
             _audioManager.Play("PressButton");
             OnLevel?.Invoke();
+            
         }
 
         private void OnDestroy()
@@ -79,7 +80,10 @@ namespace Menu.ScriptableObject.level
                 string stars = PlayerPrefs.GetString($"Level{LevelNumber}");
                 for(int i = 0; i < stars.Length && i < _stars.Count; i++)
                 {
-                    _stars[i].sprite = _openStarSprite;
+                    if (stars[i] == '*')
+                    {
+                        _stars[i].sprite = _openStarSprite;
+                    }
                 }
             }
         }

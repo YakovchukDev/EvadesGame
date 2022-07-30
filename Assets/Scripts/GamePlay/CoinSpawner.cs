@@ -1,4 +1,4 @@
-using Map.Coins;
+using GamePlay.Map.Coins;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

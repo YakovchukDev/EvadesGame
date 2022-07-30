@@ -1,12 +1,12 @@
 ﻿using Menu.SelectionClass;
 using UnityEngine;
-using UnityEngine.UI;
+using System;
 
 namespace GamePlay.Character.Spell
 {
     public class ManaController : MonoBehaviour
     {
-        [SerializeField] private Image _manaComponent;
+        public static event Action<float> UpdateManaView;
         public static float AllMana;
         private float _startRegenTime;
         private float _numberRegen;
@@ -28,12 +28,19 @@ namespace GamePlay.Character.Spell
                 _numberRegen = 2;
                 _startRegenTime = 1;
             }
+            else if(SelectionClassView.WhatPlaying == "Education")
+            {
+                AllMana = 100;
+                _numberRegen = 1;
+                _startRegenTime = 1;
+            }
 
             _mana = AllMana;
             Regen = _numberRegen;
+            UpdateManaView?.Invoke(_mana / AllMana);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (AllMana < _mana)
             {
@@ -53,9 +60,10 @@ namespace GamePlay.Character.Spell
             if (_mana >= minusMana)
             {
                 _mana -= minusMana;
-                _manaComponent.fillAmount = _mana / AllMana;
+                UpdateManaView?.Invoke(_mana / AllMana);
                 return true;
             }
+
             return false;
         }
 
@@ -67,7 +75,7 @@ namespace GamePlay.Character.Spell
             {
                 _regenTime = _startRegenTime;
                 _mana += speedRegen;
-                _manaComponent.fillAmount = _mana / AllMana;
+                UpdateManaView?.Invoke(_mana / AllMana);
             }
         }
     }

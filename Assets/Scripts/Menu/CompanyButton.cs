@@ -10,37 +10,23 @@ namespace Menu
     public class CompanyButton : MonoBehaviour
     {
         private AudioManager _audioManager;
-        [SerializeField] private MenuAnimatorController _menuAnimatorController;
         [SerializeField] private SelectionClassView _selectionClassView;
         [SerializeField] private Canvas _canvasMainMenu;
-        [SerializeField] private GameObject _companyInfo;
         [SerializeField] private GameObject _companyButton;
         [SerializeField] private GameObject _companyMenuView;
         [SerializeField] private Animator _animatorButton;
-        private bool _openClose;
-        private Image _companyImage;
+
 
         public static event Action<int> OnCompanyUnlocked;
+        public static event Action<int> OnEducation;
 
         private void Start()
         {
-            _companyImage = _companyButton.GetComponent<Image>();
             Initialize();
             _audioManager = AudioManager.Instanse;
-            if (PlayerPrefs.GetInt("CompanyOpened") == 0)
-            {
-                _companyButton.GetComponent<Image>().color = new Color(0.6f, 0.6f, 0.6f);
-            }
+
 
             OnCompanyUnlocked += ClickButton;
-        }
-
-        private void Update()
-        {
-            if (PlayerPrefs.GetInt("CompanyOpened") == 1)
-            {
-                _companyImage.color = new Color(1, 1, 1);
-            }
         }
 
         private void Initialize()
@@ -50,34 +36,11 @@ namespace Menu
 
         private void TryOpenCompanyPanel()
         {
-            if (PlayerPrefs.GetInt("CompanyOpened") == 1)
-            {
-                _companyMenuView.SetActive(true);
-                OnCompanyUnlocked?.Invoke(0);
-                _selectionClassView.SetWhatPlaying("Level");
-                _canvasMainMenu.enabled = false;
-            }
-            else
-            {
-                ClickButton(0);
-                _openClose = !_openClose;
-                if (_openClose)
-                {
-                    _companyInfo.SetActive(true);
-                    _menuAnimatorController.CompanyLocked(0);
-                    StartCoroutine(CloseCompanyInfo());
-                }
-                else
-                {
-                    _menuAnimatorController.CompanyLocked(1);
-                }
-            }
-        }
-
-        private IEnumerator CloseCompanyInfo()
-        {
-            yield return new WaitForSeconds(15);
-            _menuAnimatorController.CompanyLocked(1);
+            _companyMenuView.SetActive(true);
+            OnCompanyUnlocked?.Invoke(0);
+            OnEducation?.Invoke(1);
+            _selectionClassView.SetWhatPlaying("Level");
+            _canvasMainMenu.enabled = false;
         }
 
         private void ClickButton(int index)

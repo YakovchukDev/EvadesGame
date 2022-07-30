@@ -19,12 +19,12 @@ namespace Menu.SelectionClass
         private void Start()
         {
             _recordTime = new float[_classes.Count];
-            _recordTime[0] = PlayerPrefs.GetFloat("WeakTime");
-            _recordTime[1] = PlayerPrefs.GetFloat("NecroTime");
-            _recordTime[2] = PlayerPrefs.GetFloat("ShooterTime");
-            _recordTime[3] = PlayerPrefs.GetFloat("NeoTime");
-            _recordTime[4] = PlayerPrefs.GetFloat("TankTime");
-            _recordTime[5] = PlayerPrefs.GetFloat("NecromusTime");
+            _recordTime[0] = 2000;//PlayerPrefs.GetFloat("WeakTime");
+            _recordTime[1] = 2000;//PlayerPrefs.GetFloat("NecroTime");
+            _recordTime[2] = 2000;//PlayerPrefs.GetFloat("ShooterTime");
+            _recordTime[3] = 2000;//PlayerPrefs.GetFloat("NeoTime");
+            _recordTime[4] = 2000;//PlayerPrefs.GetFloat("TankTime");
+            _recordTime[5] = 2000;//PlayerPrefs.GetFloat("NecromusTime");
             _buyOpen = new int[_classes.Count];
             for (int i = 0; i < _classes.Count; i++)
             {
@@ -91,7 +91,7 @@ namespace Menu.SelectionClass
                 {
                     _classes[i].interactable = true;
                 }
-                
+
 
                 _neededPassedLevels += 5;
             }

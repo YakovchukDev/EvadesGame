@@ -29,9 +29,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4464688701804638509}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.13745748, z: 0, w: -0.99050766}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalScale: {x: 46, y: 46, z: 46}
   m_Children:
   - {fileID: 3389532560970305537}
   - {fileID: 4464688702218637360}
@@ -82,9 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344f86410b82eb54291f43d1f2c265fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _freezeField: {fileID: 0}
-  _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
-  _speed: 5
+  _speed: 4
+  _enemyBounceParticle: {fileID: 5572787426482163498, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
   _bounceSound: {fileID: 9165286080730498832}
 --- !u!114 &-5136370041782960246
 MonoBehaviour:
@@ -112,7 +111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startOff: {fileID: 4464688702218637367}
   _particle: {fileID: 7412989614292644714}
-  _index: 0
 --- !u!114 &-4661406907723662465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +134,7 @@ GameObject:
   - component: {fileID: 4464688702218637360}
   - component: {fileID: 4464688702218637363}
   - component: {fileID: 4464688702218637362}
-  - component: {fileID: 4464688702218637361}
+  - component: {fileID: 4252479470803132901}
   - component: {fileID: 5407156467003821566}
   - component: {fileID: 3175347176168299264}
   - component: {fileID: 4464688702218637353}
@@ -210,8 +208,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4464688702218637361
-SphereCollider:
+--- !u!136 &4252479470803132901
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -220,8 +218,9 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1422355
+  m_Radius: 0.14
+  m_Height: 0.35
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5407156467003821566
 Rigidbody:

@@ -190,9 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344f86410b82eb54291f43d1f2c265fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _freezeField: {fileID: 0}
-  _enemyBounceParticle: {fileID: 5733546298355761776, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
-  _speed: 5
+  _speed: 4
+  _enemyBounceParticle: {fileID: 5572787426482163498, guid: 2e25d3b7c20d82d418dea77252ad3586, type: 3}
   _bounceSound: {fileID: 5065755499819692675}
 --- !u!114 &4993514643251821173
 MonoBehaviour:
@@ -220,7 +219,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startOff: {fileID: 138441596857412337}
   _particle: {fileID: 8478259723990850011}
-  _index: 0
 --- !u!114 &-5943624656037256577
 MonoBehaviour:
   m_ObjectHideFlags: 0

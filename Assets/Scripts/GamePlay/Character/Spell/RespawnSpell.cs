@@ -10,7 +10,7 @@ namespace GamePlay.Character.Spell
 {
     public class RespawnSpell : MonoBehaviour
     {
-        [SerializeField] private JoystickPlayerExample _joystickPlayerExample;
+        [SerializeField] private InteractionWithTag _interactionWithTag;
         [SerializeField] private HealthController _healthController;
         [SerializeField] private AudioMixerGroup _audioMixer;
         [SerializeField] private GameObject _respawnParticle;
@@ -18,6 +18,7 @@ namespace GamePlay.Character.Spell
         [SerializeField] private int _spellNumber = 1;
         [SerializeField] private GameObject _readoutPanel;
         [SerializeField] private TMP_Text _readoutText;
+        [SerializeField] private AudioSource _respawnSound;
         private float _readout = 3;
         private bool _forReadout;
         private GameObject _killer;
@@ -85,13 +86,16 @@ namespace GamePlay.Character.Spell
                 _forReadout = false;
                 _readout = 5;
                 _spellNumber--;
-                _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
+                _respawnSound.Play();
+                _audioMixer.audioMixer.SetFloat("ImportantVolume", Mathf.Lerp(-80, 0, PlayerPrefs.GetFloat("ImportantVolume")));
+                _audioMixer.audioMixer.SetFloat("EffectVolume", Mathf.Lerp(-80, 0, PlayerPrefs.GetFloat("EffectVolume")));
+                _audioMixer.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 0, PlayerPrefs.GetFloat("MusicVolume")));
                 _killer.SetActive(false);
-                JoystickPlayerExample.Speed = _joystickPlayerExample.MaxSpeed;
+                _interactionWithTag.Refresh();
                 UpdateHearts?.Invoke(_healthController.HpNumber);
                 _respawnParticle.SetActive(true);
-                _healthController._immortalityTime = 0;
-                _healthController._immortality = true;
+                _healthController.ImmortalityTime = 0;
+                _healthController.Immortality = true;
                 foreach (var spell in _spell1)
                 {
                     spell.interactable = false;
