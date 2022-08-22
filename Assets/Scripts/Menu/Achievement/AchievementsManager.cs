@@ -1,57 +1,114 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace Menu.Achievement
 {
     public class AchievementsManager : MonoBehaviour
     {
+        [SerializeField] private bool _testMode;
         public bool ToLoop;
-        public List<Menu.Achievement.Achievement> Achievements;
-        public List<Menu.Achievement.Achievement> AccomplishedAchievements;
+        public List<Achievement> Achievements;
+        [SerializeField] private int _timeInterval;
+        private string _path;
         private int _count;
+        private bool _isInitialized;
 
         private void Start()
         {
-            _count = 0;
+
+            _isInitialized = false;
+            _count = 0; 
+            if (_testMode)
+            {
+                _path = Application.streamingAssetsPath + "/Achievements.json";
+            }
+            else
+            {
+                _path = Application.persistentDataPath + "/Achievements.json";
+            }
             InitializeAchievement();
         }
         public void Update()
         {
             CheckAchievementCompletion();
         }
+        private void OnApplicationPause(bool pause)
+        {
+            StartCoroutine(SaveAchievements());
+        }
+        private void OnApplicationQuit()
+        {
+             StartCoroutine(SaveAchievements());
+        }
+        private IEnumerator SaveAchievements()
+        {
+            if(Achievements == null)
+            {
+                InitializeAchievement();
+            }
+            yield return new WaitUntil(() => _path != null);
+            if(!File.Exists(_path))
+            {
+                FileStream fileStream = File.Create(_path);
+                fileStream.Close();
+            }
+            AchievementData achievementData = new AchievementData(Achievements);
+            File.WriteAllText(_path, JsonUtility.ToJson(achievementData));
+        }
         private void InitializeAchievement()
         {
+            CreateListAchievement();
+            if (File.Exists(_path))
+            {
+                AchievementData achievementsData = JsonUtility.FromJson<AchievementData>(File.ReadAllText(_path));
+                for(int i = 0; i < Achievements.Count; i++)
+                {
+                    if(achievementsData.IsAchieveds.Length > i)
+                    {
+                        Achievements[i].Achieved = achievementsData.IsAchieveds[i];
+                    }
+                }
+            }
+            _isInitialized = true;
+        }
+        private void CreateListAchievement()
+        {
             Achievements = new List<Achievement>();
-            AccomplishedAchievements = new List<Achievement>();
-            Achievements.Add(new Menu.Achievement.Achievement(
+            Achievements.Add(new Achievement(
                 (object)10, (object)2,
                 "Level 1 explorer",
                 "complete 10 levels with 1 star or more",
                 "get NEO character",
                 CheckCompletedLevels,
                 OpenCharacter));
-            Achievements.Add(new Menu.Achievement.Achievement(
-                (object)100, (object)4,
+            Achievements.Add(new Achievement(
+                (object)20, (object)3,
+                "Level 2 explorer",
+                "complete 20 levels with 1 star or more",
+                "get Tank character",
+                CheckCompletedLevels,
+                OpenCharacter));
+            Achievements.Add(new Achievement(
+                (object)100, 100,
                 "You are resilience itself",
                 "Stay alive for 100 seconds",
                 "get Tank character",
                 CheckCompletedLevels,
-                OpenCharacter));
+                AddCoins));
         }
         public void CheckAchievementCompletion()
         {
-            if (Achievements != null)
+            if (Achievements != null && _isInitialized)
             {
                 if (_count >= Achievements.Count)
                 {
                     _count = 0;
                 }
-                print(_count);
-                if (Achievements.Count > 0 && Achievements[_count].UpdateCompletion())
+                if (Achievements[_count].UpdateCompletion())
                 {
-                    AccomplishedAchievements.Add(Achievements[_count]);
-                    Achievements.RemoveAt(_count);
-                    _count--;
+                    Achievements[_count].Achieved = true;
                 }
                 _count++;
             }
@@ -60,6 +117,7 @@ namespace Menu.Achievement
         //task
         private bool CheckCompletedLevels(object target)
         {
+            print($"check {target}");
             if (PlayerPrefs.HasKey("CompleteLevel"))
             {
                 return PlayerPrefs.GetInt("CompleteLevel") >= (int)target;
@@ -87,18 +145,27 @@ namespace Menu.Achievement
         //reward
         private bool OpenCharacter(object index)
         {
-            if (PlayerPrefs.HasKey($"Open{(int)index}"))
+            print($"Character open {index}");
+            PlayerPrefs.SetInt($"Open{(int)index}", 1);
+            return true;
+        }
+        private bool AddCoins(object coins)
+        {
+            if (PlayerPrefs.HasKey("Coins"))
             {
-                PlayerPrefs.SetInt($"Open{(int)index}", 1);
+                int allCoins = PlayerPrefs.GetInt("Coins") + (int)coins;
+                PlayerPrefs.SetInt("Coins", allCoins);
                 return true;
             }
-            return false;
+            else
+            {
+                PlayerPrefs.SetInt("Coins", (int)coins);
+                return true;
+            }
         }
-
-        //test
-        public void Click()
+        public void TestClick()
         {
-            PlayerPrefs.SetInt("CompleteLevel", 10);
+            PlayerPrefs.SetInt("CompleteLevel", PlayerPrefs.GetInt("CompleteLevel") + 10);
         }
     }
 }

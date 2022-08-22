@@ -15,7 +15,7 @@ namespace GamePlay.Interface
         private void Start()
         {
             EducationStarControl.OnGetStar += GetStar;
-            _starCountText.text = CountGetStar.ToString();
+            _starCountText.text = $"{CountGetStar}/3";
         }
         private void OnDisable()
         {
@@ -27,7 +27,7 @@ namespace GamePlay.Interface
             _particleAfterStar.transform.position = starPosition;
             _particleAfterStar.SetActive(true);
             CountGetStar++;
-            _starCountText.text = CountGetStar.ToString();
+            _starCountText.text =$"{CountGetStar}/3";
         }
 
         public override void ExitAndSave()

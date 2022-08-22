@@ -14,12 +14,12 @@ namespace Map
         [SerializeField] private GameObject _emptyWall;
         [SerializeField] private ResultController _resultController;
         private LevelParameters _levelParameters;
-        private RoomParameters [,] _mapOfRooms;
-        private SafeZoneParameters [,] _mapOfSafeZones;
+        private RoomParameters[,] _mapOfRooms;
+        private SafeZoneParameters[,] _mapOfSafeZones;
         private GameObject _emptyWallStart;
         private GameObject _emptyWallEnd;
         private bool _isGenerated;
-        
+
         public void Initialize()
         {
             _levelParameters = MapManager.LevelParameters;
@@ -30,31 +30,39 @@ namespace Map
             SetExitInRoom();
             _isGenerated = true;
         }
+
         public ref RoomParameters[,] GetMapOfRooms()
         {
             return ref _mapOfRooms;
         }
-        public ref SafeZoneParameters [,] GetMapOfSafeZones()
+
+        public ref SafeZoneParameters[,] GetMapOfSafeZones()
         {
             return ref _mapOfSafeZones;
         }
+
         public RoomParameters GetLongRoom() => _longRoom;
         public SafeZoneParameters GetShortRoom() => _shortRoom;
+
         public void ChangePositionEmptyWall(Vector2Int position)
         {
             _emptyWallStart.transform.position = new Vector3
             (
-                _longRoom.GetLengthX() * (position.y - 1 > 0 ? position.y - 1 : 0) + _shortRoom.GetLengthX() * (position.y - 1 > 0 ? position.y - 1 : 0) - _shortRoom.GetLengthX() / 2f - 0.5f,
+                _longRoom.GetLengthX() * (position.y - 1 > 0 ? position.y - 1 : 0) +
+                _shortRoom.GetLengthX() * (position.y - 1 > 0 ? position.y - 1 : 0) - _shortRoom.GetLengthX() / 2f -
+                0.5f,
                 0f,
                 _longRoom.GetLengthZ() * position.x
             );
             _emptyWallEnd.transform.position = new Vector3
             (
-                _longRoom.GetLengthX() * (position.y + 2) + _shortRoom.GetLengthX() * (position.y + 2) + _shortRoom.GetLengthX() / 2f + 0.5f,
+                _longRoom.GetLengthX() * (position.y + 2) + _shortRoom.GetLengthX() * (position.y + 2) +
+                _shortRoom.GetLengthX() / 2f + 0.5f,
                 0f,
                 _longRoom.GetLengthZ() * position.x
             );
         }
+
         private void InstantiateAllMap()
         {
             for (int column = 0; column < _mapOfRooms.GetLength(1); column++)
@@ -65,7 +73,8 @@ namespace Map
                     {
                         _mapOfRooms[row, column] = Instantiate(_mapOfRooms[row, column], new Vector3
                         (
-                            _longRoom.GetLengthX() / 2f + _shortRoom.GetLengthX() / 2f + _longRoom.GetLengthX() * row + _shortRoom.GetLengthX() * row,
+                            _longRoom.GetLengthX() / 2f + _shortRoom.GetLengthX() / 2f + _longRoom.GetLengthX() * row +
+                            _shortRoom.GetLengthX() * row,
                             0f,
                             _longRoom.GetLengthZ() * column
                         ), Quaternion.identity);
@@ -74,6 +83,7 @@ namespace Map
                     }
                 }
             }
+
             for (int column = 0; column < _mapOfSafeZones.GetLength(1); column++)
             {
                 for (int row = 0; row < _mapOfSafeZones.GetLength(0); row++)
@@ -88,12 +98,13 @@ namespace Map
                         ), Quaternion.identity);
                         _mapOfSafeZones[row, column].SetPosition(new Vector2Int(column, row));
                         _mapOfSafeZones[row, column].gameObject.SetActive(false);
-                        
-                        if (column == _levelParameters.Branchs && (row == 0 || row == _mapOfSafeZones.Length - 1))
+
+                        if (column == _levelParameters.Branchs && (row == 0 || row == _mapOfSafeZones.GetLength(0) - 1))
                         {
                             RoomParameters room = Instantiate(_longRoom, new Vector3
                             (
-                                (_longRoom.GetLengthX() / 2f + _shortRoom.GetLengthX() / 2f + _longRoom.GetLengthX() * row + _shortRoom.GetLengthX() * row) * (row == 0 ? -1 : 1),
+                                (_longRoom.GetLengthX() / 2f + _shortRoom.GetLengthX() / 2f +
+                                 _longRoom.GetLengthX() * row + _shortRoom.GetLengthX() * row) * (row == 0 ? -1 : 1),
                                 0f,
                                 _longRoom.GetLengthZ() * column
                             ), Quaternion.identity, _mapOfSafeZones[row, column].transform);
@@ -104,6 +115,7 @@ namespace Map
                     }
                 }
             }
+
             _emptyWallStart = Instantiate(_emptyWall, new Vector3
             (
                 0 - (_shortRoom.GetLengthX() / 2f),
@@ -117,6 +129,7 @@ namespace Map
                 _levelParameters.Branchs * _longRoom.GetLengthZ()
             ), Quaternion.identity);
         }
+
         private void GenerateOfPrimaryView()
         {
             _mapOfRooms = new RoomParameters[_levelParameters.Length, _levelParameters.Branchs * 2 + 1];
@@ -189,7 +202,8 @@ namespace Map
                                     }
                                 }
                             }
-                            else if (row > 0 && column < _mapOfRooms.GetLength(1) - 1 && _mapOfRooms[row - 1, column + 1] != null)
+                            else if (row > 0 && column < _mapOfRooms.GetLength(1) - 1 &&
+                                     _mapOfRooms[row - 1, column + 1] != null)
                             {
                                 if (quantityBranchs[indexBranch] < quantityBranchsInChank[indexBranch])
                                 {
@@ -206,6 +220,7 @@ namespace Map
                 }
             }
         }
+
         private void GenerateOfSaveZone()
         {
             _mapOfSafeZones = new SafeZoneParameters[_levelParameters.Length + 1,
@@ -217,7 +232,8 @@ namespace Map
             {
                 for (int column = 0; column < _mapOfRooms.GetLength(1); column++)
                 {
-                    if (row + 1 < _mapOfRooms.GetLength(0) && _mapOfRooms[row + 1, column] != null && _mapOfRooms[row, column] != null)
+                    if (row + 1 < _mapOfRooms.GetLength(0) && _mapOfRooms[row + 1, column] != null &&
+                        _mapOfRooms[row, column] != null)
                     {
                         _mapOfSafeZones[row + 1, column] = _shortRoom;
                     }
@@ -239,6 +255,7 @@ namespace Map
 
             _mapOfSafeZones[_mapOfSafeZones.GetLength(0) - 1, _levelParameters.Branchs] = _shortRoom;
         }
+
         private void SetExitInRoom()
         {
             for (int column = 0; column < _mapOfRooms.GetLength(1); column++)
@@ -252,16 +269,14 @@ namespace Map
                         (
                             (column + 1 < _mapOfRooms.GetLength(1) && _mapOfRooms[row, column + 1] == null) ||
                             column + 1 == _mapOfRooms.GetLength(1), //|| 
-                            
+
                             //(Random.Range(0, 3) == 1), //&& ((row > 0 || row < _mapOfRooms.GetLength(0) - 1) && (_mapOfRooms[row - 1, column] != null && _mapOfRooms[row - 1, column].Upper || _mapOfRooms[row + 1, column] != null && _mapOfRooms[row + 1, column].Upper))),
-                            
                             (row + 1 < _mapOfRooms.GetLength(0) && _mapOfRooms[row + 1, column] == null &&
                              _mapOfSafeZones[row + 1, column] == null) ||
                             (row + 1 == _mapOfRooms.GetLength(0) && _mapOfSafeZones[row + 1, column] == null),
-                            (0 < column && _mapOfRooms[row, column - 1] == null) || column == 0,// || 
-                            
+                            (0 < column && _mapOfRooms[row, column - 1] == null) || column == 0, // || 
+
                             //(_mapOfRooms[row, column - 1].Upper), /// && ((row > 0 || row < _mapOfRooms.GetLength(0) - 1) && (_mapOfRooms[row - 1, column] != null && _mapOfRooms[row - 1, column].Bottom || _mapOfRooms[row + 1, column] != null && _mapOfRooms[row + 1, column].Bottom))),
-                            
                             (row > 0 && _mapOfRooms[row - 1, column] == null && _mapOfSafeZones[row, column] == null) ||
                             (row == 0 && _mapOfSafeZones[row, column] == null)
                         );
@@ -269,6 +284,7 @@ namespace Map
                 }
             }
         }
+
         private void SetExitSaveZone()
         {
             for (int column = 0; column < _mapOfSafeZones.GetLength(1); column++)
@@ -282,15 +298,21 @@ namespace Map
                         {
                             if (_mapOfRooms[row, column] != null && _mapOfRooms[row - 1, column] != null)
                             {
-                                _mapOfSafeZones[row, column].SetHorizontalParameters(_mapOfSafeZones[row - 1, column] != null && _mapOfSafeZones[row - 1, column].IsSaveZone == true ? UnityEngine.Random.Range(0, _levelParameters.Difficulty / 5) == 0 : true);
+                                _mapOfSafeZones[row, column].SetHorizontalParameters(
+                                    _mapOfSafeZones[row - 1, column] != null &&
+                                    _mapOfSafeZones[row - 1, column].IsSaveZone == true
+                                        ? UnityEngine.Random.Range(0, _levelParameters.Difficulty / 5) == 0
+                                        : true);
                             }
                             else if (_mapOfRooms[row, column] == null && _mapOfRooms[row - 1, column] != null)
                             {
-                                _mapOfSafeZones[row, column].SetOneWayParameters((short)OpenSide.Left, UnityEngine.Random.Range(0, 1) == 0, DoorStatusEnum.None);
+                                _mapOfSafeZones[row, column].SetOneWayParameters((short) OpenSide.Left,
+                                    UnityEngine.Random.Range(0, 1) == 0, DoorStatusEnum.None);
                             }
                             else if (_mapOfRooms[row, column] != null && _mapOfRooms[row - 1, column] == null)
                             {
-                                _mapOfSafeZones[row, column].SetOneWayParameters((short)OpenSide.Right, UnityEngine.Random.Range(0, 1) == 0, DoorStatusEnum.None);
+                                _mapOfSafeZones[row, column].SetOneWayParameters((short) OpenSide.Right,
+                                    UnityEngine.Random.Range(0, 1) == 0, DoorStatusEnum.None);
                             }
                         }
                         else if (row == _mapOfSafeZones.GetLength(0) - 1)
@@ -298,25 +320,29 @@ namespace Map
                             DoorStatusEnum doorStatus = column == _levelParameters.Branchs
                                 ? DoorStatusEnum.Open
                                 : DoorStatusEnum.None;
-                            _mapOfSafeZones[row, column].SetOneWayParameters((short)OpenSide.Left, 
-                                column == _levelParameters.Branchs ? true : UnityEngine.Random.Range(0, 1) == 0, doorStatus);
+                            _mapOfSafeZones[row, column].SetOneWayParameters((short) OpenSide.Left,
+                                column == _levelParameters.Branchs ? true : UnityEngine.Random.Range(0, 1) == 0,
+                                doorStatus);
                         }
                         else if (row == 0)
                         {
                             DoorStatusEnum doorStatus = column == _levelParameters.Branchs
                                 ? DoorStatusEnum.Close
                                 : DoorStatusEnum.None;
-                            _mapOfSafeZones[row, column].SetOneWayParameters((short)OpenSide.Right,
-                                column == _levelParameters.Branchs ? true : UnityEngine.Random.Range(0, 1) == 0, doorStatus);
+                            _mapOfSafeZones[row, column].SetOneWayParameters((short) OpenSide.Right,
+                                column == _levelParameters.Branchs ? true : UnityEngine.Random.Range(0, 1) == 0,
+                                doorStatus);
                         }
 
-                        if (_mapOfSafeZones[row, column].IsSaveZone && !(column == _levelParameters.Branchs && row == 0) &&
+                        if (_mapOfSafeZones[row, column].IsSaveZone &&
+                            !(column == _levelParameters.Branchs && row == 0) &&
                             !(column == _levelParameters.Branchs &&
                               row == _mapOfSafeZones.GetLength(0) - 1))
                         {
                             _mapOfSafeZones[row, column].gameObject.AddComponent<ExpirienceControl>();
                         }
-                        if (column != _levelParameters.Branchs && _mapOfSafeZones[row, column].IsSaveZone)// &&
+
+                        if (column != _levelParameters.Branchs && _mapOfSafeZones[row, column].IsSaveZone) // &&
                             //_mapOfSafeZones[row, _levelParameters.Branchs].IsSaveZone)
                         {
                             _mapOfSafeZones[row, column].gameObject.AddComponent<TeleportControl>();
@@ -327,7 +353,8 @@ namespace Map
 
             _mapOfSafeZones[_mapOfSafeZones.GetLength(0) - 1, _levelParameters.Branchs].gameObject
                 .AddComponent<LevelComplited>();
-            _mapOfSafeZones[_mapOfSafeZones.GetLength(0) - 1, _levelParameters.Branchs].GetComponent<LevelComplited>().SetResultController(_resultController);
+            _mapOfSafeZones[_mapOfSafeZones.GetLength(0) - 1, _levelParameters.Branchs].GetComponent<LevelComplited>()
+                .SetResultController(_resultController);
         }
-   }
+    }
 }

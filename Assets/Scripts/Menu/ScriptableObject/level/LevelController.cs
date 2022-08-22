@@ -11,7 +11,7 @@ namespace Menu.ScriptableObject.level
     {
         [SerializeField] private LevelMenuView _levelMenuView;
         [SerializeField] private List<LevelParameters> _levelParameters;
-        [SerializeField] private ClassAvailability _classAvailability;
+        //[SerializeField] private ClassAvailability _classAvailability;
         [SerializeField] private SelectionClassView _selectionClassView;
         [SerializeField] private CharacterInfo _characterInfo;
         [SerializeField] private Animator _selectionAnimator;
@@ -106,7 +106,7 @@ namespace Menu.ScriptableObject.level
                     break;
             }
 
-            _classAvailability.CheckClassForLevel();
+            //_classAvailability.CheckClassForLevel();
             _selectionClass.SetActive(true);
             _selectionAnimator.SetInteger("Information", 0);
             _selectionClassView.ChoiceTypeOfCharacter(PlayerPrefs.GetInt("SelectionNumber"));

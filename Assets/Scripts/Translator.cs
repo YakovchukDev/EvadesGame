@@ -5,10 +5,10 @@ public class Translator : MonoBehaviour
     private TMP_Text _text;
     [TextArea]
     [SerializeField] private string _englishText;
-    
+
     [TextArea]
     [SerializeField] private string _russianText;
-    
+
     [TextArea]
     [SerializeField] private string _ukrainianText;
 
@@ -28,5 +28,24 @@ public class Translator : MonoBehaviour
                 break;
         }
     }
+    public Translator(string englishText, string UkrainianText, string _parassianText)
+    {
+        _englishText = englishText;
+        _ukrainianText = UkrainianText;
+        _russianText = _parassianText;
+    }
+    public string GetText()
+    {
+        switch (PlayerPrefs.GetString("Language"))
+        {
+            case "English":
+                return _englishText;
+            case "Russian":
+                return _russianText;
+            case "Ukrainian":
+                return _ukrainianText;
+            default:
+                return _englishText;
+        }
+    }
 }
-

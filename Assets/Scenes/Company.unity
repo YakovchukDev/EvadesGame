@@ -1629,6 +1629,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2012630821}
     - target: {fileID: 8033360803333957744, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
+      propertyPath: _startText
+      value: 
+      objectReference: {fileID: 5371876976629950173}
+    - target: {fileID: 8033360803333957744, guid: b7ef2601fd303ef47bc9075bde3b6705, type: 3}
       propertyPath: _companyCamera
       value: 
       objectReference: {fileID: 1000293457}
@@ -2766,6 +2770,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6919366, guid: d68e1da0ecf5e6a40be47026b7ee1a19, type: 3}
+      propertyPath: m_Name
+      value: StarValue
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919367, guid: d68e1da0ecf5e6a40be47026b7ee1a19, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -17.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919368, guid: d68e1da0ecf5e6a40be47026b7ee1a19, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919368, guid: d68e1da0ecf5e6a40be47026b7ee1a19, type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 1753865084, guid: d68e1da0ecf5e6a40be47026b7ee1a19, type: 3}
       propertyPath: m_SizeDelta.x
       value: 100
@@ -3387,6 +3407,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11b6cb1fb516eb84da16b4453c57534f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5371876976629950173 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6919368, guid: d68e1da0ecf5e6a40be47026b7ee1a19, type: 3}
+  m_PrefabInstance: {fileID: 5371876976629950157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6686578693880097755 stripped

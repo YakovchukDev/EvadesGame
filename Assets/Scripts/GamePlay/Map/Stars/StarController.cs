@@ -8,7 +8,8 @@ namespace Map.Stars
     {
         private StarSide _valueSide;
         private AudioManager _audioManager;
-        public static event Action<Vector3> _OnParticleAfterStar;
+        public static event Action<Vector3> OnParticleAfterStar;
+        public static event Action OnUpdateStarAmount;
         public void Start()
         {
             _audioManager=AudioManager.Instanse;
@@ -37,7 +38,8 @@ namespace Map.Stars
                         break;
                     }
                 }
-                _OnParticleAfterStar?.Invoke(transform.position);
+                OnParticleAfterStar?.Invoke(transform.position);
+                OnUpdateStarAmount?.Invoke();
             }
         }
         public void SetValueSide(StarSide valueSide)

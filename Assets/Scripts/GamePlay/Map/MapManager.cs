@@ -8,6 +8,7 @@ using Map.Stars;
 using UnityEngine;
 using Map.Teleport;
 using Menu.SelectionClass;
+using TMPro;
 
 namespace Map
 {
@@ -28,25 +29,29 @@ namespace Map
         private Vector2Int _safeZoneWherePlayerWasOrIs;
         private RoomParameters[,] _mapOfRooms;
         private SafeZoneParameters[,] _mapOfSafeZones;
+        [SerializeField] private TMP_Text _startText;
 
         private void OnEnable()
         {
             RoomParameters.OnEnterRoom += MoveMapArea;
-            GamePlay.Character.HealthController.OnBackToSafeZone += GoToSafeZone;
+            HealthController.OnBackToSafeZone += GoToSafeZone;
             SafeZoneParameters.OnEnterSafeZone += SetLocationOfNewSafeZone;
             TeleportControl.OnGetCentralSafeZone += GetSafeZoneParameters;
             TeleportController.OnTeleport += StartTeleportationToSaveZone;
-            StarController._OnParticleAfterStar += GetStar;
+            StarController.OnParticleAfterStar += GetStar;
+            StarController.OnUpdateStarAmount += StarAmount;
         }
 
         private void OnDisable()
         {
             RoomParameters.OnEnterRoom -= MoveMapArea;
-            GamePlay.Character.HealthController.OnBackToSafeZone -= GoToSafeZone;
+            HealthController.OnBackToSafeZone -= GoToSafeZone;
             SafeZoneParameters.OnEnterSafeZone -= SetLocationOfNewSafeZone;
             TeleportControl.OnGetCentralSafeZone -= GetSafeZoneParameters;
             TeleportController.OnTeleport -= StartTeleportationToSaveZone;
-            StarController._OnParticleAfterStar -= GetStar;
+            StarController.OnParticleAfterStar -= GetStar;
+            StarController.OnUpdateStarAmount -= StarAmount;
+
         }
 
 
@@ -61,7 +66,6 @@ namespace Map
 
         private void Start()
         {
-           
             MainDataCollector = new MainDataCollector();
             MainDataCollector.SetCoinController(_coinController);
 
@@ -72,7 +76,17 @@ namespace Map
 
             _companyCamera.SetPlayer(_characterSpawner.Character);
             ShowRoomsAroundSpecifiedCoordinates(new Vector2Int(LevelParameters.Branchs, 0));
+            StarAmount();
         }
+
+        private void StarAmount()
+        {
+            int star = (MainDataCollector.Level.DownStar ? 1 : 0) +
+                       (MainDataCollector.Level.UpStar ? 1 : 0) +
+                       (MainDataCollector.Level.IsComplited ? 1 : 0);
+            _startText.text = $"{star}/3";
+        }
+
 
         public void GoToCentralRoom()
         {
@@ -98,7 +112,6 @@ namespace Map
             _teleportThereParticle.SetActive(true);
             character.SetActive(false);
             _audioListener2.SetActive(true);
-
             yield return new WaitForSeconds(1);
             GoToCentralRoom();
             _teleportHereParticle.transform.position = character.transform.position;
@@ -133,11 +146,9 @@ namespace Map
         private void ShowRoomsAroundSpecifiedCoordinates(Vector2Int position)
         {
             SelectAllMap(false);
-
             Vector2Int startPos = SearchPosition(position, -1);
             Vector2Int endPos = SearchPosition(position, 1);
             SelectMapSpecifiedCoordinates(true, startPos, endPos);
-
             _mapGenerator.ChangePositionEmptyWall(position);
             _lastRoomWherePlayerWas = position;
         }
@@ -175,7 +186,9 @@ namespace Map
 
         private void SelectMapSpecifiedCoordinates(bool isShow, Vector2Int startPos, Vector2Int endPos)
         {
-            for (int column = startPos.x; column <= endPos.x; column++)
+            for (int column = startPos.x;
+                column <= endPos.x;
+                column++)
             {
                 for (int row = startPos.y; row <= endPos.y; row++)
                 {

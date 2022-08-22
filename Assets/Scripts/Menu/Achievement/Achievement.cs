@@ -1,11 +1,11 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Menu.Achievement
 {
     public class Achievement : MonoBehaviour
     {
-        public static Action<Achievement> AchieveComplite;
         public string Title;
         public string Task;
         public string RewardStr;
@@ -31,7 +31,6 @@ namespace Menu.Achievement
                 if (Requirement.Invoke(RequirementValue))
                 {
                     Achieved = true;
-                    AchieveComplite?.Invoke(this);
                     Reward?.Invoke(RewardValue);
                     return true;
                 }
@@ -40,5 +39,19 @@ namespace Menu.Achievement
 
         }
 
+    }
+    public class AchievementData
+    {
+        public bool[] IsAchieveds;
+        public AchievementData() { }
+
+        public AchievementData(List<Achievement> achievements)
+        {
+            IsAchieveds = new bool[achievements.Count];
+            for(int i = 0; i < IsAchieveds.Length; i++)
+            {
+                IsAchieveds[i] = achievements[i].Achieved;
+            }
+        }
     }
 }
