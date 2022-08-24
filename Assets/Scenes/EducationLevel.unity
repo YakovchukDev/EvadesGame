@@ -27025,7 +27025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569c4ec4646f4c8099a19faea77f2919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterSpawner: {fileID: 2698989378213967581}
+  _educationSpawnCharacter: {fileID: 2698989378213967581}
 --- !u!114 &1224000696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52415,7 +52415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSaveZone: 1
   GiveExpirience: 0
-  _characterSpawner: {fileID: 0}
+  _educationSpawnCharacter: {fileID: 0}
   _handController: {fileID: 0}
   SaveZoneForTeleport: 0
   IsFirstSaveZone: 1
@@ -52457,7 +52457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSaveZone: 1
   GiveExpirience: 0
-  _characterSpawner: {fileID: 0}
+  _educationSpawnCharacter: {fileID: 0}
   _handController: {fileID: 0}
   SaveZoneForTeleport: 0
   IsFirstSaveZone: 0
@@ -70297,9 +70297,9 @@ GameObject:
   - component: {fileID: 2698989379042375839}
   - component: {fileID: 2698989378213967579}
   - component: {fileID: 2698989378213967580}
-  - component: {fileID: 2698989378213967581}
   - component: {fileID: 2698989378213967582}
   - component: {fileID: 2698989378213967583}
+  - component: {fileID: 2698989378213967581}
   m_Layer: 0
   m_Name: EducationGameManager
   m_TagString: Untagged
@@ -70357,16 +70357,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2698989378213967578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db8319e3af1a334aabc6a0cb18fa42c, type: 3}
+  m_Script: {fileID: 11500000, guid: c984ac301d00cda4d86cce8b27f4229e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type:
-  - {fileID: 2963534093953126575, guid: 896c1960df869cd45a8eb459e866abf2, type: 3}
-  - {fileID: 1717912554360977961, guid: 5d0839d216134a7428643b19ee74a357, type: 3}
-  - {fileID: 5460984050080916392, guid: 950abaa21770e4c49a0e2cdd15c8503f, type: 3}
-  - {fileID: 1911395832924520791, guid: 121027de14f92694ebfc84f1bd41f3db, type: 3}
-  - {fileID: 8882896568688617212, guid: cb15d70a9125f4b48beeaf368c5205c9, type: 3}
-  - {fileID: 4929027674744662730, guid: 28318606d4f68ff4989a0e4090e1d1b5, type: 3}
+  _type: {fileID: 4929027674744662730, guid: 28318606d4f68ff4989a0e4090e1d1b5, type: 3}
 --- !u!114 &2698989378213967582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70384,7 +70378,7 @@ MonoBehaviour:
   _audioListener2: {fileID: 1122273641}
   _teleportThereParticle: {fileID: 834372997}
   _teleportHereParticle: {fileID: 65849427}
-  _characterSpawner: {fileID: 2698989378213967581}
+  _educationSpawnCharacter: {fileID: 2698989378213967581}
   _backGround: {fileID: 425091475}
   _forOffInteractable: {fileID: 1086444186414627719}
   _image: {fileID: 1086444186414627712}
@@ -96131,7 +96125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSaveZone: 1
   GiveExpirience: 1
-  _characterSpawner: {fileID: 0}
+  _educationSpawnCharacter: {fileID: 0}
   _handController: {fileID: 2698989378213967580}
   SaveZoneForTeleport: 0
   IsFirstSaveZone: 0
@@ -126589,7 +126583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSaveZone: 1
   GiveExpirience: 1
-  _characterSpawner: {fileID: 2698989378213967581}
+  _educationSpawnCharacter: {fileID: 2698989378213967581}
   _handController: {fileID: 2698989378213967580}
   SaveZoneForTeleport: 1
   IsFirstSaveZone: 0

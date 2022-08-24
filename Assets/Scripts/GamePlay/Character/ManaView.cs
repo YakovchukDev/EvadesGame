@@ -15,12 +15,15 @@ namespace GamePlay
         {
             ManaController.UpdateManaView += SetManaValue;
             CharacterSpawner.HandOverManaController += FillMana;
+            EducationSpawnCharacter.HandOverManaController += FillMana;
         }
 
         private void OnDisable()
         {
             ManaController.UpdateManaView -= SetManaValue;
             CharacterSpawner.HandOverManaController -= FillMana;
+            EducationSpawnCharacter.HandOverManaController -= FillMana;
+
         }
         private void SetManaValue(float value)
         {

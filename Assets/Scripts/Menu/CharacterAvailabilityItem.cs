@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 using Menu.SelectionClass;
 
 public class CharacterAvailabilityItem : MonoBehaviour
@@ -22,11 +19,12 @@ public class CharacterAvailabilityItem : MonoBehaviour
         _whatNeedForOpen = new Translator(_whatNeedForOpenText[0], _whatNeedForOpenText[1], _whatNeedForOpenText[2]);
         CheckOpenCompany();
     }
+
     private void OnEnable()
     {
         CheckOpenCharacter();
-        ForEducationalLevel.OnEducationLevel += SlimesForEducation;
     }
+
     private void CheckOpenCompany()
     {
         if (PlayerPrefs.HasKey($"Open{_id}") && PlayerPrefs.HasKey(_name))
@@ -38,23 +36,14 @@ public class CharacterAvailabilityItem : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        ForEducationalLevel.OnEducationLevel -= SlimesForEducation;
-
-    }
-
-    private void SlimesForEducation()
-    {
-        _button.interactable = _id == 5;
-    }
     private void CheckOpenCharacter()
     {
-        if(_button == null)
+        if (_button == null)
         {
             _button = GetComponent<Button>();
         }
-        if (PlayerPrefs.HasKey($"Open{ _id}"))
+
+        if (PlayerPrefs.HasKey($"Open{_id}"))
         {
             if (PlayerPrefs.GetInt($"Open{_id}") == 1 || _id == 0)
             {
@@ -67,15 +56,16 @@ public class CharacterAvailabilityItem : MonoBehaviour
                 _button.interactable = false;
             }
         }
-        else if(_id != 0)
+        else if (_id != 0)
         {
             print($"{_id} close {PlayerPrefs.GetInt($"Open{_id}")}");
             _button.interactable = false;
         }
     }
+
     public void CheckOpenButton()
     {
-        if(!_button.interactable && _whatNeedForOpen.GetText() != "")
+        if (!_button.interactable && _whatNeedForOpen.GetText() != "")
         {
             _popUpPanel.OpenPopUpPanel(GetComponent<RectTransform>(), _whatNeedForOpen.GetText());
         }

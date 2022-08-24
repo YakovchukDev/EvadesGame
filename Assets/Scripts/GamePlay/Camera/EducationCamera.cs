@@ -5,10 +5,10 @@ namespace GamePlay.Camera
 {
     public class EducationCamera : CameraController
     {
-        [SerializeField] private CharacterSpawner _characterSpawner;
+        [SerializeField] private EducationSpawnCharacter _educationSpawnCharacter;
         private void Start()
         {
-            Player = _characterSpawner.Character;
+            Player = _educationSpawnCharacter.Character;
             Camera(100);
         }
     }

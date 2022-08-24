@@ -74,6 +74,8 @@ namespace GamePlay.Character
 
             CharacterSpawner.HandOverManaController += SetManaController;
             CharacterSpawner.InitializeUpgradePanel += Initialize;
+           EducationSpawnCharacter.HandOverManaController += SetManaController;
+           EducationSpawnCharacter.InitializeUpgradePanel += Initialize;
             ExpirienceController.OnGetLevelPoints += SetLevelPoints;
 
             EducationExperienceController.OnGetLevelPoints += SetLevelPoints;
@@ -92,6 +94,8 @@ namespace GamePlay.Character
 
             CharacterSpawner.HandOverManaController -= SetManaController;
             CharacterSpawner.InitializeUpgradePanel -= Initialize;
+            EducationSpawnCharacter.HandOverManaController -= SetManaController;
+            EducationSpawnCharacter.InitializeUpgradePanel -= Initialize;
             ExpirienceController.OnGetLevelPoints -= SetLevelPoints;
 
             EducationExperienceController.OnGetLevelPoints -= SetLevelPoints;

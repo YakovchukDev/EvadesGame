@@ -40,7 +40,6 @@ namespace Menu.ScriptableObject.level
                 PlayerPrefs.SetInt("CompleteLevel", 0);
             }
 
-            CompleteLevel = 30;
             CompanyButton.OnCompanyUnlocked += SpawnLevelElement;
         }
 

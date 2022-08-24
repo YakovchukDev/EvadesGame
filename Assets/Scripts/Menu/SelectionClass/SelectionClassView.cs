@@ -11,7 +11,7 @@ namespace Menu.SelectionClass
     {
         [SerializeField] private ClassAvailability _classAvailability;
         public static int CharacterType { get; private set; }
-        public static string WhatPlaying { get; private set; }
+        public static string WhatPlaying { get; set; }
         public List<Button> _buttonSelection;
         [SerializeField] private TMP_Text _infoTime;
         [SerializeField] private Image _progressLine;
@@ -69,7 +69,6 @@ namespace Menu.SelectionClass
                 }
             }
         }
-
         public void SetWhatPlaying(string whatPlaying)
         {
             WhatPlaying = whatPlaying;
@@ -101,10 +100,7 @@ namespace Menu.SelectionClass
             {
                 StartCoroutine(AsyncLoadScene("InfinityGame"));
             }
-            else if (WhatPlaying == "Education")
-            {
-                StartCoroutine(AsyncLoadScene("EducationLevel"));
-            }
+
             else
             {
                 Debug.LogError("Mode not selected");

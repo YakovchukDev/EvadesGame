@@ -20,16 +20,6 @@ namespace GamePlay.Character
             {
                 SpawnCharacter(new Vector3(0, 1, 0), Quaternion.identity);
             }
-            else if (SelectionClassView.WhatPlaying == "Education")
-            {
-                SpawnCharacter(new Vector3(-30, 1, 0), new Quaternion(0, 45, 0, 0));
-                if (Character.GetComponent<ManaController>() != null)
-                {
-                    HandOverManaController?.Invoke(Character.GetComponent<ManaController>());
-                }
-
-                InitializeUpgradePanel?.Invoke();
-            }
         }
 
         private void Start()

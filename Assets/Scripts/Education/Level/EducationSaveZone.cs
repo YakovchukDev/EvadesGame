@@ -13,7 +13,7 @@ namespace Education.Level
     {
         public bool IsSaveZone;
         public bool GiveExpirience;
-        [SerializeField] private CharacterSpawner _characterSpawner;
+        [SerializeField] private EducationSpawnCharacter _educationSpawnCharacter;
         [SerializeField] private HandController _handController;
         [SerializeField] private bool SaveZoneForTeleport;
         [SerializeField] private bool IsFirstSaveZone;
@@ -49,9 +49,9 @@ namespace Education.Level
                     _handController.MoveHand(_teleportHandPoint.position, 0.7f);
                     _forOffInteractable.interactable = false;
                     _backPanel.SetActive(true);
-                    _characterSpawner.Character.transform.DORotate(new Vector3(0, 90, 0), 0.5f);
-                    _characterSpawner.Character.transform.DOMove(
-                        new Vector3(27, _characterSpawner.Character.transform.position.y, 15), 0.5f);
+                    _educationSpawnCharacter.Character.transform.DORotate(new Vector3(0, 90, 0), 0.5f);
+                    _educationSpawnCharacter.Character.transform.DOMove(
+                        new Vector3(27, _educationSpawnCharacter.Character.transform.position.y, 15), 0.5f);
                     JoystickPlayerExample.Speed = 0;
                 }
             }

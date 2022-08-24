@@ -14,7 +14,7 @@ namespace Education.Level.Controllers
         [SerializeField] private GameObject _audioListener2;
         [SerializeField] private GameObject _teleportThereParticle;
         [SerializeField] private GameObject _teleportHereParticle;
-        [SerializeField] private CharacterSpawner _characterSpawner;
+        [SerializeField] private EducationSpawnCharacter _educationSpawnCharacter;
         [SerializeField] private GameObject _backGround;
         [SerializeField] private Button _forOffInteractable;
         [SerializeField] private Image _image;
@@ -51,13 +51,13 @@ namespace Education.Level.Controllers
 
         private void TeleportAfterDie()
         {
-            if (_characterSpawner.Character.transform.position.x < 23)
+            if (_educationSpawnCharacter.Character.transform.position.x < 23)
             {
-                _characterSpawner.Character.transform.position = new Vector3(-30, 1, 0);
+                _educationSpawnCharacter.Character.transform.position = new Vector3(-30, 1, 0);
             }
             else
             {
-                _characterSpawner.Character.transform.position = new Vector3(30, 1, 0);
+                _educationSpawnCharacter.Character.transform.position = new Vector3(30, 1, 0);
             }
         }
 
@@ -78,7 +78,7 @@ namespace Education.Level.Controllers
 
         private IEnumerator TeleportToCentralRoom()
         {
-            GameObject character = _characterSpawner.Character;
+            GameObject character = _educationSpawnCharacter.Character;
             _teleportThereParticle.transform.position = character.transform.position;
             _teleportThereParticle.SetActive(true);
 
