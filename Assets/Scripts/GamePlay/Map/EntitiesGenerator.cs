@@ -134,6 +134,18 @@ namespace Map
                 MapManager.MainDataCollector.Level.UpStar = true;
                 MapManager.MainDataCollector.Level.DownStar = true;
             }
+
+            if (!MapManager.MainDataCollector.Level.MiddleStar)
+            {
+                print(_mapOfSafeZones.GetLength(0));
+                print(_mapOfSafeZones.GetLength(1));
+                StarController star = Instantiate(
+                       _star,
+                       _mapOfSafeZones[_mapOfSafeZones.GetLength(0) - 1, MapManager.LevelParameters.Branchs].gameObject.transform.position,
+                       Quaternion.identity,
+                       _mapOfSafeZones[_mapOfSafeZones.GetLength(0) - 1, MapManager.LevelParameters.Branchs].transform);
+                star.SetValueSide(StarSide.Middle);
+            }
         }
 
         public void GenerateAndSpawnCoinList(RoomParameters room)

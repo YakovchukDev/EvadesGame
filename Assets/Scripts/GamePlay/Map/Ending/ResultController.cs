@@ -81,14 +81,22 @@ namespace Map.Ending
             if (PlayerPrefs.HasKey($"Level{MapManager.MainDataCollector.GetLevelNumber()}"))
             {
                 string stars = PlayerPrefs.GetString($"Level{MapManager.MainDataCollector.GetLevelNumber()}");
-                for (int i = 0; i < stars.Length && i < _listStars.Count; i++)
+                int count = 0;
+                for (int i = 1; i < stars.Length; i++)
                 {
                     if (stars[i] == '*')
                     {
-                        _listStars[i].DOFade(1, 0.5f);
+                        count++;
                     }
+                }
 
-                    yield return new WaitForSeconds(0.2f);
+                for (int i = 0; i < _listStars.Count; i++)
+                {
+                    if (count > 0)
+                    {
+                        _listStars[i].DOFade(1, 0.5f);
+                        count--;
+                    }
                 }
             }
 

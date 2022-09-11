@@ -8,6 +8,7 @@ namespace Education.Level
     {
         private AudioManager _audioManager;
         public static event Action<Vector3> OnGetStar;
+
         public void Start()
         {
             _audioManager = AudioManager.Instanse;
@@ -19,6 +20,7 @@ namespace Education.Level
             if (other.gameObject.CompareTag("Player"))
             {
                 _audioManager.Play("Star");
+                PlayerPrefs.SetInt("EducationStarCount", PlayerPrefs.GetInt("EducationStarCount") + 1);
                 OnGetStar?.Invoke(transform.position);
                 Destroy(gameObject);
             }

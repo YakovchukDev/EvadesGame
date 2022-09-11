@@ -11,93 +11,114 @@ namespace Menu.Achievement
         public bool ToLoop;
         public List<Achievement> Achievements;
         [SerializeField] private int _timeInterval;
-        private string _path;
         private int _count;
         private bool _isInitialized;
 
         private void Start()
         {
-
             _isInitialized = false;
-            _count = 0; 
-            if (_testMode)
-            {
-                _path = Application.streamingAssetsPath + "/Achievements.json";
-            }
-            else
-            {
-                _path = Application.persistentDataPath + "/Achievements.json";
-            }
             InitializeAchievement();
         }
+
         public void Update()
         {
             CheckAchievementCompletion();
         }
+
         private void OnApplicationPause(bool pause)
         {
-            StartCoroutine(SaveAchievements());
+            SaveAchievements();
         }
+
         private void OnApplicationQuit()
         {
-             StartCoroutine(SaveAchievements());
+            SaveAchievements();
         }
-        private IEnumerator SaveAchievements()
+
+        private void SaveAchievements()
         {
-            if(Achievements == null)
+            if (Achievements == null)
             {
                 InitializeAchievement();
             }
-            yield return new WaitUntil(() => _path != null);
-            if(!File.Exists(_path))
+
+            for (int i = 0; i < Achievements.Count; i++)
             {
-                FileStream fileStream = File.Create(_path);
-                fileStream.Close();
+                PlayerPrefs.SetInt($"Achievement{i}", Achievements[i].Achieved ? 1 : 0);
             }
-            AchievementData achievementData = new AchievementData(Achievements);
-            File.WriteAllText(_path, JsonUtility.ToJson(achievementData));
         }
+
         private void InitializeAchievement()
         {
             CreateListAchievement();
-            if (File.Exists(_path))
+
+            for (int i = 0; i < Achievements.Count; i++)
             {
-                AchievementData achievementsData = JsonUtility.FromJson<AchievementData>(File.ReadAllText(_path));
-                for(int i = 0; i < Achievements.Count; i++)
+                if (PlayerPrefs.HasKey($"Achievement{i}"))
                 {
-                    if(achievementsData.IsAchieveds.Length > i)
-                    {
-                        Achievements[i].Achieved = achievementsData.IsAchieveds[i];
-                    }
+                    Achievements[i].Achieved = PlayerPrefs.GetInt($"Achievement{i}") == 1;
                 }
             }
+
             _isInitialized = true;
         }
+
         private void CreateListAchievement()
         {
             Achievements = new List<Achievement>();
             Achievements.Add(new Achievement(
-                (object)10, (object)2,
-                "Level 1 explorer",
-                "complete 10 levels with 1 star or more",
-                "get NEO character",
+                (object) 10, (object) 1,
+                new Translator("Level 1 explorer", "Дослідник 1-го рівня", "Исследователь 1-го уровня"),
+                new Translator("Complete 10 company levels.", "Пройдіть 10 рівнів компанії.",
+                    "Пройдите 10 уровней компании."),
+                new Translator("You get a Necro character!", "Ти отримуєш персонажа Necro!",
+                    "Ты Получаешь персонажа Necro!"),
                 CheckCompletedLevels,
                 OpenCharacter));
             Achievements.Add(new Achievement(
-                (object)20, (object)3,
-                "Level 2 explorer",
-                "complete 20 levels with 1 star or more",
-                "get Tank character",
+                (object) 20, (object) 2,
+                new Translator("Level 2 explorer", "Дослідник 2-го рівня", "Исследователь 2-го уровня"),
+                new Translator("Complete 20 company levels.", "Пройдіть 20 рівнів компанії.",
+                    "Пройдите 20 уровней компании."),
+                new Translator("You get a Shooter character!", "Ти отримуєш персонажа Shooter!",
+                    "Ты Получаешь персонажа Shooter!"),
                 CheckCompletedLevels,
                 OpenCharacter));
             Achievements.Add(new Achievement(
-                (object)100, 100,
-                "You are resilience itself",
-                "Stay alive for 100 seconds",
-                "get Tank character",
+                (object) 10, (object) 3,
+                new Translator("Level 3 explorer", "Дослідник 3-го рівня", "Исследователь 3-го уровня"),
+                new Translator("Complete all company levels.", "Пройдіть всі рівні компанії.",
+                    "Пройдите все уровни компании."),
+                new Translator("You get a NEO character!", "Ти отримуєш персонажа NEO!", "Ты Получаешь персонажа NEO!"),
                 CheckCompletedLevels,
+                OpenCharacter));
+            Achievements.Add(new Achievement(
+                (object) 10, 4,
+                new Translator("You are resilience itself!", "Ти сама стійкість!", "Ты сама устойчивость!"),
+                new Translator("Stay alive for 100 seconds.", "Залишайтеся в живих протягом 100 секунд.",
+                    "Остаться в живых в течение 100 секунд."),
+                new Translator("You get a Tank character", "Ти отримуєш персонажа Tank", "Ты Получаешь персонажа Tank"),
+                CheckSurviveRecord,
+                OpenCharacter));
+            Achievements.Add(new Achievement(
+                (object) 20, 5,
+                new Translator("You are elusive!", "Ти невловимий!", "Ты неуловим!"),
+                new Translator("Stay alive for 200 seconds.", "Залишайтеся в живих протягом 200 секунд.",
+                    "Остаться в живых в течение 200 секунд."),
+                new Translator("You get a Necromus character", "Ти отримуєш персонажа Necromus",
+                    "Ты Получаешь персонажа Necromus"),
+                CheckSurviveRecord,
+                OpenCharacter));
+            Achievements.Add(new Achievement(
+                (object) 30, 1000,
+                new Translator("Are you sure you're not a cheater?", "Ти точно не чітер?", "Ты точно не читер?"),
+                new Translator("Stay alive for 300 seconds.", "Залишайтеся в живих протягом 300 секунд.",
+                    "Остаться в живых в течение 300 секунд."),
+                new Translator("You get a 1000 coins", "Ти отримуєш 1000 монет", "Ты Получаешь 1000 монет"),
+                CheckSurviveRecord,
                 AddCoins));
         }
+
         public void CheckAchievementCompletion()
         {
             if (Achievements != null && _isInitialized)
@@ -106,10 +127,12 @@ namespace Menu.Achievement
                 {
                     _count = 0;
                 }
+
                 if (Achievements[_count].UpdateCompletion())
                 {
-                    Achievements[_count].Achieved = true;
+                    PlayerPrefs.SetInt($"Achievement{_count}", Achievements[_count].Achieved ? 1 : 0);
                 }
+
                 _count++;
             }
         }
@@ -117,13 +140,14 @@ namespace Menu.Achievement
         //task
         private bool CheckCompletedLevels(object target)
         {
-            print($"check {target}");
             if (PlayerPrefs.HasKey("CompleteLevel"))
             {
-                return PlayerPrefs.GetInt("CompleteLevel") >= (int)target;
+                return PlayerPrefs.GetInt("CompleteLevel") >= (int) target;
             }
+
             return false;
         }
+
         private bool CheckSurviveRecord(object target)
         {
             float[] recordTime = new float[6];
@@ -135,37 +159,35 @@ namespace Menu.Achievement
             recordTime[5] = PlayerPrefs.GetFloat("NecromusTime");
             for (int i = 0; i < 6; i++)
             {
-                if (recordTime[i] >= (int)target)
+                if (recordTime[i] >= (int) target)
                 {
-                    return PlayerPrefs.GetInt("CompleteLevel") >= (int)target;
+                    return true;
                 }
             }
+
             return false;
         }
+
         //reward
         private bool OpenCharacter(object index)
         {
-            print($"Character open {index}");
-            PlayerPrefs.SetInt($"Open{(int)index}", 1);
+            PlayerPrefs.SetInt($"Open{(int) index}", 1);
             return true;
         }
+
         private bool AddCoins(object coins)
         {
             if (PlayerPrefs.HasKey("Coins"))
             {
-                int allCoins = PlayerPrefs.GetInt("Coins") + (int)coins;
+                int allCoins = PlayerPrefs.GetInt("Coins") + (int) coins;
                 PlayerPrefs.SetInt("Coins", allCoins);
                 return true;
             }
             else
             {
-                PlayerPrefs.SetInt("Coins", (int)coins);
+                PlayerPrefs.SetInt("Coins", (int) coins);
                 return true;
             }
-        }
-        public void TestClick()
-        {
-            PlayerPrefs.SetInt("CompleteLevel", PlayerPrefs.GetInt("CompleteLevel") + 10);
         }
     }
 }

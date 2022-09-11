@@ -21,7 +21,7 @@ namespace Map.Data
             {
                 SaveCoins();
                 PlayerPrefs.SetString($"Level{_levelNumber}",
-                    (Level.UpStar ? "*" : " ") + (Level.IsComplited ? "*" : " ") + (Level.DownStar ? "*" : " "));
+                    (Level.IsComplited ? "*" : " ") + (Level.UpStar ? "*" : " ") + (Level.MiddleStar ? "*" : " ") + (Level.DownStar ? "*" : " "));
                 if (PlayerPrefs.HasKey("CompleteLevel"))
                 {
                     int complitedLevelsCount = 0;
@@ -30,7 +30,7 @@ namespace Map.Data
                         if (PlayerPrefs.HasKey($"Level{levelNumber}"))
                         {
                             string levelData = PlayerPrefs.GetString($"Level{levelNumber}");
-                            complitedLevelsCount += levelData[1] == '*' ? 1 : 0;
+                            complitedLevelsCount += levelData[0] == '*' ? 1 : 0;
                         }
                     }
 
@@ -73,6 +73,7 @@ namespace Map.Data
                     Level.IsComplited = stars[0] == '*' ? true : false;
                     Level.UpStar = stars[1] == '*' ? true : false;
                     Level.DownStar = stars[2] == '*' ? true : false;
+                    Level.MiddleStar = stars[3] == '*' ? true : false;
                 }
                 else
                 {

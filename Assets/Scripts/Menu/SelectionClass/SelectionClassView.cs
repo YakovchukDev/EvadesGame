@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,6 +14,8 @@ namespace Menu.SelectionClass
         public static int CharacterType { get; private set; }
         public static string WhatPlaying { get; set; }
         public List<Button> _buttonSelection;
+        [SerializeField] private List<GameObject> _characters;
+
         [SerializeField] private TMP_Text _infoTime;
         [SerializeField] private Image _progressLine;
         [SerializeField] private Animator _slime;
@@ -33,6 +36,24 @@ namespace Menu.SelectionClass
                 "NecromusTime"
             };
             ChoiceTypeOfCharacter(PlayerPrefs.GetInt("SelectionNumber"));
+        }
+
+        private void OnEnable()
+        {
+            UpdateCharacterList(true);
+        }
+
+        private void OnDisable()
+        {
+            UpdateCharacterList(false);
+        }
+
+        public void UpdateCharacterList(bool isActive)
+        {
+            foreach (var character in _characters)
+            {
+                character.SetActive(isActive);
+            }
         }
 
         public void ChoiceTypeOfCharacter(int characterType)
@@ -69,6 +90,7 @@ namespace Menu.SelectionClass
                 }
             }
         }
+
         public void SetWhatPlaying(string whatPlaying)
         {
             WhatPlaying = whatPlaying;

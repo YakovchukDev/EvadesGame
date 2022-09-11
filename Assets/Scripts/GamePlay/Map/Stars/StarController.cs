@@ -19,7 +19,7 @@ namespace Map.Stars
         {
             if(other.gameObject.CompareTag("Player"))
             {
-                switch(_valueSide)
+                switch (_valueSide)
                 {
                     case StarSide.Up:
                     {
@@ -32,6 +32,14 @@ namespace Map.Stars
                     case StarSide.Down:
                     {
                         MapManager.MainDataCollector.Level.DownStar = true;
+                        _audioManager.Play("Star");
+
+                        Destroy(gameObject);
+                        break;
+                    }
+                    case StarSide.Middle:
+                    {
+                        MapManager.MainDataCollector.Level.MiddleStar = true;
                         _audioManager.Play("Star");
 
                         Destroy(gameObject);

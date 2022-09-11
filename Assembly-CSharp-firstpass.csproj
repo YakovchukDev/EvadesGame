@@ -13,11 +13,11 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5e740eb5-b91c-f267-fcc0-ebeb26ece1a3}</ProjectGuid>
+    <ProjectGuid>{2ebdb67c-3639-d00a-b858-e18b2c224bb0}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -52,262 +52,15 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\GamePlay\Character\AdsPanelControl.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\ForInfinity\Start\EnemyStarter.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
-     <Compile Include="Assets\Scripts\Education\Level\Controllers\HandController.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Stars\StarController.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
-     <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_MouseRotation.cs" />
-     <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\Skill\TurnOffOnEnemy.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\Spell\ReloadSpell.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\MapGenerator.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\ManaView.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\level\LevelElement.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\level\DownGroundForCompany.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
-     <Compile Include="Assets\Scripts\Education\Level\Controllers\EducationResultController.cs" />
-     <Compile Include="Assets\Scripts\Education\Level\Controllers\EducationTeleportController.cs" />
-     <Compile Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Script\CameraTarget.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\HealthController.cs" />
-     <Compile Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Script\EffectController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\Spell\ManaController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\DeactivatingController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Ending\PseudoDoor.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\CharacterSpawner.cs" />
-     <Compile Include="Assets\DissolveEmissionShader\DissolveSphere.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\Spell\Shooter\DeactivatingSpell.cs" />
-     <Compile Include="Assets\EducationSpawnCharacter.cs" />
-     <Compile Include="Assets\Scripts\Menu\Achievement\AchievementsManager.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Data\MainDataCollector.cs" />
-     <Compile Include="Assets\Scripts\Translator.cs" />
-     <Compile Include="Assets\Scripts\Ads\RewardedAdsButton.cs" />
-     <Compile Include="Assets\EducationSelectionView.cs" />
-     <Compile Include="Assets\Scripts\Menu\SelectionClass\SelectionClassView.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\Spell\Neo\TeleportSpell.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Data\OpenSideEnum.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\Shop\CharacterShop\ShopCharacterPanel.cs" />
-     <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\Move\MoveStopper.cs" />
-     <Compile Include="Assets\Scripts\Audio\Sound.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Data\Level.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Data\LevelParameters.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
-     <Compile Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Script\RenderEffect.cs" />
-     <Compile Include="Assets\Scripts\Menu\CharacterInfo.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Camera\CameraController.cs" />
-     <Compile Include="Assets\Scripts\Education\Level\EducationOffVideo.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\ScaleController.cs" />
-     <Compile Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Script\TransformExtension.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\ForInfinity\MeteorController.cs" />
-     <Compile Include="Assets\Scripts\Ads\InterstitialAds.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\Shop\ShopController.cs" />
-     <Compile Include="Assets\Scripts\Menu\MenuAnimatorController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Data\LevelParameterController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Stars\StarSide.cs" />
-     <Compile Include="Assets\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
-     <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
-     <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
-     <Compile Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Script\EffectDemo.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\ForInfinity\Spawner\InfinityEnemySpawner.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\Skill\RepulsionEnemy.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\Spell\Necromus\InvulnerabilityFieldController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\HealthController.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\EntitiesGenerator.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\Spell\Tank\InvulnerableSpell.cs" />
-     <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
-     <Compile Include="Assets\Scripts\Menu\Settings\SetLanguage.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\CoinSpawner.cs" />
-     <Compile Include="Assets\Scripts\Education\Menu\EducationCoin.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\level\LevelController.cs" />
-     <Compile Include="Assets\Scripts\Education\Level\Controls\EducationExperienceControl.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\Spell\Shade\AccelerateWithInvulnerable.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\ParticleController.cs" />
-     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\Spell\RespawnSpell.cs" />
-     <Compile Include="Assets\Scripts\LevelsInterfaceController.cs" />
-     <Compile Include="Assets\Scripts\Menu\Achievement\Achievement.cs" />
-     <Compile Include="Assets\Scripts\Ads\AdsInitializer.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Coins\CoinController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\Spell\Shooter\MinimizeSpell.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Expirience\ExpirienceController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Ending\DoorTypeEnum.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Expirience\ExpirienceControl.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\Info\InfoPanel.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Data\Enemy.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Ending\LevelComplited.cs" />
-     <Compile Include="Assets\Scripts\Menu\SelectionClass\ClassAvailability.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
-     <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\Company\CompanyPanel.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
-     <Compile Include="Assets\Scripts\Education\Level\EducationSaveZone.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\FieldEnemySize.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Data\RoomParameters.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\UpgradeButtonEnum.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\Information\InformationPanel.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Interface\EducationInterface.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
-     <Compile Include="Assets\Scripts\Menu\Settings\SelectUIPosition.cs" />
-     <Compile Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Script\EffectShaderPropertyStr.cs" />
-     <Compile Include="Assets\Scripts\Menu\CharacterAvailabilityItem.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\SpellChecker.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
-     <Compile Include="Assets\Scripts\Menu\Settings\UIFor.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Interface\InfinityInterface.cs" />
-     <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\Info\InfoElement.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\Spell\Tank\AccelerateSpell.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\Spell\Shooter\ActiveSpell.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
-     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Camera\CompanyCamera.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Data\SafeZoneParameters.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\Information\PanelObject.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
-     <Compile Include="Assets\Scripts\Menu\SelectionClass\ForEducationalLevel.cs" />
-     <Compile Include="Assets\Scripts\Menu\Settings\GameInit.cs" />
-     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_DissolveOverTime.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\Spell\Neo\FreezeSpell.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\Shop\MoneyShop\ShopMoneyPanel.cs" />
-     <Compile Include="Assets\Scripts\Education\Level\EducationLevelComplete.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\MapManager.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\Move\MoveIndestructible.cs" />
-     <Compile Include="Assets\FastMobileBloom\FastMobileBloom.cs" />
-     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_ExampleReview.cs" />
-     <Compile Include="Assets\Scripts\ButtonSpellPosition.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\CharacterUpdate.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Camera\InfinityCamera.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Ending\ResultController.cs" />
-     <Compile Include="Assets\Scripts\Menu\PopUpPanelController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Interface\InterfaceController.cs" />
-     <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\Move\MoveJust.cs" />
-     <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Teleport\TeleportControl.cs" />
-     <Compile Include="Assets\Scripts\Menu\Achievement\AchievmentView.cs" />
-     <Compile Include="Assets\JMO Assets\Toony Colors\Demo 2.0\TCF_Demo.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\Shop\CharacterShop\ShopCharacterObject.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\InteractionWithTag.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\Skill\AttractionEnemy.cs" />
-     <Compile Include="Assets\Scripts\Ads\BannerAds.cs" />
-     <Compile Include="Assets\Scripts\Education\Level\Controllers\EducationExperienceController.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\level\LevelMenuView.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\Information\InformationController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\PauseAnimatorController.cs" />
-     <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
-     <Compile Include="Assets\Scripts\Education\Level\Controls\EducationTeleportControl.cs" />
-     <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Character\UpgradeButton.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
-     <Compile Include="Assets\Scripts\Education\Level\Controls\EducationStarControl.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Interface\CompanyInterface.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\ForInfinity\Start\StartEnemyOnInfinityField.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\Skill\GrowUpDown.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\Info\InfoController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Coins\CoinControl.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\AttractionSystem.cs" />
-     <Compile Include="Assets\Scripts\Education\Menu\MenuEducationController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\ForInfinity\Start\StartEnemyOnInfinity.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Teleport\TeleportController.cs" />
-     <Compile Include="Assets\Scripts\Menu\CompanyButton.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Enemy\Move\EnemyMove.cs" />
-     <Compile Include="Assets\Scripts\Menu\Settings\SetVolume.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
-     <Compile Include="Assets\Scripts\Menu\ScriptableObject\Shop\MoneyShop\ShopMoneyObject.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Camera\EducationCamera.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-     <Compile Include="Assets\Scripts\IAP\IAPCore.cs" />
-     <None Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Shader\Toon Blended Premmultiply.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-     <None Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Edge Detection.shader" />
-     <None Include="Assets\Particles\Particle\Particlecollection_Free samples\READ ME.txt" />
-     <None Include="Assets\JMO Assets\Toony Colors\Shaders 2.0\Rim Lighting.shader" />
-     <None Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleBlendEffect.shader" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Grass Sway.shader" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Blur.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-     <None Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\CartoonFX Free.txt" />
-     <None Include="Assets\PeterLu_HologramShader\Shader\BasicHologram.shader" />
-     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.compute" />
-     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-     <None Include="Assets\JMO Assets\Toony Colors\Shaders 2.0\Rim Alpha.shader" />
-     <None Include="Assets\Particles\Particle\JMO Assets\Cartoon FX Easy Editor\CartoonFX Easy Editor Readme.txt" />
-     <None Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Shader\effect_distortion_mask.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-     <None Include="Assets\FastMobileBloom\readme.txt" />
-     <None Include="Assets\JMO Assets\Toony Colors\Shaders 2.0\Regular.shader" />
-     <None Include="Assets\FastMobileBloom\FastMobileBloom.shader" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Depth Mask Edge Detection.shader" />
-     <None Include="Assets\PeterLu_HologramShader\Shader\DistortionRim.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
-     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Ocean.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-     <None Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleAddEffect.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Dissolve.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
-     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Plasma.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Outline.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-     <None Include="Assets\DissolveEmissionShader\DissolveEmission.shader" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus Line.shader" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Snow.shader" />
-     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Lava3D.shader" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Force Field.shader" />
-     <None Include="Assets\JMO Assets\Toony Colors\!ToonyColors Readme.txt" />
-     <None Include="Assets\Particles\Particle\Polygonal Particles\Assets\Shaders\GradientBackgroundShader.shader" />
-     <None Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Shaders\CFXM_MobileParticleAdd_Alpha8.shader" />
-     <None Include="Assets\JMO Assets\Toony Colors\Shaders 2.0\Rim Outline.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-     <None Include="Assets\PeterLu_HologramShader\Documentation.txt" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
-     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Simple Sine Wave.shader" />
-     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-     <None Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleAddSoftEffect.shader" />
-     <None Include="Assets\PeterLu_HologramShader\Shader\BaiscRim.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-     <None Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Shader\ParticlePremultiplyBlend.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-     <None Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Shader\Toon Additive.shader" />
-     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
+     <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Unity/2020.3.24f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -955,10 +708,6 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{2ebdb67c-3639-d00a-b858-e18b2c224bb0}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

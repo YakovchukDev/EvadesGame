@@ -51,7 +51,6 @@ namespace Map
             TeleportController.OnTeleport -= StartTeleportationToSaveZone;
             StarController.OnParticleAfterStar -= GetStar;
             StarController.OnUpdateStarAmount -= StarAmount;
-
         }
 
 
@@ -73,7 +72,6 @@ namespace Map
             _mapOfRooms = _mapGenerator.GetMapOfRooms();
             _mapOfSafeZones = _mapGenerator.GetMapOfSafeZones();
             _entitiesGenerator.GenerateAndSpawnStars(_mapOfSafeZones);
-
             _companyCamera.SetPlayer(_characterSpawner.Character);
             ShowRoomsAroundSpecifiedCoordinates(new Vector2Int(LevelParameters.Branchs, 0));
             StarAmount();
@@ -83,7 +81,7 @@ namespace Map
         {
             int star = (MainDataCollector.Level.DownStar ? 1 : 0) +
                        (MainDataCollector.Level.UpStar ? 1 : 0) +
-                       (MainDataCollector.Level.IsComplited ? 1 : 0);
+                       (MainDataCollector.Level.MiddleStar ? 1 : 0);
             _startText.text = $"{star}/3";
         }
 

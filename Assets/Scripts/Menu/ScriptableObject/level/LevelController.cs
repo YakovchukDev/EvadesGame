@@ -105,7 +105,6 @@ namespace Menu.ScriptableObject.level
                     break;
             }
 
-            //_classAvailability.CheckClassForLevel();
             _selectionClass.SetActive(true);
             _selectionAnimator.SetInteger("Information", 0);
             _selectionClassView.ChoiceTypeOfCharacter(PlayerPrefs.GetInt("SelectionNumber"));

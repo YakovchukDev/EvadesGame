@@ -10,7 +10,6 @@ namespace Menu.ScriptableObject.level
 {
     public class LevelElement : MonoBehaviour
     {
-       
         [SerializeField] private TMP_Text _levelNumberText;
         [SerializeField] private Button _levelButton;
         [SerializeField] private List<Image> _stars;
@@ -35,10 +34,9 @@ namespace Menu.ScriptableObject.level
             {
                 foreach (var star in _stars)
                 {
-                    star.color= new Color(0.7f,0.7f,0.7f);
+                    star.color = new Color(0.7f, 0.7f, 0.7f);
                 }
             }
-            
         }
 
         public void Initialize()
@@ -51,7 +49,6 @@ namespace Menu.ScriptableObject.level
             LevelController.ChoiceLevel = LevelNumber;
             _audioManager.Play("PressButton");
             OnLevel?.Invoke();
-            
         }
 
         private void OnDestroy()
@@ -73,17 +70,36 @@ namespace Menu.ScriptableObject.level
         {
             _levelParameters = levelParameters;
         }
+
         public void SetAchievedTargets()
         {
-            if(PlayerPrefs.HasKey($"Level{LevelNumber}"))
+            if (PlayerPrefs.HasKey($"Level{LevelNumber}"))
             {
                 string stars = PlayerPrefs.GetString($"Level{LevelNumber}");
-                for(int i = 0; i < stars.Length && i < _stars.Count; i++)
+                if (stars[0] == '*')
                 {
-                    if (stars[i] == '*')
+                    _levelButton.interactable = true;
+                    int count = 0;
+                    for (int i = 1; i < stars.Length; i++)
                     {
-                        _stars[i].sprite = _openStarSprite;
+                        if (stars[i] == '*')
+                        {
+                            count++;
+                        }
                     }
+
+                    for (int i = 0; i < _stars.Count; i++)
+                    {
+                        if (count > 0)
+                        {
+                            _stars[i].sprite = _openStarSprite;
+                            count--;
+                        }
+                    }
+                }
+                else
+                {
+                    _levelButton.interactable = false;
                 }
             }
         }

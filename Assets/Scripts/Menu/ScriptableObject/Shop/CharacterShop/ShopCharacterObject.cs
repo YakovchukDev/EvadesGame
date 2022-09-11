@@ -1,3 +1,4 @@
+using System;
 using Audio;
 using TMPro;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace Menu.ScriptableObject.Shop.CharacterShop
         [SerializeField] private TMP_Text _text;
 
         public ShopCharacterPanel ShopCharacterPanel { get; set; }
+        public static Action OnUpdateAccessToCharacter;
 
         private void Start()
         {
@@ -21,8 +23,8 @@ namespace Menu.ScriptableObject.Shop.CharacterShop
             _button.image.sprite = ShopCharacterPanel.BackText;
             _image.sprite = ShopCharacterPanel.Image;
             _text.text = "Price:" + ShopCharacterPanel.CharacterCost;
-            _audioManager=AudioManager.Instanse;
-            if (PlayerPrefs.GetInt($"OpenCharacter{ShopCharacterPanel.NumberForUnlock}") == 1)
+            _audioManager = AudioManager.Instanse;
+            if (PlayerPrefs.GetInt($"Open{ShopCharacterPanel.NumberForUnlock}") == 1)
             {
                 switch (PlayerPrefs.GetString("Language"))
                 {
@@ -47,7 +49,7 @@ namespace Menu.ScriptableObject.Shop.CharacterShop
             if (PlayerPrefs.GetInt("Coins") >= ShopCharacterPanel.CharacterCost)
             {
                 PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - ShopCharacterPanel.CharacterCost);
-                PlayerPrefs.SetInt($"OpenCharacter{ShopCharacterPanel.NumberForUnlock}", 1);
+                PlayerPrefs.SetInt($"Open{ShopCharacterPanel.NumberForUnlock}", 1);
                 switch (PlayerPrefs.GetString("Language"))
                 {
                     case "English":
@@ -61,8 +63,8 @@ namespace Menu.ScriptableObject.Shop.CharacterShop
                         break;
                 }
 
-                PlayerPrefs.SetInt("CompanyOpened",1);
                 _button.interactable = false;
+                OnUpdateAccessToCharacter?.Invoke();
             }
         }
     }

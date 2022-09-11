@@ -28,8 +28,6 @@ namespace Ads
 #elif UNITY_ANDROID
             _adUnitId = AndroidAdUnitId;
 #endif
-
-            // _rewardedAdButton.interactable = false;
         }
 
 
@@ -46,13 +44,11 @@ namespace Ads
             if (adUnitId.Equals(_adUnitId))
             {
                 _rewardedAdButton.onClick.AddListener(ShowAd);
-                // _rewardedAdButton.interactable = true;
             }
         }
 
         public void ShowAd()
         {
-            //_rewardedAdButton.interactable = false;
             Advertisement.Show(_adUnitId, this);
         }
 
@@ -62,18 +58,17 @@ namespace Ads
             {
                 Debug.Log("Unity Ads Rewarded Ad Completed");
                 Advertisement.Load(_adUnitId, this);
+
+                HealthPanelUpdate?.Invoke(1);
+
                 if (_characterSpawner != null)
                 {
                     _characterSpawner.Character.GetComponent<HealthController>().HpNumber++;
                 }
 
-                if (_entitiesGenerator != null)
-                {
-                    _entitiesGenerator.SelectedCharacter.GetComponent<HealthController>().HpNumber++;
-                    HealthPanelUpdate?.Invoke(_entitiesGenerator.SelectedCharacter.GetComponent<HealthController>()
-                        .HpNumber);
-                }
-                _audioMixer.audioMixer.SetFloat("EffectVolume", 0);
+
+                _audioMixer.audioMixer.SetFloat("EffectVolume",
+                    Mathf.Lerp(-80, 0, PlayerPrefs.GetFloat("EffectVolume")));
                 _adsPanelControl.AdsComplete = true;
                 _adsAfterDiePanel.SetActive(false);
                 Time.timeScale = 1;

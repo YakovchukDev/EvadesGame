@@ -23,6 +23,11 @@ public class CharacterAvailabilityItem : MonoBehaviour
     private void OnEnable()
     {
         CheckOpenCharacter();
+        Menu.ScriptableObject.Shop.CharacterShop.ShopCharacterObject.OnUpdateAccessToCharacter += CheckOpenCharacter;
+    }
+    private void OnDisable()
+    {
+        Menu.ScriptableObject.Shop.CharacterShop.ShopCharacterObject.OnUpdateAccessToCharacter += CheckOpenCharacter;
     }
 
     private void CheckOpenCompany()

@@ -29,13 +29,11 @@ namespace GamePlay.Interface
 
         private void OnEnable()
         {
-            HealthController.OnZeroHp += SaveData;
             ManaController.UpdateManaView += ManaViewChanger;
         }
 
         private void OnDisable()
         {
-            HealthController.OnZeroHp -= SaveData;
             ManaController.UpdateManaView += ManaViewChanger;
         }
 
@@ -67,9 +65,9 @@ namespace GamePlay.Interface
         public override void Restart()
         {
             base.Restart();
+            SaveData();
             InfinityEnemySpawner.SpawnNumber = 0;
             _time = 0;
-            SaveData();
             _isSave = false;
         }
 

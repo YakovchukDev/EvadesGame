@@ -7365,16 +7365,44 @@ PrefabInstance:
       value: GamePlay.Interface.InfinityInterface, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7733885238475203891, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733885238475203891, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733885238475203891, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1923190341}
+    - target: {fileID: 7733885238475203891, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1923190341}
+    - target: {fileID: 7733885238475203891, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7733885238475203891, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Restart
       objectReference: {fileID: 0}
     - target: {fileID: 7733885238475203891, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733885238475203891, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GamePlay.Interface.InfinityInterface, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733885238475203891, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: GamePlay.Interface.InfinityInterface, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733885238475203891, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c3f6a1ad3b024f489361ba638bd29cd, type: 3}
@@ -11767,6 +11795,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1855010835, guid: da22cfcf7b7241e4e936207fa0ab6c66, type: 3}
+      propertyPath: _audioMixer
+      value: 
+      objectReference: {fileID: 24300002, guid: 761f1e5b3abc4984b8494cb4169a56d8, type: 2}
     - target: {fileID: 1855010835, guid: da22cfcf7b7241e4e936207fa0ab6c66, type: 3}
       propertyPath: _healthForAds
       value: 

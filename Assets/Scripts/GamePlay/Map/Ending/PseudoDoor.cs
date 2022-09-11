@@ -11,7 +11,7 @@ public class PseudoDoor : MonoBehaviour
     [SerializeField] private GameObject _rightDoor;
     private bool _isUse = false;
     private DoorStatusEnum _doorStatus;
-
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (SelectionClassView.WhatPlaying == "Level")
@@ -42,7 +42,6 @@ public class PseudoDoor : MonoBehaviour
             case DoorStatusEnum.Close:
             {
                 OpenDoor(0);
-                gameObject.tag = "Wall";
                 CloseDoor(1);
                 break;
             }
@@ -57,6 +56,7 @@ public class PseudoDoor : MonoBehaviour
 
     private void OpenDoor(float duration)
     {
+        gameObject.tag = "Untagged";
         _leftDoor.transform.DOLocalMoveY(0.04f, duration);
         _leftDoor.transform.DOScaleZ(0, duration);
         _rightDoor.transform.DOLocalMoveY(-0.04f, duration);
@@ -65,6 +65,7 @@ public class PseudoDoor : MonoBehaviour
 
     private void CloseDoor(float duration)
     {
+        gameObject.tag = "Wall";
         _leftDoor.transform.DOLocalMoveY(0.02f, duration);
         _leftDoor.transform.DOScaleZ(0.04f, duration);
         _rightDoor.transform.DOLocalMoveY(-0.02f, duration);

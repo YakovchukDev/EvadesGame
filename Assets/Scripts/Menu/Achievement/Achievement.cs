@@ -6,15 +6,16 @@ namespace Menu.Achievement
 {
     public class Achievement : MonoBehaviour
     {
-        public string Title;
-        public string Task;
-        public string RewardStr;
+        public Translator Title;
+        public Translator Task;
+        public Translator RewardStr;
         public object RequirementValue;
         public object RewardValue;
         public Predicate<object> Requirement;
         public Predicate<object> Reward;
         public bool Achieved;
-        public Achievement(object requirementValue, object rewardValue, string title, string taskStr, string rewardStr, Predicate<object> requirement, Predicate<object> reward)
+        public static Action<Achievement> OnAchieveComplite;
+        public Achievement(object requirementValue, object rewardValue, Translator title, Translator taskStr, Translator rewardStr, Predicate<object> requirement, Predicate<object> reward)
         {
             RequirementValue = requirementValue;
             RewardValue = rewardValue;
@@ -32,6 +33,7 @@ namespace Menu.Achievement
                 {
                     Achieved = true;
                     Reward?.Invoke(RewardValue);
+                    OnAchieveComplite.Invoke(this);
                     return true;
                 }
             }
@@ -39,19 +41,5 @@ namespace Menu.Achievement
 
         }
 
-    }
-    public class AchievementData
-    {
-        public bool[] IsAchieveds;
-        public AchievementData() { }
-
-        public AchievementData(List<Achievement> achievements)
-        {
-            IsAchieveds = new bool[achievements.Count];
-            for(int i = 0; i < IsAchieveds.Length; i++)
-            {
-                IsAchieveds[i] = achievements[i].Achieved;
-            }
-        }
     }
 }

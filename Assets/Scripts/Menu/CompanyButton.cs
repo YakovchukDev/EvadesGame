@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Audio;
 using Menu.SelectionClass;
 using UnityEngine;
@@ -15,7 +16,6 @@ namespace Menu
         [SerializeField] private GameObject _companyButton;
         [SerializeField] private GameObject _companyMenuView;
         [SerializeField] private Animator _animatorButton;
-
 
         public static event Action<int> OnCompanyUnlocked;
         public static event Action<int> OnEducation;
@@ -42,6 +42,8 @@ namespace Menu
             _selectionClassView.SetWhatPlaying("Level");
             _canvasMainMenu.enabled = false;
         }
+
+        
 
         private void ClickButton(int index)
         {

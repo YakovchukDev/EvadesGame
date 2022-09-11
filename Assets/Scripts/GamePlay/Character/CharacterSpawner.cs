@@ -20,13 +20,10 @@ namespace GamePlay.Character
             {
                 SpawnCharacter(new Vector3(0, 1, 0), Quaternion.identity);
             }
-        }
 
-        private void Start()
-        {
             if (SelectionClassView.WhatPlaying == "Level")
             {
-                SpawnCharacter(StartPosition, new Quaternion(0, 90, 0, 0));
+                SpawnCharacter(transform.position, new Quaternion(0, 90, 0, 0));
                 if (Character.GetComponent<ManaController>() != null)
                 {
                     HandOverManaController?.Invoke(Character.GetComponent<ManaController>());
@@ -36,6 +33,10 @@ namespace GamePlay.Character
             }
         }
 
+        private void Start()
+        {
+            Character.transform.position = StartPosition;
+        }
 
         private void SpawnCharacter(Vector3 startPosition, Quaternion quaternion)
         {

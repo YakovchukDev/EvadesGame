@@ -14,8 +14,6 @@ namespace GamePlay.Enemy.Move
         protected bool CanFreeze;
 
         protected float FasterTime;
-        private const float RotationSpeed = 100;
-
         [SerializeField] protected float _speed;
         [SerializeField] protected GameObject _enemyBounceParticle;
         [SerializeField] private AudioSource _bounceSound;
@@ -25,10 +23,7 @@ namespace GamePlay.Enemy.Move
 
         protected void RotateController()
         {
-            if (transform.rotation != Rotation)
-            {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Rotation, RotationSpeed * Time.deltaTime);
-            }
+            transform.rotation = Rotation;
         }
 
         protected void WallTouch(Collision other, GameObject bounceParticle)
@@ -51,7 +46,7 @@ namespace GamePlay.Enemy.Move
         protected void FreezeMe(float allFreezeTime)
         {
             print(1);
-            
+
             FreezeTimer += Time.deltaTime;
             if (FreezeTimer >= allFreezeTime)
             {

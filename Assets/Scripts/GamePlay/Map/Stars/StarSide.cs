@@ -4,6 +4,7 @@ namespace Map.Stars
     {
         Default = 0,
         Up = 1,
-        Down = 2
+        Down = 2,
+        Middle = 3
     }
 }

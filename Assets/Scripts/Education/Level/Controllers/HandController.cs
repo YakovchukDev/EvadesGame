@@ -29,7 +29,11 @@ namespace Education.Level.Controllers
 
         public void ForUpgradePanel(string number)
         {
-            if (_educationExperienceController.QuantityPoints > 0)
+            if (_educationExperienceController.QuantityPoints > 0 &&
+                _characterUpdate.NumberMaxManaUpdate < _educationExperienceController.QuantityPoints&&
+                _characterUpdate.NumberSpeedUpdate < _educationExperienceController.QuantityPoints&&
+                _characterUpdate.NumberManaRegenUpdate < _educationExperienceController.QuantityPoints&&
+                CharacterUpdate.NumberSpell2Update < _educationExperienceController.QuantityPoints)
             {
                 switch (number)
                 {
