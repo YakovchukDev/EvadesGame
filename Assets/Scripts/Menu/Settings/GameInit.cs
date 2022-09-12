@@ -43,7 +43,7 @@ namespace Menu.Settings
 
             if (!PlayerPrefs.HasKey("Coins"))
             {
-                PlayerPrefs.SetInt("Coins", 10000);
+                PlayerPrefs.SetInt("Coins", 0);
             }
             if (!PlayerPrefs.HasKey("Education"))
             {

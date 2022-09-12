@@ -24,49 +24,11 @@ namespace Menu.ScriptableObject.Shop.MoneyShop
             _image.sprite = ShopMoneyPanel.Image;
             _text.text = ShopMoneyPanel.MoneyCost + "$";
             _audioManager = AudioManager.Instanse;
-            /*if (PlayerPrefs.GetInt($"OpenMoney{ShopPanel.NumberForUnlock}") == 1)
-            {
-                switch (PlayerPrefs.GetString("Language"))
-                {
-                    case "English":
-                        _text.text = "Bought";
-                        break;
-                    case "Russian":
-                        _text.text = "Куплено";
-                        break;
-                    case "Ukrainian":
-                        _text.text = "Куплено";
-                        break;
-                }
-
-                _button.interactable = false;
-            }*/
         }
 
-        public void BuyCharacter()
+        public void BuyMoney()
         {
             _audioManager.Play("PressButton");
-            Debug.LogError("Have not mechanic");
-            /*if (PlayerPrefs.GetInt("Coins") >= ShopMoneyPanel.CharacterCost)
-            {
-                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - ShopMoneyPanel.CharacterCost);
-                PlayerPrefs.SetInt($"Open{ShopMoneyPanel.NumberForUnlock}", 1);
-                switch (PlayerPrefs.GetString("Language"))
-                {
-                    case "English":
-                        _text.text = "Bought";
-                        break;
-                    case "Russian":
-                        _text.text = "Куплено";
-                        break;
-                    case "Ukrainian":
-                        _text.text = "Куплено";
-                        break;
-                }
-
-                PlayerPrefs.SetInt("CompanyOpened", 1);
-                _button.interactable = false;
-            }*/
         }
     }
 }

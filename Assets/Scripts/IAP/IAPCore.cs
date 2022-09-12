@@ -14,7 +14,13 @@ namespace IAP
         private static IExtensionProvider m_StoreExtensionProvider;
 
         public static string LanguageRUS = "LanguageRUS";
-
+        public static string coin100 = "coin100";
+        public static string coin500 = "coin500";
+        public static string coin1000 = "coin1000";
+        public static string coin5000 = "coin5000";
+        public static string coin10000 = "coin10000";
+        public static string coin25000 = "coin25000";
+        public static string coin50000 = "coin50000";
         private void Awake()
         {
             if (PlayerPrefs.HasKey("RUS"))
