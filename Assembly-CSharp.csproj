@@ -172,6 +172,7 @@
      <Compile Include="Assets\Scripts\Menu\Settings\UIFor.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Interface\InfinityInterface.cs" />
      <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
+     <Compile Include="Assets\Scripts\IAP\IAPCore.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\Scripts\Menu\ScriptableObject\Info\InfoElement.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Character\Spell\Tank\AccelerateSpell.cs" />
@@ -197,8 +198,8 @@
      <Compile Include="Assets\Scripts\GamePlay\Character\CharacterUpdate.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Camera\InfinityCamera.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Map\Ending\ResultController.cs" />
-     <Compile Include="Assets\Scripts\Menu\PopUpPanelController.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Interface\InterfaceController.cs" />
+     <Compile Include="Assets\Scripts\Menu\PopUpPanelController.cs" />
      <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Enemy\Move\MoveJust.cs" />
      <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
@@ -219,8 +220,8 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
      <Compile Include="Assets\Scripts\Education\Level\Controls\EducationTeleportControl.cs" />
-     <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Character\UpgradeButton.cs" />
+     <Compile Include="Assets\Particles\Particle\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
      <Compile Include="Assets\Scripts\Education\Level\Controls\EducationStarControl.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
@@ -229,14 +230,14 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Enemy\ForInfinity\Start\StartEnemyOnInfinityField.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Enemy\Skill\GrowUpDown.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
      <Compile Include="Assets\Scripts\Menu\ScriptableObject\Info\InfoController.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Map\Coins\CoinControl.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Enemy\AttractionSystem.cs" />
      <Compile Include="Assets\Scripts\Education\Menu\MenuEducationController.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Enemy\ForInfinity\Start\StartEnemyOnInfinity.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Map\Teleport\TeleportController.cs" />
      <Compile Include="Assets\Scripts\Menu\CompanyButton.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\Map\Teleport\TeleportController.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Enemy\Move\EnemyMove.cs" />
      <Compile Include="Assets\Scripts\Menu\Settings\SetVolume.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
@@ -244,7 +245,6 @@
      <Compile Include="Assets\Scripts\GamePlay\Camera\EducationCamera.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-     <Compile Include="Assets\Scripts\IAP\IAPCore.cs" />
      <None Include="Assets\Particles\Particle\Particlecollection_Free samples\Plugins\Effect\Shader\Toon Blended Premmultiply.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -872,11 +872,14 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>C:/Unity/2020.3.24f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
+ <Reference Include="Purchasing.Common">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Purchasing.Common.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.Postprocessing.Runtime">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -884,20 +887,26 @@
  <Reference Include="Unity.VisualStudio.Editor">
  <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Timeline">
  <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Services.Analytics.Editor">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
+ <Reference Include="UnityEngine.Purchasing.SecurityStub">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Services.Analytics">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Services.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Postprocessing.Editor">
  <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
@@ -914,44 +923,35 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Advertisements.Editor">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Advertisements.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Purchasing.Common">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Purchasing.Common.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing.SecurityStub">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Purchasing.SecurityStub.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing.SecurityCore">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Purchasing.SecurityCore.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing.Stores">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Purchasing.Stores.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing.Codeless">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Purchasing.Codeless.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.Purchasing">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEditor.Purchasing.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Services.Analytics.Editor">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Services.Core">
  <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Services.Core.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Services.Core.Environments">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Services.Core.Environments.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Services.Core.Analytics">
  <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Services.Core.Analytics.dll</HintPath>
  </Reference>
- <Reference Include="Unity.Services.Analytics">
- <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Services.Analytics.dll</HintPath>
+ <Reference Include="UnityEngine.Purchasing.SecurityCore">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Postprocessing.Runtime">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing.Codeless">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Purchasing.Codeless.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Services.Core.Environments">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Services.Core.Environments.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Timeline.Editor">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing.Stores">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Purchasing.Stores.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Purchasing">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEditor.Purchasing.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Advertisements.Editor">
+ <HintPath>C:/SourceTree/Slimes` kingdom/Library/ScriptAssemblies/UnityEngine.Advertisements.Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

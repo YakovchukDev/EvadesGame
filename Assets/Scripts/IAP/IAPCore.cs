@@ -1,5 +1,6 @@
 using System;
 using Menu.Settings;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Purchasing;
 
@@ -9,7 +10,7 @@ namespace IAP
     {
         [SerializeField] private GameObject _buyRusButton;
         [SerializeField] private SetLanguage _setLanguage;
-
+        [SerializeField] private TMP_Text _coinText;
         private static IStoreController m_StoreController;
         private static IExtensionProvider m_StoreExtensionProvider;
 
@@ -21,6 +22,7 @@ namespace IAP
         public static string coin10000 = "coin10000";
         public static string coin25000 = "coin25000";
         public static string coin50000 = "coin50000";
+
         private void Awake()
         {
             if (PlayerPrefs.HasKey("RUS"))
@@ -47,7 +49,13 @@ namespace IAP
             var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
 
             builder.AddProduct(LanguageRUS, ProductType.NonConsumable);
-
+            builder.AddProduct(coin100, ProductType.Consumable);
+            builder.AddProduct(coin500, ProductType.Consumable);
+            builder.AddProduct(coin1000, ProductType.Consumable);
+            builder.AddProduct(coin5000, ProductType.Consumable);
+            builder.AddProduct(coin10000, ProductType.Consumable);
+            builder.AddProduct(coin25000, ProductType.Consumable);
+            builder.AddProduct(coin50000, ProductType.Consumable);
 
             UnityPurchasing.Initialize(this, builder);
         }
@@ -56,6 +64,12 @@ namespace IAP
         {
             BuyProductID(LanguageRUS);
         }
+
+        public void BuyCoins(string id)
+        {
+            BuyProductID(id);
+        }
+
 
         void BuyProductID(string productId)
         {
@@ -93,6 +107,48 @@ namespace IAP
                     Destroy(_buyRusButton);
                     _setLanguage.Set("Russian");
                 }
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, coin100, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 100);
+                _coinText.text = PlayerPrefs.GetInt("Coins").ToString();
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, coin500, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 500);
+                _coinText.text = PlayerPrefs.GetInt("Coins").ToString();
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, coin1000, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1000);
+                _coinText.text = PlayerPrefs.GetInt("Coins").ToString();
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, coin5000, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 5000);
+                _coinText.text = PlayerPrefs.GetInt("Coins").ToString();
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, coin10000, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 10000);
+                _coinText.text = PlayerPrefs.GetInt("Coins").ToString();
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, coin25000, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 25000);
+                _coinText.text = PlayerPrefs.GetInt("Coins").ToString();
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, coin50000, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 50000);
+                _coinText.text = PlayerPrefs.GetInt("Coins").ToString();
             }
             else
             {

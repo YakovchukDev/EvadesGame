@@ -85,7 +85,7 @@ namespace Menu.Achievement
                 CheckCompletedLevels,
                 OpenCharacter));
             Achievements.Add(new Achievement(
-                (object) 10, (object) 3,
+                (object) 30, (object) 3,
                 new Translator("Level 3 explorer", "Дослідник 3-го рівня", "Исследователь 3-го уровня"),
                 new Translator("Complete all company levels.", "Пройдіть всі рівні компанії.",
                     "Пройдите все уровни компании."),
@@ -93,7 +93,7 @@ namespace Menu.Achievement
                 CheckCompletedLevels,
                 OpenCharacter));
             Achievements.Add(new Achievement(
-                (object) 10, 4,
+                (object) 100, 4,
                 new Translator("You are resilience itself!", "Ти сама стійкість!", "Ты сама устойчивость!"),
                 new Translator("Stay alive for 100 seconds.", "Залишайтеся в живих протягом 100 секунд.",
                     "Остаться в живых в течение 100 секунд."),
@@ -101,7 +101,7 @@ namespace Menu.Achievement
                 CheckSurviveRecord,
                 OpenCharacter));
             Achievements.Add(new Achievement(
-                (object) 20, 5,
+                (object) 200, 5,
                 new Translator("You are elusive!", "Ти невловимий!", "Ты неуловим!"),
                 new Translator("Stay alive for 200 seconds.", "Залишайтеся в живих протягом 200 секунд.",
                     "Остаться в живых в течение 200 секунд."),
@@ -110,7 +110,7 @@ namespace Menu.Achievement
                 CheckSurviveRecord,
                 OpenCharacter));
             Achievements.Add(new Achievement(
-                (object) 30, 1000,
+                (object) 300, 1000,
                 new Translator("Are you sure you're not a cheater?", "Ти точно не чітер?", "Ты точно не читер?"),
                 new Translator("Stay alive for 300 seconds.", "Залишайтеся в живих протягом 300 секунд.",
                     "Остаться в живых в течение 300 секунд."),
