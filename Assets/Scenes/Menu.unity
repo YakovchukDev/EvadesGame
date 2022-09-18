@@ -4024,7 +4024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _englishText: In "company" mode, each level is randomly generated, while the levels
+  _englishText: In "campaign" mode, each level is randomly generated, while the levels
     become longer and more difficult. New types of enemies appear. As you pass the
     level, you can collect coins and search for stars. Complete levels and unlock
     new characters.
@@ -4073,10 +4073,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: In "company" mode, each level is randomly generated, while the levels become
-    longer and more difficult. New types of enemies appear. As you pass the level,
-    you can collect coins and search for stars. Complete levels and unlock new characters
-    in survival mode.
+  m_text: In "campaign" mode, each level is randomly generated, while the levels
+    become longer and more difficult. New types of enemies appear. As you pass the
+    level, you can collect coins and search for stars. Complete levels and unlock
+    new characters in survival mode.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -6041,7 +6041,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Company
+  m_text: Campaign
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -6130,7 +6130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _englishText: Company
+  _englishText: Campaign
   _russianText: "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F"
   _ukrainianText: "\u041A\u043E\u043C\u043F\u0430\u043D\u0456\u044F"
 --- !u!1 &513989551
@@ -15072,7 +15072,7 @@ GameObject:
   - component: {fileID: 917661447}
   - component: {fileID: 917661446}
   m_Layer: 5
-  m_Name: Company
+  m_Name: Campaign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16957,6 +16957,7 @@ GameObject:
   - component: {fileID: 1027116893}
   - component: {fileID: 1027116895}
   - component: {fileID: 1027116894}
+  - component: {fileID: 1027116896}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -17080,6 +17081,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027116892}
   m_CullTransparentMesh: 1
+--- !u!114 &1027116896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027116892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: Survival
+  _russianText: "\u0412\u044B\u0436\u0438\u0432\u0430\u043D\u0438\u0435"
+  _ukrainianText: "\u0412\u0438\u0436\u0438\u0432\u0430\u043D\u043D\u044F"
 --- !u!1 &1042691705
 GameObject:
   m_ObjectHideFlags: 0
@@ -17329,7 +17345,7 @@ GameObject:
   - component: {fileID: 1105704816}
   - component: {fileID: 1105704817}
   m_Layer: 5
-  m_Name: "\u0421ompanyGame"
+  m_Name: CampaignGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18956,6 +18972,7 @@ GameObject:
   - component: {fileID: 1277421443}
   - component: {fileID: 1277421445}
   - component: {fileID: 1277421444}
+  - component: {fileID: 1277421446}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -19002,9 +19019,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Company
-
-'
+  m_text: Campaign
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -19031,7 +19046,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.6
+  m_fontSize: 43.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -19081,6 +19096,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277421442}
   m_CullTransparentMesh: 1
+--- !u!114 &1277421446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277421442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: Campaign
+  _russianText: "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F"
+  _ukrainianText: "\u041A\u043E\u043C\u043F\u0430\u043D\u0456\u044F"
 --- !u!1 &1283331502
 GameObject:
   m_ObjectHideFlags: 0
@@ -30651,11 +30681,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _englishText: Do you want to study?
-  _russianText: "\u0425\u043E\u0447\u0435\u0448\u044C \u043B\u0438 \u0442\u044B \u043F\u0440\u043E\u0439\u0442\u0438
+  _englishText: Do you want to complete tutorial?
+  _russianText: "\u0412\u044B \u0445\u043E\u0442\u0438\u0442\u0435 \u043F\u0440\u043E\u0439\u0442\u0438
     \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435?"
-  _ukrainianText: "\u0427\u0438 \u0431\u0430\u0436\u0430\u0454\u0448 \u0442\u0438
-    \u043F\u0440\u043E\u0439\u0442\u0438 \u043D\u0430\u0432\u0447\u0430\u043D\u043D\u044F?"
+  _ukrainianText: "\u0412\u0438 \u0445\u043E\u0447\u0435\u0442\u0435 \u043F\u0440\u043E\u0439\u0442\u0438
+    \u043D\u0430\u0432\u0447\u0430\u043D\u043D\u044F?"
 --- !u!114 &1746243550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39688,6 +39718,7 @@ GameObject:
   - component: {fileID: 3510763363365517129}
   - component: {fileID: 6685631489184999133}
   - component: {fileID: 6346000308372463020}
+  - component: {fileID: 1496420172632797528}
   m_Layer: 5
   m_Name: RecordText
   m_TagString: Untagged
@@ -39695,6 +39726,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1496420172632797528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496420172632797527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6682be588c6ad684682e10228eb5d7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _englishText: 'Level: Tutorial'
+  _russianText: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C: \u0423\u0447\u0435\u0431\u043D\u044B\u0439"
+  _ukrainianText: "\u0420\u0456\u0432\u0435\u043D\u044C: \u041D\u0430\u0432\u0447\u0430\u043B\u044C\u043D\u0438\u0439"
 --- !u!222 &1540950412830701530
 CanvasRenderer:
   m_ObjectHideFlags: 0
